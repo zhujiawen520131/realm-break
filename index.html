@@ -995,6 +995,10 @@ function x4ExecutionEvents(e){
 }
 
 function x4UpdateAmbient(dt){
+  for(const f of state.fighters||[]){
+    f.whiteFlash=Math.max(0,(f.whiteFlash||0)-dt);
+    f.hurtAge=(f.hurtAge||0)+dt;
+  }
   for(const p of state.particles||[]){p.t-=dt;p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=640*dt}
   if(state.particles)state.particles=state.particles.filter(p=>p.t>0);
   for(const p of state.floats||[]){p.life-=dt;p.y-=33*dt}
