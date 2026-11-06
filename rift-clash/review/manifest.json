@@ -1644,13 +1644,22 @@
         "https://kimetsu.com/anime/risshihen/character/?chara=tanjiro"
       ],
       "notes": [
-        "新设定待审核，尚无独立手绘动作帧。试玩中使用程序绘制动作。"
+        "角色设定已获用户通过；独立手绘动作序列尚未提交。试玩仍使用程序绘制动作。"
       ],
       "designReviewNotes": [
         "官方游戏参考中的角色处于战斗姿态，身体和配饰有水流遮挡；侧面、腿绑、刀具局部和部分衣物结构是依据可见信息的设计推断，须人工审核。",
         "刀镡、刀柄等小五金为画师式细化，并非已核定的官方精确设定。",
         "设定板为不透明背景，尚未拆分透明人物素材；尚无动作帧。"
-      ]
+      ],
+      "designApproval": {
+        "status": "approved",
+        "date": "2026-11-07",
+        "notes": "无补充意见",
+        "scope": "角色设定；不包含动作序列帧",
+        "designHashes": {
+          "design/tanjiro-design.png": "28b894a0637515c858eb38b0f03c3754844797cda553f8bd01128f97f052519b"
+        }
+      }
     },
     {
       "id": "zenitsu",
@@ -1673,13 +1682,22 @@
         "https://kimetsu.com/anime/risshihen/character/?chara=zennitsu"
       ],
       "notes": [
-        "新设定待审核，尚无独立手绘动作帧。试玩中使用程序绘制动作。"
+        "角色设定已获用户通过；独立手绘动作序列尚未提交。试玩仍使用程序绘制动作。"
       ],
       "designReviewNotes": [
         "官方游戏参考中的角色处于蹲姿且受雷电遮挡；侧面、腿绑、刀身及刀镡小细节依据可见信息作了设计推断，须人工审核。",
         "正面画为闭眼，侧面眼睛似乎微睁，与正面表情可能不一致；如需严格统一表情，后续须修订。",
         "设定板为不透明背景，尚未拆分透明人物素材；尚无动作帧。"
-      ]
+      ],
+      "designApproval": {
+        "status": "approved",
+        "date": "2026-11-07",
+        "notes": "无补充意见",
+        "scope": "角色设定；不包含动作序列帧",
+        "designHashes": {
+          "design/zenitsu-design.png": "336253ee3e88e6a3b38a515031ef92af4180101c18e6c5b97febd87a33d420df"
+        }
+      }
     }
   ],
   "reviewId": "cloud-style-20261107-r1"
