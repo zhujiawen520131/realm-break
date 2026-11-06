@@ -98,7 +98,7 @@ const paintedReady=new Promise(resolve=>{
 });
 function resolveAnimation(f,t=0,ghost=false){
  let state='idle';const a=f.attack;
- if(f.guardStun>0&&f.block)state='guard';else if(f.stun)state='hurt';else if(f.dash||ghost&&f.animState==='dash')state='dash';
+ if(f.guardStun>0&&f.block)state='guard';else if(f.stun)state='hurt';else if(f.dash||f.blinkTime||ghost&&f.animState==='dash')state='dash';
  else if(a)state=(a.name==='skill'||a.name==='ultimate')?'skill':'attack';
  else if(!ghost&&Number.isFinite(f.y)&&f.y<(root.Rift?.FLOOR??510)-1)state='jump';
  else if(f.block)state='guard';else if(Math.abs(f.vx||0)>1)state='run';else if(f.landTime)state='land';

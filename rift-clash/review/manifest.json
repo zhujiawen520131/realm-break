@@ -1648,6 +1648,12 @@
           "design/cloud-front.png": "51b0c280936b518aae643a843e827f2287cadb1a1b00d3c67abd22bbeccfc299",
           "design/cloud-side.png": "7bc635a456dccdd65b21ed956ff3e52db574a5d6f817dbece61b71fd041fcb61"
         }
+      },
+      "poster": {
+        "image": "posters/cloud.webp",
+        "label": "克劳德 · 必杀特写海报",
+        "status": "integrated",
+        "sha256": "467cefebb3b2c10a0ceb7ec6c854b9fcf9d1d145d1c11324c4be1250d38a47d4"
       }
     },
     {
@@ -1687,6 +1693,12 @@
           "design/lara-front.png": "1b67ae56c57ccb9b927942349cd3de94dd0b762d5434ba0b864f73ff56920931",
           "design/lara-side.png": "06a689166fc78065bb3d3fac03623f8540b2cda3a14b476da2f3f01898d80158"
         }
+      },
+      "poster": {
+        "image": "posters/lara.webp",
+        "label": "劳拉 · 必杀特写海报",
+        "status": "integrated",
+        "sha256": "84ff7d20681d273fce667f0176f9c7bee21b97aa3256daac9760ddbf30ecc62e"
       }
     },
     {
@@ -1727,6 +1739,12 @@
           "design/wukong-front.png": "bbfe628a721af756a84ebcbda72a887b350def5ad7ee56d2293639f5dbb65d29",
           "design/wukong-side.png": "c66a703c55c025bfc6807508284b7695686849b78739e54f3840ff9e782af60f"
         }
+      },
+      "poster": {
+        "image": "posters/wukong.webp",
+        "label": "天命人 · 必杀特写海报",
+        "status": "integrated",
+        "sha256": "418358e47fb0c417188ad084c79f3d789d4799f2d8e676bca559c17b2a157784"
       }
     },
     {
@@ -1763,6 +1781,12 @@
         "designHashes": {
           "design/nathan-turnaround-detail.png": "4ab8be9acaa6018901086c804bf33f56ec18ba2124d0d7a59bc336b268357ae2"
         }
+      },
+      "poster": {
+        "image": "posters/drake.webp",
+        "label": "内森·德雷克 · 必杀特写海报",
+        "status": "integrated",
+        "sha256": "df6ba21a62528c785ccf875847bff9c710177f7959c253e72c6dfc177466df02"
       }
     },
     {
@@ -1801,6 +1825,12 @@
         "designHashes": {
           "design/tanjiro-design.png": "28b894a0637515c858eb38b0f03c3754844797cda553f8bd01128f97f052519b"
         }
+      },
+      "poster": {
+        "image": "posters/tanjiro.webp",
+        "label": "灶门炭治郎 · 必杀特写海报",
+        "status": "integrated",
+        "sha256": "c05d25db1ec2205d07cff0e1bdfdb54a41a48a64beb57bc4f4ed83b7605636d9"
       }
     },
     {
@@ -1839,6 +1869,12 @@
         "designHashes": {
           "design/zenitsu-design.png": "336253ee3e88e6a3b38a515031ef92af4180101c18e6c5b97febd87a33d420df"
         }
+      },
+      "poster": {
+        "image": "posters/zenitsu.webp",
+        "label": "我妻善逸 · 必杀特写海报",
+        "status": "integrated",
+        "sha256": "a9d4e249ec7bdba1d182184fc6076986c1bb8b1b13d462366c71d3a7fe66c6f6"
       }
     }
   ],

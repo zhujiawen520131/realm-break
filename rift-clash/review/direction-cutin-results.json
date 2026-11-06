@@ -1,0 +1,107 @@
+{
+  "checkedAt": "2026-11-06T19:35:49.417Z",
+  "engineSha256": "f0778bf4d5f204a721483f389046e2bafa6ea6c132c573130c5ea5ca604c4380",
+  "checks": 24,
+  "results": [
+    {
+      "id": "enemy_crossing_does_not_turn_idle_player",
+      "status": "PASS"
+    },
+    {
+      "id": "movement_and_released_facing_follow_player_input",
+      "status": "PASS"
+    },
+    {
+      "id": "blink_is_240_from_own_position_both_directions",
+      "status": "PASS",
+      "distance": 240
+    },
+    {
+      "id": "blink_without_direction_uses_last_movement_intent",
+      "status": "PASS"
+    },
+    {
+      "id": "blink_preserves_air_height_and_clamps_world_edges",
+      "status": "PASS"
+    },
+    {
+      "id": "blink_clears_stun_once_and_enforces_energy_and_cooldown",
+      "status": "PASS"
+    },
+    {
+      "id": "hitstop_queues_first_blink_direction_without_mutation",
+      "status": "PASS"
+    },
+    {
+      "id": "attack_buffer_direction_is_captured_and_locks_during_move",
+      "status": "PASS"
+    },
+    {
+      "id": "dash_uses_input_direction_and_does_not_turn_mid_dash",
+      "status": "PASS"
+    },
+    {
+      "id": "guard_checks_manual_facing_not_enemy_tracking",
+      "status": "PASS"
+    },
+    {
+      "id": "tanjiro_breathing_path_independent_of_enemy_position",
+      "status": "PASS",
+      "fixedTravel": 7
+    },
+    {
+      "id": "zenitsu_breathing_path_independent_of_enemy_position",
+      "status": "PASS",
+      "fixedTravel": 30
+    },
+    {
+      "id": "swept_body_collision_blocks_fast_invulnerable_rush",
+      "status": "PASS"
+    },
+    {
+      "id": "dash_remains_intentionally_pass_through",
+      "status": "PASS"
+    },
+    {
+      "id": "ai_direction_is_its_own_intent_only",
+      "status": "PASS"
+    },
+    {
+      "id": "cutin_starts_before_world_progress_and_pauses_every_simulated_timer",
+      "status": "PASS",
+      "frozenTicks": 36
+    },
+    {
+      "id": "repeat_ultimate_during_cutin_does_not_recharge_or_restart",
+      "status": "PASS"
+    },
+    {
+      "id": "insufficient_energy_never_starts_poster_or_consumes",
+      "status": "PASS"
+    },
+    {
+      "id": "cinematics_off_keeps_normal_attack_clock",
+      "status": "PASS"
+    },
+    {
+      "id": "turning_cinematics_off_mid_poster_resumes_without_second_charge",
+      "status": "PASS"
+    },
+    {
+      "id": "blink_queued_in_poster_executes_once_after_resume",
+      "status": "PASS"
+    },
+    {
+      "id": "both_ultimates_start_together_after_single_shared_poster",
+      "status": "PASS"
+    },
+    {
+      "id": "hitstop_defers_ultimate_start_and_energy_cost",
+      "status": "PASS"
+    },
+    {
+      "id": "reset_clears_poster_and_queued_blink",
+      "status": "PASS"
+    }
+  ]
+}
