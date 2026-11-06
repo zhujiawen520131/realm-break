@@ -1,0 +1,173 @@
+[
+  {
+    "character": "Cloud Strife",
+    "version": "Final Fantasy VII Remake (2020)",
+    "source_page": "https://www.jp.square-enix.com/ffvii_remake/character/index.html",
+    "provider_type": "官方",
+    "visible_design_details": "金色分束尖发；黑色无袖高领针织；单侧铆钉肩甲；皮革胸腰护具；宽裤及重靴。",
+    "reference_use": "全身服装、体型比例、色块、面部",
+    "limitations": "不含破坏剑。"
+  },
+  {
+    "character": "Cloud Strife",
+    "version": "Final Fantasy VII Remake (2020)",
+    "source_page": "https://blog.playstation.com/2019/11/25/new-final-fantasy-vii-remake-screens-feature-cloud-combat-and-more/",
+    "provider_type": "官方",
+    "visible_design_details": "武器菜单独立破坏剑：宽厚深灰剑面、银色单侧刃口、斜切剑尖、短直护手、棕色长握柄。",
+    "reference_use": "武器整体轮廓、材质、护手与柄",
+    "limitations": "菜单背景；不含全身持剑比例。"
+  },
+  {
+    "character": "Cloud Strife",
+    "version": "Final Fantasy VII Remake (2020)",
+    "source_page": "https://blog.playstation.com/2019/11/25/new-final-fantasy-vii-remake-screens-feature-cloud-combat-and-more/",
+    "provider_type": "官方",
+    "visible_design_details": "Cloud 双手握剑上挥，低重心屈膝，剑轨迹呈上升弧。",
+    "reference_use": "上挥与大剑发力姿态",
+    "limitations": "游戏特效遮挡局部。"
+  },
+  {
+    "character": "Cloud Strife",
+    "version": "Final Fantasy VII Remake (2020)",
+    "source_page": "https://www.jp.square-enix.com/ffvii_remake/character/index.html",
+    "provider_type": "官方",
+    "visible_design_details": "低重心横向挥剑、伸展手臂与大幅躯干转动。",
+    "reference_use": "横斩关键姿态",
+    "limitations": "剑与特效重叠。"
+  },
+  {
+    "character": "Lara Croft",
+    "version": "Tomb Raider I–III Remastered (2024)，经典青绿背心造型",
+    "source_page": "https://blog.playstation.com/2024/01/16/tomb-raider-i-iii-remastered-ps4-ps5-features-detailed-new-key-art-revealed/",
+    "provider_type": "官方",
+    "visible_design_details": "左侧全身正面：青绿背心、棕短裤、双大腿枪套、棕靴、浅袜、黑手套、棕发。",
+    "reference_use": "主服装全身比例、枪套位置、色块",
+    "limitations": "只采用左侧经典装；右侧是不同服装。"
+  },
+  {
+    "character": "Lara Croft",
+    "version": "Tomb Raider I–III Remastered (2024)，经典青绿背心造型",
+    "source_page": "https://blog.playstation.com/2024/01/16/tomb-raider-i-iii-remastered-ps4-ps5-features-detailed-new-key-art-revealed/",
+    "provider_type": "官方",
+    "visible_design_details": "中央经典装 Lara 双持银灰手枪，身体三分之四，长辫与棕背包可见。",
+    "reference_use": "双枪设计、持枪手部、角色识别轮廓",
+    "limitations": "多造型海报；使用中央经典造型，腿部未完整。"
+  },
+  {
+    "character": "Lara Croft",
+    "version": "Tomb Raider I–III Remastered (2024)，经典青绿背心造型",
+    "source_page": "https://blog.playstation.com/2024/01/16/tomb-raider-i-iii-remastered-ps4-ps5-features-detailed-new-key-art-revealed/",
+    "provider_type": "官方",
+    "visible_design_details": "人物持枪跳跃/跨步，双腿一曲一伸，双臂持枪。",
+    "reference_use": "双枪空中姿态",
+    "limitations": "穿夹克的不同服装，仅参考姿态。"
+  },
+  {
+    "character": "天命人 / Destined One",
+    "version": "Black Myth: Wukong (2024)，官方宣传装甲造型",
+    "source_page": "https://www.playstation.com/en-us/games/black-myth-wukong/",
+    "provider_type": "官方",
+    "visible_design_details": "近距猴面、浓密毛发、雕纹金属胸肩甲、圆形胸甲细节、深色红系衣料。",
+    "reference_use": "面部、胸肩结构、材质与主色",
+    "limitations": "上半身宣传图；非转面图。"
+  },
+  {
+    "character": "天命人 / Destined One",
+    "version": "Black Myth: Wukong (2024)，官方宣传装甲造型",
+    "source_page": "https://www.playstation.com/en-us/games/black-myth-wukong/",
+    "provider_type": "官方",
+    "visible_design_details": "雪地中全身持长棍站姿，身体侧后，长棍斜向伸展，衣摆可见。",
+    "reference_use": "长棍和身体比例、站姿、全身轮廓",
+    "limitations": "人物处于环境中，细节较小。"
+  },
+  {
+    "character": "天命人 / Destined One",
+    "version": "Black Myth: Wukong (2024)，官方宣传装甲造型",
+    "source_page": "https://store.steampowered.com/app/2358720/Black_Myth_Wukong/",
+    "provider_type": "官方",
+    "visible_design_details": "侧后全身，手举红色葫芦饮用；长棍向后斜拖；分层肩甲与腰裙轮廓。",
+    "reference_use": "恢复动作关键姿态、葫芦、棍与全身比例",
+    "limitations": "动作/装备参考；不应据此推断未见正面细节。"
+  },
+  {
+    "character": "天命人 / Destined One",
+    "version": "Black Myth: Wukong (2024)，官方宣传装甲造型",
+    "source_page": "https://store.steampowered.com/app/2358720/Black_Myth_Wukong/",
+    "provider_type": "官方",
+    "visible_design_details": "低位转身舞棍，双手持长棍，棍沿斜弧划过。",
+    "reference_use": "棍术动作发力与轨迹",
+    "limitations": "有强光特效。"
+  },
+  {
+    "character": "天命人 / Destined One",
+    "version": "Black Myth: Wukong (2024)，官方宣传装甲造型",
+    "source_page": "https://store.steampowered.com/app/2358720/Black_Myth_Wukong/",
+    "provider_type": "官方",
+    "visible_design_details": "战斗中横向伸棍/击打，脚步与躯干展开。",
+    "reference_use": "棍击动作参考",
+    "limitations": "画面中还有敌方；主体较小。"
+  },
+  {
+    "character": "Nathan Drake",
+    "version": "Uncharted 4: A Thief’s End (2016)，户外探险装",
+    "source_page": "https://www.playstation.com/en-us/games/uncharted-4-a-thiefs-end/",
+    "provider_type": "官方",
+    "visible_design_details": "蓝灰卷袖亨利衫、肩带枪套、灰棕裤、棕色腰带；湿发与成年面部。",
+    "reference_use": "服装、比例、基础站姿",
+    "limitations": "画面暗且下腿未完整。"
+  },
+  {
+    "character": "Nathan Drake",
+    "version": "Uncharted 4: A Thief’s End (2016)，户外探险装",
+    "source_page": "https://www.playstation.com/en-us/games/uncharted-4-a-thiefs-end/",
+    "provider_type": "官方",
+    "visible_design_details": "蓝色卷袖上衣、棕裤、肩带、腰挂绳；双手抓绳，双腿向侧伸展。",
+    "reference_use": "摆荡/空中全身姿态、衣物拉伸",
+    "limitations": "没有完整鞋底细节。"
+  },
+  {
+    "character": "Nathan Drake",
+    "version": "Uncharted 4: A Thief’s End (2016)，户外探险装",
+    "source_page": "https://www.playstation.com/en-us/games/uncharted-4-a-thiefs-end/",
+    "provider_type": "官方",
+    "visible_design_details": "短棕发、淡胡渣、成年面部、皮革肩带与蓝灰衣领。",
+    "reference_use": "面部与材质",
+    "limitations": "头像，不是全身。"
+  },
+  {
+    "character": "Iron Man",
+    "version": "Marvel’s Avengers (2020)，A-Day / Iconic 红金装甲",
+    "source_page": "https://www.pcgamer.com/marvel-avengers-game-characters-skills-abilities/",
+    "provider_type": "可靠游戏媒体 PC Gamer；文中图片署名 Square Enix",
+    "visible_design_details": "红金分片机械甲；金色面罩；细长蓝白眼；圆形蓝白胸灯；张掌推进/掌炮姿态；上臂金片及红色前臂。",
+    "reference_use": "装甲材质分区、头胸手掌设计、飞行攻击姿态",
+    "limitations": "只见上半身和部分大腿；不能据此确认脚甲背部。"
+  },
+  {
+    "character": "Iron Man",
+    "version": "Marvel’s Avengers (2020)，A-Day / Iconic 红金装甲",
+    "source_page": "https://d23.com/which-marvels-avengers-video-game-character-are-you/",
+    "provider_type": "Disney D23 官方",
+    "visible_design_details": "官方群像中 Iron Man 在右上方悬浮，红金甲与双掌发光。",
+    "reference_use": "官方版本核对、飞行动势",
+    "limitations": "群像，Iron Man 较小且下半身被挡。"
+  },
+  {
+    "character": "Luke Skywalker",
+    "version": "Star Wars: Return of the Jedi (1983)，黑衣绿光剑",
+    "source_page": "https://www.starwars.com/databank/luke-skywalker",
+    "provider_type": "官方",
+    "visible_design_details": "年轻 Luke 棕发、黑衣外层马甲/长上衣、绿色光剑，在沙舟上半蹲警戒。",
+    "reference_use": "面部、黑衣材质、绿色剑光与握剑姿态",
+    "limitations": "官方明确为 Jabba 沙舟场景；未含全身靴部。"
+  },
+  {
+    "character": "Luke Skywalker",
+    "version": "Star Wars: Return of the Jedi (1983)，黑衣绿光剑",
+    "source_page": "https://www.starwars.com/news/the-starwars-com-10-best-fights",
+    "provider_type": "官方",
+    "visible_design_details": "Luke 面对 Vader，双手举绿光剑格挡；黑衣裤轮廓。",
+    "reference_use": "高位双手格挡动作",
+    "limitations": "400×225 且光线暗，仅动作参考。"
+  }
+]

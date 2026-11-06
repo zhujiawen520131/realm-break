@@ -1,0 +1,1606 @@
+{
+  "schemaVersion": 1,
+  "title": "裂界 · 角色美术审阅",
+  "status": "draft",
+  "timingUnit": "milliseconds",
+  "artDirection": "高精度 2D 手绘格斗",
+  "canvas": {
+    "width": 896,
+    "height": 640,
+    "anchor": [
+      384,
+      600
+    ]
+  },
+  "notes": [
+    "本目录为审核草图，不替换正式游戏。",
+    "原作图片只列来源链接；不会把官方原图包含在公开审阅资源中。",
+    "视频参考未能观看，动作建议未标为视频逐帧还原。"
+  ],
+  "characters": [
+    {
+      "id": "cloud",
+      "name": "克劳德",
+      "version": "Final Fantasy VII Remake (2020)",
+      "status": "draft",
+      "sourceLinks": [
+        "https://www.jp.square-enix.com/ffvii_remake/character/index.html",
+        "https://blog.playstation.com/2019/11/25/new-final-fantasy-vii-remake-screens-feature-cloud-combat-and-more/"
+      ],
+      "design": [
+        {
+          "id": "front",
+          "label": "正面",
+          "image": "design/cloud-front.png",
+          "width": 656,
+          "height": 1199
+        },
+        {
+          "id": "side",
+          "label": "朝右侧面",
+          "image": "design/cloud-side.png",
+          "width": 656,
+          "height": 1199
+        }
+      ],
+      "clips": [
+        {
+          "id": "idle",
+          "label": "待机",
+          "frameCount": 4,
+          "status": "draft",
+          "frames": [
+            {
+              "image": "frames/cloud/idle/01.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 160,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-locomotion.png",
+                "row": 0,
+                "column": 0,
+                "bounds": [
+                  22,
+                  26,
+                  432,
+                  440
+                ]
+              },
+              "sha256": "b9a1aa63d261b6ff1a47535727d649f019446cdafcd52d8088217d9c3e6c610f"
+            },
+            {
+              "image": "frames/cloud/idle/02.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 160,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-locomotion.png",
+                "row": 0,
+                "column": 1,
+                "bounds": [
+                  467,
+                  13,
+                  876,
+                  439
+                ]
+              },
+              "sha256": "841e7ba6a4283f8aa70249812fe3e9a0006bccd5dc657f660681e17a1591ff40"
+            },
+            {
+              "image": "frames/cloud/idle/03.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 160,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-locomotion.png",
+                "row": 0,
+                "column": 2,
+                "bounds": [
+                  910,
+                  29,
+                  1321,
+                  440
+                ]
+              },
+              "sha256": "4eeda9c64990741b80f6ab7d4963323bb2bcfd41e2fbbcdf6bc21eb5e98fbf92"
+            },
+            {
+              "image": "frames/cloud/idle/04.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 160,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-locomotion.png",
+                "row": 0,
+                "column": 3,
+                "bounds": [
+                  1355,
+                  27,
+                  1762,
+                  440
+                ]
+              },
+              "sha256": "c8badb6a47d5be0fdad6b831120042ed2f558a3700efc8bd2112f82d70d8056c"
+            }
+          ]
+        },
+        {
+          "id": "run",
+          "label": "跑动",
+          "frameCount": 4,
+          "status": "draft",
+          "frames": [
+            {
+              "image": "frames/cloud/run/01.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 100,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-locomotion.png",
+                "row": 1,
+                "column": 0,
+                "bounds": [
+                  12,
+                  489,
+                  451,
+                  861
+                ]
+              },
+              "sha256": "89fb7f8ae34523461b3b4f62367a129288a5a52bca4a51b948deaf99422e9e93"
+            },
+            {
+              "image": "frames/cloud/run/02.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 100,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-locomotion.png",
+                "row": 1,
+                "column": 1,
+                "bounds": [
+                  468,
+                  469,
+                  875,
+                  858
+                ]
+              },
+              "sha256": "1ee3c40958718fd0575cfcb0ddf72c3e2dc6983bddb3eb22570f553087eddcc8"
+            },
+            {
+              "image": "frames/cloud/run/03.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 100,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-locomotion.png",
+                "row": 1,
+                "column": 2,
+                "bounds": [
+                  911,
+                  494,
+                  1321,
+                  863
+                ]
+              },
+              "sha256": "369d418b6140191b11e600178177012f4ea871fd3443fc7eef8fe745d00af62b"
+            },
+            {
+              "image": "frames/cloud/run/04.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 100,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-locomotion.png",
+                "row": 1,
+                "column": 3,
+                "bounds": [
+                  1383,
+                  476,
+                  1762,
+                  864
+                ]
+              },
+              "sha256": "e1f03130444e65f9519d1e6fabf5e236679d0008bffed8c21aa62a7b7a052c80"
+            }
+          ]
+        },
+        {
+          "id": "jump",
+          "label": "跳跃",
+          "frameCount": 4,
+          "status": "draft",
+          "frames": [
+            {
+              "image": "frames/cloud/jump/01.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 80,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-jump-dash.png",
+                "row": 0,
+                "column": 0,
+                "bounds": [
+                  20,
+                  148,
+                  392,
+                  431
+                ]
+              },
+              "sha256": "4e8ca74eadd59807c24237f8ea340e98f76ea9508eccafe9bd676c0d012940d5"
+            },
+            {
+              "image": "frames/cloud/jump/02.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 100,
+              "previewOffsetY": -70,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-jump-dash.png",
+                "row": 0,
+                "column": 1,
+                "bounds": [
+                  457,
+                  48,
+                  811,
+                  400
+                ]
+              },
+              "sha256": "097dead64cc2ab14d9cb7d8cd0bd9e3afa47a12ef61ff8d9b6548621462ec000"
+            },
+            {
+              "image": "frames/cloud/jump/03.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 100,
+              "previewOffsetY": -50,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-jump-dash.png",
+                "row": 0,
+                "column": 2,
+                "bounds": [
+                  907,
+                  38,
+                  1257,
+                  393
+                ]
+              },
+              "sha256": "13055293486e90e03a9f6f8e718668ba95d4396d931113e87a7997a8afc7f61c"
+            },
+            {
+              "image": "frames/cloud/jump/04.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 100,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-jump-dash.png",
+                "row": 0,
+                "column": 3,
+                "bounds": [
+                  1347,
+                  132,
+                  1717,
+                  431
+                ]
+              },
+              "sha256": "f652c2525044385e9ab072adc915380cbadcff23630a80738df3417932fb54ca"
+            }
+          ]
+        },
+        {
+          "id": "attack1",
+          "label": "普攻一段",
+          "frameCount": 4,
+          "status": "draft",
+          "frames": [
+            {
+              "image": "frames/cloud/attack1/01.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 33,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [
+                "源图内容贴近或碰到画布边缘，需目视确认是否裁切。"
+              ],
+              "source": {
+                "atlas": "atlases/cloud-combo.png",
+                "row": 0,
+                "column": 0,
+                "bounds": [
+                  4,
+                  46,
+                  320,
+                  344
+                ]
+              },
+              "sha256": "bed0a1c5ca2f6e48bb150850bb9788238c131472d9b15035ba6a928457740fb1"
+            },
+            {
+              "image": "frames/cloud/attack1/02.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 34,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-combo.png",
+                "row": 0,
+                "column": 1,
+                "bounds": [
+                  377,
+                  41,
+                  708,
+                  344
+                ]
+              },
+              "sha256": "87eda4ea6feb3538e3ad03af208b7552b8430752610d0ab9585c1226b4b4f7d6"
+            },
+            {
+              "image": "frames/cloud/attack1/03.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 83,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-combo.png",
+                "row": 0,
+                "column": 2,
+                "bounds": [
+                  717,
+                  58,
+                  1165,
+                  342
+                ]
+              },
+              "sha256": "55880778c52b02dbaaf178ffce1b72f55724031e0462cebac2b8725b0dcf46a2"
+            },
+            {
+              "image": "frames/cloud/attack1/04.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 217,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-combo.png",
+                "row": 0,
+                "column": 3,
+                "bounds": [
+                  1120,
+                  31,
+                  1442,
+                  343
+                ]
+              },
+              "sha256": "fbc43f6b43665695ad6c03e06b2a5e2706f651effc15942abab87b20d8e80f82"
+            }
+          ]
+        },
+        {
+          "id": "attack2",
+          "label": "普攻二段",
+          "frameCount": 4,
+          "status": "draft",
+          "frames": [
+            {
+              "image": "frames/cloud/attack2/01.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 33,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-combo.png",
+                "row": 1,
+                "column": 0,
+                "bounds": [
+                  14,
+                  461,
+                  349,
+                  708
+                ]
+              },
+              "sha256": "fb8265eca78bf036abc3b4f98a3be2d37d0625c7ba1f94f806422ad510cbc67e"
+            },
+            {
+              "image": "frames/cloud/attack2/02.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 17,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-combo.png",
+                "row": 1,
+                "column": 1,
+                "bounds": [
+                  377,
+                  432,
+                  721,
+                  706
+                ]
+              },
+              "sha256": "2a3b5fd523b405d629ebf91855f3a80396ce41f5f6fa364af0075ee2e0cbf6f9"
+            },
+            {
+              "image": "frames/cloud/attack2/03.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 100,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-combo.png",
+                "row": 1,
+                "column": 2,
+                "bounds": [
+                  742,
+                  365,
+                  1044,
+                  706
+                ]
+              },
+              "sha256": "f61f3823ef99ce8b7a4517b05fe4c1837f2a9ae04bd78897ffcfd0c0b93893eb"
+            },
+            {
+              "image": "frames/cloud/attack2/04.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 233,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-combo.png",
+                "row": 1,
+                "column": 3,
+                "bounds": [
+                  1119,
+                  416,
+                  1434,
+                  706
+                ]
+              },
+              "sha256": "9b9e0ec37ce5002a623ae6df38def1771f2d672fc8b079708a4bc27b7d97c731"
+            }
+          ]
+        },
+        {
+          "id": "attack3",
+          "label": "普攻三段",
+          "frameCount": 4,
+          "status": "draft",
+          "frames": [
+            {
+              "image": "frames/cloud/attack3/01.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 50,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-combo.png",
+                "row": 2,
+                "column": 0,
+                "bounds": [
+                  10,
+                  734,
+                  343,
+                  1068
+                ]
+              },
+              "sha256": "fe6f451c8d79e476ae91c4a0e1b7941af3be843c3672ad776262debd0c38ad5c"
+            },
+            {
+              "image": "frames/cloud/attack3/02.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 50,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-combo.png",
+                "row": 2,
+                "column": 1,
+                "bounds": [
+                  374,
+                  782,
+                  705,
+                  1068
+                ]
+              },
+              "sha256": "514404fed2a8d5df46c36baae509db6f345b8cd9feaed576432ac582cd7bbb01"
+            },
+            {
+              "image": "frames/cloud/attack3/03.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 100,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-combo.png",
+                "row": 2,
+                "column": 2,
+                "bounds": [
+                  726,
+                  816,
+                  1077,
+                  1068
+                ]
+              },
+              "sha256": "fc798dc4724052db75dcf64b82b4610a9e817ae7034961b09f465d1af02f5ab0"
+            },
+            {
+              "image": "frames/cloud/attack3/04.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 317,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-combo.png",
+                "row": 2,
+                "column": 3,
+                "bounds": [
+                  1099,
+                  783,
+                  1442,
+                  1070
+                ]
+              },
+              "sha256": "41cf8200297cb2710f58cbdd1211d5aed2c6ac59b0a008e815ded166af6c0bb8"
+            }
+          ]
+        },
+        {
+          "id": "launcher",
+          "label": "挑空",
+          "frameCount": 4,
+          "status": "draft",
+          "frames": [
+            {
+              "image": "frames/cloud/launcher/01.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 67,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-air.png",
+                "row": 0,
+                "column": 0,
+                "bounds": [
+                  24,
+                  222,
+                  351,
+                  447
+                ]
+              },
+              "sha256": "426cb53834cbcfdd712d3b69d72b135f0175de73f30376fc745ca4b11a8bd74c"
+            },
+            {
+              "image": "frames/cloud/launcher/02.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 33,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-air.png",
+                "row": 0,
+                "column": 1,
+                "bounds": [
+                  491,
+                  103,
+                  870,
+                  443
+                ]
+              },
+              "sha256": "c8a5ce53789134c74252306f0940f73aae847d5c99c6cba355f3b3c3ddf9281e"
+            },
+            {
+              "image": "frames/cloud/launcher/03.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 100,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-air.png",
+                "row": 0,
+                "column": 2,
+                "bounds": [
+                  946,
+                  45,
+                  1326,
+                  445
+                ]
+              },
+              "sha256": "54bf587edf82ae10cd314d7447d8b4debe2eeb7cb645800a41c4fab11ddc4d50"
+            },
+            {
+              "image": "frames/cloud/launcher/04.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 267,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-air.png",
+                "row": 0,
+                "column": 3,
+                "bounds": [
+                  1369,
+                  165,
+                  1756,
+                  443
+                ]
+              },
+              "sha256": "12cfa23e9fbfe1a3b60827fe23b6e17fd7390580a2e4f1dbec189b358da2f09b"
+            }
+          ]
+        },
+        {
+          "id": "air",
+          "label": "空中斩",
+          "frameCount": 4,
+          "status": "draft",
+          "frames": [
+            {
+              "image": "frames/cloud/air/01.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 33,
+              "previewOffsetY": -65,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-air.png",
+                "row": 1,
+                "column": 0,
+                "bounds": [
+                  20,
+                  467,
+                  350,
+                  841
+                ]
+              },
+              "sha256": "f47e1885be5982d99b3df9e8a6eeb0ad37e5932af27b91031a7425bbbe500851"
+            },
+            {
+              "image": "frames/cloud/air/02.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 17,
+              "previewOffsetY": -100,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-air.png",
+                "row": 1,
+                "column": 1,
+                "bounds": [
+                  456,
+                  487,
+                  840,
+                  834
+                ]
+              },
+              "sha256": "cc624974d590d4035fb4f97ae7b18c5b7cd107686ae5ed16e8786e1374f3c4df"
+            },
+            {
+              "image": "frames/cloud/air/03.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 117,
+              "previewOffsetY": -100,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-air.png",
+                "row": 1,
+                "column": 2,
+                "bounds": [
+                  816,
+                  536,
+                  1361,
+                  787
+                ]
+              },
+              "sha256": "26cdfbc7c5dc2afa21112a17681ce0e3d261de13d0fbe2f8c7e5e7105a2676f2"
+            },
+            {
+              "image": "frames/cloud/air/04.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 150,
+              "previewOffsetY": -60,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-air.png",
+                "row": 1,
+                "column": 3,
+                "bounds": [
+                  1388,
+                  533,
+                  1740,
+                  860
+                ]
+              },
+              "sha256": "43f7ac33ec20f55aef015c76d7689c01a5ff3ab06518b9e645df53512139cc15"
+            }
+          ]
+        },
+        {
+          "id": "hurt",
+          "label": "受击",
+          "frameCount": 4,
+          "status": "draft",
+          "frames": [
+            {
+              "image": "frames/cloud/hurt/01.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 50,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-reaction-guard.png",
+                "row": 0,
+                "column": 0,
+                "bounds": [
+                  14,
+                  37,
+                  439,
+                  428
+                ]
+              },
+              "sha256": "8a6c15f349a65e09e94adcbdc335da1e58a2f130dedc420a0ac7c14bd111ee6f"
+            },
+            {
+              "image": "frames/cloud/hurt/02.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 100,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-reaction-guard.png",
+                "row": 0,
+                "column": 1,
+                "bounds": [
+                  465,
+                  18,
+                  882,
+                  427
+                ]
+              },
+              "sha256": "0a03ddddb36c75a1fc6c1b7e7fd5c1d214e305cd4c4df870f493d4402035a3b2"
+            },
+            {
+              "image": "frames/cloud/hurt/03.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 100,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-reaction-guard.png",
+                "row": 0,
+                "column": 2,
+                "bounds": [
+                  895,
+                  96,
+                  1325,
+                  427
+                ]
+              },
+              "sha256": "c5443faf1808d9ff2e013f17da3bfcbd54c74fa5dc5ac930c521826c7b957247"
+            },
+            {
+              "image": "frames/cloud/hurt/04.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 150,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-reaction-guard.png",
+                "row": 0,
+                "column": 3,
+                "bounds": [
+                  1348,
+                  30,
+                  1760,
+                  428
+                ]
+              },
+              "sha256": "3d3a2a5a3cb65cd1d769b7c38a7ec1f2d8b60b193841e2a951091017e44b484b"
+            }
+          ]
+        },
+        {
+          "id": "guard",
+          "label": "防御",
+          "frameCount": 4,
+          "status": "draft",
+          "frames": [
+            {
+              "image": "frames/cloud/guard/01.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 67,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-reaction-guard.png",
+                "row": 1,
+                "column": 0,
+                "bounds": [
+                  16,
+                  446,
+                  387,
+                  874
+                ]
+              },
+              "sha256": "82901c602939b2bb3c4597b00b4dfeee8aa4229d5c0c09d4dac760c063fa626d"
+            },
+            {
+              "image": "frames/cloud/guard/02.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 100,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-reaction-guard.png",
+                "row": 1,
+                "column": 1,
+                "bounds": [
+                  465,
+                  442,
+                  790,
+                  874
+                ]
+              },
+              "sha256": "8471e51158d5d8c086e82bd2fe1d2aeed4f3d3ae4c994003d821a76ac665aaac"
+            },
+            {
+              "image": "frames/cloud/guard/03.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 100,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-reaction-guard.png",
+                "row": 1,
+                "column": 2,
+                "bounds": [
+                  904,
+                  463,
+                  1246,
+                  874
+                ]
+              },
+              "sha256": "9bc9cbb479b1fcbd8380bc2df470ca53072a694f119964cf8d2527033726ff2f"
+            },
+            {
+              "image": "frames/cloud/guard/04.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 100,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-reaction-guard.png",
+                "row": 1,
+                "column": 3,
+                "bounds": [
+                  1346,
+                  460,
+                  1744,
+                  874
+                ]
+              },
+              "sha256": "07a48c1887c23ee881e064480908db0bb467c42e5658ead2ea019b2831a44e90"
+            }
+          ]
+        },
+        {
+          "id": "dash",
+          "label": "冲刺",
+          "frameCount": 4,
+          "status": "draft",
+          "frames": [
+            {
+              "image": "frames/cloud/dash/01.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 50,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-jump-dash.png",
+                "row": 1,
+                "column": 0,
+                "bounds": [
+                  13,
+                  612,
+                  370,
+                  866
+                ]
+              },
+              "sha256": "493d475b6b6767c2f681001eab4d32e89caf2cb0de0fb39e876fba3a655fd5d9"
+            },
+            {
+              "image": "frames/cloud/dash/02.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 50,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-jump-dash.png",
+                "row": 1,
+                "column": 1,
+                "bounds": [
+                  452,
+                  518,
+                  812,
+                  865
+                ]
+              },
+              "sha256": "33d25710573b45df5228f490b5792be6ba61d758402e8ef315b66ed0a3c29d7b"
+            },
+            {
+              "image": "frames/cloud/dash/03.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 67,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-jump-dash.png",
+                "row": 1,
+                "column": 2,
+                "bounds": [
+                  896,
+                  480,
+                  1327,
+                  824
+                ]
+              },
+              "sha256": "5a15c23f2f5b538a823051acab90b521d95049c0cff9f9287f63c881d0b4486b"
+            },
+            {
+              "image": "frames/cloud/dash/04.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 100,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-jump-dash.png",
+                "row": 1,
+                "column": 3,
+                "bounds": [
+                  1341,
+                  586,
+                  1761,
+                  863
+                ]
+              },
+              "sha256": "c3a4a47af697770037860cb0bb0bbf479978642ffe765f5a7d885f1954a87645"
+            }
+          ]
+        },
+        {
+          "id": "skill",
+          "label": "技能",
+          "frameCount": 4,
+          "status": "draft",
+          "frames": [
+            {
+              "image": "frames/cloud/skill/01.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 100,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-special.png",
+                "row": 0,
+                "column": 0,
+                "bounds": [
+                  7,
+                  162,
+                  377,
+                  428
+                ]
+              },
+              "sha256": "eeec01a4ef6b84d2f740ff9eab4e4025f77e39509f30f0314f01d1057a6cae34"
+            },
+            {
+              "image": "frames/cloud/skill/02.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 83,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-special.png",
+                "row": 0,
+                "column": 1,
+                "bounds": [
+                  462,
+                  16,
+                  806,
+                  426
+                ]
+              },
+              "sha256": "905df0795cd30809d965c00d63712d49270af081429f9bc7a1267ba9bd34de6b"
+            },
+            {
+              "image": "frames/cloud/skill/03.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 17,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-special.png",
+                "row": 0,
+                "column": 2,
+                "bounds": [
+                  909,
+                  118,
+                  1306,
+                  427
+                ]
+              },
+              "sha256": "f781f728f5451f17335761a60d1af0c5fdfba2b15216f9cf2b6a25c1fff33153"
+            },
+            {
+              "image": "frames/cloud/skill/04.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 317,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-special.png",
+                "row": 0,
+                "column": 3,
+                "bounds": [
+                  1346,
+                  188,
+                  1749,
+                  430
+                ]
+              },
+              "sha256": "4a062f3cc466518fcf262e59bdd4593b2d374297cf2e016eb83da1025ec7a794"
+            }
+          ]
+        },
+        {
+          "id": "ultimate",
+          "label": "必杀",
+          "frameCount": 4,
+          "status": "draft",
+          "frames": [
+            {
+              "image": "frames/cloud/ultimate/01.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 167,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-special.png",
+                "row": 1,
+                "column": 0,
+                "bounds": [
+                  23,
+                  470,
+                  387,
+                  867
+                ]
+              },
+              "sha256": "bb95d9b32ef80054d7d9cad62f2acb780dacbee2a5dbac820797b91f29cacb8c"
+            },
+            {
+              "image": "frames/cloud/ultimate/02.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 183,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-special.png",
+                "row": 1,
+                "column": 1,
+                "bounds": [
+                  465,
+                  454,
+                  778,
+                  797
+                ]
+              },
+              "sha256": "ae92b3ae5c9d00401d92bdf447b04ee2ad73ec3566e002529b8bbee25c4ef6c3"
+            },
+            {
+              "image": "frames/cloud/ultimate/03.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 17,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [],
+              "source": {
+                "atlas": "atlases/cloud-special.png",
+                "row": 1,
+                "column": 2,
+                "bounds": [
+                  865,
+                  628,
+                  1332,
+                  860
+                ]
+              },
+              "sha256": "9f096b6e411d090272a280b40c49fa763ad2f9869582a9582e753e72837408b0"
+            },
+            {
+              "image": "frames/cloud/ultimate/04.webp",
+              "width": 896,
+              "height": 640,
+              "anchor": [
+                384,
+                600
+              ],
+              "durationMs": 583,
+              "previewOffsetY": 0,
+              "status": "draft",
+              "notes": [
+                "源图内容贴近或碰到画布边缘，需目视确认是否裁切。"
+              ],
+              "source": {
+                "atlas": "atlases/cloud-special.png",
+                "row": 1,
+                "column": 3,
+                "bounds": [
+                  1373,
+                  591,
+                  1770,
+                  869
+                ]
+              },
+              "sha256": "4f597b5a58c2e62bbbf676c7f9cc557b2dd92902a50e9c8fc685d55e857822b3"
+            }
+          ]
+        }
+      ],
+      "atlases": [
+        {
+          "label": "待机与跑动",
+          "image": "atlases/cloud-locomotion.png",
+          "columns": 4,
+          "rows": 2
+        },
+        {
+          "label": "跳跃与冲刺",
+          "image": "atlases/cloud-jump-dash.png",
+          "columns": 4,
+          "rows": 2
+        },
+        {
+          "label": "三段普攻",
+          "image": "atlases/cloud-combo.png",
+          "columns": 4,
+          "rows": 3
+        },
+        {
+          "label": "受击与防御",
+          "image": "atlases/cloud-reaction-guard.png",
+          "columns": 4,
+          "rows": 2
+        },
+        {
+          "label": "技能与必杀",
+          "image": "atlases/cloud-special.png",
+          "columns": 4,
+          "rows": 2
+        },
+        {
+          "label": "挑空与空中斩",
+          "image": "atlases/cloud-air.png",
+          "columns": 4,
+          "rows": 2
+        }
+      ],
+      "notes": [
+        "13 个状态各有 4 张独立生成的关键姿态，共 52 张；尚未补中间帧或完成动画精修。",
+        "帧以共同地面锚点摆放；跳跃/空中斩带预览垂直偏移，接游戏物理时须去除预览偏移，避免重复位移。",
+        "动画细节、连贯度、武器尺度和两处源图边界仍需人工确认，所有内容均为待审核稿。",
+        "特效可能经隔离被删减，应作为独立特效层制作。"
+      ]
+    },
+    {
+      "id": "lara",
+      "name": "劳拉",
+      "version": "Tomb Raider I–III Remastered (2024)，经典服装",
+      "status": "design-only",
+      "sourceLinks": [
+        "https://blog.playstation.com/2024/01/16/tomb-raider-i-iii-remastered-ps4-ps5-features-detailed-new-key-art-revealed/"
+      ],
+      "design": [
+        {
+          "id": "front",
+          "label": "正面",
+          "image": "design/lara-front.png",
+          "width": 768,
+          "height": 1024
+        },
+        {
+          "id": "side",
+          "label": "朝右侧面",
+          "image": "design/lara-side.png",
+          "width": 768,
+          "height": 1024
+        }
+      ],
+      "clips": [],
+      "notes": [
+        "已提供正侧面设定；动作序列尚未制作。"
+      ]
+    },
+    {
+      "id": "wukong",
+      "name": "天命人",
+      "version": "Black Myth: Wukong (2024)，官方宣传装甲造型",
+      "status": "design-only",
+      "sourceLinks": [
+        "https://www.playstation.com/en-us/games/black-myth-wukong/",
+        "https://store.steampowered.com/app/2358720/Black_Myth_Wukong/"
+      ],
+      "design": [
+        {
+          "id": "front",
+          "label": "正面",
+          "image": "design/wukong-front.png",
+          "width": 656,
+          "height": 1199
+        },
+        {
+          "id": "side",
+          "label": "朝右侧面",
+          "image": "design/wukong-side.png",
+          "width": 656,
+          "height": 1199
+        }
+      ],
+      "clips": [],
+      "notes": [
+        "已提供正侧面设定；动作序列尚未制作。"
+      ]
+    },
+    {
+      "id": "drake",
+      "name": "内森·德雷克",
+      "version": "Uncharted 4: A Thief’s End (2016)",
+      "status": "reference-only",
+      "sourceLinks": [
+        "https://www.playstation.com/en-us/games/uncharted-4-a-thiefs-end/"
+      ],
+      "design": [],
+      "clips": [],
+      "notes": [
+        "已收集官方参考，本轮尚无可审核的生成设定或动作图；此前组合角色图生成遭安全系统拦截。"
+      ]
+    },
+    {
+      "id": "ironman",
+      "name": "钢铁侠",
+      "version": "Marvel’s Avengers (2020)，A-Day / Iconic 装甲",
+      "status": "reference-only",
+      "sourceLinks": [
+        "https://www.pcgamer.com/marvel-avengers-game-characters-skills-abilities/",
+        "https://d23.com/which-marvels-avengers-video-game-character-are-you/"
+      ],
+      "design": [],
+      "clips": [],
+      "notes": [
+        "已收集可靠媒体与官方参考，本轮尚无可审核的生成设定或动作图；此前组合角色图生成遭安全系统拦截。"
+      ]
+    },
+    {
+      "id": "luke",
+      "name": "卢克",
+      "version": "Star Wars: Return of the Jedi (1983)，沙舟黑衣造型",
+      "status": "reference-only",
+      "sourceLinks": [
+        "https://www.starwars.com/databank/luke-skywalker",
+        "https://www.starwars.com/news/the-starwars-com-10-best-fights"
+      ],
+      "design": [],
+      "clips": [],
+      "notes": [
+        "已收集官方参考，本轮尚无可审核的生成设定或动作图；此前组合角色图生成遭安全系统拦截。"
+      ]
+    }
+  ],
+  "reviewId": "cloud-style-20261107-r1"
+}

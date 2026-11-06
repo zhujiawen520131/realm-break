@@ -1,0 +1,27 @@
+{
+  "checkedOn": "2026-11-07",
+  "source": "https://www.bilibili.com/video/BV1Ei98BUEvK/",
+  "requests": [
+    {
+      "method": "web reader open",
+      "status": 412
+    },
+    {
+      "method": "public HTTPS without cookies",
+      "url": "https://www.bilibili.com/video/BV1Ei98BUEvK/",
+      "status": 412,
+      "bytes": 3400
+    },
+    {
+      "method": "public HTTPS without cookies",
+      "url": "https://api.bilibili.com/x/web-interface/view?bvid=BV1Ei98BUEvK",
+      "status": 412,
+      "bytes": 3400
+    }
+  ],
+  "videoFramesObserved": 0,
+  "transcriptObserved": false,
+  "metadataObserved": false,
+  "videoTimestampEvidence": [],
+  "timezone": "Asia/Shanghai"
+}

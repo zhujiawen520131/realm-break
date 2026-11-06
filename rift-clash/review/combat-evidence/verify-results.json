@@ -1,0 +1,430 @@
+{
+  "checkedAt": "2026-11-06T17:49:53.304Z",
+  "engineSha256": "1eb05052f20839013e602c393d45689032ca1755b849cb4dbf078004340be2b6",
+  "results": [
+    {
+      "id": "continuous_guard_volley",
+      "status": "PASS",
+      "hp": 94,
+      "events": [
+        {
+          "frame": 26,
+          "type": "block",
+          "damage": 1
+        },
+        {
+          "frame": 33,
+          "type": "block",
+          "damage": 1
+        },
+        {
+          "frame": 40,
+          "type": "block",
+          "damage": 1
+        },
+        {
+          "frame": 47,
+          "type": "block",
+          "damage": 1
+        },
+        {
+          "frame": 53,
+          "type": "block",
+          "damage": 1
+        },
+        {
+          "frame": 60,
+          "type": "block",
+          "damage": 1
+        }
+      ]
+    },
+    {
+      "id": "guard_release_and_action_lock",
+      "status": "PASS",
+      "hp": 90
+    },
+    {
+      "id": "symmetric_same_frame_trades",
+      "status": "PASS",
+      "out": [
+        {
+          "mirror": false,
+          "p1hp": 93,
+          "p2hp": 93
+        },
+        {
+          "mirror": true,
+          "p1hp": 93,
+          "p2hp": 93
+        }
+      ]
+    },
+    {
+      "id": "projectile_heading_after_owner_sub",
+      "status": "PASS",
+      "ownerDir": -1,
+      "hitDir": 1,
+      "targetVx": 7
+    },
+    {
+      "id": "projectile_cancels_match_direct_skills",
+      "status": "PASS",
+      "heroes": [
+        "cloud",
+        "lara",
+        "wukong",
+        "luke",
+        "ironman"
+      ]
+    },
+    {
+      "id": "old_projectile_does_not_confirm_new_cast",
+      "status": "PASS",
+      "oldSerial": 1,
+      "currentSerial": 2
+    },
+    {
+      "id": "ultimate_cannot_cancel",
+      "status": "PASS"
+    },
+    {
+      "id": "corner_mash_j",
+      "status": "PASS",
+      "hits": 60,
+      "maxCombo": 3,
+      "resets": 20,
+      "firstHits": [
+        {
+          "frame": 5,
+          "combo": 1,
+          "damage": 7
+        },
+        {
+          "frame": 11,
+          "combo": 2,
+          "damage": 8
+        },
+        {
+          "frame": 21,
+          "combo": 3,
+          "damage": 12
+        },
+        {
+          "frame": 51,
+          "combo": 1,
+          "damage": 7
+        },
+        {
+          "frame": 57,
+          "combo": 2,
+          "damage": 8
+        },
+        {
+          "frame": 66,
+          "combo": 3,
+          "damage": 12
+        },
+        {
+          "frame": 96,
+          "combo": 1,
+          "damage": 7
+        },
+        {
+          "frame": 102,
+          "combo": 2,
+          "damage": 8
+        },
+        {
+          "frame": 112,
+          "combo": 3,
+          "damage": 12
+        },
+        {
+          "frame": 142,
+          "combo": 1,
+          "damage": 7
+        },
+        {
+          "frame": 148,
+          "combo": 2,
+          "damage": 8
+        },
+        {
+          "frame": 157,
+          "combo": 3,
+          "damage": 12
+        }
+      ]
+    },
+    {
+      "id": "corner_dash_after_third",
+      "status": "PASS",
+      "hits": 78,
+      "maxCombo": 9,
+      "resets": 9,
+      "firstHits": [
+        {
+          "frame": 5,
+          "combo": 1,
+          "damage": 7
+        },
+        {
+          "frame": 11,
+          "combo": 2,
+          "damage": 8
+        },
+        {
+          "frame": 20,
+          "combo": 3,
+          "damage": 12
+        },
+        {
+          "frame": 40,
+          "combo": 4,
+          "damage": 6
+        },
+        {
+          "frame": 46,
+          "combo": 5,
+          "damage": 7
+        },
+        {
+          "frame": 55,
+          "combo": 6,
+          "damage": 10
+        },
+        {
+          "frame": 75,
+          "combo": 7,
+          "damage": 4
+        },
+        {
+          "frame": 81,
+          "combo": 8,
+          "damage": 5
+        },
+        {
+          "frame": 90,
+          "combo": 9,
+          "damage": 7
+        },
+        {
+          "frame": 110,
+          "combo": 1,
+          "damage": 7
+        },
+        {
+          "frame": 116,
+          "combo": 2,
+          "damage": 8
+        },
+        {
+          "frame": 125,
+          "combo": 3,
+          "damage": 12
+        }
+      ]
+    },
+    {
+      "id": "corner_dash_after_first",
+      "status": "PASS",
+      "hits": 45,
+      "maxCombo": 7,
+      "resets": 7,
+      "firstHits": [
+        {
+          "frame": 5,
+          "combo": 1,
+          "damage": 7
+        },
+        {
+          "frame": 25,
+          "combo": 2,
+          "damage": 7
+        },
+        {
+          "frame": 45,
+          "combo": 3,
+          "damage": 6
+        },
+        {
+          "frame": 65,
+          "combo": 4,
+          "damage": 6
+        },
+        {
+          "frame": 85,
+          "combo": 5,
+          "damage": 5
+        },
+        {
+          "frame": 105,
+          "combo": 6,
+          "damage": 5
+        },
+        {
+          "frame": 125,
+          "combo": 7,
+          "damage": 4
+        },
+        {
+          "frame": 145,
+          "combo": 1,
+          "damage": 7
+        },
+        {
+          "frame": 165,
+          "combo": 2,
+          "damage": 7
+        },
+        {
+          "frame": 185,
+          "combo": 3,
+          "damage": 6
+        },
+        {
+          "frame": 205,
+          "combo": 4,
+          "damage": 6
+        },
+        {
+          "frame": 225,
+          "combo": 5,
+          "damage": 5
+        }
+      ]
+    },
+    {
+      "id": "corner_repeated_launcher",
+      "status": "PASS",
+      "hits": 21,
+      "maxCombo": 2,
+      "resets": 11,
+      "firstHits": [
+        {
+          "frame": 7,
+          "combo": 1,
+          "damage": 10
+        },
+        {
+          "frame": 36,
+          "combo": 2,
+          "damage": 9
+        },
+        {
+          "frame": 94,
+          "combo": 1,
+          "damage": 10
+        },
+        {
+          "frame": 123,
+          "combo": 2,
+          "damage": 9
+        },
+        {
+          "frame": 181,
+          "combo": 1,
+          "damage": 10
+        },
+        {
+          "frame": 210,
+          "combo": 2,
+          "damage": 9
+        },
+        {
+          "frame": 268,
+          "combo": 1,
+          "damage": 10
+        },
+        {
+          "frame": 297,
+          "combo": 2,
+          "damage": 9
+        },
+        {
+          "frame": 355,
+          "combo": 1,
+          "damage": 10
+        },
+        {
+          "frame": 384,
+          "combo": 2,
+          "damage": 9
+        },
+        {
+          "frame": 442,
+          "combo": 1,
+          "damage": 10
+        },
+        {
+          "frame": 471,
+          "combo": 2,
+          "damage": 9
+        }
+      ]
+    },
+    {
+      "id": "launcher_jump_air_chain",
+      "status": "PASS",
+      "combo": 4
+    },
+    {
+      "id": "buffer_preserved_in_hitstop",
+      "status": "PASS",
+      "combo": 2
+    },
+    {
+      "id": "substitution_freeze_invariant",
+      "status": "PASS",
+      "executedOnce": true,
+      "energy": 60.19
+    },
+    {
+      "id": "ground_guard_blocks_air_and_copy_is_accurate",
+      "status": "PASS",
+      "feedback": "防御 / 绕到背后寻找机会"
+    },
+    {
+      "id": "guard_animation_matches_guard_stun",
+      "status": "PASS",
+      "animation": {
+        "state": "guard",
+        "index": 1,
+        "cell": 4
+      }
+    },
+    {
+      "id": "grenade_explosion_pushes_outward",
+      "status": "PASS",
+      "out": [
+        {
+          "explosionSide": -1,
+          "victimVx": 10
+        },
+        {
+          "explosionSide": 1,
+          "victimVx": -10
+        }
+      ]
+    },
+    {
+      "id": "saber_return_uses_flight_direction",
+      "status": "PASS",
+      "victimVx": -2
+    },
+    {
+      "id": "beam_source_and_direction_stay_fixed_after_sub",
+      "status": "PASS",
+      "before": {
+        "x": 800,
+        "y": 420
+      },
+      "after": {
+        "x": 800,
+        "y": 420
+      },
+      "ownerDir": 1
+    }
+  ]
+}

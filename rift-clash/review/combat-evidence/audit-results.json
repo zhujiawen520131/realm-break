@@ -1,0 +1,288 @@
+{
+  "checkedAt": "2026-11-06T17:44:03.136Z",
+  "engineSha256": "14d5971eae6807ea7aa0a0288c7e731aa82c6f2deca7910af65ff6c4c5e30c76",
+  "execution": "Node deterministic state-machine simulation; no browser playback",
+  "results": [
+    {
+      "id": "guard_multihit",
+      "hp": 60,
+      "events": [
+        {
+          "frame": 26,
+          "type": "block",
+          "damage": 1
+        },
+        {
+          "frame": 33,
+          "type": "hit",
+          "damage": 9,
+          "combo": 1
+        },
+        {
+          "frame": 40,
+          "type": "hit",
+          "damage": 8,
+          "combo": 2
+        },
+        {
+          "frame": 46,
+          "type": "hit",
+          "damage": 8,
+          "combo": 3
+        },
+        {
+          "frame": 52,
+          "type": "hit",
+          "damage": 7,
+          "combo": 4
+        },
+        {
+          "frame": 59,
+          "type": "hit",
+          "damage": 7,
+          "combo": 5
+        }
+      ]
+    },
+    {
+      "id": "same_frame_attack_priority",
+      "variants": [
+        {
+          "mirrored": false,
+          "p1hp": 100,
+          "p2hp": 93,
+          "hits": [
+            {
+              "type": "hit",
+              "frame": 5,
+              "x": 525.89584921875,
+              "y": 422,
+              "dir": 1,
+              "color": "#9fe9df",
+              "hero": "cloud",
+              "weapon": "buster",
+              "damage": 7,
+              "heavy": false,
+              "counter": false,
+              "combo": 1
+            }
+          ]
+        },
+        {
+          "mirrored": true,
+          "p1hp": 100,
+          "p2hp": 93,
+          "hits": [
+            {
+              "type": "hit",
+              "frame": 5,
+              "x": 454.10415078125,
+              "y": 422,
+              "dir": -1,
+              "color": "#9fe9df",
+              "hero": "cloud",
+              "weapon": "buster",
+              "damage": 7,
+              "heavy": false,
+              "counter": false,
+              "combo": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "projectile_cancel",
+      "out": [
+        {
+          "hero": "cloud",
+          "hp": 85,
+          "attackHit": false,
+          "jumped": false,
+          "attack": "skill"
+        },
+        {
+          "hero": "lara",
+          "hp": 82,
+          "attackHit": false,
+          "jumped": false,
+          "attack": "skill"
+        },
+        {
+          "hero": "wukong",
+          "hp": 95,
+          "attackHit": true,
+          "jumped": true
+        },
+        {
+          "hero": "luke",
+          "hp": 88,
+          "attackHit": true,
+          "jumped": true
+        },
+        {
+          "hero": "ironman",
+          "hp": 85,
+          "attackHit": false,
+          "jumped": false,
+          "attack": "skill"
+        }
+      ]
+    },
+    {
+      "id": "sub_during_hitstop",
+      "before": {
+        "frame": 5,
+        "freeze": 6,
+        "x": 530,
+        "stun": 24
+      },
+      "after": {
+        "frame": 5,
+        "freeze": 6,
+        "x": 359.10415078125,
+        "stun": 0
+      }
+    },
+    {
+      "id": "air_hit_ground_guard",
+      "p1hp": 99,
+      "events": [
+        {
+          "type": "block",
+          "frame": 4,
+          "x": 450,
+          "y": 422,
+          "dir": -1,
+          "color": "#9fe9df",
+          "hero": "cloud",
+          "weapon": "buster",
+          "damage": 1
+        }
+      ]
+    },
+    {
+      "id": "corner_repeat",
+      "count": 81,
+      "maxCombo": 81,
+      "firstHits": [
+        {
+          "frame": 5,
+          "combo": 1,
+          "damage": 7
+        },
+        {
+          "frame": 11,
+          "combo": 2,
+          "damage": 8
+        },
+        {
+          "frame": 21,
+          "combo": 3,
+          "damage": 12
+        },
+        {
+          "frame": 28,
+          "combo": 4,
+          "damage": 6
+        },
+        {
+          "frame": 34,
+          "combo": 5,
+          "damage": 7
+        },
+        {
+          "frame": 43,
+          "combo": 6,
+          "damage": 10
+        },
+        {
+          "frame": 50,
+          "combo": 7,
+          "damage": 4
+        },
+        {
+          "frame": 56,
+          "combo": 8,
+          "damage": 5
+        },
+        {
+          "frame": 65,
+          "combo": 9,
+          "damage": 7
+        },
+        {
+          "frame": 72,
+          "combo": 10,
+          "damage": 4
+        },
+        {
+          "frame": 78,
+          "combo": 11,
+          "damage": 5
+        },
+        {
+          "frame": 87,
+          "combo": 12,
+          "damage": 7
+        },
+        {
+          "frame": 94,
+          "combo": 13,
+          "damage": 4
+        },
+        {
+          "frame": 100,
+          "combo": 14,
+          "damage": 5
+        },
+        {
+          "frame": 109,
+          "combo": 15,
+          "damage": 7
+        }
+      ],
+      "lastHits": [
+        {
+          "frame": 582,
+          "combo": 79,
+          "damage": 4
+        },
+        {
+          "frame": 588,
+          "combo": 80,
+          "damage": 5
+        },
+        {
+          "frame": 597,
+          "combo": 81,
+          "damage": 7
+        }
+      ],
+      "hp": 9550
+    },
+    {
+      "id": "buffer_hitstop",
+      "ttlDuringStop": 12,
+      "nextAttack": "slash2",
+      "combo": 2
+    },
+    {
+      "id": "single_buffer_overwrite",
+      "buffer": {
+        "key": "skill",
+        "ttl": 12
+      },
+      "note": "last command replaces previous pending command"
+    },
+    {
+      "id": "projectile_direction_after_sub",
+      "projectileDirection": 1,
+      "ownerDirection": -1,
+      "victimVx": -7,
+      "hitDirection": -1,
+      "ownerX": 765,
+      "targetX": 670
+    }
+  ]
+}
