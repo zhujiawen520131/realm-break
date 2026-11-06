@@ -24,7 +24,7 @@ const BREATH_MOVES={
  tanjiro:{skill:{startup:10,active:10,end:34,reach:172,height:138,damage:18,stun:31,push:6,lift:-4,stop:8,travel:7,interval:10,style:'waterWheel'},ultimate:{startup:18,active:28,end:62,reach:180,height:140,damage:10,stun:29,push:3,lift:-2,stop:5,travel:8,interval:7,style:'waterDragon'}},
  zenitsu:{skill:{startup:14,active:8,end:38,reach:108,height:105,damage:20,stun:29,push:9,lift:-3,stop:9,travel:30,interval:8,style:'thunderDash'},ultimate:{startup:20,active:30,end:68,reach:120,height:115,damage:7,stun:24,push:2,lift:0,stop:3,travel:16,interval:5,style:'thunderSix'}}
 };
-class Fighter{constructor(x,dir,hero){this.hero=HEROES[hero]?hero:'cloud';this.info=HEROES[this.hero];const color=this.info.color;Object.assign(this,{x,y:FLOOR,vx:0,vy:0,dir,color,hp:100,energy:100,queuedSub:false,state:'idle',animState:'idle',animTime:0,hurtTime:0,landTime:0,attackSerial:0,attack:null,stun:0,guardStun:0,inv:0,dash:0,jumps:0,combo:0,comboDamage:0,comboTimer:0,flash:0,lastHit:0,subCD:0,airCount:0,block:false,buffer:null,trail:[]});}}
+class Fighter{constructor(x,dir,hero){this.hero=HEROES[hero]?hero:'cloud';this.info=HEROES[this.hero];const color=this.info.color;Object.assign(this,{x,y:FLOOR,vx:0,vy:0,dir,color,hp:100,energy:100,queuedSub:false,state:'idle',animState:'idle',animTime:0,hurtTime:0,landTime:0,attackSerial:0,attack:null,stun:0,guardStun:0,guardReleaseTime:0,inv:0,dash:0,jumps:0,combo:0,comboDamage:0,comboTimer:0,flash:0,lastHit:0,subCD:0,airCount:0,block:false,buffer:null,trail:[]});}}
 class World{
  constructor(){this.settings={hitstop:true,shake:true,debug:false};this.reset('training');}
  reset(mode=this.mode,hero=this.p1?.hero||'cloud',opponent=this.p2?.hero||'wukong'){this.mode=mode;this.p1=new Fighter(360,1,hero);this.p2=new Fighter(840,-1,opponent);this.frame=0;this.freeze=0;this.shake=0;this.particles=[];this.projectiles=[];this.events=[];this.time=99;this.result=null;this.aiClock=0;this.banner=0;this.bannerText='';this.effects=[];this.scheduled=[];this.hitQueue=null;this.lastFeedback='靠近对手，连续按 J 打出三段连击';}
@@ -86,11 +86,12 @@ class World{
  }
  finish(){this.result=this.p1.hp===this.p2.hp?'平局':this.p1.hp>this.p2.hp?'你赢了。':'再来一局。';this.event('end');}
  updateFighter(f,o,k){
- const previousY=f.y,previousVy=f.vy;
- for(const prop of ['stun','guardStun','inv','flash','subCD','comboTimer','hurtTime','landTime'])if(f[prop]>0)f[prop]--;
+ const previousY=f.y,previousVy=f.vy,wasBlocking=f.block;
+ for(const prop of ['stun','guardStun','guardReleaseTime','inv','flash','subCD','comboTimer','hurtTime','landTime'])if(f[prop]>0)f[prop]--;
  if(!f.comboTimer){f.combo=0;f.comboDamage=0;}f.energy=Math.min(100,f.energy+(this.mode==='training'?.19:.045));
  if(!f.stun&&!f.attack&&!f.dash)f.dir=f.x<o.x?1:-1;
  f.block=!!k.down&&f.y>=FLOOR&&(!f.stun||f.guardStun>0)&&!f.attack&&!f.dash;
+ if(wasBlocking&&!f.block&&!f.stun&&!f.attack&&!f.dash)f.guardReleaseTime=6;
  this.execute(f,k);if(f.buffer&&--f.buffer.ttl<=0)f.buffer=null;
  if(f.dash){f.dash--;f.vx=f.dir*17;if(f.y<FLOOR)f.vy*=.4;if(this.frame%2===0)f.trail.push({x:f.x,y:f.y,dir:f.dir,life:12,animTime:f.animTime,animState:'dash',dash:f.dash,attack:null});}
  else if(f.stun)f.vx*=.94;

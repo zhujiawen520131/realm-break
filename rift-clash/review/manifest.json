@@ -48,7 +48,7 @@
           "id": "idle",
           "label": "待机",
           "frameCount": 4,
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/cloud/idle/01.webp",
@@ -60,7 +60,7 @@
               ],
               "durationMs": 160,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-locomotion.png",
@@ -85,7 +85,7 @@
               ],
               "durationMs": 160,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-locomotion.png",
@@ -110,7 +110,7 @@
               ],
               "durationMs": 160,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-locomotion.png",
@@ -135,7 +135,7 @@
               ],
               "durationMs": 160,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-locomotion.png",
@@ -150,13 +150,24 @@
               },
               "sha256": "1b8e65a2fa17dfd0305729143087e807b783d66a4529dbd8670584df0105ebc0"
             }
-          ]
+          ],
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "frameHashes": {
+              "frames/cloud/idle/01.webp": "37234195250d7097a7c38b6a66b00ac92d32e3a79a49bd272d0557d46863c9f1",
+              "frames/cloud/idle/02.webp": "8b35823e07b99d8492909708472d61e4c43a7864c498ed5581ee994985b1cd77",
+              "frames/cloud/idle/03.webp": "1c489197850dbd791b73818b86ffe2bba821e3c766e1921383257c25a79c0078",
+              "frames/cloud/idle/04.webp": "1b8e65a2fa17dfd0305729143087e807b783d66a4529dbd8670584df0105ebc0"
+            }
+          }
         },
         {
           "id": "run",
           "label": "跑动",
           "frameCount": 4,
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/cloud/run/01.webp",
@@ -168,7 +179,7 @@
               ],
               "durationMs": 100,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-locomotion.png",
@@ -193,7 +204,7 @@
               ],
               "durationMs": 100,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-locomotion.png",
@@ -218,7 +229,7 @@
               ],
               "durationMs": 100,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-locomotion.png",
@@ -243,7 +254,7 @@
               ],
               "durationMs": 100,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-locomotion.png",
@@ -258,13 +269,24 @@
               },
               "sha256": "7a3fb671815c10e73c3662cbe35e5fd071f1ff782a1c3fc4fdc9354e27a5c9c5"
             }
-          ]
+          ],
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "frameHashes": {
+              "frames/cloud/run/01.webp": "3b8c8dd0ef764cb13741f9f93822f97afaea42e200c3b37101a7bc2d8be0384f",
+              "frames/cloud/run/02.webp": "bad5e96c07fc4a36d1882fed0c8a64bfceb77c305b793099c763113d278d66a1",
+              "frames/cloud/run/03.webp": "b423103df247a5da51c338e9ed78ced991bd88d2d1651d481bd00dba6e5e8133",
+              "frames/cloud/run/04.webp": "7a3fb671815c10e73c3662cbe35e5fd071f1ff782a1c3fc4fdc9354e27a5c9c5"
+            }
+          }
         },
         {
           "id": "jump",
           "label": "跳跃",
           "frameCount": 4,
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/cloud/jump/01.webp",
@@ -276,7 +298,7 @@
               ],
               "durationMs": 80,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-jump-dash.png",
@@ -301,7 +323,7 @@
               ],
               "durationMs": 100,
               "previewOffsetY": -70,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-jump-dash.png",
@@ -326,7 +348,7 @@
               ],
               "durationMs": 100,
               "previewOffsetY": -50,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-jump-dash.png",
@@ -351,7 +373,7 @@
               ],
               "durationMs": 100,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-jump-dash.png",
@@ -366,13 +388,24 @@
               },
               "sha256": "3eddfd4e1a7b4806debeed1388cd9b56dd34fa166f2bf0536bca90f8d761d16f"
             }
-          ]
+          ],
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "frameHashes": {
+              "frames/cloud/jump/01.webp": "363c9b805dba5b534339b7789919735cc70597bbfa9286a2d186158eb19587eb",
+              "frames/cloud/jump/02.webp": "1508d8159d4f54da3a1cf9e4930b8a02b16a35a397245a79025f25e650dff493",
+              "frames/cloud/jump/03.webp": "c2b4edbf57e869993dd6029b70bed6e1198bac0b75c940ac4b1ea76460c54be9",
+              "frames/cloud/jump/04.webp": "3eddfd4e1a7b4806debeed1388cd9b56dd34fa166f2bf0536bca90f8d761d16f"
+            }
+          }
         },
         {
           "id": "attack1",
           "label": "普攻一段",
           "frameCount": 4,
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/cloud/attack1/01.webp",
@@ -384,7 +417,7 @@
               ],
               "durationMs": 33,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [
                 "源图内容贴近或碰到画布边缘，需目视确认是否裁切。"
               ],
@@ -411,7 +444,7 @@
               ],
               "durationMs": 34,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-combo.png",
@@ -436,7 +469,7 @@
               ],
               "durationMs": 83,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-combo.png",
@@ -461,7 +494,7 @@
               ],
               "durationMs": 217,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-combo.png",
@@ -476,13 +509,24 @@
               },
               "sha256": "d7db3db092dff82043792c192383a4ea8015d83b9cb274f57d7640f074d614db"
             }
-          ]
+          ],
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "frameHashes": {
+              "frames/cloud/attack1/01.webp": "122fc5ab679782439d72d4f56da508119f1dcb5ccd498bd38b101e2c1419c37b",
+              "frames/cloud/attack1/02.webp": "97f2b81b5996d25c4467ddd723270180b926ca5b11e1859a23751e2427db537e",
+              "frames/cloud/attack1/03.webp": "63285119b96a35756bd300b99638bb66bf40c30834980160add9448e8c9e781e",
+              "frames/cloud/attack1/04.webp": "d7db3db092dff82043792c192383a4ea8015d83b9cb274f57d7640f074d614db"
+            }
+          }
         },
         {
           "id": "attack2",
           "label": "普攻二段",
           "frameCount": 4,
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/cloud/attack2/01.webp",
@@ -494,7 +538,7 @@
               ],
               "durationMs": 33,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-combo.png",
@@ -519,7 +563,7 @@
               ],
               "durationMs": 17,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-combo.png",
@@ -544,7 +588,7 @@
               ],
               "durationMs": 100,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-combo.png",
@@ -569,7 +613,7 @@
               ],
               "durationMs": 233,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-combo.png",
@@ -584,13 +628,24 @@
               },
               "sha256": "83b057ae58187b2485e60e4d26304395e01393278c75c627883d8f7f16a021e0"
             }
-          ]
+          ],
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "frameHashes": {
+              "frames/cloud/attack2/01.webp": "700682579608665fd0c7b10ba7defb78077116931a40e9ac95d2e5a7a5c44f08",
+              "frames/cloud/attack2/02.webp": "1ddb6e4799d20e0808f2854df243408cd83a0d4a5816859dc49f27173631776f",
+              "frames/cloud/attack2/03.webp": "ced20f353f41752ac8b75094b8865df84c54ad34a5984e5513c9a273f0cd0337",
+              "frames/cloud/attack2/04.webp": "83b057ae58187b2485e60e4d26304395e01393278c75c627883d8f7f16a021e0"
+            }
+          }
         },
         {
           "id": "attack3",
           "label": "普攻三段",
           "frameCount": 4,
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/cloud/attack3/01.webp",
@@ -602,7 +657,7 @@
               ],
               "durationMs": 50,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-combo.png",
@@ -627,7 +682,7 @@
               ],
               "durationMs": 50,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-combo.png",
@@ -652,7 +707,7 @@
               ],
               "durationMs": 100,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-combo.png",
@@ -677,7 +732,7 @@
               ],
               "durationMs": 317,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-combo.png",
@@ -692,13 +747,24 @@
               },
               "sha256": "7e41c6a3fdb0e86e0ff6ad30630572fd429de7b3fa43edc8fe400e00ea5218a6"
             }
-          ]
+          ],
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "frameHashes": {
+              "frames/cloud/attack3/01.webp": "165284412729ce6a0cc9f72b27f24fc2372a01a65817711343cbbd3f4e9f10d6",
+              "frames/cloud/attack3/02.webp": "d54cda1db53ea9981bbed50debede62a739f0cff662d155e39e04b9e2b3c3eaa",
+              "frames/cloud/attack3/03.webp": "0a974bfbc9c8b4fb6d7e5bf30353fd24b672a4e81f9753cb51e09c95d85e8707",
+              "frames/cloud/attack3/04.webp": "7e41c6a3fdb0e86e0ff6ad30630572fd429de7b3fa43edc8fe400e00ea5218a6"
+            }
+          }
         },
         {
           "id": "launcher",
           "label": "挑空",
           "frameCount": 4,
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/cloud/launcher/01.webp",
@@ -710,7 +776,7 @@
               ],
               "durationMs": 67,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-air.png",
@@ -735,7 +801,7 @@
               ],
               "durationMs": 33,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-air.png",
@@ -760,7 +826,7 @@
               ],
               "durationMs": 100,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-air.png",
@@ -785,7 +851,7 @@
               ],
               "durationMs": 267,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-air.png",
@@ -800,13 +866,24 @@
               },
               "sha256": "49ff828723de9ea150f1ebe26d3d659f674bc296b39490f9c3c3106187d8b658"
             }
-          ]
+          ],
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "frameHashes": {
+              "frames/cloud/launcher/01.webp": "9857a53f3d934d7f94de159bfb17b641f8bc210f5d75ad40c129da6318f45621",
+              "frames/cloud/launcher/02.webp": "33d9c3c9011874983c21661f2e74af93952cc9db3f16213cbe8eeec999bc1cd1",
+              "frames/cloud/launcher/03.webp": "282e6033e1ed2e619b98ac8ed6bb3490c0a68be10f5b96125652d540d5729270",
+              "frames/cloud/launcher/04.webp": "49ff828723de9ea150f1ebe26d3d659f674bc296b39490f9c3c3106187d8b658"
+            }
+          }
         },
         {
           "id": "air",
           "label": "空中斩",
           "frameCount": 4,
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/cloud/air/01.webp",
@@ -818,7 +895,7 @@
               ],
               "durationMs": 33,
               "previewOffsetY": -65,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-air.png",
@@ -843,7 +920,7 @@
               ],
               "durationMs": 17,
               "previewOffsetY": -100,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-air.png",
@@ -868,7 +945,7 @@
               ],
               "durationMs": 117,
               "previewOffsetY": -100,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-air.png",
@@ -893,7 +970,7 @@
               ],
               "durationMs": 150,
               "previewOffsetY": -60,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-air.png",
@@ -908,13 +985,24 @@
               },
               "sha256": "5bf6cfd35b6db295d7e9f33b2145004a52398152accedbf7c6aabc4d4faae61e"
             }
-          ]
+          ],
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "frameHashes": {
+              "frames/cloud/air/01.webp": "8c73e335ca900a4ec956d6faf0f4ec6e991c5cd0c79b790220695b76c4c02057",
+              "frames/cloud/air/02.webp": "3f147dafa75945efda023d2a605c6f2d08493190b3fe63cbbedae5c7c45418aa",
+              "frames/cloud/air/03.webp": "06c8e0a8038a83fd9e1c162f6204f1eff51bbd9ba276efc3732d40f119c27b48",
+              "frames/cloud/air/04.webp": "5bf6cfd35b6db295d7e9f33b2145004a52398152accedbf7c6aabc4d4faae61e"
+            }
+          }
         },
         {
           "id": "hurt",
           "label": "受击",
           "frameCount": 4,
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/cloud/hurt/01.webp",
@@ -926,7 +1014,7 @@
               ],
               "durationMs": 50,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-reaction-guard.png",
@@ -951,7 +1039,7 @@
               ],
               "durationMs": 100,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-reaction-guard.png",
@@ -976,7 +1064,7 @@
               ],
               "durationMs": 100,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-reaction-guard.png",
@@ -1001,7 +1089,7 @@
               ],
               "durationMs": 150,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-reaction-guard.png",
@@ -1016,13 +1104,24 @@
               },
               "sha256": "96f15c306ac009afd14f9af1e03c489e334a11ba82e7849e5e01af58b2579174"
             }
-          ]
+          ],
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "frameHashes": {
+              "frames/cloud/hurt/01.webp": "6006bf0049a52e15538bc272417df17039230084aee48512031def540a5f4ec1",
+              "frames/cloud/hurt/02.webp": "abeb1e81cc9dc32751f2c7e64f40a518eca3ba56173f4b8f981cdd36a8e6d7dc",
+              "frames/cloud/hurt/03.webp": "8586f722b408141d956385e99e7444338d71b814d198d86f11284235db1afad1",
+              "frames/cloud/hurt/04.webp": "96f15c306ac009afd14f9af1e03c489e334a11ba82e7849e5e01af58b2579174"
+            }
+          }
         },
         {
           "id": "guard",
           "label": "防御",
           "frameCount": 4,
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/cloud/guard/01.webp",
@@ -1034,7 +1133,7 @@
               ],
               "durationMs": 67,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-reaction-guard.png",
@@ -1059,7 +1158,7 @@
               ],
               "durationMs": 100,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-reaction-guard.png",
@@ -1084,7 +1183,7 @@
               ],
               "durationMs": 100,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-reaction-guard.png",
@@ -1109,7 +1208,7 @@
               ],
               "durationMs": 100,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-reaction-guard.png",
@@ -1124,13 +1223,24 @@
               },
               "sha256": "8b06333e213737c1d23aa6d088e293a9299599ec9a90326881ead29d6264fb31"
             }
-          ]
+          ],
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "frameHashes": {
+              "frames/cloud/guard/01.webp": "adc8545c5dcd7af8d9ffdbd19b920f0ad54e034a62e69227e836a87e5e0392d6",
+              "frames/cloud/guard/02.webp": "464a516f8b0ae211e5774c063d7289d8182c4008e40cdb17f45a7ee72935bbe4",
+              "frames/cloud/guard/03.webp": "b5e444c9c9ac6861540452b1b40204f36e0fa6f56b3456df1ff2d1649bea88ef",
+              "frames/cloud/guard/04.webp": "8b06333e213737c1d23aa6d088e293a9299599ec9a90326881ead29d6264fb31"
+            }
+          }
         },
         {
           "id": "dash",
           "label": "冲刺",
           "frameCount": 4,
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/cloud/dash/01.webp",
@@ -1142,7 +1252,7 @@
               ],
               "durationMs": 50,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-jump-dash.png",
@@ -1167,7 +1277,7 @@
               ],
               "durationMs": 50,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-jump-dash.png",
@@ -1192,7 +1302,7 @@
               ],
               "durationMs": 67,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-jump-dash.png",
@@ -1217,7 +1327,7 @@
               ],
               "durationMs": 100,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-jump-dash.png",
@@ -1232,13 +1342,24 @@
               },
               "sha256": "d57a632d8ff2628006cb351abbf073a499d27de45cbbde44091d49d320710866"
             }
-          ]
+          ],
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "frameHashes": {
+              "frames/cloud/dash/01.webp": "a6018b40251bd789362438783115842e61b10ab60f05bb3a13fc48db5ea5902e",
+              "frames/cloud/dash/02.webp": "573f749e0bc4e4ac88cf5c433559bdc4105b19a990ac9c7734fee914b94610b4",
+              "frames/cloud/dash/03.webp": "a8c420d90fe6ce13550d520a8dce194234c56b70afe64be916cba1c5cce5db2d",
+              "frames/cloud/dash/04.webp": "d57a632d8ff2628006cb351abbf073a499d27de45cbbde44091d49d320710866"
+            }
+          }
         },
         {
           "id": "skill",
           "label": "技能",
           "frameCount": 4,
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/cloud/skill/01.webp",
@@ -1250,7 +1371,7 @@
               ],
               "durationMs": 100,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-special.png",
@@ -1275,7 +1396,7 @@
               ],
               "durationMs": 83,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-special.png",
@@ -1300,7 +1421,7 @@
               ],
               "durationMs": 17,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-special.png",
@@ -1325,7 +1446,7 @@
               ],
               "durationMs": 317,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-special.png",
@@ -1340,13 +1461,24 @@
               },
               "sha256": "e318f4ccb3d22ea147b567343276a695b410a6138b0194709ebd3a2786e9e9d6"
             }
-          ]
+          ],
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "frameHashes": {
+              "frames/cloud/skill/01.webp": "b428b08797b16eda8e3d1fdba3c3bcfd75422ab67f9c34d7c3f93d7a55089494",
+              "frames/cloud/skill/02.webp": "e493638f3f5db447a4eaf6e7da862af9a6b05608f1e7a1036ae79245c3851c23",
+              "frames/cloud/skill/03.webp": "3ad37507ef877aa94da84e3c9227ff510b959f0b3bc8ea7657af7999427da12b",
+              "frames/cloud/skill/04.webp": "e318f4ccb3d22ea147b567343276a695b410a6138b0194709ebd3a2786e9e9d6"
+            }
+          }
         },
         {
           "id": "ultimate",
           "label": "必杀",
           "frameCount": 4,
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/cloud/ultimate/01.webp",
@@ -1358,7 +1490,7 @@
               ],
               "durationMs": 167,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-special.png",
@@ -1383,7 +1515,7 @@
               ],
               "durationMs": 183,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-special.png",
@@ -1408,7 +1540,7 @@
               ],
               "durationMs": 17,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-special.png",
@@ -1433,7 +1565,7 @@
               ],
               "durationMs": 583,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [
                 "源图内容贴近或碰到画布边缘，需目视确认是否裁切。"
               ],
@@ -1450,7 +1582,18 @@
               },
               "sha256": "d231acb7784027df3c9a46e6a9d4e791d39f34f0a5639aa4274ea3a8a62cf611"
             }
-          ]
+          ],
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "frameHashes": {
+              "frames/cloud/ultimate/01.webp": "cf694325dba06d43828ac7588a442030c18e6365713dc6f49fb7a6d7d84675de",
+              "frames/cloud/ultimate/02.webp": "4e7f9edaffabbede92f83dc108d7195e2c247e79ca993b191145349e9d37baf5",
+              "frames/cloud/ultimate/03.webp": "77948f69d15b7ec69e55105b6bf6f752f8f305cf9613a86c6e92208f76b3f48c",
+              "frames/cloud/ultimate/04.webp": "d231acb7784027df3c9a46e6a9d4e791d39f34f0a5639aa4274ea3a8a62cf611"
+            }
+          }
         }
       ],
       "atlases": [
@@ -1492,10 +1635,9 @@
         }
       ],
       "notes": [
-        "13 个状态各有 4 张独立生成的关键姿态，共 52 张；尚未补中间帧或完成动画精修。",
-        "帧以共同地面锚点摆放；跳跃/空中斩带预览垂直偏移，接游戏物理时须去除预览偏移，避免重复位移。",
-        "动画细节、连贯度、武器尺度和两处源图边界仍需人工确认，所有内容均为待审核稿。",
-        "特效可能经隔离被删减，应作为独立特效层制作。"
+        "13组动作共52张关键姿态已通过审核；本轮接入这些原始帧，尚未增加中间帧。",
+        "预览垂直偏移在游戏中抵消，升空由战斗物理控制。",
+        "原稿已有的边界与细节限制保留，后续可继续精修。"
       ],
       "designApproval": {
         "status": "approved",

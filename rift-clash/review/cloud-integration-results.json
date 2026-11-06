@@ -1,0 +1,66 @@
+{
+  "checkedAt": "2026-11-06T19:15:06.777Z",
+  "checks": 15,
+  "results": [
+    {
+      "id": "all_52_embedded_bytes_match_reviewed_assets",
+      "status": "PASS"
+    },
+    {
+      "id": "seven_distinct_attack_clips_and_exact_active_phase",
+      "status": "PASS"
+    },
+    {
+      "id": "single_tick_skill_and_ultimate_do_not_extend_damage_phase",
+      "status": "PASS"
+    },
+    {
+      "id": "idle_and_run_cycle_all_four_reviewed_poses",
+      "status": "PASS"
+    },
+    {
+      "id": "jump_rise_fall_and_real_landing_are_not_a_loop",
+      "status": "PASS"
+    },
+    {
+      "id": "preview_offsets_are_removed_before_world_physics",
+      "status": "PASS"
+    },
+    {
+      "id": "guard_enter_hold_impact_release_and_priority",
+      "status": "PASS"
+    },
+    {
+      "id": "engine_guard_release_is_visual_only_and_expires",
+      "status": "PASS"
+    },
+    {
+      "id": "hurt_and_dash_progress_once_without_looping",
+      "status": "PASS"
+    },
+    {
+      "id": "hitstop_freezes_both_poses_even_when_render_clock_advances",
+      "status": "PASS"
+    },
+    {
+      "id": "draw_uses_exact_reviewed_image_and_shared_anchor_both_directions",
+      "status": "PASS"
+    },
+    {
+      "id": "dash_afterimage_uses_saved_pose_clock",
+      "status": "PASS"
+    },
+    {
+      "id": "one_failed_new_frame_falls_back_to_old_atlas",
+      "status": "PASS"
+    },
+    {
+      "id": "missing_pack_or_image_api_keeps_playable_fallback",
+      "status": "PASS"
+    },
+    {
+      "id": "other_painted_fighters_keep_their_atlas",
+      "status": "PASS"
+    }
+  ]
+}

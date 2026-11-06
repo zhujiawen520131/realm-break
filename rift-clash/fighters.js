@@ -89,7 +89,7 @@ const ANIMATIONS={
  land:{frames:[0,0],ticks:4}
 };
 let fighterImage=null,fighterLoaded=false;
-const ready=new Promise(resolve=>{
+const paintedReady=new Promise(resolve=>{
  if(typeof root.Image!=='function'){resolve(false);return;}
  const img=new root.Image();
  img.onload=()=>{fighterImage=img;fighterLoaded=true;resolve(true);};
@@ -111,7 +111,41 @@ function resolveAnimation(f,t=0,ghost=false){
  if(state==='jump'&&Number.isFinite(f.vy))index=f.vy<0?0:1;
  return {state,index,cell:clip.frames[index]};
 }
+const CLOUD_MOVE_CLIPS={slash1:'attack1',slash2:'attack2',slash3:'attack3',launcher:'launcher',air:'air',skill:'skill',ultimate:'ultimate'};
+const cloudPack=root.RiftCloudFrames,cloudImages={};let cloudLoaded=false;
+const cloudReady=(async()=>{
+ if(!cloudPack||typeof root.Image!=='function')return false;
+ const jobs=[];
+ for(const [id,clip] of Object.entries(cloudPack.clips)){cloudImages[id]=[];clip.frames.forEach((f,index)=>jobs.push(new Promise(resolve=>{const img=new root.Image();img.onload=()=>{cloudImages[id][index]=img;resolve(true);};img.onerror=()=>resolve(false);img.src=f.src;})));}
+ const results=await Promise.all(jobs);cloudLoaded=results.every(Boolean);return cloudLoaded;
+})();
+function resolveCloudAnimation(f,t=0,ghost=false){
+ if(!cloudPack)return null;
+ const standard=resolveAnimation(f,t,ghost),a=f.attack,tick=Math.max(0,Number.isFinite(f.animTime)?f.animTime:t);let clip=standard.state,index=0;
+ // Priority matches engine guard/hurt states; explicit attack names select distinct clips.
+ if(standard.state==='attack'||standard.state==='skill'){
+  clip=CLOUD_MOVE_CLIPS[a?.name]||'attack1';const startup=Math.max(1,a?.move?.startup||1),active=Math.max(1,a?.move?.active||1),at=Math.max(0,a?.t||0);
+  index=at<startup*.45?0:at<startup?1:at<startup+active?2:3;
+ }else if(standard.state==='jump'){index=f.vy<0?(tick<4?0:1):2;}
+ else if(standard.state==='land'){clip='jump';index=3;}
+ else if(standard.state==='guard'){index=f.guardStun>0?2:tick<4?0:1;}
+ else if(standard.state==='hurt'){index=Math.min(3,Math.floor(tick/5));}
+ else if(standard.state==='dash'){index=Math.min(3,Math.floor((13-Math.max(0,f.dash||0))/4));}
+ else if(f.guardReleaseTime>0&&standard.state==='idle'){clip='guard';index=3;}
+ else{const frames=cloudPack.clips[clip]?.frames||cloudPack.clips.idle.frames;let remaining=(tick*1000/60)%frames.reduce((sum,f)=>sum+f.durationMs,0);index=frames.length-1;for(let i=0;i<frames.length;i++){if(remaining<frames[i].durationMs){index=i;break;}remaining-=frames[i].durationMs;}}
+ const frame=cloudPack.clips[clip]?.frames[index];if(!frame)return null;
+ return{state:standard.state,clip,index,frame,scale:cloudPack.scale,x:-frame.anchor[0]*cloudPack.scale,y:-(frame.anchor[1]+(frame.previewOffsetY||0))*cloudPack.scale};
+}
+function drawCloud(context,f,t=0,ghost=false){
+ if(!cloudLoaded)return false;const pose=resolveCloudAnimation(f,t,ghost);if(!pose)return false;
+ const img=cloudImages[pose.clip][pose.index];context.save();context.translate(f.x||0,f.y||0);context.scale(f.dir||1,1);
+ if(f.flash>0&&!ghost&&'filter' in context)context.filter='brightness(1.8) saturate(.65)';
+ context.drawImage(img,pose.x,pose.y,pose.frame.width*pose.scale,pose.frame.height*pose.scale);context.restore();return true;
+}
+const ready=Promise.all([paintedReady,cloudReady]).then(results=>results.every(Boolean));
+
 function drawFighter(context,f,t=0,ghost=false){
+ if(f.hero==='cloud'&&drawCloud(context,f,t,ghost))return;
  const animation=resolveAnimation(f,t,ghost),row=PAINTED_ROWS[f.hero];
  if(!fighterLoaded||row===undefined){
   // Match the painted characters' height while preserving the foot anchor.
@@ -132,6 +166,6 @@ function drawFighter(context,f,t=0,ghost=false){
   x,y,CELL_W*PIXEL_SCALE,CELL_H*PIXEL_SCALE);
  context.restore();
 }
-root.RiftFighters={draw:drawFighter,ready,resolveAnimation,ANIMATIONS,PAINTED_ROWS};
+root.RiftFighters={draw:drawFighter,ready,cloudReady,resolveCloudAnimation,resolveAnimation,ANIMATIONS,PAINTED_ROWS};
 
 })(typeof window!=='undefined'?window:globalThis);
