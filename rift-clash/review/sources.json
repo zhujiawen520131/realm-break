@@ -135,39 +135,21 @@
     "limitations": "头像，不是全身。"
   },
   {
-    "character": "Iron Man",
-    "version": "Marvel’s Avengers (2020)，A-Day / Iconic 红金装甲",
-    "source_page": "https://www.pcgamer.com/marvel-avengers-game-characters-skills-abilities/",
-    "provider_type": "可靠游戏媒体 PC Gamer；文中图片署名 Square Enix",
-    "visible_design_details": "红金分片机械甲；金色面罩；细长蓝白眼；圆形蓝白胸灯；张掌推进/掌炮姿态；上臂金片及红色前臂。",
-    "reference_use": "装甲材质分区、头胸手掌设计、飞行攻击姿态",
-    "limitations": "只见上半身和部分大腿；不能据此确认脚甲背部。"
+    "character": "竈門炭治郎",
+    "version": "《鬼灭之刃 火之神血风谭》2021 标准战斗造型；不使用火之神神乐另版本",
+    "source_page": "https://asia.sega.com/kimetsu_hinokami/cht/character/",
+    "provider_type": "官方 SEGA 繁体中文游戏站",
+    "visible_design_details": "绿黑棋盘格羽织、深棕黑制服、暗红乱短发、左额疤、长方形花札耳饰、双手持黑色日轮刀；蓝白线描水流绕身。",
+    "reference_use": "服装、轮廓、配色、武器持法与呼吸效果视觉参考；只作私下参考，不公开转载原图。",
+    "limitations": "这是动态官方宣传图，有特效遮挡，没有完整正侧背三视图；侧面和隐藏结构需在设计稿中作为推断。"
   },
   {
-    "character": "Iron Man",
-    "version": "Marvel’s Avengers (2020)，A-Day / Iconic 红金装甲",
-    "source_page": "https://d23.com/which-marvels-avengers-video-game-character-are-you/",
-    "provider_type": "Disney D23 官方",
-    "visible_design_details": "官方群像中 Iron Man 在右上方悬浮，红金甲与双掌发光。",
-    "reference_use": "官方版本核对、飞行动势",
-    "limitations": "群像，Iron Man 较小且下半身被挡。"
-  },
-  {
-    "character": "Luke Skywalker",
-    "version": "Star Wars: Return of the Jedi (1983)，黑衣绿光剑",
-    "source_page": "https://www.starwars.com/databank/luke-skywalker",
-    "provider_type": "官方",
-    "visible_design_details": "年轻 Luke 棕发、黑衣外层马甲/长上衣、绿色光剑，在沙舟上半蹲警戒。",
-    "reference_use": "面部、黑衣材质、绿色剑光与握剑姿态",
-    "limitations": "官方明确为 Jabba 沙舟场景；未含全身靴部。"
-  },
-  {
-    "character": "Luke Skywalker",
-    "version": "Star Wars: Return of the Jedi (1983)，黑衣绿光剑",
-    "source_page": "https://www.starwars.com/news/the-starwars-com-10-best-fights",
-    "provider_type": "官方",
-    "visible_design_details": "Luke 面对 Vader，双手举绿光剑格挡；黑衣裤轮廓。",
-    "reference_use": "高位双手格挡动作",
-    "limitations": "400×225 且光线暗，仅动作参考。"
+    "character": "我妻善逸",
+    "version": "《鬼灭之刃 火之神血风谭》2021 标准战斗造型；不使用火之神神乐另版本",
+    "source_page": "https://asia.sega.com/kimetsu_hinokami/cht/character/",
+    "provider_type": "官方 SEGA 繁体中文游戏站",
+    "visible_design_details": "黄橙渐变羽织和白三角纹、黄顶橙梢分层齐短发、黑制服、白腰带、黄白腿绑、居合低姿态闭眼、浅色刀鞘；青白/电蓝描边雷弧。",
+    "reference_use": "服装、轮廓、配色、武器持法与呼吸效果视觉参考；只作私下参考，不公开转载原图。",
+    "limitations": "这是动态官方宣传图，有特效遮挡，没有完整正侧背三视图；侧面和隐藏结构需在设计稿中作为推断。"
   }
 ]

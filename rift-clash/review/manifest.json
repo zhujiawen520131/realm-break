@@ -1624,39 +1624,61 @@
       }
     },
     {
-      "id": "ironman",
-      "name": "钢铁侠",
-      "version": "Marvel’s Avengers (2020)，A-Day / Iconic 装甲",
-      "status": "reference-only",
-      "sourceLinks": [
-        "https://www.pcgamer.com/marvel-avengers-game-characters-skills-abilities/",
-        "https://d23.com/which-marvels-avengers-video-game-character-are-you/"
+      "id": "tanjiro",
+      "name": "灶门炭治郎",
+      "version": "《鬼灭之刃》标准战斗造型 · 火之神血风谭参考",
+      "status": "design-only",
+      "design": [
+        {
+          "id": "turnaround-detail",
+          "label": "正面 · 朝右侧面 · 日轮刀与服装细节（点击放大）",
+          "image": "design/tanjiro-design.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "28b894a0637515c858eb38b0f03c3754844797cda553f8bd01128f97f052519b"
+        }
       ],
-      "design": [],
       "clips": [],
+      "sourceLinks": [
+        "https://asia.sega.com/kimetsu_hinokami/cht/character/",
+        "https://kimetsu.com/anime/risshihen/character/?chara=tanjiro"
+      ],
       "notes": [
-        "本次单角色设计图生成被图像服务拦截，尚无可审核设计稿；动作也未提交。"
+        "新设定待审核，尚无独立手绘动作帧。试玩中使用程序绘制动作。"
       ],
       "designReviewNotes": [
-        "生成服务未给出可操作的具体原因。当前只有参考资料，没有新设计图。"
+        "官方游戏参考中的角色处于战斗姿态，身体和配饰有水流遮挡；侧面、腿绑、刀具局部和部分衣物结构是依据可见信息的设计推断，须人工审核。",
+        "刀镡、刀柄等小五金为画师式细化，并非已核定的官方精确设定。",
+        "设定板为不透明背景，尚未拆分透明人物素材；尚无动作帧。"
       ]
     },
     {
-      "id": "luke",
-      "name": "卢克",
-      "version": "Star Wars: Return of the Jedi (1983)，沙舟黑衣造型",
-      "status": "reference-only",
-      "sourceLinks": [
-        "https://www.starwars.com/databank/luke-skywalker",
-        "https://www.starwars.com/news/the-starwars-com-10-best-fights"
+      "id": "zenitsu",
+      "name": "我妻善逸",
+      "version": "《鬼灭之刃》标准战斗造型 · 火之神血风谭参考",
+      "status": "design-only",
+      "design": [
+        {
+          "id": "turnaround-detail",
+          "label": "正面 · 朝右侧面 · 日轮刀与服装细节（点击放大）",
+          "image": "design/zenitsu-design.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "336253ee3e88e6a3b38a515031ef92af4180101c18e6c5b97febd87a33d420df"
+        }
       ],
-      "design": [],
       "clips": [],
+      "sourceLinks": [
+        "https://asia.sega.com/kimetsu_hinokami/cht/character/",
+        "https://kimetsu.com/anime/risshihen/character/?chara=zennitsu"
+      ],
       "notes": [
-        "本次单角色设计图生成被图像服务拦截，尚无可审核设计稿；动作也未提交。"
+        "新设定待审核，尚无独立手绘动作帧。试玩中使用程序绘制动作。"
       ],
       "designReviewNotes": [
-        "生成服务未给出可操作的具体原因。当前只有参考资料，没有新设计图。"
+        "官方游戏参考中的角色处于蹲姿且受雷电遮挡；侧面、腿绑、刀身及刀镡小细节依据可见信息作了设计推断，须人工审核。",
+        "正面画为闭眼，侧面眼睛似乎微睁，与正面表情可能不一致；如需严格统一表情，后续须修订。",
+        "设定板为不透明背景，尚未拆分透明人物素材；尚无动作帧。"
       ]
     }
   ],

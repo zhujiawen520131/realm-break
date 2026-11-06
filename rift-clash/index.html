@@ -4,7 +4,7 @@
 @media(max-width:900px){.hero-card canvas{right:-38px}.hero-card strong{font-size:13px}.hero-card small{font-size:8px}.skill-strip>span{display:none}}
 @media(max-width:600px){.hero-grid{grid-template-columns:repeat(3,1fr);gap:7px}.hero-card{height:108px}.hero-card canvas{top:-7px;right:-29px;width:140px;height:105px}.hero-card strong{font-size:13px;bottom:22px}.hero-card small{bottom:8px}.hero-index{font-size:8px;top:8px}.scene-grid{grid-template-columns:repeat(3,1fr);gap:6px}.scene-card{height:62px}.scene-card span{font-size:10px;bottom:7px}.skill-strip{gap:10px;font-size:11px}.skill-strip small{font-size:9px;margin-left:0}.scene-label span{font-size:9px}.intro h1{font-size:26px}.selection{margin-bottom:14px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}.hero-card:hover,.scene-card:hover{transform:none}}
-</style></head><body><main><header><a class="brand" href="#"><span class="brandmark">裂</span><span>裂界 <small>RIFT / CLASH</small></span></a><a href="https://zhujiawen520131.github.io/realm-break/rift-clash/review/" style="margin-left:auto;font-size:12px;color:#c3f581;text-decoration:none">美术与动作审核 ↗</a><div class="status"><i></i>六界交锋 <span>v0.3.1</span></div><button id="sound" aria-pressed="false" class="quiet">声音：关</button></header><section class="intro"><div><div class="eyebrow">WORLDS COLLIDE / 03</div><h1>跨越世界，<em>正面交锋。</em></h1><p>六位英雄，六重世界。选择你的角色，打出自己的连段。</p></div><div class="tabs" aria-label="游戏模式"><button class="active" id="training" aria-pressed="true">自由训练</button><button id="duel" aria-pressed="false">AI 对战</button></div></section><section class="selection"><div class="section-label">01 / 选择角色 <label class="opponent-label">对手 <select id="opponent" aria-label="选择对手"><option value="cloud">克劳德</option><option value="lara">劳拉</option><option value="wukong">天命人</option><option value="drake">内森</option><option value="ironman">钢铁侠</option><option value="luke">卢克</option></select></label></div><div class="hero-grid"><button class="hero-card" data-hero="cloud" style="--hero:#9fe9df" aria-pressed="false"><canvas width="160" height="120" aria-hidden="true"></canvas><span class="hero-index">01</span><strong>克劳德</strong><small>最终幻想</small></button><button class="hero-card" data-hero="lara" style="--hero:#efc586" aria-pressed="false"><canvas width="160" height="120" aria-hidden="true"></canvas><span class="hero-index">02</span><strong>劳拉</strong><small>古墓丽影</small></button><button class="hero-card" data-hero="wukong" style="--hero:#e7bb61" aria-pressed="false"><canvas width="160" height="120" aria-hidden="true"></canvas><span class="hero-index">03</span><strong>天命人</strong><small>黑神话：悟空</small></button><button class="hero-card" data-hero="drake" style="--hero:#e4b395" aria-pressed="false"><canvas width="160" height="120" aria-hidden="true"></canvas><span class="hero-index">04</span><strong>内森</strong><small>神秘海域</small></button><button class="hero-card" data-hero="ironman" style="--hero:#88e4ff" aria-pressed="false"><canvas width="160" height="120" aria-hidden="true"></canvas><span class="hero-index">05</span><strong>钢铁侠</strong><small>复仇者联盟</small></button><button class="hero-card" data-hero="luke" style="--hero:#a6f59c" aria-pressed="false"><canvas width="160" height="120" aria-hidden="true"></canvas><span class="hero-index">06</span><strong>卢克</strong><small>星球大战</small></button></div><div class="skill-strip"><span id="heroDescription"></span><div><kbd>U</kbd> <b id="skillName"></b><small id="skillHint"></small></div><div><kbd>O</kbd> <b id="ultimateName"></b><small id="ultimateHint"></small></div></div><div class="section-label scene-label">02 / 选择战场 <span>角色切换重置本局 · 场景可随时切换</span></div><div class="scene-grid"><button class="scene-card" data-scene="tomb" aria-pressed="false"><canvas width="240" height="128" aria-hidden="true"></canvas><span>霜金秘陵</span></button><button class="scene-card" data-scene="crystal" aria-pressed="false"><canvas width="240" height="128" aria-hidden="true"></canvas><span>浮空魔晶城</span></button><button class="scene-card" data-scene="temple" aria-pressed="false"><canvas width="240" height="128" aria-hidden="true"></canvas><span>云海古刹</span></button><button class="scene-card" data-scene="jungle" aria-pressed="false"><canvas width="240" height="128" aria-hidden="true"></canvas><span>雨林瀑城</span></button><button class="scene-card" data-scene="city" aria-pressed="false"><canvas width="240" height="128" aria-hidden="true"></canvas><span>霓虹防卫线</span></button><button class="scene-card" data-scene="space" aria-pressed="false"><canvas width="240" height="128" aria-hidden="true"></canvas><span>双日星港</span></button></div><p id="sceneDescription" class="scene-description"></p><p id="artStatus" class="scene-description" role="status">角色与场景图集载入中…</p></section><section class="arena" aria-label="格斗游戏"><div class="arena-top"><span><b class="dot"></b><span id="sceneName">云海古刹</span></span><span id="modeLabel">TRAINING / 无限时间</span><button id="pause">暂停 <kbd>Esc</kbd></button></div><div class="viewport"><canvas id="game" width="1200" height="640" tabindex="0" aria-label="横版格斗场，支持六名角色和六个主题场景。A D 移动，K 跳跃，J 普攻，S J 挑空，U 技能，L 冲刺，I 替身，O 必杀，S 防御。"></canvas><div class="overlay" id="overlay"><div class="overlay-inner"><div class="eyebrow">READY WHEN YOU ARE</div><h2 id="overlayTitle">距离，是第一招。</h2><p id="overlayText">接近对手，连续按 J 打出三段连击。<br>试试 S + J 挑空，再跳起追击。</p><button id="start" class="primary">进入训练场 <span>↗</span></button><small>点击开始即可使用键盘 · 也支持触屏按钮</small></div></div><div class="touch-controls"><div><button data-key="KeyA" aria-label="向左">◀</button><button data-key="KeyD" aria-label="向右">▶</button><button data-key="KeyS">防</button></div><div><button data-key="KeyK">跳</button><button data-key="KeyL">冲</button><button data-key="KeyJ" class="attack">斩</button><button data-key="KeyU">技</button><button data-key="KeyI">替</button><button data-key="KeyO">奥</button></div></div></div><div class="arena-bottom"><span><i></i><span id="feedback">准备就绪 / 点击进入训练场</span></span><button id="reset">↻ 重置 <kbd>R</kbd></button></div></section><section class="lower"><div class="controls"><div class="section-label">03 / 操作指南 <span>键盘输入 · 即时响应</span></div><div class="keygrid"><div><kbd>A</kbd><kbd>D</kbd><span>移动</span></div><div><kbd>K</kbd><span>二段跳</span></div><div><kbd>J</kbd><span>三段连击</span></div><div><kbd>S</kbd><kbd>J</kbd><span>挑空</span></div><div><kbd>L</kbd><span>冲刺</span></div><div><kbd>U</kbd><span>角色技 · 25 气</span></div><div><kbd>I</kbd><span>替身 · 40 气</span></div><div><kbd>O</kbd><span>奥义 · 100 气</span></div><div><kbd>S</kbd><span>地面防御</span></div></div><p class="tip"><span>试试这套连招</span> J → J → S + J → K → J → U</p></div><aside><div class="section-label">04 / 手感调校 <span>实时生效</span></div><label>命中停顿 <input type="checkbox" id="hitstop" checked><span class="switch"></span></label><label>镜头震动 <input type="checkbox" id="shake" checked><span class="switch"></span></label><label>重击闪光 <input type="checkbox" id="impactFlash" checked><span class="switch"></span></label><label>环境动态 <input type="checkbox" id="environmentMotion" checked><span class="switch"></span></label><label>显示判定框 <input type="checkbox" id="debug"><span class="switch"></span></label><p>训练中气力快速回复；停止攻击后，对手恢复生命。</p></aside></section><footer><span>RIFT / CLASH</span><span>同人风格化原型 · 六角色 / 六场景 · 离线单人试玩</span><span>还差一击。</span></footer></main><script>(function(root){
+</style></head><body><main><header><a class="brand" href="#"><span class="brandmark">裂</span><span>裂界 <small>RIFT / CLASH</small></span></a><a href="https://zhujiawen520131.github.io/realm-break/rift-clash/review/" style="margin-left:auto;font-size:12px;color:#c3f581;text-decoration:none">美术与动作审核 ↗</a><div class="status"><i></i>六界交锋 <span>v0.4.0</span></div><button id="sound" aria-pressed="false" class="quiet">声音：关</button></header><section class="intro"><div><div class="eyebrow">WATER / THUNDER / 04</div><h1>跨越世界，<em>正面交锋。</em></h1><p>水之呼吸与雷之呼吸参战。选择你的角色，打出自己的连段。</p></div><div class="tabs" aria-label="游戏模式"><button class="active" id="training" aria-pressed="true">自由训练</button><button id="duel" aria-pressed="false">AI 对战</button></div></section><section class="selection"><div class="section-label">01 / 选择角色 <label class="opponent-label">对手 <select id="opponent" aria-label="选择对手"><option value="cloud">克劳德</option><option value="lara">劳拉</option><option value="wukong">天命人</option><option value="drake">内森</option><option value="tanjiro">灶门炭治郎</option><option value="zenitsu">我妻善逸</option></select></label></div><div class="hero-grid"><button class="hero-card" data-hero="cloud" style="--hero:#9fe9df" aria-pressed="false"><canvas width="160" height="120" aria-hidden="true"></canvas><span class="hero-index">01</span><strong>克劳德</strong><small>最终幻想</small></button><button class="hero-card" data-hero="lara" style="--hero:#efc586" aria-pressed="false"><canvas width="160" height="120" aria-hidden="true"></canvas><span class="hero-index">02</span><strong>劳拉</strong><small>古墓丽影</small></button><button class="hero-card" data-hero="wukong" style="--hero:#e7bb61" aria-pressed="false"><canvas width="160" height="120" aria-hidden="true"></canvas><span class="hero-index">03</span><strong>天命人</strong><small>黑神话：悟空</small></button><button class="hero-card" data-hero="drake" style="--hero:#e4b395" aria-pressed="false"><canvas width="160" height="120" aria-hidden="true"></canvas><span class="hero-index">04</span><strong>内森</strong><small>神秘海域</small></button><button class="hero-card" data-hero="tanjiro" style="--hero:#74dafa" aria-pressed="false"><canvas width="160" height="120" aria-hidden="true"></canvas><span class="hero-index">05</span><strong>灶门炭治郎</strong><small>鬼灭之刃 · 水之呼吸</small></button><button class="hero-card" data-hero="zenitsu" style="--hero:#ffe28c" aria-pressed="false"><canvas width="160" height="120" aria-hidden="true"></canvas><span class="hero-index">06</span><strong>我妻善逸</strong><small>鬼灭之刃 · 雷之呼吸</small></button></div><div class="skill-strip"><span id="heroDescription"></span><div><kbd>U</kbd> <b id="skillName"></b><small id="skillHint"></small></div><div><kbd>O</kbd> <b id="ultimateName"></b><small id="ultimateHint"></small></div></div><div class="section-label scene-label">02 / 选择战场 <span>角色切换重置本局 · 场景可随时切换</span></div><div class="scene-grid"><button class="scene-card" data-scene="tomb" aria-pressed="false"><canvas width="240" height="128" aria-hidden="true"></canvas><span>霜金秘陵</span></button><button class="scene-card" data-scene="crystal" aria-pressed="false"><canvas width="240" height="128" aria-hidden="true"></canvas><span>浮空魔晶城</span></button><button class="scene-card" data-scene="temple" aria-pressed="false"><canvas width="240" height="128" aria-hidden="true"></canvas><span>云海古刹</span></button><button class="scene-card" data-scene="jungle" aria-pressed="false"><canvas width="240" height="128" aria-hidden="true"></canvas><span>雨林瀑城</span></button><button class="scene-card" data-scene="city" aria-pressed="false"><canvas width="240" height="128" aria-hidden="true"></canvas><span>霓虹防卫线</span></button><button class="scene-card" data-scene="space" aria-pressed="false"><canvas width="240" height="128" aria-hidden="true"></canvas><span>双日星港</span></button></div><p id="sceneDescription" class="scene-description"></p><p id="artStatus" class="scene-description" role="status">角色与场景图集载入中…</p></section><section class="arena" aria-label="格斗游戏"><div class="arena-top"><span><b class="dot"></b><span id="sceneName">云海古刹</span></span><span id="modeLabel">TRAINING / 无限时间</span><button id="pause">暂停 <kbd>Esc</kbd></button></div><div class="viewport"><canvas id="game" width="1200" height="640" tabindex="0" aria-label="横版格斗场，支持六名角色和六个主题场景。A D 移动，K 跳跃，J 普攻，S J 挑空，U 技能，L 冲刺，I 替身，O 必杀，S 防御。"></canvas><div class="overlay" id="overlay"><div class="overlay-inner"><div class="eyebrow">READY WHEN YOU ARE</div><h2 id="overlayTitle">距离，是第一招。</h2><p id="overlayText">接近对手，连续按 J 打出三段连击。<br>试试 S + J 挑空，再跳起追击。</p><button id="start" class="primary">进入训练场 <span>↗</span></button><small>点击开始即可使用键盘 · 也支持触屏按钮</small></div></div><div class="touch-controls"><div><button data-key="KeyA" aria-label="向左">◀</button><button data-key="KeyD" aria-label="向右">▶</button><button data-key="KeyS">防</button></div><div><button data-key="KeyK">跳</button><button data-key="KeyL">冲</button><button data-key="KeyJ" class="attack">斩</button><button data-key="KeyU">技</button><button data-key="KeyI">替</button><button data-key="KeyO">奥</button></div></div></div><div class="arena-bottom"><span><i></i><span id="feedback">准备就绪 / 点击进入训练场</span></span><button id="reset">↻ 重置 <kbd>R</kbd></button></div></section><section class="lower"><div class="controls"><div class="section-label">03 / 操作指南 <span>键盘输入 · 即时响应</span></div><div class="keygrid"><div><kbd>A</kbd><kbd>D</kbd><span>移动</span></div><div><kbd>K</kbd><span>二段跳</span></div><div><kbd>J</kbd><span>三段连击</span></div><div><kbd>S</kbd><kbd>J</kbd><span>挑空</span></div><div><kbd>L</kbd><span>冲刺</span></div><div><kbd>U</kbd><span>角色技 · 25 气</span></div><div><kbd>I</kbd><span>替身 · 40 气</span></div><div><kbd>O</kbd><span>奥义 · 100 气</span></div><div><kbd>S</kbd><span>地面防御</span></div></div><p class="tip"><span>试试这套连招</span> J → J → S + J → K → J → U</p></div><aside><div class="section-label">04 / 手感调校 <span>实时生效</span></div><label>命中停顿 <input type="checkbox" id="hitstop" checked><span class="switch"></span></label><label>镜头震动 <input type="checkbox" id="shake" checked><span class="switch"></span></label><label>重击闪光 <input type="checkbox" id="impactFlash" checked><span class="switch"></span></label><label>环境动态 <input type="checkbox" id="environmentMotion" checked><span class="switch"></span></label><label>显示判定框 <input type="checkbox" id="debug"><span class="switch"></span></label><p>训练中气力快速回复；停止攻击后，对手恢复生命。</p></aside></section><footer><span>RIFT / CLASH</span><span>同人风格化原型 · 六角色 / 六场景 · 离线单人试玩</span><span>还差一击。</span></footer></main><script>(function(root){
 'use strict';
 const FLOOR=510,HURT_HEIGHT=135, clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const MOVES={
@@ -21,8 +21,14 @@ const HEROES={
  lara:{name:'劳拉',en:'LARA CROFT',source:'古墓丽影',color:'#efc586',cloth:'#417479',hair:'#533d33',skin:'#d5a587',weapon:'bow',speed:5.9,reach:.88,scene:'tomb',skill:'蓄力箭',ultimate:'双枪连射',desc:'灵活近战 · 高速箭矢 · 双枪连射',skillHint:'高速直线箭矢',ultimateHint:'连续射出六发子弹'},
  wukong:{name:'天命人',en:'DESTINED ONE',source:'黑神话：悟空',color:'#e7bb61',cloth:'#76523a',hair:'#544334',skin:'#b68b60',weapon:'staff',speed:5.4,reach:1.18,scene:'temple',skill:'定身术',ultimate:'重棍破阵',desc:'长棍控距 · 短距定身 · 延伸重棍',skillHint:'定住前方 285 范围内的对手',ultimateHint:'长距离重棍击退'},
  drake:{name:'内森·德雷克',en:'NATHAN DRAKE',source:'神秘海域',color:'#e4b395',cloth:'#a69f86',hair:'#47382f',skin:'#d3a17f',weapon:'pistol',speed:5.6,reach:.9,scene:'jungle',skill:'抛掷手雷',ultimate:'火力压制',desc:'近身搏击 · 抛物线爆炸 · 步枪齐射',skillHint:'中远距离抛物线投掷，落地爆炸',ultimateHint:'连续射出五发步枪弹'},
- ironman:{name:'钢铁侠',en:'IRON MAN',source:'复仇者联盟',color:'#88e4ff',cloth:'#a83d37',hair:'#d5ae65',skin:'#d5ae65',weapon:'armor',speed:5,reach:.95,scene:'city',skill:'掌心炮',ultimate:'集束胸炮',desc:'装甲重拳 · 能量弹 · 持续光束',skillHint:'发射大型掌心能量弹',ultimateHint:'向前释放持续多段光束'},
- luke:{name:'卢克',en:'LUKE SKYWALKER',source:'星球大战',color:'#a6f59c',cloth:'#272d30',hair:'#b69b67',skin:'#dbb798',weapon:'saber',speed:5.8,reach:1.06,scene:'space',skill:'原力推击',ultimate:'回旋光剑',desc:'光剑连段 · 原力击退 · 往返投剑',skillHint:'击退前方 265 范围内的对手',ultimateHint:'投出光剑，往返各造成一次伤害'}
+ tanjiro:{name:'灶门炭治郎',en:'TANJIRO',source:'鬼灭之刃',color:'#74dafa',cloth:'#277c62',hair:'#442833',skin:'#e7bda5',weapon:'water-katana',speed:5.6,reach:1.04,scene:'jungle',skill:'水之呼吸 · 水车',ultimate:'水之呼吸 · 生生流转',desc:'日轮刀连斩 · 回旋水车 · 水龙追击',skillHint:'前移回旋斩，命中后可跳跃或冲刺衔接',ultimateHint:'四段水流追击，末段击飞；消耗 100 气'},
+ zenitsu:{name:'我妻善逸',en:'ZENITSU',source:'鬼灭之刃',color:'#ffe28c',cloth:'#eba437',hair:'#f3c24f',skin:'#eac6ab',weapon:'thunder-katana',speed:6.2,reach:.98,scene:'temple',skill:'雷之呼吸 · 霹雳一闪',ultimate:'霹雳一闪 · 六连',desc:'拔刀蓄势 · 雷电突进 · 六段连闪',skillHint:'短暂蓄势后直线突进拔刀，落空有收招',ultimateHint:'锁定出招方向连续六斩，可防御或替身脱离'}
+};
+
+// Per-character timings are prototype balance values, not source-game frame data.
+const BREATH_MOVES={
+ tanjiro:{skill:{startup:10,active:10,end:34,reach:172,height:138,damage:18,stun:31,push:6,lift:-4,stop:8,travel:7,interval:10,style:'waterWheel'},ultimate:{startup:18,active:28,end:62,reach:180,height:140,damage:10,stun:29,push:3,lift:-2,stop:5,travel:8,interval:7,style:'waterDragon'}},
+ zenitsu:{skill:{startup:14,active:8,end:38,reach:108,height:105,damage:20,stun:29,push:9,lift:-3,stop:9,travel:30,interval:8,style:'thunderDash'},ultimate:{startup:20,active:30,end:68,reach:120,height:115,damage:7,stun:24,push:2,lift:0,stop:3,travel:16,interval:5,style:'thunderSix'}}
 };
 class Fighter{constructor(x,dir,hero){this.hero=HEROES[hero]?hero:'cloud';this.info=HEROES[this.hero];const color=this.info.color;Object.assign(this,{x,y:FLOOR,vx:0,vy:0,dir,color,hp:100,energy:100,queuedSub:false,state:'idle',animState:'idle',animTime:0,hurtTime:0,landTime:0,attackSerial:0,attack:null,stun:0,guardStun:0,inv:0,dash:0,jumps:0,combo:0,comboDamage:0,comboTimer:0,flash:0,lastHit:0,subCD:0,airCount:0,block:false,buffer:null,trail:[]});}}
 class World{
@@ -44,13 +50,13 @@ class World{
  this.begin(f,name);return;}
  if((key==='skill'||key==='ultimate')&&(!a||canCancel)){const cost=key==='skill'?25:100;if(f.energy+0.001<cost){f.buffer=null;if(f===this.p1)this.lastFeedback='气力不足 / '+(key==='skill'?'角色技需要 25 气':'奥义需要 100 气');return;}f.energy=Math.max(0,f.energy-cost);this.begin(f,key);if(key==='ultimate'){this.banner=45;this.bannerText=f.info.name+' / '+f.info.ultimate;f.inv=28;this.event('ultimate',{x:f.x,y:f.y-86,dir:f.dir,color:f.color,hero:f.hero,weapon:f.info.weapon});}return;}
  }
- begin(f,name){const move={...MOVES[name]};if(move.reach)move.reach*=f.info.reach;f.attack={name,move,t:0,hit:false};f.attackSerial++;f.animTime=0;if(f.y>=FLOOR&&move.lunge)f.vx=f.dir*move.lunge;f.buffer=null;f.block=false;}
+ begin(f,name){const move={...MOVES[name],...(BREATH_MOVES[f.hero]?.[name]||{})};if(move.reach)move.reach*=f.info.reach;f.attack={name,move,t:0,hit:false};f.attackSerial++;f.animTime=0;if(f.y>=FLOOR&&move.lunge)f.vx=f.dir*move.lunge;f.buffer=null;f.block=false;}
  ai(){const f=this.p2,p=this.p1,k={};if(this.mode!=='duel')return k;const dist=Math.abs(p.x-f.x);this.aiClock++;
  if(f.stun&&f.energy>=40&&f.hp<70&&this.aiClock%39===0)this.action(f,'sub');
  if(f.stun)return k;
  if(dist>105){k.left=f.x>p.x;k.right=f.x<p.x;}if(p.attack&&dist<160&&this.aiClock%100<32)k.down=true;
  if(dist<125&&this.aiClock%23===0)this.action(f,'attack');
- if(dist>(['wukong','luke'].includes(f.hero)?120:220)&&this.aiClock%125===0&&f.energy>=25)this.action(f,'skill');
+ if(dist>(['wukong','tanjiro','zenitsu'].includes(f.hero)?120:220)&&this.aiClock%125===0&&f.energy>=25)this.action(f,'skill');
  if(dist<340&&f.energy>=100&&this.aiClock%250===0)this.action(f,'ultimate');
  if(dist>260&&this.aiClock%100===0)this.action(f,'dash');
  if(p.y<FLOOR-75&&dist<170&&this.aiClock%45===0)this.action(f,'jump');return k;}
@@ -68,14 +74,12 @@ class World{
   b.life--;b.age=(b.age||0)+1;if(b.delay>0){b.delay--;continue;}
   b.vy=(b.vy||0)+(b.gravity||0);b.x+=b.vx;b.y+=b.vy;
   const t=b.owner===p?q:p;
-  if(b.kind==='saber'&&b.age===24){b.vx=-b.vx;b.hitTargets.clear();b.returning=true;}
-  if(b.kind==='beam'){b.x=b.beamAnchor.x;b.y=b.beamAnchor.y;if(b.age%10===1)b.hitTargets.clear();}
   const touches=Math.abs(b.x-t.x)<b.w/2+23&&Math.abs(b.y-(t.y-HURT_HEIGHT/2))<b.h/2+HURT_HEIGHT/2;
   if(b.kind==='grenade'&&(b.y>=FLOOR-6||touches||b.life<=0)){
    this.effects.push({kind:'explosion',x:b.x,y:Math.min(FLOOR-40,b.y),color:'#ffc578',life:24,max:24});this.burst(b.x,b.y,'#ffc578',32);
    if(Math.abs(b.x-t.x)<125&&Math.abs(b.y-(t.y-45))<125&&!t.inv){this.confirmProjectile(b);this.hit(b.owner,t,b.move,b.name,b.x,{dir:t.x>=b.x?1:-1});}b.dead=true;
   }else if(!b.dead&&touches&&!t.inv&&!b.hitTargets.has(t)){
-   this.confirmProjectile(b);this.hit(b.owner,t,b.move,b.name,b.x,{dir:b.vx===0?b.direction:Math.sign(b.vx)});b.hitTargets.add(t);if(!['beam','saber'].includes(b.kind))b.dead=true;
+   this.confirmProjectile(b);this.hit(b.owner,t,b.move,b.name,b.x,{dir:b.vx===0?b.direction:Math.sign(b.vx)});b.hitTargets.add(t);b.dead=true;
   }
   if(b.x<-180||b.x>1380)b.dead=true;
  }
@@ -96,7 +100,7 @@ class World{
  this.execute(f,k);if(f.buffer&&--f.buffer.ttl<=0)f.buffer=null;
  if(f.dash){f.dash--;f.vx=f.dir*17;if(f.y<FLOOR)f.vy*=.4;if(this.frame%2===0)f.trail.push({x:f.x,y:f.y,dir:f.dir,life:12,animTime:f.animTime,animState:'dash',dash:f.dash,attack:null});}
  else if(f.stun)f.vx*=.94;
- else if(f.attack){f.vx*=.65;f.attack.t++;if(f.attack.t>=f.attack.move.end)f.attack=null;}
+ else if(f.attack){f.vx*=.65;f.attack.t++;const a=f.attack,m=a.move;if(m.style&&a.t>=m.startup&&a.t<m.startup+m.active){const gap=(o.x-f.x)*f.dir;f.vx=f.dir*Math.min(m.travel,Math.max(0,gap-52));if(this.frame%2===0)f.trail.push({x:f.x,y:f.y,dir:f.dir,life:10,animTime:f.animTime,animState:'skill',attack:{...a,move:{...m}}});}if(a.t>=m.end)f.attack=null;}
  else{f.vx=f.block?0:((k.right?1:0)-(k.left?1:0))*f.info.speed;}
  f.x=clamp(f.x+f.vx,42,1158);if(f.y<FLOOR||f.vy<0){f.vy+=.62;f.y+=f.vy;}
  if(f.y>=FLOOR){f.y=FLOOR;f.vy=0;f.jumps=0;f.airCount=0;if(previousY<FLOOR&&previousVy>2){f.landTime=7;this.event('land',{x:f.x,y:FLOOR,heavy:previousVy>11,color:f.color});}}
@@ -105,12 +109,19 @@ class World{
  }
  hitbox(f){const a=f.attack;if(!a||!a.move.reach)return null;return {x:f.x+(f.dir>0?12:-a.move.reach-12),y:f.y-a.move.height,w:a.move.reach,h:a.move.height};}
  resolveAttack(f,t){const a=f.attack;if(!a)return;const m=a.move;if(a.t<m.startup||a.t>=m.startup+m.active)return;
+ if(m.style){this.resolveBreath(f,t,a);return;}
  if(a.name==='skill'||a.name==='ultimate'){if(a.spawned)return;a.spawned=true;this.special(f,t,a.name);this.event('swing',{x:f.x,y:f.y-86,color:f.color,hero:f.hero,weapon:f.info.weapon,move:a.name});return;}
  if(a.t===m.startup)this.event('swing',{x:f.x,y:f.y-86,color:f.color,hero:f.hero,weapon:f.info.weapon,move:a.name});if(a.hit||t.inv)return;
  const b=this.hitbox(f);if(b.x<t.x+23&&b.x+b.w>t.x-23&&b.y<t.y&&b.y+b.h>t.y-HURT_HEIGHT){a.hit=true;this.hit(f,t,m,a.name,t.x);}
  }
+ resolveBreath(f,t,a){
+ const m=a.move,index=Math.floor((a.t-m.startup)/m.interval),last=index===Math.ceil(m.active/m.interval)-1;
+ if(a.effectStrike!==index){a.effectStrike=index;this.effects.push({kind:m.style,x:f.x+f.dir*m.reach*.45,y:f.y-80,dir:f.dir,color:f.color,life:15,max:15,range:m.reach,index});this.event('breath',{x:f.x,y:f.y-70,dir:f.dir,color:f.color,hero:f.hero,weapon:f.info.weapon,heavy:last&&a.name==='ultimate'});this.lastFeedback=f.info.name+' / '+(a.name==='ultimate'?f.info.ultimate:f.info.skill);}
+ a.struck=a.struck||new Set();if(a.struck.has(index)||t.inv)return;const b=this.hitbox(f);
+ if(b.x<t.x+23&&b.x+b.w>t.x-23&&b.y<t.y&&b.y+b.h>t.y-HURT_HEIGHT){a.struck.add(index);a.hit=true;const finisher=last&&a.name==='ultimate';this.hit(f,t,{...m,damage:finisher?m.damage+5:m.damage,push:finisher?14:m.push,lift:finisher?-8:m.lift,stop:finisher?11:m.stop,finisher},a.name,t.x);}
+ }
  confirmProjectile(b){if(b.name!=='ultimate'&&b.owner.attack&&b.owner.attack.name===b.name&&b.owner.attackSerial===b.castSerial)b.owner.attack.hit=true;}
- spawnProjectile(f,spec={}){const big=spec.name==='ultimate',muzzleY={cloud:92,lara:110,wukong:100,drake:90,ironman:90,luke:95}[f.hero]||90;if(spec.kind==='bullet')this.event('shot',{x:f.x+f.dir*50,y:f.y-muzzleY,color:f.color,hero:f.hero,weapon:'pistol'});this.projectiles.push({x:f.x+f.dir*65,y:f.y-muzzleY,vx:f.dir*13,vy:0,w:60,h:86,owner:f,direction:f.dir,beamAnchor:{x:f.x+f.dir*350,y:f.y-90},move:{damage:15,stun:30,push:8,lift:-3,stop:8},name:big?'ultimate':'skill',castSerial:f.attackSerial,kind:'wave',life:100,dead:false,hitTargets:new Set(),age:0,...spec});}
+ spawnProjectile(f,spec={}){const big=spec.name==='ultimate',muzzleY={cloud:92,lara:110,wukong:100,drake:90,tanjiro:90,zenitsu:90}[f.hero]||90;if(spec.kind==='bullet')this.event('shot',{x:f.x+f.dir*50,y:f.y-muzzleY,color:f.color,hero:f.hero,weapon:'pistol'});this.projectiles.push({x:f.x+f.dir*65,y:f.y-muzzleY,vx:f.dir*13,vy:0,w:60,h:86,owner:f,direction:f.dir,move:{damage:15,stun:30,push:8,lift:-3,stop:8},name:big?'ultimate':'skill',castSerial:f.attackSerial,kind:'wave',life:100,dead:false,hitTargets:new Set(),age:0,...spec});}
  special(f,t,name){const big=name==='ultimate',dir=f.dir;const move={damage:big?39:15,stun:big?47:30,push:big?13:7,lift:big?-7:-3,stop:big?12:6};
   this.lastFeedback=f.info.name+' / '+(big?f.info.ultimate:f.info.skill);
   const direct=(range,m,kind)=>{this.effects.push({kind,x:f.x+dir*range*.5,y:f.y-86,dir,color:f.color,life:22,max:22,range});if((t.x-f.x)*dir>=-12&&(t.x-f.x)*dir<=range&&Math.abs(t.y-f.y)<125&&!t.inv){this.hit(f,t,m,name,t.x);if(f.attack)f.attack.hit=true;}};
@@ -118,10 +129,6 @@ class World{
    if(big)direct(230,move,'cross');else this.spawnProjectile(f,{kind:'wave',name,move,vx:dir*14});
   }else if(f.hero==='wukong'){
    direct(big?460:285,big?{...move,push:18}:{...move,damage:5,stun:80,push:0,lift:0},big?'staff':'seal');
-  }else if(f.hero==='luke'){
-   if(big)this.spawnProjectile(f,{kind:'saber',name,move:{...move,damage:22,stun:28,push:2,lift:-2,stop:6},vx:dir*13,w:82,h:110,life:50});else direct(265,{...move,damage:12,push:19,lift:-6},'force');
-  }else if(f.hero==='ironman'){
-   this.spawnProjectile(f,{kind:big?'beam':'orb',name,move:big?{...move,damage:12,stun:22,push:2,lift:0,stop:3}:move,vx:big?0:dir*14,w:big?650:65,h:big?75:65,life:big?31:100});
   }else if(f.hero==='lara'){
    if(big){for(let i=0;i<6;i++)this.scheduled.push({owner:f,wait:1+i*6,spec:{kind:'bullet',name,move:{...move,damage:9,stun:20,push:2,lift:0,stop:2},vx:dir*23,w:36,h:14}});}else this.spawnProjectile(f,{kind:'arrow',name,move:{...move,damage:18},vx:dir*21,w:70,h:18});
   }else if(f.hero==='drake'){
@@ -132,14 +139,14 @@ class World{
  const dir=impact.dir||f.dir,guarded=t.block&&t.dir===-dir;const contact={dir,guarded,counter:!guarded&&!!t.attack&&t.attack.t<t.attack.move.startup};if(this.hitQueue){this.hitQueue.push([f,t,m,name,x,contact]);return;}this.applyHit(f,t,m,name,x,contact);
  }
  applyHit(f,t,m,name,x,contact){
- const {guarded,counter,dir}=contact;const heavy=name==='ultimate'||name==='slash3';if(!t.stun){f.combo=0;f.comboDamage=0;}const scale=Math.max(.5,1-f.combo*.06);let damage=guarded?Math.max(1,Math.floor(m.damage*.12)):Math.round(m.damage*scale*(counter?1.12:1));
+ const {guarded,counter,dir}=contact;const heavy=(name==='ultimate'&&m.finisher!==false)||name==='slash3';if(!t.stun){f.combo=0;f.comboDamage=0;}const scale=Math.max(.5,1-f.combo*.06);let damage=guarded?Math.max(1,Math.floor(m.damage*.12)):Math.round(m.damage*scale*(counter?1.12:1));
  if(guarded){t.stun=Math.max(t.stun,8);t.guardStun=8;t.vx=dir*3;t.energy=Math.min(100,t.energy+3);this.event('block',{x:t.x,y:t.y-88,dir,color:f.color,hero:f.hero,weapon:f.info.weapon,damage});this.burst(t.x,t.y-88,'#dcecff',12);this.lastFeedback='防御 / 绕到背后寻找机会';}
- else{t.guardStun=0;const stunReduction=Math.max(0,f.combo-4)*3;t.stun=Math.max(12,m.stun-stunReduction)+(counter?4:0);t.vx=dir*m.push;t.vy=m.lift;t.attack=null;t.dash=0;t.block=false;t.buffer=null;t.flash=6;t.hurtTime=t.stun;t.animState='hurt';t.animTime=0;f.combo++;f.comboDamage+=damage;f.comboTimer=m.stun+24;f.energy=Math.min(100,f.energy+7);t.energy=Math.min(100,t.energy+5);this.shake=this.settings.shake?(name==='ultimate'?11:heavy?8:4):0;this.burst(x,t.y-88,f.color,name==='ultimate'?42:22);this.event('hit',{x:t.x,y:t.y-88,dir,color:f.color,hero:f.hero,weapon:f.info.weapon,damage,heavy,counter,combo:f.combo});this.lastFeedback=f===this.p1?`${counter?'COUNTER / ':''}${f.combo} HIT / ${f.comboDamage} 伤害${name==='launcher'?' / 挑空！按 K 追击':''}`:'受到攻击 / I 替身脱身';}
+ else{t.guardStun=0;const stunReduction=Math.max(0,f.combo-4)*3;t.stun=Math.max(12,m.stun-stunReduction)+(counter?4:0);t.vx=dir*m.push;t.vy=m.lift;t.attack=null;t.dash=0;t.block=false;t.buffer=null;t.flash=6;t.hurtTime=t.stun;t.animState='hurt';t.animTime=0;f.combo++;f.comboDamage+=damage;f.comboTimer=m.stun+24;f.energy=Math.min(100,f.energy+7);t.energy=Math.min(100,t.energy+5);this.shake=this.settings.shake?(heavy?(name==='ultimate'?11:8):4):0;this.burst(x,t.y-88,f.color,name==='ultimate'?42:22);this.event('hit',{x:t.x,y:t.y-88,dir,color:f.color,hero:f.hero,weapon:f.info.weapon,damage,heavy,counter,combo:f.combo});this.lastFeedback=f===this.p1?`${counter?'COUNTER / ':''}${f.combo} HIT / ${f.comboDamage} 伤害${name==='launcher'?' / 挑空！按 K 追击':''}`:'受到攻击 / I 替身脱身';}
  t.hp=Math.max(0,t.hp-damage);t.lastHit=this.frame;if(this.settings.hitstop)this.freeze=Math.max(this.freeze,guarded?3:m.stop+(counter?2:0));
  }
  burst(x,y,color,n){for(let i=0;i<n;i++){const angle=Math.random()*Math.PI*2,speed=2+Math.random()*9;this.particles.push({x,y,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,color,life:12+Math.random()*13,max:25,size:1+Math.random()*3});}}
 }
-root.Rift={World,FLOOR,HURT_HEIGHT,MOVES,HEROES};if(typeof module!=='undefined')module.exports=root.Rift;
+root.Rift={World,FLOOR,HURT_HEIGHT,MOVES,HEROES,BREATH_MOVES};if(typeof module!=='undefined')module.exports=root.Rift;
 })(typeof window!=='undefined'?window:globalThis);
 </script><script>(function(root){'use strict';
 const DATA={
@@ -238,25 +245,51 @@ root.RiftScenes={DATA,draw:drawStage,build,ready,SCENE_CELLS};
 
 })(typeof window!=='undefined'?window:globalThis);
 </script><script>(function(root){'use strict';
-function draw(c,f,t=0,ghost=false){const info=f.info||Rift.HEROES[f.hero],h=f.hero,a=f.attack,phase=a?Math.min(1,a.t/a.move.end):0,active=a&&a.t>=a.move.startup&&a.t<a.move.startup+a.move.active;const col=f.flash>0?'#ffffff':f.color||info.color;
+function drawBreathing(c,f,t=0,ghost=false){
+ const z=f.hero==='zenitsu',a=f.attack,m=a?.move||{},at=a?.t||0,ready=a&&at<m.startup,active=a&&at>=m.startup&&at<m.startup+m.active;
+ const running=Math.abs(f.vx||0)>1,air=f.y<(root.Rift?.FLOOR||510)-1,swing=a?(a.name==='launcher'?-1.8+(at/Math.max(1,m.end))*2.4:a.name==='slash2'?1.1-at/m.end*3.5:-1.9+Math.min(1,at/Math.max(1,m.startup+3))*3.2):-.75;
+ const crouch=z&&ready?12:active&&z?9:air?3:0,lean=z&&active?.36:running?.13:f.stun?-.22:0,step=running?Math.sin(t*.32)*12:0;
+ const skin=f.flash?'#fff8eb':'#e6bca5',hair=z?'#efb443':'#46252e',coat=z?'#e8a43a':'#277a60',edge=z?'#ffd477':'#54a889',glow=z?'#e8f7ff':'#9aeaff';
+ const poly=(ps,col)=>{c.beginPath();c.moveTo(...ps[0]);for(const p of ps.slice(1))c.lineTo(...p);c.closePath();c.fillStyle=col;c.fill();};
+ const line=(ps,col,w)=>{c.beginPath();c.moveTo(...ps[0]);for(const p of ps.slice(1))c.lineTo(...p);c.strokeStyle=col;c.lineWidth=w;c.lineCap='round';c.lineJoin='round';c.stroke();};
+ const ellipse=(x,y,rx,ry,col)=>{c.beginPath();c.ellipse(x,y,rx,ry,0,0,Math.PI*2);c.fillStyle=col;c.fill();};
+ c.save();c.translate(f.x,f.y);c.scale(f.dir||1,1);c.translate(0,crouch);c.rotate(lean);
+ const flutter=Math.sin(t*.14)*3+(active?14:running?8:0);
+ line([[-11,-46],[-17+step*.6,-25],[-22+step,-6-crouch]],'#242832',15);line([[9,-46],[13-step*.6,-24],[20-step,-6-crouch]],'#30323b',15);
+ for(const [x,y] of [[-22+step,-9-crouch],[20-step,-9-crouch]]){line([[x,y-17],[x,y]],z?'#dca034':'#d4d2bf',11);for(let i=0;i<4;i++)line([[x-5,y-15+i*4],[x+5,y-14+i*4]],z?'#f5c266':'#849394',1);line([[x-5,y+5],[x+10,y+5]],'#4b352e',7);line([[x-3,y],[x+5,y+3]],'#ddd6c0',2);}
+ const back=[[-20,-89],[-35,-75],[-40-flutter,-29],[-16,-35],[-8,-78]];
+ const front=[[5,-90],[23,-81],[32,-39],[14,-30],[6,-49],[-2,-79]];
+ function cloth(ps){poly(ps,coat);c.save();c.beginPath();c.moveTo(...ps[0]);ps.slice(1).forEach(p=>c.lineTo(...p));c.closePath();c.clip();if(z){for(let y=-87;y<-25;y+=15)for(let x=-52;x<36;x+=14)poly([[x,y],[x-3,y+7],[x+4,y+6]],'#fff1d3');}else{for(let y=-98;y<-20;y+=13)for(let x=-65;x<40;x+=13)if((Math.round((x+65)/13)+Math.round((y+98)/13))%2===0){c.fillStyle='#172f2c';c.fillRect(x,y,13,13);}}c.restore();line([ps[1],ps[2],ps[3]],edge,1.3);}
+ cloth(back);poly([[-17,-90],[10,-91],[18,-73],[12,-43],[-16,-43],[-22,-74]],'#252733');line([[-4,-87],[1,-75],[0,-47]],'#8e8c85',1.2);for(let i=0;i<4;i++)ellipse(2,-74+i*7,1.3,1.3,'#d8bb79');line([[-17,-48],[15,-48]],'#e9dfca',5);poly([[-3,-51],[4,-51],[4,-45],[-3,-45]],'#aa9a68');cloth(front);
+ line([[-17,-52],[-48,-25]],'#363c41',6);line([[-36,-35],[-44,-29]],z?'#c99b40':'#b1aba0',2);
+ line([[-12,-84],[-26,-67],[-13,-60]],coat,12);ellipse(-13,-60,4,4,skin);
+ c.save();c.translate(0,-101);ellipse(0,0,12,16,skin);ellipse(12,1,3,4,skin);poly([[-10,-3],[-10,7],[1,14],[9,8],[11,-1],[4,-10]],'#eecab1');
+ if(z){poly([[-14,4],[-17,-8],[-12,-20],[-3,-23],[8,-20],[17,-9],[15,6],[10,-1],[7,-10],[4,3],[-1,-9],[-6,1],[-9,-8]],hair);for(let i=0;i<5;i++)line([[-11+i*5,-15],[-9+i*5,-3]],'#ffda77',2);line([[2,2],[8,2]],ready||active?'#784e39':'#693e2b',1.5);}
+ else{poly([[-14,0],[-20,-13],[-10,-12],[-13,-23],[-4,-18],[1,-27],[7,-19],[17,-20],[13,-9],[18,-7],[10,0],[4,-8],[-4,-7],[-8,4]],hair);line([[-12,-14],[-3,-19],[3,-22]],'#8b3844',2);poly([[4,-9],[9,-8],[8,-1],[4,-3],[2,-6]],'#9b5e56');line([[2,1],[8,1]],'#773e49',2);line([[-9,7],[-10,19]],'#c8c2b6',1);poly([[-13,15],[-6,15],[-6,27],[-13,27]],'#eee6d5');ellipse(-9.5,18,2,2,'#a54e46');line([[-12,25],[-9,21],[-7,25]],'#596367',1);}
+ line([[5,9],[9,8]],'#9a685e',.8);c.restore();
+ const handX=f.block?24:ready&&z?8:active?47:a?35:25,handY=f.block?-83:ready&&z?-53:active?-70:a?-66:-58;
+ line([[12,-83],[handX-11,handY+9],[handX,handY]],coat,12);line([[14,-81],[handX-11,handY+7]],edge,2);ellipse(handX,handY,4.5,4.5,skin);
+ c.save();c.translate(handX,handY);c.rotate(f.block?-1.4:ready&&z?.12:swing);line([[-17,0],[1,0]],z?'#ddd7c6':'#2d3a3b',5);for(let i=0;i<4;i++)line([[-15+i*4,-2],[-12+i*4,2]],z?'#9b732d':'#b9b5a5',1);line([[3,-7],[3,7]],z?'#d6b04c':'#8d9392',3);poly([[6,-2],[72,-2],[84,-7],[77,2],[6,3]],z?'#b2bec7':'#283740');line([[6,3],[77,2],[84,-7]],'#edf8f1',1.4);if(z)line([[13,0],[23,-1],[27,1],[36,-1],[42,1],[52,-1],[65,-1]],'#f3cb53',1.4);c.restore();
+ if(active&&!m.style){c.globalAlpha=.75;c.strokeStyle=glow;c.lineWidth=3;c.beginPath();c.ellipse(26,-69,95,54,swing*.3,-1.35,1.35);c.stroke();}
+ if(f.block){c.strokeStyle=glow;c.lineWidth=2;c.beginPath();c.ellipse(31,-72,15,43,0,-1.3,1.3);c.stroke();}c.restore();
+}
+
+function draw(c,f,t=0,ghost=false){if(['tanjiro','zenitsu'].includes(f.hero))return drawBreathing(c,f,t,ghost);const info=f.info||Rift.HEROES[f.hero],h=f.hero,a=f.attack,phase=a?Math.min(1,a.t/a.move.end):0,active=a&&a.t>=a.move.startup&&a.t<a.move.startup+a.move.active;const col=f.flash>0?'#ffffff':f.color||info.color;
 const r=(x,y,w,hh,color)=>{c.fillStyle=color;c.fillRect(x,y,w,hh);},p=(pts,color)=>{c.beginPath();c.moveTo(...pts[0]);for(const q of pts.slice(1))c.lineTo(...q);c.closePath();c.fillStyle=color;c.fill();},l=(pts,color,w=1)=>{c.beginPath();c.moveTo(...pts[0]);for(const q of pts.slice(1))c.lineTo(...q);c.strokeStyle=color;c.lineWidth=w;c.lineCap='round';c.lineJoin='round';c.stroke();},e=(x,y,rx,ry,color)=>{c.beginPath();c.ellipse(x,y,rx,ry,0,0,Math.PI*2);c.fillStyle=color;c.fill();};
-c.save();c.translate(f.x,f.y);c.scale(f.dir||1,1);if(f.stun)c.rotate(-.12);if(f.dash)c.rotate(.18);const breath=ghost?0:Math.sin(t*.045)*1.1;c.translate(0,breath);const step=Math.abs(f.vx||0)>1&&!f.stun?Math.sin(t*.32)*10:0;const skin=f.flash?'#ffffff':info.skin,cloth=f.flash?'#f9fff5':info.cloth;const isIron=h==='ironman',isWukong=h==='wukong',ranged=['lara','drake'].includes(h);const pants=isIron?'#8b3633':h==='lara'?'#5f4d3b':h==='drake'?'#3d5260':'#242d37';
+c.save();c.translate(f.x,f.y);c.scale(f.dir||1,1);if(f.stun)c.rotate(-.12);if(f.dash)c.rotate(.18);const breath=ghost?0:Math.sin(t*.045)*1.1;c.translate(0,breath);const step=Math.abs(f.vx||0)>1&&!f.stun?Math.sin(t*.32)*10:0;const skin=f.flash?'#ffffff':info.skin,cloth=f.flash?'#f9fff5':info.cloth;const isWukong=h==='wukong',ranged=['lara','drake'].includes(h);const pants=h==='lara'?'#5f4d3b':h==='drake'?'#3d5260':'#242d37';
 // Rear equipment gives each silhouette a distinct shape.
 if(h==='lara'){l([[-15,-100],[-33,-80],[-40,-49],[-27,-19]],'#ba925f',4);l([[-15,-100],[-27,-19]],'#e3d4b899',1);p([[-15,-74],[-25,-78],[-31,-39],[-22,-36]],'#433b32');}
 if(h==='drake'){l([[-15,-82],[-28,-54],[-26,-30]],'#604b38',5);r(-29,-57,9,23,'#302f2c');}
 if(isWukong){p([[-9,-89],[-41-Math.abs(f.vx||0)*1.7,-79+Math.sin(t*.12)*5],[-25,-71],[-13,-73]],'#a94d3c');l([[-21,-42],[-34,-20],[-40,-24]],'#8c7350',5);}
-if(h==='luke')p([[-17,-89],[-32,-27],[-17,-19],[-11,-44]],'#1b232b');
 l([[-12,-46],[-16+step*.55,-24],[-21+step,-5]],pants,15);l([[10,-46],[12-step*.55,-24],[18-step,-5]],pants,15);l([[-21+step,-5],[-9+step,-4]],'#142129',9);l([[18-step,-5],[29-step,-4]],'#142129',9);
 if(h==='lara'){l([[-13,-46],[-16+step*.55,-27]],skin,14);l([[10,-46],[12-step*.55,-27]],skin,14);r(-22+step*.55,-32,14,4,'#3f3831');r(5-step*.55,-32,14,4,'#3f3831');}
-if(isIron){for(const [x,yy] of [[-17+step*.6,-23],[12-step*.6,-23]])p([[x-6,yy-7],[x+6,yy-8],[x+8,yy+10],[x-6,yy+12]],'#be5547');l([[-20+step,-4],[-10+step,-4]],col,2);l([[19-step,-4],[29-step,-4]],col,2);}
 p([[-17,-90],[12,-90],[21,-76],[16,-47],[-17,-47],[-23,-73]],cloth);p([[-17,-86],[-4,-80],[-4,-49],[-17,-49]],'#ffffff0b');p([[11,-83],[20,-76],[15,-48],[6,-49]],'#00000022');
 if(h==='cloud'){l([[-5,-84],[-4,-56]],'#68738b',2);p([[-21,-90],[-8,-94],[0,-86],[-1,-74],[-23,-75],[-28,-82]],'#64758a');e(-20,-83,2,2,'#a9b7c7');e(-6,-83,2,2,'#a9b7c7');}
 if(h==='lara'){p([[-16,-88],[-7,-91],[3,-83],[12,-90],[19,-83],[13,-55],[-14,-55]],'#4c9696');l([[-13,-89],[-11,-59]],'#294849',3);l([[-4,-89],[6,-87]],skin,3);}
 if(h==='drake'){l([[-5,-89],[-1,-70]],'#736f5d',2);l([[-10,-87],[5,-86],[0,-75]],'#3c3d35',1);e(0,-75,3,3,'#b7a77a');l([[-17,-87],[18,-53]],'#644c35',5);r(-18,-57,12,8,'#61533f');}
 if(isWukong){p([[-20,-83],[-10,-91],[2,-86],[17,-87],[24,-73],[15,-69],[-19,-68]],'#aa874a');p([[-15,-67],[13,-67],[24,-29],[3,-36],[-19,-29]],'#6d4e38');for(let i=0;i<4;i++)l([[-14,-62+i*6],[15,-62+i*6]],'#c5a25d',2);l([[-21,-79],[18,-79]],'#e2c27c',3);}
-if(isIron){p([[-19,-88],[14,-88],[21,-75],[13,-57],[-13,-57],[-23,-76]],'#b9473c');p([[-12,-85],[10,-85],[13,-77],[6,-67],[-10,-68]],'#d6b36e');e(0,-76,9,9,'#305d6b');c.shadowColor=col;c.shadowBlur=14;e(0,-76,5,5,'#e1ffff');c.shadowBlur=0;p([[-12,-57],[12,-57],[9,-48],[-11,-48]],'#d5a15b');}
-if(h==='luke'){l([[-6,-89],[7,-66],[-12,-49]],'#475157',2);r(-18,-50,35,6,'#6b6556');r(-2,-51,8,8,'#989e98');}else{r(-18,-50,36,5,isIron?'#573b38':'#473f34');r(-1,-51,8,7,'#b9ac85');}
 
+r(-18,-50,36,5,'#473f34');r(-1,-51,8,7,'#b9ac85');
 // Extra costume details for the three program-drawn fighters.
 if(h==='drake'){
  p([[-15,-87],[-8,-89],[-5,-56],[-14,-52]],'#c3bba4');
@@ -264,36 +297,21 @@ if(h==='drake'){
  l([[-12,-60],[-2,-58],[9,-60]],'#6a695a',1);l([[8,-54],[14,-56]],'#ddcba4',1);
  r(-18,-58,9,6,'#483e32');l([[-17,-56],[-10,-56]],'#a69069',1);
 }
-if(h==='ironman'){
- p([[-20,-86],[-13,-92],[-3,-88],[-5,-79],[-18,-77]],'#d18355');
- p([[7,-88],[15,-88],[22,-78],[16,-73],[9,-77]],'#d18355');
- l([[-18,-76],[-13,-71],[-11,-61]],'#f2a676',1.5);l([[17,-76],[13,-70],[10,-61]],'#f2a676',1.5);
- l([[-9,-55],[-5,-52],[6,-52],[10,-55]],'#f8c987',1);l([[-15,-49],[-15,-43]],'#ffc78d',1);
-}
-if(h==='luke'){
- p([[-15,-88],[-6,-89],[1,-69],[-5,-48],[-15,-49]],'#343a3a');
- p([[3,-89],[12,-88],[15,-51],[2,-49],[5,-68]],'#1b2327');
- l([[-8,-87],[-3,-75],[-10,-53]],'#697270',1.2);l([[6,-86],[9,-75],[7,-54]],'#54605c',1);
- r(-15,-50,31,4,'#494d49');r(-4,-51,8,6,'#a5aaa1');
-}
 
 // Face, hair and trademark head shapes.
 e(0,-103,13,16,skin);e(12,-101,3,4,skin);l([[5,-104],[9,-104]],'#202a2b',1.7);
 if(h==='cloud'){p([[-14,-100],[-20,-115],[-10,-112],[-9,-129],[0,-119],[9,-130],[12,-116],[23,-115],[14,-103],[5,-109],[-3,-98],[-5,-111]],info.hair);l([[-10,-114],[-5,-119]],'#ffecad',2);}
 else if(h==='lara'){p([[-14,-101],[-15,-114],[-6,-121],[10,-118],[15,-109],[9,-109],[3,-114],[-7,-107],[-7,-95]],info.hair);l([[-13,-113],[-23,-98],[-23,-86],[-29,-75]],info.hair,7);l([[-23,-94],[-20,-94]],'#bda570',2);}
 else if(isWukong){p([[-14,-98],[-19,-104],[-14,-109],[-14,-119],[-4,-122],[0,-127],[7,-121],[15,-118],[17,-108],[13,-99],[7,-111],[-5,-112],[-6,-98]],info.hair);e(6,-98,10,6,'#d5ad7c');l([[-12,-113],[11,-113]],'#d7b46c',3);e(-13,-102,5,5,'#bc9065');l([[6,-97],[13,-97]],'#5b4b38',1);}
-else if(isIron){p([[-13,-115],[-5,-121],[9,-120],[16,-111],[13,-93],[5,-87],[-8,-92],[-16,-103]],'#a84236');p([[-9,-115],[9,-115],[11,-106],[7,-102],[10,-94],[-5,-94],[-11,-102]],'#dab56a');l([[-8,-106],[-1,-105]],'#c4fcff',2);l([[5,-105],[10,-106]],'#c4fcff',2);l([[-3,-96],[6,-96]],'#67462e',1);}
 else{p([[-13,-101],[-15,-112],[-9,-119],[5,-120],[15,-112],[14,-106],[6,-109],[-1,-111],[-7,-103]],info.hair);if(h==='drake')l([[-5,-94],[5,-92],[11,-96]],'#675348',1.5);}
-const shoot=a&&['skill','ultimate'].includes(a.name),handY=f.block?-80:shoot?-75:a?-69+Math.cos(phase*Math.PI*2)*19:-59,handX=f.block?25:shoot?42:a?30+Math.sin(phase*Math.PI)*24:24;const arm=isIron?cloth:(h==='lara'||h==='cloud')?skin:cloth;
-l([[10,-86],[handX-12,handY+8],[handX,handY]],arm,11);e(handX,handY,5,5,isIron?'#bf5445':skin);l([[-18,-79],[-22,-62],[-12,-56]],arm,10);e(-12,-56,4.5,4.5,skin);
+const shoot=a&&['skill','ultimate'].includes(a.name),handY=f.block?-80:shoot?-75:a?-69+Math.cos(phase*Math.PI*2)*19:-59,handX=f.block?25:shoot?42:a?30+Math.sin(phase*Math.PI)*24:24;const arm=(h==='lara'||h==='cloud')?skin:cloth;
+l([[10,-86],[handX-12,handY+8],[handX,handY]],arm,11);e(handX,handY,5,5,skin);l([[-18,-79],[-22,-62],[-12,-56]],arm,10);e(-12,-56,4.5,4.5,skin);
 // Weapon silhouettes are drawn at the animated hand.
 c.save();c.translate(handX,handY);c.rotate(shoot?0:f.block?-1.25:a?(a.name==='launcher'?-2.1+phase*2:-1.9+phase*3.9):-.7);
 if(h==='cloud'){l([[-10,0],[4,0]],'#684e3d',5);l([[5,-15],[5,15]],'#8f9b9d',4);p([[8,-12],[90,-12],[106,-5],[99,13],[8,13]],'#82929f');p([[8,-12],[90,-12],[106,-5],[19,-4]],'#cad6d9');l([[15,12],[99,12]],'#d9e4e2',2);e(24,2,3,3,'#233844');e(34,2,3,3,'#233844');}
 if(h==='wukong'){l([[-52,0],[100,0]],'#654832',6);l([[-52,0],[-33,0]],'#e5c37d',7);l([[79,0],[100,0]],'#e5c37d',7);for(let i=0;i<4;i++){l([[-49+i*4,-3],[-49+i*4,3]],'#8b6732',1);l([[82+i*4,-3],[82+i*4,3]],'#8b6732',1);}}
-if(h==='luke'){l([[-13,0],[4,0]],'#a6b0b7',5);c.shadowColor=col;c.shadowBlur=15;l([[7,0],[86,0]],col,7);l([[7,0],[86,0]],'#f2fff0',2);c.shadowBlur=0;}
 if(h==='lara'){if(shoot&&a.name==='skill'){c.strokeStyle='#c5a47b';c.lineWidth=3;c.beginPath();c.arc(-5,0,31,-1.25,1.25);c.stroke();l([[5,-29],[-10,0],[5,29]],'#eee3c6',1);l([[-8,0],[45,0]],'#e8dbc3',2);}else if(shoot){p([[-6,-7],[26,-7],[28,0],[5,1],[2,12],[-5,11]],'#8d9c9c');}else{l([[-7,14],[22,-18]],'#a35441',4);p([[16,-22],[37,-19],[24,-14],[22,-5]],'#bdc7c1');}}
 if(h==='drake'){p([[-6,-7],[26,-7],[28,0],[5,1],[2,12],[-5,11]],'#454f52');l([[4,-7],[25,-7]],'#a5ada8',2);if(shoot&&a.name==='ultimate'){r(-20,-9,68,8,'#37434b');r(11,-1,10,12,'#37434b');}}
-if(isIron){p([[-8,-8],[8,-9],[14,0],[8,8],[-8,6]],'#c65546');e(13,0,3,5,col);if(shoot||active){c.shadowColor=col;c.shadowBlur=15;e(17,0,8,8,'#e6ffff');c.shadowBlur=0;}}
 c.restore();
 if(active&&a.move.reach){c.save();c.globalAlpha=.8;c.strokeStyle=col;c.lineWidth=ranged?4:7;c.shadowBlur=12;c.shadowColor=col;c.beginPath();c.ellipse(20,-62,a.move.reach-10,54,-.2,-1.2,1.3);c.stroke();c.lineWidth=2;c.strokeStyle='#f6fff4';c.stroke();c.restore();}
 if(f.block){c.strokeStyle=col+'aa';c.lineWidth=3;c.beginPath();c.ellipse(29,-63,17,50,0,-1.5,1.5);c.stroke();}
@@ -370,10 +388,11 @@ class Feedback{
  sound(enabled){this.enabled=enabled;if(!enabled)return;try{const Audio=root.AudioContext||root.webkitAudioContext;if(!Audio)return;if(!this.audio){this.audio=new Audio();this.master=this.audio.createGain();this.master.gain.value=.32;const compressor=this.audio.createDynamicsCompressor();compressor.threshold.value=-14;compressor.ratio.value=6;this.master.connect(compressor);compressor.connect(this.audio.destination);this.noise=this.audio.createBuffer(1,this.audio.sampleRate*.25,this.audio.sampleRate);const d=this.noise.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1;}if(this.audio.state==='suspended')this.audio.resume().catch(()=>{});}catch(e){this.enabled=false;}}
  osc(freq,end,duration,gain,kind='sine',delay=0){if(!this.enabled||!this.audio)return;const a=this.audio,t=a.currentTime+delay,o=a.createOscillator(),g=a.createGain();o.type=kind;o.frequency.setValueAtTime(freq,t);o.frequency.exponentialRampToValueAtTime(Math.max(20,end),t+duration);g.gain.setValueAtTime(.001,t);g.gain.linearRampToValueAtTime(gain,t+.004);g.gain.exponentialRampToValueAtTime(.001,t+duration);o.connect(g);g.connect(this.master);o.start(t);o.stop(t+duration+.01);o.onended=()=>{o.disconnect();g.disconnect();};}
  hiss(duration,gain,freq,filter='bandpass'){if(!this.enabled||!this.audio)return;const a=this.audio,t=a.currentTime,src=a.createBufferSource(),f=a.createBiquadFilter(),g=a.createGain();src.buffer=this.noise;f.type=filter;f.frequency.value=freq;f.Q.value=.7;g.gain.setValueAtTime(gain,t);g.gain.exponentialRampToValueAtTime(.001,t+duration);src.connect(f);f.connect(g);g.connect(this.master);src.start(t);src.stop(t+duration);src.onended=()=>{src.disconnect();f.disconnect();g.disconnect();};}
- play(e){const heavy=e.heavy,weapon=e.weapon||'buster';if(e.type==='hit'){this.osc(heavy?95:155,35,heavy?.21:.12,heavy?.6:.4);this.hiss(.08,heavy?.75:.45,weapon==='staff'?700:weapon==='armor'?2100:1600);if(['buster','saber','bow'].includes(weapon))this.osc(weapon==='saber'?510:1250,weapon==='saber'?130:340,.12,.16,'triangle');if(e.counter)this.osc(1600,650,.1,.13,'sine',.02);}
+ play(e){const heavy=e.heavy,weapon=e.weapon||'buster';if(e.type==='hit'){this.osc(heavy?95:155,35,heavy?.21:.12,heavy?.6:.4);this.hiss(.08,heavy?.75:.45,weapon==='staff'?700:weapon==='thunder-katana'?2100:1600);if(['buster','water-katana','thunder-katana','bow'].includes(weapon))this.osc(weapon==='thunder-katana'?510:1250,weapon==='thunder-katana'?130:340,.12,.16,'triangle');if(e.counter)this.osc(1600,650,.1,.13,'sine',.02);}
+ else if(e.type==='breath'){if(e.hero==='zenitsu'){this.hiss(.13,e.heavy?.5:.25,2600,'highpass');this.osc(180,45,.16,.2);}else{this.hiss(.22,.3,800,'lowpass');this.osc(400,180,.18,.08,'sine');}}
  else if(e.type==='block'){this.osc(1100,720,.11,.19,'triangle');this.hiss(.055,.33,2800);}
  else if(e.type==='shot'){this.hiss(.075,.46,1900,'highpass');this.osc(135,45,.09,.26);}
- else if(e.type==='swing'){this.hiss(.1,.23,weapon==='staff'?650:1900);if(weapon==='saber'||weapon==='armor')this.osc(380,100,.14,.12,'triangle');}
+ else if(e.type==='swing'){this.hiss(.1,.23,weapon==='staff'?650:1900);if(weapon==='thunder-katana')this.osc(380,100,.14,.12,'triangle');}
  else if(e.type==='ultimate'){this.osc(70,210,.28,.24,'sawtooth');this.osc(160,330,.25,.11,'triangle');}
  else if(e.type==='land'){this.hiss(.1,e.heavy?.2:.1,300,'lowpass');}
  else if(e.type==='dash'||e.type==='sub'){this.hiss(.14,.26,1100);this.osc(460,140,.12,.08,'triangle');}
@@ -432,18 +451,35 @@ if(p.combo>1){text(String(p.combo).padStart(2,'0'),62,216,65,p.color,'left',800)
 if(world.banner>0){rect(0,290,1200,80,'#071319aa');text(world.bannerText,600,340,27,'#e6f6d6','center',800);}
 text(p.info.name,p.x,Math.max(124,p.y-178),10,p.color,'center');poly([[p.x-4,Math.max(133,p.y-169)],[p.x+4,Math.max(133,p.y-169)],[p.x,Math.max(138,p.y-164)]],p.color);
 }
+function drawBreathEffect(e){
+ const k=1-e.life/e.max,r=e.range*.55;ctx.shadowBlur=9;ctx.lineJoin='round';ctx.lineCap='round';
+ if(e.kind==='waterWheel'){
+  for(let i=0;i<3;i++){ctx.beginPath();ctx.strokeStyle=['#0e69ad','#3ccce9','#edfffb'][i];ctx.lineWidth=[19,10,3][i];ctx.ellipse(0,0,r+i*2,64+i*2,-.6+k*.7,-2.5+k*2,2.6+k*2);ctx.stroke();}
+  for(let i=0;i<9;i++){const a=i*.65+k*3;ellipse(Math.cos(a)*(r+12+k*15),Math.sin(a)*(76+k*12),2+i%3,4,'#b9faff');}
+ }else if(e.kind==='waterDragon'){
+  const pts=[];for(let i=0;i<30;i++){let x=-r+i*r*2/29;pts.push([x,Math.sin(i*.25+k*4+e.index)*23]);}
+  line(pts,'#115d94',24);line(pts,'#28bad3',15);line(pts.map(([x,y])=>[x,y-5]),'#c6fff3',3);
+  const y=pts.at(-1)[1];poly([[r-14,y-13],[r+18,y-10],[r+31,y],[r+12,y+7],[r-12,y+11]],'#b2f5e9');poly([[r+2,y-8],[r+9,y-8],[r+5,y-3]],'#206687');line([[r-5,y-11],[r-12,y-28],[r+6,y-19]],'#d9fff6',3);line([[r+15,y+4],[r+37,y+14]],'#e6fff8',2);
+  for(let i=0;i<6;i++)ellipse(-r+i*r*.4,32+Math.sin(i+k*4)*12,3,5,'#a5f5ec');
+ }else{
+  // Lightning is a cosmetic trace; damage comes from the travelling sword hitbox.
+  const pts=[[-r-100,20],[-r-50,4],[-r-27,16],[-r,-8],[-r+18,8],[0,-6],[20,3],[r,-2],[r+24,-16]];
+  line(pts,'#368cb999',15);line(pts,'#9ae9ff',7);line(pts,'#fff6cb',2.4);
+  for(let i=0;i<4;i++){let x=-r+i*r*.5;line([[x,0],[x+12,-20-i*4],[x+5,-28-i*3],[x+28,-45-i*2]],i%2?'#ffe9a0':'#a2eeff',1.5);}
+  if(e.kind==='thunderSix'){ctx.globalAlpha*=.4;line([[-r-80,35],[r+40,15]],'#fff2ac',2);line([[-r-30,-35],[r+20,-23]],'#b7f5ff',2);}
+ }
+}
+
 function draw(){ctx.clearRect(0,0,1200,640);ctx.save();const camera=fx.camera(world);ctx.translate(600+camera.x,340+camera.y);ctx.scale(camera.zoom,camera.zoom);ctx.translate(-600,-340);RiftScenes.draw(ctx,sceneId,clock,(world.p1.x+world.p2.x)/2,environmentMotion);
 for(const f of [world.p1,world.p2]){ellipse(f.x,Rift.FLOOR+5,38-Math.min(20,(Rift.FLOOR-f.y)*.06),7,'#07171b70');for(const t of f.trail){ctx.save();ctx.globalAlpha=t.life/30;fighter({...f,...t},true);ctx.restore();}ctx.save();if(f.inv>0&&Math.floor(clock/3)%2===0)ctx.globalAlpha=.45;fighter(f);ctx.restore();}
 for(const b of world.projectiles){ctx.save();ctx.translate(b.x,b.y);ctx.scale(b.vx===0?(b.direction||1):Math.sign(b.vx),1);ctx.shadowColor=b.owner.color;ctx.shadowBlur=18;
  if(b.kind==='arrow'){line([[-32,0],[32,0]],'#efddad',3);poly([[32,-5],[43,0],[32,5]],'#fff3cb');line([[-27,-5],[-18,0],[-27,5]],b.owner.color,2);}
  else if(b.kind==='bullet'){line([[-17,0],[16,0]],'#ffe8ad',4);ellipse(17,0,4,3,'#ffffff');}
  else if(b.kind==='grenade'){ctx.rotate(clock*.25);ellipse(0,0,9,11,'#9fa474');rect(-3,-14,6,6,'#c9c2a0');line([[-6,-2],[6,-2]],'#4c6245',2);}
- else if(b.kind==='beam'){rect(-b.w/2,-b.h/2,b.w,b.h,b.owner.color+'44');rect(-b.w/2,-b.h*.23,b.w,b.h*.46,b.owner.color);rect(-b.w/2,-5,b.w,10,'#f4ffff');}
- else if(b.kind==='saber'){ctx.rotate(clock*.33);line([[-35,0],[35,0]],b.owner.color,8);line([[-35,0],[35,0]],'#f3ffef',2);line([[-45,0],[-34,0]],'#b5c3c9',6);}
- else if(b.kind==='orb'){ellipse(0,0,28,28,b.owner.color+'66');ellipse(0,0,17,17,b.owner.color);ellipse(0,0,8,8,'#efffff');}
  else{poly([[-b.w*.7,-b.h*.48],[b.w*.45,-b.h*.32],[b.w*.7,0],[b.w*.45,b.h*.32],[-b.w*.7,b.h*.48],[-b.w*.15,0]],b.owner.color);poly([[0,-b.h*.38],[b.w*.6,0],[0,b.h*.38],[b.w*.2,0]],'#f5ffe8');}ctx.restore();}
 for(const e of world.effects){ctx.save();ctx.globalAlpha=e.life/e.max;ctx.translate(e.x,e.y);ctx.scale(e.dir||1,1);ctx.strokeStyle=e.color;ctx.shadowColor=e.color;ctx.shadowBlur=18;ctx.lineWidth=5;
- if(e.kind==='explosion'){ellipse(0,0,120*(1-e.life/e.max)+10,100*(1-e.life/e.max)+10,e.color+'77');}
+ if(['waterWheel','waterDragon','thunderDash','thunderSix'].includes(e.kind)){drawBreathEffect(e);}
+ else if(e.kind==='explosion'){ellipse(0,0,120*(1-e.life/e.max)+10,100*(1-e.life/e.max)+10,e.color+'77');}
  else if(e.kind==='cross'){line([[-75,-65],[75,65]],e.color,11);line([[-75,65],[75,-65]],'#edffff',8);}
  else if(e.kind==='staff'){line([[-e.range/2,0],[e.range/2,0]],'#795731',17);line([[e.range/2-65,0],[e.range/2,0]],e.color,20);}
  else{ctx.beginPath();ctx.ellipse(0,0,e.kind==='seal'?55:110,65,0,-1.5,1.5);ctx.stroke();if(e.kind==='seal')text('定',35,10,38,e.color,'center',800);}ctx.restore();}
@@ -469,7 +505,7 @@ function paintPreviews(){
 for(const b of document.querySelectorAll('[data-hero]'))b.onclick=()=>chooseHero(b.dataset.hero);
 for(const b of document.querySelectorAll('[data-scene]'))b.onclick=()=>chooseScene(b.dataset.scene);
 paintPreviews();
-Promise.all([RiftFighters.ready,RiftScenes.ready]).then(loaded=>{paintPreviews();$('artStatus').textContent=loaded.includes(false)?'部分美术未能载入，正在使用备用绘制':'角色与战场已就绪';}).catch(()=>{$('artStatus').textContent='部分美术载入失败，请重新打开文件';});
+Promise.all([RiftFighters.ready,RiftScenes.ready]).then(loaded=>{paintPreviews();$('artStatus').textContent=loaded.includes(false)?'部分美术未能载入，正在使用备用绘制':'炭治郎、善逸技能可试玩；新手绘设定在审核页，当前动作使用程序绘制。';}).catch(()=>{$('artStatus').textContent='部分美术载入失败，请重新打开文件';});
 $('opponent').onchange=e=>{world.reset(world.mode,world.p1.hero,e.target.value);fx.reset();endReveal=0;held.clear();paused=false;$('pause').innerHTML='暂停 <kbd>Esc</kbd>';if(started)$('overlay').classList.add('hidden');refreshSelection();canvas.focus();};
 $('environmentMotion').checked=environmentMotion;$('environmentMotion').onchange=e=>{environmentMotion=e.target.checked;};$('shake').checked=world.settings.shake;refreshSelection();chooseScene(sceneId);
 

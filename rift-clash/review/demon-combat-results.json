@@ -1,0 +1,260 @@
+{
+  "checkedAt": "2026-11-06T18:39:27.697Z",
+  "results": [
+    {
+      "id": "replacement_roster",
+      "status": "PASS",
+      "count": 6
+    },
+    {
+      "id": "tanjiro_skill_one_contact_and_mirror",
+      "status": "PASS",
+      "targetHp": [
+        82,
+        82
+      ]
+    },
+    {
+      "id": "tanjiro_ultimate_distinct_segments_and_final_launch",
+      "status": "PASS",
+      "mirrors": [
+        {
+          "hp": 60,
+          "hits": [
+            {
+              "frame": 18,
+              "damage": 10
+            },
+            {
+              "frame": 25,
+              "damage": 9
+            },
+            {
+              "frame": 32,
+              "damage": 9
+            },
+            {
+              "frame": 39,
+              "damage": 12
+            }
+          ]
+        },
+        {
+          "hp": 60,
+          "hits": [
+            {
+              "frame": 18,
+              "damage": 10
+            },
+            {
+              "frame": 25,
+              "damage": 9
+            },
+            {
+              "frame": 32,
+              "damage": 9
+            },
+            {
+              "frame": 39,
+              "damage": 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tanjiro_guard_all_segments",
+      "status": "PASS",
+      "hits": 4,
+      "targetHp": 96
+    },
+    {
+      "id": "tanjiro_substitution_escapes_remaining_segments",
+      "status": "PASS",
+      "damageBeforeEscape": 10,
+      "remainingHits": 0
+    },
+    {
+      "id": "tanjiro_active_motion_stops_during_hitstop",
+      "status": "PASS",
+      "frozenTicks": 5,
+      "positionAndMoveTimeUnchanged": true
+    },
+    {
+      "id": "tanjiro_hit_cancel_and_whiff_recovery",
+      "status": "PASS",
+      "hitJump": true,
+      "whiffImmediateJump": false
+    },
+    {
+      "id": "tanjiro_ultimate_not_cancelled_by_jump",
+      "status": "PASS"
+    },
+    {
+      "id": "tanjiro_wall_and_air_separation",
+      "status": "PASS",
+      "wallHits": 4,
+      "airMiss": true
+    },
+    {
+      "id": "tanjiro_same_frame_skill_trade",
+      "status": "PASS",
+      "out": [
+        [
+          82,
+          82
+        ],
+        [
+          82,
+          82
+        ]
+      ]
+    },
+    {
+      "id": "tanjiro_repeated_skill_spends_energy",
+      "status": "PASS",
+      "lowEnergyLockObserved": true,
+      "maxCombo": 5,
+      "resets": 5
+    },
+    {
+      "id": "tanjiro_no_cost_corner_attack_loop_breaks",
+      "status": "PASS",
+      "maxCombo": 3,
+      "resets": 20
+    },
+    {
+      "id": "zenitsu_skill_one_contact_and_mirror",
+      "status": "PASS",
+      "targetHp": [
+        80,
+        80
+      ]
+    },
+    {
+      "id": "zenitsu_ultimate_distinct_segments_and_final_launch",
+      "status": "PASS",
+      "mirrors": [
+        {
+          "hp": 61,
+          "hits": [
+            {
+              "frame": 20,
+              "damage": 7
+            },
+            {
+              "frame": 25,
+              "damage": 7
+            },
+            {
+              "frame": 30,
+              "damage": 6
+            },
+            {
+              "frame": 35,
+              "damage": 6
+            },
+            {
+              "frame": 40,
+              "damage": 5
+            },
+            {
+              "frame": 45,
+              "damage": 8
+            }
+          ]
+        },
+        {
+          "hp": 61,
+          "hits": [
+            {
+              "frame": 20,
+              "damage": 7
+            },
+            {
+              "frame": 25,
+              "damage": 7
+            },
+            {
+              "frame": 30,
+              "damage": 6
+            },
+            {
+              "frame": 35,
+              "damage": 6
+            },
+            {
+              "frame": 40,
+              "damage": 5
+            },
+            {
+              "frame": 45,
+              "damage": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zenitsu_guard_all_segments",
+      "status": "PASS",
+      "hits": 6,
+      "targetHp": 94
+    },
+    {
+      "id": "zenitsu_substitution_escapes_remaining_segments",
+      "status": "PASS",
+      "damageBeforeEscape": 7,
+      "remainingHits": 0
+    },
+    {
+      "id": "zenitsu_active_motion_stops_during_hitstop",
+      "status": "PASS",
+      "frozenTicks": 3,
+      "positionAndMoveTimeUnchanged": true
+    },
+    {
+      "id": "zenitsu_hit_cancel_and_whiff_recovery",
+      "status": "PASS",
+      "hitJump": true,
+      "whiffImmediateJump": false
+    },
+    {
+      "id": "zenitsu_ultimate_not_cancelled_by_jump",
+      "status": "PASS"
+    },
+    {
+      "id": "zenitsu_wall_and_air_separation",
+      "status": "PASS",
+      "wallHits": 6,
+      "airMiss": true
+    },
+    {
+      "id": "zenitsu_same_frame_skill_trade",
+      "status": "PASS",
+      "out": [
+        [
+          80,
+          80
+        ],
+        [
+          80,
+          80
+        ]
+      ]
+    },
+    {
+      "id": "zenitsu_repeated_skill_spends_energy",
+      "status": "PASS",
+      "lowEnergyLockObserved": true,
+      "maxCombo": 5,
+      "resets": 5
+    },
+    {
+      "id": "zenitsu_no_cost_corner_attack_loop_breaks",
+      "status": "PASS",
+      "maxCombo": 3,
+      "resets": 20
+    }
+  ]
+}
