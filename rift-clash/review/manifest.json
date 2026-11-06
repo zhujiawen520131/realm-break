@@ -1496,7 +1496,17 @@
         "帧以共同地面锚点摆放；跳跃/空中斩带预览垂直偏移，接游戏物理时须去除预览偏移，避免重复位移。",
         "动画细节、连贯度、武器尺度和两处源图边界仍需人工确认，所有内容均为待审核稿。",
         "特效可能经隔离被删减，应作为独立特效层制作。"
-      ]
+      ],
+      "designApproval": {
+        "status": "approved",
+        "date": "2026-11-07",
+        "notes": "无补充意见",
+        "scope": "角色设定；不包含动作序列帧",
+        "designHashes": {
+          "design/cloud-front.png": "51b0c280936b518aae643a843e827f2287cadb1a1b00d3c67abd22bbeccfc299",
+          "design/cloud-side.png": "7bc635a456dccdd65b21ed956ff3e52db574a5d6f817dbece61b71fd041fcb61"
+        }
+      }
     },
     {
       "id": "lara",
@@ -1525,7 +1535,17 @@
       "clips": [],
       "notes": [
         "已提供正侧面设定；动作序列尚未制作。"
-      ]
+      ],
+      "designApproval": {
+        "status": "approved",
+        "date": "2026-11-07",
+        "notes": "无补充意见",
+        "scope": "角色设定；不包含动作序列帧",
+        "designHashes": {
+          "design/lara-front.png": "1b67ae56c57ccb9b927942349cd3de94dd0b762d5434ba0b864f73ff56920931",
+          "design/lara-side.png": "06a689166fc78065bb3d3fac03623f8540b2cda3a14b476da2f3f01898d80158"
+        }
+      }
     },
     {
       "id": "wukong",
@@ -1555,20 +1575,42 @@
       "clips": [],
       "notes": [
         "已提供正侧面设定；动作序列尚未制作。"
-      ]
+      ],
+      "designApproval": {
+        "status": "approved",
+        "date": "2026-11-07",
+        "notes": "无补充意见",
+        "scope": "角色设定；不包含动作序列帧",
+        "designHashes": {
+          "design/wukong-front.png": "bbfe628a721af756a84ebcbda72a887b350def5ad7ee56d2293639f5dbb65d29",
+          "design/wukong-side.png": "c66a703c55c025bfc6807508284b7695686849b78739e54f3840ff9e782af60f"
+        }
+      }
     },
     {
       "id": "drake",
       "name": "内森·德雷克",
       "version": "Uncharted 4: A Thief’s End (2016)",
-      "status": "reference-only",
+      "status": "design-only",
       "sourceLinks": [
         "https://www.playstation.com/en-us/games/uncharted-4-a-thiefs-end/"
       ],
-      "design": [],
+      "design": [
+        {
+          "id": "turnaround-detail",
+          "label": "正面 · 朝右侧面 · 枪套与服装细节（点击放大）",
+          "image": "design/nathan-turnaround-detail.png",
+          "width": 1536,
+          "height": 1024,
+          "sha256": "4ab8be9acaa6018901086c804bf33f56ec18ba2124d0d7a59bc336b268357ae2"
+        }
+      ],
       "clips": [],
       "notes": [
-        "已收集官方参考，本轮尚无可审核的生成设定或动作图；此前组合角色图生成遭安全系统拦截。"
+        "已提交角色设定板，待审核；动作序列尚未制作。"
+      ],
+      "designReviewNotes": [
+        "参照《神秘海域4》内森造型制作。原始参考未完整展示的鞋与裤脚等侧面细节含设计推断，请一并审核。"
       ]
     },
     {
@@ -1583,7 +1625,10 @@
       "design": [],
       "clips": [],
       "notes": [
-        "已收集可靠媒体与官方参考，本轮尚无可审核的生成设定或动作图；此前组合角色图生成遭安全系统拦截。"
+        "本次单角色设计图生成被图像服务拦截，尚无可审核设计稿；动作也未提交。"
+      ],
+      "designReviewNotes": [
+        "生成服务未给出可操作的具体原因。当前只有参考资料，没有新设计图。"
       ]
     },
     {
@@ -1598,7 +1643,10 @@
       "design": [],
       "clips": [],
       "notes": [
-        "已收集官方参考，本轮尚无可审核的生成设定或动作图；此前组合角色图生成遭安全系统拦截。"
+        "本次单角色设计图生成被图像服务拦截，尚无可审核设计稿；动作也未提交。"
+      ],
+      "designReviewNotes": [
+        "生成服务未给出可操作的具体原因。当前只有参考资料，没有新设计图。"
       ]
     }
   ],
