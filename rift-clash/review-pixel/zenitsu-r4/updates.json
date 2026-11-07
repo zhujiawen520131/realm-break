@@ -1,0 +1,241 @@
+{
+  "items": [
+    {
+      "id": "zenitsu-lightning",
+      "image": "zenitsu-r4/animation-sheet.png",
+      "sha256": "0b46a057e99309f378dd2b0223e5a9137ca84e077a61b98b6ee0742b6c4fe6ff",
+      "status": "pending",
+      "notes": [
+        "普通雷光斩的八帧审核样稿，动作姿态参考已通过的炭治郎序列；并非新视频的六连必杀。",
+        "无刀鞘、单刀，角色与雷光合成在一层。",
+        "预览时长沿用上一轮，不是实机帧表。"
+      ],
+      "frames": [
+        {
+          "image": "zenitsu-r4/frames/01.png",
+          "sha256": "04e8e6bafa2011e7e5a487dc795f07f04eb40edd89ab3ff110f39873dd92da5e",
+          "durationMs": 120,
+          "swordState": "drawn",
+          "extraction": {
+            "source": "zenitsu-r4/animation-lightning-source.png",
+            "rect": [
+              0,
+              0,
+              431,
+              480
+            ],
+            "padding": [
+              32,
+              30,
+              33,
+              14
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        },
+        {
+          "image": "zenitsu-r4/frames/02.png",
+          "sha256": "73c68195f3bab3503158b2102c07918c07054cdcd9c2b00492d93bd387b03bdd",
+          "durationMs": 110,
+          "swordState": "drawn",
+          "extraction": {
+            "source": "zenitsu-r4/animation-lightning-source.png",
+            "rect": [
+              431,
+              0,
+              432,
+              480
+            ],
+            "padding": [
+              32,
+              30,
+              32,
+              14
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        },
+        {
+          "image": "zenitsu-r4/frames/03.png",
+          "sha256": "1556c3e05bf36596db900e1d69998a80b169cc08e4e2c721b0cb64b10a2c015c",
+          "durationMs": 130,
+          "swordState": "drawn",
+          "extraction": {
+            "source": "zenitsu-r4/animation-lightning-source.png",
+            "rect": [
+              863,
+              0,
+              431,
+              480
+            ],
+            "padding": [
+              32,
+              30,
+              33,
+              14
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        },
+        {
+          "image": "zenitsu-r4/frames/04.png",
+          "sha256": "37ecd14bfb7f7eca9567262dd2d3f4fd2a82ad6cc78aec8d684f39864511e5d8",
+          "durationMs": 70,
+          "swordState": "drawn",
+          "extraction": {
+            "source": "zenitsu-r4/animation-lightning-source.png",
+            "rect": [
+              1294,
+              0,
+              432,
+              480
+            ],
+            "padding": [
+              32,
+              30,
+              32,
+              14
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        },
+        {
+          "image": "zenitsu-r4/frames/05.png",
+          "sha256": "ab02ff4a618ac7a20d36c48922686879eca1f029e4415e65678d443e2923959d",
+          "durationMs": 90,
+          "swordState": "drawn",
+          "extraction": {
+            "source": "zenitsu-r4/animation-lightning-source.png",
+            "rect": [
+              0,
+              480,
+              431,
+              431
+            ],
+            "padding": [
+              32,
+              68,
+              33,
+              25
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        },
+        {
+          "image": "zenitsu-r4/frames/06.png",
+          "sha256": "1cf1482adcc8cef7d2b206c6290e8210a9767de27316e8052cb3fea7859e117b",
+          "durationMs": 100,
+          "swordState": "drawn",
+          "extraction": {
+            "source": "zenitsu-r4/animation-lightning-source.png",
+            "rect": [
+              431,
+              480,
+              432,
+              431
+            ],
+            "padding": [
+              32,
+              68,
+              32,
+              25
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        },
+        {
+          "image": "zenitsu-r4/frames/07.png",
+          "sha256": "fbd3c284402d7bfe01a21091f0afdc912339913322df1773f116a868cd1aee4d",
+          "durationMs": 110,
+          "swordState": "drawn",
+          "extraction": {
+            "source": "zenitsu-r4/animation-lightning-source.png",
+            "rect": [
+              863,
+              480,
+              431,
+              431
+            ],
+            "padding": [
+              32,
+              68,
+              33,
+              25
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        },
+        {
+          "image": "zenitsu-r4/frames/08.png",
+          "sha256": "a93ae64b2a8aec656487c687c58a65505e32816c1f5776bd17386bfd00375b77",
+          "durationMs": 160,
+          "swordState": "drawn",
+          "extraction": {
+            "source": "zenitsu-r4/animation-lightning-source.png",
+            "rect": [
+              1294,
+              480,
+              432,
+              431
+            ],
+            "padding": [
+              32,
+              68,
+              32,
+              25
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "sources": {
+    "previousAnimation": "zenitsu-r3/animation-sheet.png",
+    "identityReference": "zenitsu-r3/design.png",
+    "poseReference": "tanjiro-water-review-sheet.png",
+    "animation": "zenitsu-r4/animation-lightning-source.png",
+    "prompts": "zenitsu-r4/prompts.json",
+    "approval": "pending"
+  }
+}

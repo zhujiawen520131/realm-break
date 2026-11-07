@@ -1,0 +1,44 @@
+{
+  "approvalId": "pixel-r6-user-animation-rejection-3-20261107",
+  "reviewedRevision": "pixel-r6-review-3",
+  "source": "用户对话审核意见",
+  "decisions": [
+    {
+      "id": "zenitsu-lightning",
+      "label": "善逸：雷光突进斩（8 姿态）",
+      "status": "changes",
+      "comment": "整体动作参考炭治郎",
+      "imageSha256": "7df8be3e293728c804f040eab34315146bcbbbca9fc6973e0bc4e6a805e12d93",
+      "frameHashes": {
+        "zenitsu-r3/frames/01.png": "e9e0e4911dc1f724626c209f811f6f8bcb166ce5879caac05b89e10420d7aef3",
+        "zenitsu-r3/frames/02.png": "6ebff2ca6233d6d338bfda73af9d41bc30732d6f0c82a16279553e732d7b56f8",
+        "zenitsu-r3/frames/03.png": "d5971b4958e574754884efc5eb7eb44b95172a0c46b199f33ff7a1b46de733dd",
+        "zenitsu-r3/frames/04.png": "02af17c208a9ffeb3e8f27eb756aa0ebd551f3ca4e1d9c696bbfc0c8207e7541",
+        "zenitsu-r3/frames/05.png": "89e27b62eadcdc259815e796a6accc6987c21a4a907809ec31f395abefed5901",
+        "zenitsu-r3/frames/06.png": "422e48b9642b624cd04a7ec39cfbba14c52977a5f4f4974252b77ca66c9e4e06",
+        "zenitsu-r3/frames/07.png": "77c0cf26cea3a46b791c34a2e2188f8179dbf49655a07e7b767448ef04746c1a",
+        "zenitsu-r3/frames/08.png": "29d0f8b10a1188fb119d6091f020af0397ebc78615f061dbea2baa5c8f2fb665"
+      },
+      "frameOrder": [
+        "zenitsu-r3/frames/01.png",
+        "zenitsu-r3/frames/02.png",
+        "zenitsu-r3/frames/03.png",
+        "zenitsu-r3/frames/04.png",
+        "zenitsu-r3/frames/05.png",
+        "zenitsu-r3/frames/06.png",
+        "zenitsu-r3/frames/07.png",
+        "zenitsu-r3/frames/08.png"
+      ],
+      "frameDurations": [
+        120,
+        110,
+        130,
+        70,
+        90,
+        100,
+        110,
+        160
+      ]
+    }
+  ]
+}
