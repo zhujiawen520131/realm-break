@@ -114,7 +114,7 @@ function resolveAnimation(f,t=0,ghost=false){
 const CLOUD_MOVE_CLIPS={slash1:'attack1',slash2:'attack2',slash3:'attack3',launcher:'launcher',air:'air',skill:'skill',ultimate:'ultimate'};
 const cloudPack=root.RiftCloudFrames,cloudImages={};let cloudLoaded=false;
 const cloudReady=(async()=>{
- if(!cloudPack||typeof root.Image!=='function')return false;
+ if(root.RiftMotionData?.fullRoster||!cloudPack||typeof root.Image!=='function')return false;
  const jobs=[];
  for(const [id,clip] of Object.entries(cloudPack.clips)){cloudImages[id]=[];clip.frames.forEach((f,index)=>jobs.push(new Promise(resolve=>{const img=new root.Image();img.onload=()=>{cloudImages[id][index]=img;resolve(true);};img.onerror=()=>resolve(false);img.src=f.src;})));}
  const results=await Promise.all(jobs);cloudLoaded=results.every(Boolean);return cloudLoaded;
