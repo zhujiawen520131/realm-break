@@ -1,0 +1,498 @@
+{
+  "revision": "pixel-r6-review-1",
+  "status": "technically-ready-for-user-review-with-notes",
+  "userApproval": "pending; earlier hand-painted approvals do not carry over",
+  "scope": {
+    "designs": 6,
+    "animationSamples": 3,
+    "totalAnimationFrames": 24,
+    "backgrounds": 1,
+    "manifestItems": 10,
+    "full78AnimationsCompleted": false,
+    "runtimeIntegrated": false
+  },
+  "manifestSha256": "426c800517b42f3229f76559b1f830067f50ff3370954209c8c6fcb769e37660",
+  "inspection": {
+    "actuallyViewedSheets": [
+      "six-design-sheet.png",
+      "arena-raw.png",
+      "cloud-slash-clean-sheet.png",
+      "zenitsu-lightning-clean-sheet.png",
+      "tanjiro-water-redraw-sheet.png",
+      "tanjiro-water-final-sheet.png",
+      "tanjiro-pose3-source.png"
+    ],
+    "actuallyViewedFinalFramesOnGray": [
+      "frames/cloud-slash/03.png",
+      "frames/cloud-slash/06.png",
+      "frames/tanjiro-water/03.png",
+      "frames/tanjiro-water/06.png",
+      "frames/zenitsu-lightning/04.png",
+      "frames/zenitsu-lightning/06.png"
+    ],
+    "alphaMethod": "Native Canvas composition on #808080 gray; transparent PNG hidden RGB not mistaken for visible colored fringe",
+    "allManifestItemHashesVerified": true,
+    "all24FrameHashesVerified": true,
+    "all24FramesVisibleEdgePixelsOver16": 0
+  },
+  "groups": [
+    {
+      "id": "cloud-slash",
+      "frameCount": 8,
+      "footContentBottomRange": [
+        405,
+        406
+      ],
+      "footContentBottomSpreadPixels": 1
+    },
+    {
+      "id": "tanjiro-water",
+      "frameCount": 8,
+      "footContentBottomRange": [
+        499,
+        501
+      ],
+      "footContentBottomSpreadPixels": 2
+    },
+    {
+      "id": "zenitsu-lightning",
+      "frameCount": 8,
+      "footContentBottomRange": [
+        396,
+        401
+      ],
+      "footContentBottomSpreadPixels": 5
+    }
+  ],
+  "frames": [
+    {
+      "item": "cloud-slash",
+      "frame": 1,
+      "image": "frames/cloud-slash/01.png",
+      "width": 496,
+      "height": 444,
+      "visibleBBoxAlphaOver64": [
+        105,
+        45,
+        426,
+        406
+      ],
+      "edgePixelsAlphaOver16": 0,
+      "edgePixelsAlphaOver64": 0,
+      "sha256MatchesManifest": true
+    },
+    {
+      "item": "cloud-slash",
+      "frame": 2,
+      "image": "frames/cloud-slash/02.png",
+      "width": 496,
+      "height": 444,
+      "visibleBBoxAlphaOver64": [
+        83,
+        72,
+        372,
+        405
+      ],
+      "edgePixelsAlphaOver16": 0,
+      "edgePixelsAlphaOver64": 0,
+      "sha256MatchesManifest": true
+    },
+    {
+      "item": "cloud-slash",
+      "frame": 3,
+      "image": "frames/cloud-slash/03.png",
+      "width": 496,
+      "height": 444,
+      "visibleBBoxAlphaOver64": [
+        97,
+        20,
+        378,
+        405
+      ],
+      "edgePixelsAlphaOver16": 0,
+      "edgePixelsAlphaOver64": 0,
+      "sha256MatchesManifest": true
+    },
+    {
+      "item": "cloud-slash",
+      "frame": 4,
+      "image": "frames/cloud-slash/04.png",
+      "width": 496,
+      "height": 444,
+      "visibleBBoxAlphaOver64": [
+        73,
+        42,
+        401,
+        405
+      ],
+      "edgePixelsAlphaOver16": 0,
+      "edgePixelsAlphaOver64": 0,
+      "sha256MatchesManifest": true
+    },
+    {
+      "item": "cloud-slash",
+      "frame": 5,
+      "image": "frames/cloud-slash/05.png",
+      "width": 496,
+      "height": 444,
+      "visibleBBoxAlphaOver64": [
+        66,
+        45,
+        442,
+        405
+      ],
+      "edgePixelsAlphaOver16": 0,
+      "edgePixelsAlphaOver64": 0,
+      "sha256MatchesManifest": true
+    },
+    {
+      "item": "cloud-slash",
+      "frame": 6,
+      "image": "frames/cloud-slash/06.png",
+      "width": 496,
+      "height": 444,
+      "visibleBBoxAlphaOver64": [
+        68,
+        45,
+        443,
+        405
+      ],
+      "edgePixelsAlphaOver16": 0,
+      "edgePixelsAlphaOver64": 0,
+      "sha256MatchesManifest": true
+    },
+    {
+      "item": "cloud-slash",
+      "frame": 7,
+      "image": "frames/cloud-slash/07.png",
+      "width": 496,
+      "height": 444,
+      "visibleBBoxAlphaOver64": [
+        44,
+        68,
+        484,
+        405
+      ],
+      "edgePixelsAlphaOver16": 0,
+      "edgePixelsAlphaOver64": 0,
+      "sha256MatchesManifest": true
+    },
+    {
+      "item": "cloud-slash",
+      "frame": 8,
+      "image": "frames/cloud-slash/08.png",
+      "width": 496,
+      "height": 444,
+      "visibleBBoxAlphaOver64": [
+        89,
+        39,
+        421,
+        405
+      ],
+      "edgePixelsAlphaOver16": 0,
+      "edgePixelsAlphaOver64": 0,
+      "sha256MatchesManifest": true
+    },
+    {
+      "item": "tanjiro-water",
+      "frame": 1,
+      "image": "frames/tanjiro-water/01.png",
+      "width": 496,
+      "height": 524,
+      "visibleBBoxAlphaOver64": [
+        108,
+        163,
+        394,
+        501
+      ],
+      "edgePixelsAlphaOver16": 0,
+      "edgePixelsAlphaOver64": 0,
+      "sha256MatchesManifest": true
+    },
+    {
+      "item": "tanjiro-water",
+      "frame": 2,
+      "image": "frames/tanjiro-water/02.png",
+      "width": 496,
+      "height": 524,
+      "visibleBBoxAlphaOver64": [
+        75,
+        165,
+        374,
+        501
+      ],
+      "edgePixelsAlphaOver16": 0,
+      "edgePixelsAlphaOver64": 0,
+      "sha256MatchesManifest": true
+    },
+    {
+      "item": "tanjiro-water",
+      "frame": 3,
+      "image": "frames/tanjiro-water/03.png",
+      "width": 496,
+      "height": 524,
+      "visibleBBoxAlphaOver64": [
+        94,
+        19,
+        363,
+        499
+      ],
+      "edgePixelsAlphaOver16": 0,
+      "edgePixelsAlphaOver64": 0,
+      "sha256MatchesManifest": true
+    },
+    {
+      "item": "tanjiro-water",
+      "frame": 4,
+      "image": "frames/tanjiro-water/04.png",
+      "width": 496,
+      "height": 524,
+      "visibleBBoxAlphaOver64": [
+        80,
+        169,
+        429,
+        501
+      ],
+      "edgePixelsAlphaOver16": 0,
+      "edgePixelsAlphaOver64": 0,
+      "sha256MatchesManifest": true
+    },
+    {
+      "item": "tanjiro-water",
+      "frame": 5,
+      "image": "frames/tanjiro-water/05.png",
+      "width": 496,
+      "height": 524,
+      "visibleBBoxAlphaOver64": [
+        77,
+        172,
+        438,
+        501
+      ],
+      "edgePixelsAlphaOver16": 0,
+      "edgePixelsAlphaOver64": 0,
+      "sha256MatchesManifest": true
+    },
+    {
+      "item": "tanjiro-water",
+      "frame": 6,
+      "image": "frames/tanjiro-water/06.png",
+      "width": 496,
+      "height": 524,
+      "visibleBBoxAlphaOver64": [
+        71,
+        168,
+        423,
+        501
+      ],
+      "edgePixelsAlphaOver16": 0,
+      "edgePixelsAlphaOver64": 0,
+      "sha256MatchesManifest": true
+    },
+    {
+      "item": "tanjiro-water",
+      "frame": 7,
+      "image": "frames/tanjiro-water/07.png",
+      "width": 496,
+      "height": 524,
+      "visibleBBoxAlphaOver64": [
+        92,
+        168,
+        405,
+        501
+      ],
+      "edgePixelsAlphaOver16": 0,
+      "edgePixelsAlphaOver64": 0,
+      "sha256MatchesManifest": true
+    },
+    {
+      "item": "tanjiro-water",
+      "frame": 8,
+      "image": "frames/tanjiro-water/08.png",
+      "width": 496,
+      "height": 524,
+      "visibleBBoxAlphaOver64": [
+        105,
+        166,
+        389,
+        501
+      ],
+      "edgePixelsAlphaOver16": 0,
+      "edgePixelsAlphaOver64": 0,
+      "sha256MatchesManifest": true
+    },
+    {
+      "item": "zenitsu-lightning",
+      "frame": 1,
+      "image": "frames/zenitsu-lightning/01.png",
+      "width": 496,
+      "height": 444,
+      "visibleBBoxAlphaOver64": [
+        138,
+        36,
+        436,
+        401
+      ],
+      "edgePixelsAlphaOver16": 0,
+      "edgePixelsAlphaOver64": 0,
+      "sha256MatchesManifest": true
+    },
+    {
+      "item": "zenitsu-lightning",
+      "frame": 2,
+      "image": "frames/zenitsu-lightning/02.png",
+      "width": 496,
+      "height": 444,
+      "visibleBBoxAlphaOver64": [
+        118,
+        91,
+        360,
+        400
+      ],
+      "edgePixelsAlphaOver16": 0,
+      "edgePixelsAlphaOver64": 0,
+      "sha256MatchesManifest": true
+    },
+    {
+      "item": "zenitsu-lightning",
+      "frame": 3,
+      "image": "frames/zenitsu-lightning/03.png",
+      "width": 496,
+      "height": 444,
+      "visibleBBoxAlphaOver64": [
+        84,
+        105,
+        339,
+        400
+      ],
+      "edgePixelsAlphaOver16": 0,
+      "edgePixelsAlphaOver64": 0,
+      "sha256MatchesManifest": true
+    },
+    {
+      "item": "zenitsu-lightning",
+      "frame": 4,
+      "image": "frames/zenitsu-lightning/04.png",
+      "width": 496,
+      "height": 444,
+      "visibleBBoxAlphaOver64": [
+        19,
+        106,
+        383,
+        396
+      ],
+      "edgePixelsAlphaOver16": 0,
+      "edgePixelsAlphaOver64": 0,
+      "sha256MatchesManifest": true
+    },
+    {
+      "item": "zenitsu-lightning",
+      "frame": 5,
+      "image": "frames/zenitsu-lightning/05.png",
+      "width": 496,
+      "height": 444,
+      "visibleBBoxAlphaOver64": [
+        80,
+        89,
+        438,
+        397
+      ],
+      "edgePixelsAlphaOver16": 0,
+      "edgePixelsAlphaOver64": 0,
+      "sha256MatchesManifest": true
+    },
+    {
+      "item": "zenitsu-lightning",
+      "frame": 6,
+      "image": "frames/zenitsu-lightning/06.png",
+      "width": 496,
+      "height": 444,
+      "visibleBBoxAlphaOver64": [
+        84,
+        89,
+        481,
+        397
+      ],
+      "edgePixelsAlphaOver16": 0,
+      "edgePixelsAlphaOver64": 0,
+      "sha256MatchesManifest": true
+    },
+    {
+      "item": "zenitsu-lightning",
+      "frame": 7,
+      "image": "frames/zenitsu-lightning/07.png",
+      "width": 496,
+      "height": 444,
+      "visibleBBoxAlphaOver64": [
+        84,
+        74,
+        385,
+        397
+      ],
+      "edgePixelsAlphaOver16": 0,
+      "edgePixelsAlphaOver64": 0,
+      "sha256MatchesManifest": true
+    },
+    {
+      "item": "zenitsu-lightning",
+      "frame": 8,
+      "image": "frames/zenitsu-lightning/08.png",
+      "width": 496,
+      "height": 444,
+      "visibleBBoxAlphaOver64": [
+        117,
+        36,
+        412,
+        397
+      ],
+      "edgePixelsAlphaOver16": 0,
+      "edgePixelsAlphaOver64": 0,
+      "sha256MatchesManifest": true
+    }
+  ],
+  "resolvedFindings": [
+    {
+      "id": "cropping",
+      "result": "Cloud raised blade, Tanjiro water arc and all final frame borders contain no visible clipped alpha; neighboring poses excluded by custom cuts/padding."
+    },
+    {
+      "id": "tanjiro-thrust",
+      "result": "Rebuilt anticipation left-up, overhead, diagonal chop, cross-body sweep and back-turn follow-through now have clear blade angle and shoulder/hip changes; no longer simply forward extension plus water ring."
+    },
+    {
+      "id": "tanjiro-short-blade",
+      "result": "Separately regenerated overhead pose restores long blade; all Tanjiro review frames enlarged to 496x524 so full weapon fits."
+    },
+    {
+      "id": "alpha-fringe",
+      "result": "Cloud and Zenitsu clean sheets and six final frame samples composite cleanly on gray; no baked rectangular background or colored hidden-RGB halo in inspected samples."
+    }
+  ],
+  "remainingReviewNotes": [
+    {
+      "severity": "art-review",
+      "id": "zenitsu-straight-release",
+      "detail": "Low draw/dash is readable, but frame 6 still extends blade straight forward. Ask user to assess whether it reads as desired iai slash; do not declare this approved."
+    },
+    {
+      "severity": "integration-before-production",
+      "id": "anchors",
+      "detail": "No gameplay anchor metadata. Content-bottom spread is Cloud1px, Tanjiro2px, Zenitsu5px; these are padded review canvases, not runtime collision/root-motion calibration."
+    },
+    {
+      "severity": "integration-before-production",
+      "id": "combined-fx",
+      "detail": "Animation samples combine character and painted effects; independent FX layers and actual attack-event timing remain unimplemented."
+    },
+    {
+      "severity": "review-only",
+      "id": "design-backgrounds",
+      "detail": "Six design crops retain semi-transparent halos and are for style approval, not directly usable runtime sprites."
+    },
+    {
+      "severity": "review-only",
+      "id": "timing",
+      "detail": "Manifest durations are illustrative preview timing, not validated gameplay startup/active/recovery frames."
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="dark"><title>裂界 · 像素重制样稿审核</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header class="topbar"><div><a class="brand" href="../preview-fx/">裂界 <span>RIFT CLASH</span></a><h1>像素重制样稿审核</h1><p>本页展示新像素风格的阶段样稿，不代表全部 78 组动作已经完成。</p></div><a class="back" href="../preview-fx/">返回当前试玩 ↗</a></header>
+<main>
+<div id="notice" class="notice" role="status">正在载入像素样稿清单…</div>
+<section id="review" hidden>
+<div class="summary"><div><span id="revision" class="tag"></span><span id="progress"></span></div><button id="copyAll" class="primary">复制完整审核意见</button></div>
+<div class="layout"><aside aria-label="样稿列表"><div class="aside-title">选择审核项目 <span>← / → 切换</span></div><div id="itemList" class="item-list"></div></aside>
+<article class="detail">
+<div class="item-heading"><div><span id="itemKind" class="eyebrow"></span><h2 id="itemTitle"></h2></div><div class="navigation"><button id="prevItem" aria-label="上一项">←</button><span id="itemPosition"></span><button id="nextItem" aria-label="下一项">→</button></div></div>
+<ul id="itemNotes" class="notes"></ul>
+<div class="view-tools"><label>缩放 <select id="zoom"><option value="fit">适合窗口</option><option value="0.33">0.33× 游戏尺寸参考</option><option value="1">1× 原图</option><option value="2">2×</option><option value="4">4×</option></select></label><fieldset class="backgrounds"><legend>预览底色</legend><label><input type="radio" name="background" value="checker" checked> 棋盘</label><label><input type="radio" name="background" value="dark"> 深色</label><label><input type="radio" name="background" value="light"> 浅色</label></fieldset><a id="original" target="_blank" rel="noopener">打开当前原图 ↗</a><a id="sheet" target="_blank" rel="noopener" hidden>查看整张序列图 ↗</a></div>
+<div id="viewport" class="viewport checker"><img id="art" alt="" decoding="async"><p id="imageError" hidden role="alert">这张图暂时无法载入，请切换项目或稍后重试。</p></div>
+<div class="image-meta"><span id="dimensions"></span><span>像素显示 · 不做平滑插值</span></div>
+<section id="animation" class="animation" hidden aria-label="动作序列帧"><div class="animation-controls"><button id="play">▶ 播放</button><button id="prevFrame" aria-label="上一帧">上一帧</button><button id="nextFrame" aria-label="下一帧">下一帧</button><span id="framePosition"></span></div><div id="frames" class="frames"></div></section>
+<section class="decision" aria-label="本项审核意见"><h3>这项样稿是否通过？</h3><div class="decision-options"><label class="approve"><input type="radio" name="decision" value="approved"> 通过</label><label class="changes"><input type="radio" name="decision" value="changes"> 需要修改</label><label><input type="radio" name="decision" value="pending"> 暂未审核</label></div><label for="comment">补充意见 <span>可写明需要调整的帧号、姿态或特效</span></label><textarea id="comment" rows="4" placeholder="例如：第 3 帧挥刀幅度偏小，希望拉开肩胯转动。"></textarea><p class="save-note" id="saveStatus">意见自动保存在本浏览器；复制后发送给我，即可提交审核。</p></section>
+</article></div>
+</section>
+<section id="copyPanel" class="copy-panel" hidden><div><h2>完整审核意见</h2><button id="closeCopy">收起</button></div><p id="copyStatus" role="status"></p><textarea id="copyText" rows="16" readonly aria-label="可复制的完整审核意见"></textarea><button id="selectText">全选文字</button></section>
+</main><footer>新像素样稿独立审核；此前手绘版本的“通过”不会自动沿用。</footer>
+<script src="app.js"></script>
+</body></html>

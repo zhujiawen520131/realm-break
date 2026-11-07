@@ -138,7 +138,7 @@ function draw(context,f,t=0,ghost=false){
  if(!img&&fullRoster&&pack?.heroes?.[f?.hero]){
   // During streaming or a failed clip, retain this hero's approved idle art.
   // Never fall through to the old procedural/atlas character renderer.
-  if(!ghost)ensureHero(f.hero);
+  // App owns loading/retry; drawing a missing frame must not retry every RAF.
   pose=poseFor(f,'idle',0);img=images[f.hero]?.idle?.[0];
   if(!img)return true;
  }

@@ -1,0 +1,818 @@
+{
+  "revision": "pixel-r6-review-1",
+  "status": "pending",
+  "purpose": "仅供新像素风格及动作审核，不继承旧手绘批准，不是已完成全部动作或可直接投产素材。",
+  "imageGenerationPrompts": "prompts.json",
+  "originalDesignSheet": "six-design-sheet.png",
+  "originalBackground": "arena-raw.png",
+  "grid": {
+    "designSheet": "3 columns × 2 rows; designated cuts are in each item",
+    "motionSheets": "Source sheets 4 × 2 at 1774×887; review frames 496×444, except Tanjiro 496×524 with an independently generated frame 3; composed review sheet 1984×1048",
+    "alphaBoundaryThreshold": 64,
+    "previewTiming": "milliseconds; illustrative only, not game timing"
+  },
+  "items": [
+    {
+      "id": "design-cloud",
+      "label": "克劳德 Cloud",
+      "kind": "design",
+      "image": "designs/cloud.png",
+      "sha256": "cfb02033e4948bc28776644674b9fd9a16a91a8c14e5cfe1a69c411c4006f7d5",
+      "status": "pending",
+      "notes": [
+        "由六人设计原稿裁出；含半透明背景光晕，仅供画风审核，不是可直接用于游戏的精灵。"
+      ],
+      "extraction": {
+        "source": "six-design-sheet.png",
+        "rect": [
+          0,
+          0,
+          512,
+          512
+        ]
+      }
+    },
+    {
+      "id": "design-lara",
+      "label": "劳拉 Lara",
+      "kind": "design",
+      "image": "designs/lara.png",
+      "sha256": "74ed2ce9c0ee33465ed4475ce490b2baa6999320c3a2bd4bc79171ad9e664f7b",
+      "status": "pending",
+      "notes": [
+        "由六人设计原稿裁出；含半透明背景光晕，仅供画风审核，不是可直接用于游戏的精灵。"
+      ],
+      "extraction": {
+        "source": "six-design-sheet.png",
+        "rect": [
+          512,
+          0,
+          448,
+          512
+        ]
+      }
+    },
+    {
+      "id": "design-destined-one",
+      "label": "天命人 Destined One",
+      "kind": "design",
+      "image": "designs/destined-one.png",
+      "sha256": "55229bbd7c63a68b00f997115de8f21aaa8b5d9a3774438f7c35591bba70d9f9",
+      "status": "pending",
+      "notes": [
+        "由六人设计原稿裁出；含半透明背景光晕，仅供画风审核，不是可直接用于游戏的精灵。"
+      ],
+      "extraction": {
+        "source": "six-design-sheet.png",
+        "rect": [
+          960,
+          0,
+          576,
+          512
+        ]
+      }
+    },
+    {
+      "id": "design-nathan-drake",
+      "label": "内森 Nathan Drake",
+      "kind": "design",
+      "image": "designs/nathan-drake.png",
+      "sha256": "f3746e33a0df527067fcbc821574a6a2c584286dae090dfaa8b0ccc9b7219599",
+      "status": "pending",
+      "notes": [
+        "由六人设计原稿裁出；含半透明背景光晕，仅供画风审核，不是可直接用于游戏的精灵。"
+      ],
+      "extraction": {
+        "source": "six-design-sheet.png",
+        "rect": [
+          0,
+          512,
+          512,
+          512
+        ]
+      }
+    },
+    {
+      "id": "design-tanjiro",
+      "label": "炭治郎 Tanjiro",
+      "kind": "design",
+      "image": "designs/tanjiro.png",
+      "sha256": "6a500fbbed83345284dd3ba85fe98d938e8c213fbe26216550c35b6df331ba08",
+      "status": "pending",
+      "notes": [
+        "由六人设计原稿裁出；含半透明背景光晕，仅供画风审核，不是可直接用于游戏的精灵。"
+      ],
+      "extraction": {
+        "source": "six-design-sheet.png",
+        "rect": [
+          512,
+          512,
+          512,
+          512
+        ]
+      }
+    },
+    {
+      "id": "design-zenitsu",
+      "label": "善逸 Zenitsu",
+      "kind": "design",
+      "image": "designs/zenitsu.png",
+      "sha256": "e1cd61374346bd19d653b752279c065e059f9310d3139fd839b94c1aa396c8dc",
+      "status": "pending",
+      "notes": [
+        "由六人设计原稿裁出；含半透明背景光晕，仅供画风审核，不是可直接用于游戏的精灵。"
+      ],
+      "extraction": {
+        "source": "six-design-sheet.png",
+        "rect": [
+          1024,
+          512,
+          512,
+          512
+        ]
+      }
+    },
+    {
+      "id": "cloud-slash",
+      "label": "克劳德：大剑挥砍（8 姿态）",
+      "kind": "animation",
+      "image": "cloud-slash-clean-sheet.png",
+      "sha256": "bccc12e38ecf2dfdf49b56f146ecc8370a47c7daac9b41229ee1bf93712efb07",
+      "status": "pending",
+      "notes": [
+        "合成动作与特效样稿，非独立特效层。",
+        "预览节奏仅供审核，不是游戏帧表；锚点和实机尚未验证。"
+      ],
+      "frames": [
+        {
+          "image": "frames/cloud-slash/01.png",
+          "durationMs": 120,
+          "sha256": "df7b7761cc648c7c4a80f4752d65c37b11e632aae86fd5a90efcf72f79957f28",
+          "extraction": {
+            "source": "cloud-slash-clean-sheet.png",
+            "rect": [
+              0,
+              0,
+              443,
+              443
+            ],
+            "padding": [
+              24,
+              0,
+              29,
+              1
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        },
+        {
+          "image": "frames/cloud-slash/02.png",
+          "durationMs": 120,
+          "sha256": "7b6b0f197849079aab77d63edd9ba46a25fd7fe0a3ed21400132d02fe3add4c1",
+          "extraction": {
+            "source": "cloud-slash-clean-sheet.png",
+            "rect": [
+              443,
+              0,
+              444,
+              443
+            ],
+            "padding": [
+              24,
+              0,
+              28,
+              1
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        },
+        {
+          "image": "frames/cloud-slash/03.png",
+          "durationMs": 130,
+          "sha256": "478fe75ec68bf98b061822afb058374a04e317aabd7df336bdbe16e4e8faa662",
+          "extraction": {
+            "source": "cloud-slash-clean-sheet.png",
+            "rect": [
+              887,
+              0,
+              443,
+              443
+            ],
+            "padding": [
+              24,
+              0,
+              29,
+              1
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        },
+        {
+          "image": "frames/cloud-slash/04.png",
+          "durationMs": 80,
+          "sha256": "ad957a23da9d32727939ab74da05f3d07eb66d4400a4bd49541f610d3351d38f",
+          "extraction": {
+            "source": "cloud-slash-clean-sheet.png",
+            "rect": [
+              1330,
+              0,
+              444,
+              443
+            ],
+            "padding": [
+              24,
+              0,
+              28,
+              1
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        },
+        {
+          "image": "frames/cloud-slash/05.png",
+          "durationMs": 80,
+          "sha256": "2582795571052a3d46ec5073bae46a0311ff6e95a6efdac579f4bdd4f80aa17f",
+          "extraction": {
+            "source": "cloud-slash-clean-sheet.png",
+            "rect": [
+              0,
+              443,
+              443,
+              444
+            ],
+            "padding": [
+              24,
+              0,
+              29,
+              0
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        },
+        {
+          "image": "frames/cloud-slash/06.png",
+          "durationMs": 100,
+          "sha256": "5e345f0bf828fc0ce5256b310abd340d37f13d38ef52034acfa454b285865e64",
+          "extraction": {
+            "source": "cloud-slash-clean-sheet.png",
+            "rect": [
+              443,
+              443,
+              444,
+              444
+            ],
+            "padding": [
+              24,
+              0,
+              28,
+              0
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        },
+        {
+          "image": "frames/cloud-slash/07.png",
+          "durationMs": 120,
+          "sha256": "c740fd8f54501e56ede2d12889057417a1818c2cfacfc493c57c8d0d18a29fba",
+          "extraction": {
+            "source": "cloud-slash-clean-sheet.png",
+            "rect": [
+              887,
+              443,
+              462,
+              444
+            ],
+            "padding": [
+              24,
+              0,
+              10,
+              0
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        },
+        {
+          "image": "frames/cloud-slash/08.png",
+          "durationMs": 160,
+          "sha256": "34941c8d799dcb8ab0c91ee4b49ee567db918601b7e3b409e6fdc028aebdd0fc",
+          "extraction": {
+            "source": "cloud-slash-clean-sheet.png",
+            "rect": [
+              1349,
+              443,
+              425,
+              444
+            ],
+            "padding": [
+              43,
+              0,
+              28,
+              0
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "tanjiro-water",
+      "label": "炭治郎：水流斩（8 姿态）",
+      "kind": "fx",
+      "image": "tanjiro-water-review-sheet.png",
+      "sha256": "8c3fc2bf6cafac3b5b997b8abed213436762ef863786e4b01fbfc4bf3986ddb3",
+      "status": "pending",
+      "notes": [
+        "合成动作与特效样稿，非独立特效层。",
+        "全新重画：后引、过顶、斜劈、横扫、转身收势；第 3 帧另行绘制并统一脚底后拼入总览。",
+        "预览节奏不是游戏帧表；动作连贯性及实机尚未验证。"
+      ],
+      "frames": [
+        {
+          "image": "frames/tanjiro-water/01.png",
+          "durationMs": 120,
+          "sha256": "c70aadcaaf9b49956445454c5bfe755438a73d5eaba0800d556db73e1809e068",
+          "extraction": {
+            "source": "tanjiro-water-final-sheet.png",
+            "rect": [
+              0,
+              0,
+              443,
+              423
+            ],
+            "padding": [
+              24,
+              84,
+              29,
+              17
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        },
+        {
+          "image": "frames/tanjiro-water/02.png",
+          "durationMs": 110,
+          "sha256": "ac213b87b509265e93936d60da76d332e6fe9ea3bc2b74f278d4de7c41bc7af7",
+          "extraction": {
+            "source": "tanjiro-water-final-sheet.png",
+            "rect": [
+              443,
+              0,
+              444,
+              423
+            ],
+            "padding": [
+              24,
+              84,
+              28,
+              17
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        },
+        {
+          "image": "frames/tanjiro-water/03.png",
+          "durationMs": 110,
+          "sha256": "8d0b4b816b254b5ec09292ad674cd2488fa4556c6c3909c6e670cda5deb2886b",
+          "extraction": {
+            "source": "tanjiro-pose3-source.png",
+            "rect": [
+              290,
+              80,
+              624,
+              1100
+            ],
+            "scaleTo": [
+              278,
+              490
+            ],
+            "padding": [
+              90,
+              14,
+              128,
+              20
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        },
+        {
+          "image": "frames/tanjiro-water/04.png",
+          "durationMs": 80,
+          "sha256": "09855923656973a931e2cf40690b6f688d149933efd9e7441804018b4bae8bbe",
+          "extraction": {
+            "source": "tanjiro-water-final-sheet.png",
+            "rect": [
+              1330,
+              0,
+              444,
+              423
+            ],
+            "padding": [
+              24,
+              84,
+              28,
+              17
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        },
+        {
+          "image": "frames/tanjiro-water/05.png",
+          "durationMs": 100,
+          "sha256": "3b3990eb7317f593a016dc6ae176696c93621866f8191d7e32ea2582ebe10e0b",
+          "extraction": {
+            "source": "tanjiro-water-final-sheet.png",
+            "rect": [
+              0,
+              443,
+              443,
+              415
+            ],
+            "padding": [
+              24,
+              92,
+              29,
+              17
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        },
+        {
+          "image": "frames/tanjiro-water/06.png",
+          "durationMs": 100,
+          "sha256": "fa78ba9ebca25f2f0750897e567617dbeb386b86ef9c0dcddd6726154d8227e8",
+          "extraction": {
+            "source": "tanjiro-water-final-sheet.png",
+            "rect": [
+              443,
+              443,
+              444,
+              415
+            ],
+            "padding": [
+              24,
+              92,
+              28,
+              17
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        },
+        {
+          "image": "frames/tanjiro-water/07.png",
+          "durationMs": 110,
+          "sha256": "68e099a0aa8147ed7a69951ebfd4fe48ed72fa30c0d4cb3be52441b5e0a01bed",
+          "extraction": {
+            "source": "tanjiro-water-final-sheet.png",
+            "rect": [
+              887,
+              443,
+              443,
+              415
+            ],
+            "padding": [
+              24,
+              92,
+              29,
+              17
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        },
+        {
+          "image": "frames/tanjiro-water/08.png",
+          "durationMs": 160,
+          "sha256": "d79e9a39d43da9445f1f5f8d574f1158e5179e68426e679002ba1dab2fda1757",
+          "extraction": {
+            "source": "tanjiro-water-final-sheet.png",
+            "rect": [
+              1330,
+              443,
+              444,
+              415
+            ],
+            "padding": [
+              24,
+              92,
+              28,
+              17
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "zenitsu-lightning",
+      "label": "善逸：雷光拔刀（8 姿态）",
+      "kind": "fx",
+      "image": "zenitsu-lightning-clean-sheet.png",
+      "sha256": "81f340fa5e137a9db7f3517983e12a545c1c744122c5a5a96e22d1014b2907d6",
+      "status": "pending",
+      "notes": [
+        "合成动作与特效样稿，非独立特效层。",
+        "部分刀势偏直，需审核；预览节奏不是游戏帧表；锚点和实机尚未验证。"
+      ],
+      "frames": [
+        {
+          "image": "frames/zenitsu-lightning/01.png",
+          "durationMs": 120,
+          "sha256": "dbf720fb86f2a53cd54c61a278325749ebdac98025d9862357df03d888162748",
+          "extraction": {
+            "source": "zenitsu-lightning-clean-sheet.png",
+            "rect": [
+              0,
+              0,
+              443,
+              443
+            ],
+            "padding": [
+              24,
+              0,
+              29,
+              1
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        },
+        {
+          "image": "frames/zenitsu-lightning/02.png",
+          "durationMs": 110,
+          "sha256": "6437e9c931d16a978b7c25d0bb39bf76d1925ffafe3c0dac7f2d32efbcccb2b8",
+          "extraction": {
+            "source": "zenitsu-lightning-clean-sheet.png",
+            "rect": [
+              443,
+              0,
+              444,
+              443
+            ],
+            "padding": [
+              24,
+              0,
+              28,
+              1
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        },
+        {
+          "image": "frames/zenitsu-lightning/03.png",
+          "durationMs": 130,
+          "sha256": "6246ef9eaabe1f6368d0af9573744564baa1584417020279fb76e9b472fb89ee",
+          "extraction": {
+            "source": "zenitsu-lightning-clean-sheet.png",
+            "rect": [
+              887,
+              0,
+              437,
+              443
+            ],
+            "padding": [
+              24,
+              0,
+              35,
+              1
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        },
+        {
+          "image": "frames/zenitsu-lightning/04.png",
+          "durationMs": 70,
+          "sha256": "e67a1cd2f9c2db4561a07913b5b9f9b65a19bbdf52263e1ffd2ea1eb305a0f00",
+          "extraction": {
+            "source": "zenitsu-lightning-clean-sheet.png",
+            "rect": [
+              1324,
+              0,
+              450,
+              443
+            ],
+            "padding": [
+              18,
+              0,
+              28,
+              1
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        },
+        {
+          "image": "frames/zenitsu-lightning/05.png",
+          "durationMs": 90,
+          "sha256": "16cc59692b4f0a740af0e08d81ed248f2961c866e32f7e1ccabe37fd0824934b",
+          "extraction": {
+            "source": "zenitsu-lightning-clean-sheet.png",
+            "rect": [
+              0,
+              443,
+              443,
+              444
+            ],
+            "padding": [
+              24,
+              0,
+              29,
+              0
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        },
+        {
+          "image": "frames/zenitsu-lightning/06.png",
+          "durationMs": 100,
+          "sha256": "097319695a454a66c8aa40777ed67fb5dad8ea8e3f42a5ed7b37520e251562b7",
+          "extraction": {
+            "source": "zenitsu-lightning-clean-sheet.png",
+            "rect": [
+              443,
+              443,
+              459,
+              444
+            ],
+            "padding": [
+              24,
+              0,
+              13,
+              0
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        },
+        {
+          "image": "frames/zenitsu-lightning/07.png",
+          "durationMs": 110,
+          "sha256": "0cdb9caa92f0d68bccb22731c380b055d10a0fd0bfc3c4ca6e599bc30ca8e9dd",
+          "extraction": {
+            "source": "zenitsu-lightning-clean-sheet.png",
+            "rect": [
+              902,
+              443,
+              428,
+              444
+            ],
+            "padding": [
+              39,
+              0,
+              29,
+              0
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        },
+        {
+          "image": "frames/zenitsu-lightning/08.png",
+          "durationMs": 160,
+          "sha256": "21d2773fafeb5ccf10bfa285e8bfc3a4056f26625acaf3bb992b7425d2f3c4ae",
+          "extraction": {
+            "source": "zenitsu-lightning-clean-sheet.png",
+            "rect": [
+              1330,
+              443,
+              444,
+              444
+            ],
+            "padding": [
+              24,
+              0,
+              28,
+              0
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "background-arena",
+      "label": "像素战场：遗迹平地",
+      "kind": "background",
+      "image": "arena-1200x640.png",
+      "sha256": "ffb0018ca68dc6a7dcd8841fd13cf6e5ea00e86b9346e2c87f8e3ddd02574603",
+      "status": "pending",
+      "notes": [
+        "审稿场景从原图最近邻调整为 1200×640，地面交界约 y=510；高台由游戏单独实现。"
+      ]
+    }
+  ]
+}
