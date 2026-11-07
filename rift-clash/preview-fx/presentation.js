@@ -5,7 +5,7 @@
 const WIDTH=1200,HEIGHT=640,clamp=(n,a=0,b=1)=>Math.max(a,Math.min(b,n));
 const smooth=p=>p*p*(3-2*p);
 function describe(f,side){
- const a=f?.attack,m=a?.move;
+ const a=f?.attack,m=a?.move;if(f?.hero==='zenitsu')return null;
  if(a?.name!=='ultimate'||!m||![a.t,m.startup,m.active,m.end].every(Number.isFinite)||m.startup<=0||m.active<=0||m.end<=m.startup||a.t<0||a.t>=m.end)return null;
  const startup=m.startup,end=m.end,active=m.active;
  // Mirror motion-preview's authored recoil window. active=1 is gun emission,
