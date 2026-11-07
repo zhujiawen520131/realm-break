@@ -1,0 +1,394 @@
+{
+  "revision": "pixel-r6-review-2",
+  "scope": "10 pixel drafts, not all 78 gameplay animations",
+  "approvalSummary": {
+    "approved": 8,
+    "changes": 0,
+    "pending": 2
+  },
+  "userApprovalLedger": "reviews/user-review-1.json",
+  "previousTechnicalReview": "reviews/review-1-findings.json",
+  "zenitsuRevisionAudit": {
+    "status": "technically-ready-for-user-re-review",
+    "scope": "Only Zenitsu design and eight-pose lightning draw revision",
+    "userApproval": "pending; reviewer does not approve on behalf of user",
+    "finalSources": {
+      "design": "design-handed-source.png",
+      "preparation": "prep-four-clean-source.png",
+      "action": "animation-final-source.png",
+      "updatesSha256": "26413e111a0126988246030ef870a7058ea9ab48cc75dce9699e0d9cec161513"
+    },
+    "inspection": {
+      "actuallyViewedFinalDesign": true,
+      "actuallyViewedGrayCompositeFinalSheet": true,
+      "individuallyViewedFinalFrames": [
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "allTenNewImageHashesMatch": true,
+      "allEightFramesTransparentEdgesOver16": 0,
+      "frameDimensions": [
+        496,
+        444
+      ]
+    },
+    "hardGoals": {
+      "twoVisibleHands": "resolved: near-side character right hand holds sword handle; far-side left hand holds scabbard, both identifiable in design",
+      "realBladeLength": "resolved for re-review: fully drawn frames 4-7 have visible silver steel blade with approximate projected lengths 168-223px, rather than the old ~94px frame6; lightning not counted as blade",
+      "handContinuity": "resolved in final handed/prep composition: near arm holds hilt through preparation and cut, far arm holds sheath; f3 visible steel is between guard and sheath mouth, not gripped directly",
+      "slashNotThrust": "improved: raised rear blade in frame4, cross-body sweep frame5, back-turn/down-left follow-through frame6; no longer only straight forward extension"
+    },
+    "bladeMeasurements": {
+      "method": "Independent approximate visual guard-to-tip coordinates in final 496x444 frames; not exact physical weapon dimensions or FX extent",
+      "fullyDrawn": [
+        {
+          "frame": 4,
+          "guardApprox": [
+            238,
+            136
+          ],
+          "tipApprox": [
+            77,
+            48
+          ],
+          "visibleBladeLengthApproxPx": 183.5
+        },
+        {
+          "frame": 5,
+          "guardApprox": [
+            241,
+            198
+          ],
+          "tipApprox": [
+            464,
+            196
+          ],
+          "visibleBladeLengthApproxPx": 223.0
+        },
+        {
+          "frame": 6,
+          "guardApprox": [
+            174,
+            267
+          ],
+          "tipApprox": [
+            52,
+            382
+          ],
+          "visibleBladeLengthApproxPx": 167.7
+        },
+        {
+          "frame": 7,
+          "guardApprox": [
+            174,
+            285
+          ],
+          "tipApprox": [
+            34,
+            392
+          ],
+          "visibleBladeLengthApproxPx": 176.2
+        }
+      ],
+      "sheathedFrames": [
+        1,
+        2,
+        8
+      ],
+      "partiallyDrawnFrame": 3,
+      "oldFrame6ApproxPx": 94,
+      "newFrame6ApproxPx": 167.7,
+      "projectionNote": "Projected lengths vary with pose and perspective; no claim of exact identical pixel length."
+    },
+    "frameChecks": [
+      {
+        "frame": 1,
+        "swordState": "sheathed",
+        "image": "zenitsu-r2/frames/01.png",
+        "dimensions": [
+          496,
+          444
+        ],
+        "visibleBBoxAlphaOver64": [
+          135,
+          42,
+          402,
+          412
+        ],
+        "edgePixelsAlphaOver16": 0,
+        "sha256Matches": true
+      },
+      {
+        "frame": 2,
+        "swordState": "sheathed",
+        "image": "zenitsu-r2/frames/02.png",
+        "dimensions": [
+          496,
+          444
+        ],
+        "visibleBBoxAlphaOver64": [
+          106,
+          95,
+          410,
+          410
+        ],
+        "edgePixelsAlphaOver16": 0,
+        "sha256Matches": true
+      },
+      {
+        "frame": 3,
+        "swordState": "partiallyDrawn",
+        "image": "zenitsu-r2/frames/03.png",
+        "dimensions": [
+          496,
+          444
+        ],
+        "visibleBBoxAlphaOver64": [
+          105,
+          99,
+          425,
+          412
+        ],
+        "edgePixelsAlphaOver16": 0,
+        "sha256Matches": true
+      },
+      {
+        "frame": 4,
+        "swordState": "drawn",
+        "image": "zenitsu-r2/frames/04.png",
+        "dimensions": [
+          496,
+          444
+        ],
+        "visibleBBoxAlphaOver64": [
+          73,
+          46,
+          419,
+          409
+        ],
+        "edgePixelsAlphaOver16": 0,
+        "sha256Matches": true
+      },
+      {
+        "frame": 5,
+        "swordState": "drawn",
+        "image": "zenitsu-r2/frames/05.png",
+        "dimensions": [
+          496,
+          444
+        ],
+        "visibleBBoxAlphaOver64": [
+          91,
+          77,
+          465,
+          411
+        ],
+        "edgePixelsAlphaOver16": 0,
+        "sha256Matches": true
+      },
+      {
+        "frame": 6,
+        "swordState": "drawn",
+        "image": "zenitsu-r2/frames/06.png",
+        "dimensions": [
+          496,
+          444
+        ],
+        "visibleBBoxAlphaOver64": [
+          50,
+          78,
+          427,
+          411
+        ],
+        "edgePixelsAlphaOver16": 0,
+        "sha256Matches": true
+      },
+      {
+        "frame": 7,
+        "swordState": "drawn",
+        "image": "zenitsu-r2/frames/07.png",
+        "dimensions": [
+          496,
+          444
+        ],
+        "visibleBBoxAlphaOver64": [
+          33,
+          78,
+          420,
+          411
+        ],
+        "edgePixelsAlphaOver16": 0,
+        "sha256Matches": true
+      },
+      {
+        "frame": 8,
+        "swordState": "sheathed",
+        "image": "zenitsu-r2/frames/08.png",
+        "dimensions": [
+          496,
+          444
+        ],
+        "visibleBBoxAlphaOver64": [
+          139,
+          43,
+          402,
+          414
+        ],
+        "edgePixelsAlphaOver16": 0,
+        "sha256Matches": true
+      }
+    ],
+    "preservation": {
+      "otherApprovedItems": 8,
+      "otherApprovedImageFiles": 24,
+      "independentBeforeAfterHashesUnchanged": true
+    },
+    "remainingBoundaries": [
+      "These two updated images still require user re-review; the prior eight approvals remain tied to their unchanged source hashes.",
+      "Content-bottom y409-414 gives a 5px spread; gameplay anchors/root-motion and hit timing are not calibrated by this review.",
+      "Character and lightning remain combined review frames; not independent FX layers.",
+      "No R5 gameplay retest or full78-animation completion claim."
+    ]
+  },
+  "verifiedAssets": [
+    {
+      "image": "designs/cloud.png",
+      "sha256": "cfb02033e4948bc28776644674b9fd9a16a91a8c14e5cfe1a69c411c4006f7d5"
+    },
+    {
+      "image": "designs/lara.png",
+      "sha256": "74ed2ce9c0ee33465ed4475ce490b2baa6999320c3a2bd4bc79171ad9e664f7b"
+    },
+    {
+      "image": "designs/destined-one.png",
+      "sha256": "55229bbd7c63a68b00f997115de8f21aaa8b5d9a3774438f7c35591bba70d9f9"
+    },
+    {
+      "image": "designs/nathan-drake.png",
+      "sha256": "f3746e33a0df527067fcbc821574a6a2c584286dae090dfaa8b0ccc9b7219599"
+    },
+    {
+      "image": "designs/tanjiro.png",
+      "sha256": "6a500fbbed83345284dd3ba85fe98d938e8c213fbe26216550c35b6df331ba08"
+    },
+    {
+      "image": "zenitsu-r2/design.png",
+      "sha256": "6176961f65ad4889989a3760d9d643e24db8fa3cbe1234836d85762b097ae742"
+    },
+    {
+      "image": "cloud-slash-clean-sheet.png",
+      "sha256": "bccc12e38ecf2dfdf49b56f146ecc8370a47c7daac9b41229ee1bf93712efb07"
+    },
+    {
+      "image": "frames/cloud-slash/01.png",
+      "sha256": "df7b7761cc648c7c4a80f4752d65c37b11e632aae86fd5a90efcf72f79957f28"
+    },
+    {
+      "image": "frames/cloud-slash/02.png",
+      "sha256": "7b6b0f197849079aab77d63edd9ba46a25fd7fe0a3ed21400132d02fe3add4c1"
+    },
+    {
+      "image": "frames/cloud-slash/03.png",
+      "sha256": "478fe75ec68bf98b061822afb058374a04e317aabd7df336bdbe16e4e8faa662"
+    },
+    {
+      "image": "frames/cloud-slash/04.png",
+      "sha256": "ad957a23da9d32727939ab74da05f3d07eb66d4400a4bd49541f610d3351d38f"
+    },
+    {
+      "image": "frames/cloud-slash/05.png",
+      "sha256": "2582795571052a3d46ec5073bae46a0311ff6e95a6efdac579f4bdd4f80aa17f"
+    },
+    {
+      "image": "frames/cloud-slash/06.png",
+      "sha256": "5e345f0bf828fc0ce5256b310abd340d37f13d38ef52034acfa454b285865e64"
+    },
+    {
+      "image": "frames/cloud-slash/07.png",
+      "sha256": "c740fd8f54501e56ede2d12889057417a1818c2cfacfc493c57c8d0d18a29fba"
+    },
+    {
+      "image": "frames/cloud-slash/08.png",
+      "sha256": "34941c8d799dcb8ab0c91ee4b49ee567db918601b7e3b409e6fdc028aebdd0fc"
+    },
+    {
+      "image": "tanjiro-water-review-sheet.png",
+      "sha256": "8c3fc2bf6cafac3b5b997b8abed213436762ef863786e4b01fbfc4bf3986ddb3"
+    },
+    {
+      "image": "frames/tanjiro-water/01.png",
+      "sha256": "c70aadcaaf9b49956445454c5bfe755438a73d5eaba0800d556db73e1809e068"
+    },
+    {
+      "image": "frames/tanjiro-water/02.png",
+      "sha256": "ac213b87b509265e93936d60da76d332e6fe9ea3bc2b74f278d4de7c41bc7af7"
+    },
+    {
+      "image": "frames/tanjiro-water/03.png",
+      "sha256": "8d0b4b816b254b5ec09292ad674cd2488fa4556c6c3909c6e670cda5deb2886b"
+    },
+    {
+      "image": "frames/tanjiro-water/04.png",
+      "sha256": "09855923656973a931e2cf40690b6f688d149933efd9e7441804018b4bae8bbe"
+    },
+    {
+      "image": "frames/tanjiro-water/05.png",
+      "sha256": "3b3990eb7317f593a016dc6ae176696c93621866f8191d7e32ea2582ebe10e0b"
+    },
+    {
+      "image": "frames/tanjiro-water/06.png",
+      "sha256": "fa78ba9ebca25f2f0750897e567617dbeb386b86ef9c0dcddd6726154d8227e8"
+    },
+    {
+      "image": "frames/tanjiro-water/07.png",
+      "sha256": "68e099a0aa8147ed7a69951ebfd4fe48ed72fa30c0d4cb3be52441b5e0a01bed"
+    },
+    {
+      "image": "frames/tanjiro-water/08.png",
+      "sha256": "d79e9a39d43da9445f1f5f8d574f1158e5179e68426e679002ba1dab2fda1757"
+    },
+    {
+      "image": "zenitsu-r2/animation-sheet.png",
+      "sha256": "347532a1dbfde5437083ba2fdaa8ba365656d812b9146b92302201a97402ad16"
+    },
+    {
+      "image": "zenitsu-r2/frames/01.png",
+      "sha256": "2ef2e392d4e9193a8bb3b4040448dad2488e442ecab351242ab9629e643daeee"
+    },
+    {
+      "image": "zenitsu-r2/frames/02.png",
+      "sha256": "7c0cd763994e576c068921558d694f82b062ffe4b0978dba35e7325fce5c1ad7"
+    },
+    {
+      "image": "zenitsu-r2/frames/03.png",
+      "sha256": "3a9e93f2d11317106a4327e3725a83ea8633d9a039e893efad1266c6eaccad9c"
+    },
+    {
+      "image": "zenitsu-r2/frames/04.png",
+      "sha256": "9d00c336c396e080aedd4b0ae99b3307c88c323cc65c06bd1d881034be52aa7a"
+    },
+    {
+      "image": "zenitsu-r2/frames/05.png",
+      "sha256": "2618e35d5d6e623c697bedc175c92a91035ff374ba76a63eeef39fae5541006d"
+    },
+    {
+      "image": "zenitsu-r2/frames/06.png",
+      "sha256": "8bd30f751e9c7ccd8203861fb0a7805eb559a60ef1afc7c765239d38a90da2a2"
+    },
+    {
+      "image": "zenitsu-r2/frames/07.png",
+      "sha256": "c903c3751016ff008e8daef9a1a4d279fd6025b34868b7c3fc93f4283c36cbc5"
+    },
+    {
+      "image": "zenitsu-r2/frames/08.png",
+      "sha256": "eb5cbb02fdd292eb29553ff311f5ef620a64c3bf08f867e78a8f37a6fc50d96a"
+    },
+    {
+      "image": "arena-1200x640.png",
+      "sha256": "ffb0018ca68dc6a7dcd8841fd13cf6e5ea00e86b9346e2c87f8e3ddd02574603"
+    }
+  ]
+}
