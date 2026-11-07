@@ -1,0 +1,251 @@
+{
+  "items": [
+    {
+      "id": "design-zenitsu",
+      "image": "zenitsu-r3/design.png",
+      "sha256": "dd766eee31f16c7934cfd7a5c91c9251b57fe15c40765fbd521369c684eac78e",
+      "status": "pending",
+      "notes": [
+        "用户指定的无鞘改编：右手持单刀、左手空手。",
+        "金棕眼、分束短发与黄底白三角腿套；新图待用户审核。"
+      ]
+    },
+    {
+      "id": "zenitsu-lightning",
+      "image": "zenitsu-r3/animation-sheet.png",
+      "sha256": "7df8be3e293728c804f040eab34315146bcbbbca9fc6973e0bc4e6a805e12d93",
+      "status": "pending",
+      "notes": [
+        "整组同一源图生成；八帧均持同一把出鞘刀，无刀鞘。",
+        "角色与雷光合成在一层；预览时长沿用原审核版本，不代表原作帧表。",
+        "动作连续性、刀型和游戏锚点仍需用户复审和实机验证。"
+      ],
+      "frames": [
+        {
+          "image": "zenitsu-r3/frames/01.png",
+          "sha256": "e9e0e4911dc1f724626c209f811f6f8bcb166ce5879caac05b89e10420d7aef3",
+          "durationMs": 120,
+          "swordState": "drawn",
+          "extraction": {
+            "source": "zenitsu-r3/animation-shape-revised-source.png",
+            "rect": [
+              0,
+              0,
+              443,
+              443
+            ],
+            "padding": [
+              24,
+              0,
+              29,
+              1
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        },
+        {
+          "image": "zenitsu-r3/frames/02.png",
+          "sha256": "6ebff2ca6233d6d338bfda73af9d41bc30732d6f0c82a16279553e732d7b56f8",
+          "durationMs": 110,
+          "swordState": "drawn",
+          "extraction": {
+            "source": "zenitsu-r3/animation-shape-revised-source.png",
+            "rect": [
+              443,
+              0,
+              444,
+              443
+            ],
+            "padding": [
+              24,
+              0,
+              28,
+              1
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        },
+        {
+          "image": "zenitsu-r3/frames/03.png",
+          "sha256": "d5971b4958e574754884efc5eb7eb44b95172a0c46b199f33ff7a1b46de733dd",
+          "durationMs": 130,
+          "swordState": "drawn",
+          "extraction": {
+            "source": "zenitsu-r3/animation-shape-revised-source.png",
+            "rect": [
+              887,
+              0,
+              443,
+              443
+            ],
+            "padding": [
+              24,
+              0,
+              29,
+              1
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        },
+        {
+          "image": "zenitsu-r3/frames/04.png",
+          "sha256": "02af17c208a9ffeb3e8f27eb756aa0ebd551f3ca4e1d9c696bbfc0c8207e7541",
+          "durationMs": 70,
+          "swordState": "drawn",
+          "extraction": {
+            "source": "zenitsu-r3/animation-shape-revised-source.png",
+            "rect": [
+              1330,
+              0,
+              444,
+              443
+            ],
+            "padding": [
+              24,
+              0,
+              28,
+              1
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        },
+        {
+          "image": "zenitsu-r3/frames/05.png",
+          "sha256": "89e27b62eadcdc259815e796a6accc6987c21a4a907809ec31f395abefed5901",
+          "durationMs": 90,
+          "swordState": "drawn",
+          "extraction": {
+            "source": "zenitsu-r3/animation-shape-revised-source.png",
+            "rect": [
+              0,
+              443,
+              443,
+              444
+            ],
+            "padding": [
+              24,
+              0,
+              29,
+              0
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        },
+        {
+          "image": "zenitsu-r3/frames/06.png",
+          "sha256": "422e48b9642b624cd04a7ec39cfbba14c52977a5f4f4974252b77ca66c9e4e06",
+          "durationMs": 100,
+          "swordState": "drawn",
+          "extraction": {
+            "source": "zenitsu-r3/animation-shape-revised-source.png",
+            "rect": [
+              443,
+              443,
+              444,
+              444
+            ],
+            "padding": [
+              24,
+              0,
+              28,
+              0
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        },
+        {
+          "image": "zenitsu-r3/frames/07.png",
+          "sha256": "77c0cf26cea3a46b791c34a2e2188f8179dbf49655a07e7b767448ef04746c1a",
+          "durationMs": 110,
+          "swordState": "drawn",
+          "extraction": {
+            "source": "zenitsu-r3/animation-shape-revised-source.png",
+            "rect": [
+              887,
+              443,
+              443,
+              444
+            ],
+            "padding": [
+              24,
+              0,
+              29,
+              0
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        },
+        {
+          "image": "zenitsu-r3/frames/08.png",
+          "sha256": "29d0f8b10a1188fb119d6091f020af0397ebc78615f061dbea2baa5c8f2fb665",
+          "durationMs": 160,
+          "swordState": "drawn",
+          "extraction": {
+            "source": "zenitsu-r3/animation-shape-revised-source.png",
+            "rect": [
+              1330,
+              443,
+              444,
+              444
+            ],
+            "padding": [
+              24,
+              0,
+              28,
+              0
+            ],
+            "visibleEdgePixelsAlphaOver64": {
+              "left": 0,
+              "right": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "sources": {
+    "previousDesign": "zenitsu-r2/design.png",
+    "previousAnimation": "zenitsu-r2/animation-sheet.png",
+    "design": "zenitsu-r3/design-source.png",
+    "animation": "zenitsu-r3/animation-shape-revised-source.png",
+    "prompts": "zenitsu-r3/prompts.json",
+    "approval": "pending"
+  }
+}

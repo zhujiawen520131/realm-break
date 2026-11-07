@@ -1,0 +1,135 @@
+{
+  "revision": "pixel-r6-review-2-recheck",
+  "status": "changes-requested",
+  "approvalSummary": {
+    "approved": 8,
+    "changes": 2,
+    "pending": 0
+  },
+  "independentReview": {
+    "revision": "pixel-r6-review-2",
+    "auditType": "fresh-independent-visual-recheck",
+    "status": "requires-redraw",
+    "userApproval": "rejected-by-latest-user-feedback",
+    "scope": [
+      "design-zenitsu",
+      "zenitsu-lightning"
+    ],
+    "otherEightItems": "out-of-scope-do-not-modify",
+    "findings": [
+      {
+        "id": "scabbard-direction-jump",
+        "severity": "blocking",
+        "frames": [
+          3,
+          4,
+          5,
+          7,
+          8
+        ],
+        "certainty": "directly-visible",
+        "detail": "Gold scabbard tip flips right to left at 3→4, then right again; no matching hand/torso transition.",
+        "evidence": "01-sheath-continuity.png"
+      },
+      {
+        "id": "instant-resheathing",
+        "severity": "blocking",
+        "frames": [
+          7,
+          8
+        ],
+        "certainty": "directly-visible",
+        "detail": "Blade tip is down-left and away from scabbard mouth at7;8 is fully sheathed without alignment/entry pose.",
+        "evidence": "02-sheathing-jump.png"
+      },
+      {
+        "id": "identity-palette-and-silhouette",
+        "severity": "major",
+        "frames": "design and sequence",
+        "certainty": "compared-with-viewed-official-stills",
+        "detail": "Blue-purple eyes, spiky bangs, and white leg wrapping differ from official amber eyes, layered/blunt bangs and yellow patterned gaiters.",
+        "evidence": "03-identity-detail.png"
+      },
+      {
+        "id": "weapon-silhouette",
+        "severity": "major",
+        "frames": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "certainty": "visual-readability-not-complete-canon-weapon-verification",
+        "detail": "Straight tapered silhouette reads as short straight sword; establish clear single-edge katana profile from weapon reference."
+      },
+      {
+        "id": "scabbard-projection-and-occlusion",
+        "severity": "major",
+        "frames": [
+          3,
+          4,
+          7
+        ],
+        "certainty": "projection-varies-hidden-structure-unresolved",
+        "detail": "Visible scabbard spans roughly126/214/100px; do not claim exact real dimensions or rule out occlusion. Need consistent model and visible occlusion explanation."
+      },
+      {
+        "id": "draw-cut-trajectory",
+        "severity": "major",
+        "frames": [
+          3,
+          4,
+          5,
+          6
+        ],
+        "certainty": "animation-readability-assessment",
+        "detail": "Leftward partial draw→raised blade→forward straight blade does not convey continuous draw-cut; torso follow-through at6 alone insufficient."
+      }
+    ],
+    "correctlyResolved": [
+      "Both hands visibly present in design",
+      "Partially drawn frame3 does not visibly grip exposed blade",
+      "Frame6 far-hand occlusion is not proof of a missing hand",
+      "Fully drawn steel blade is longer than original R1"
+    ],
+    "limits": [
+      "Actual final PNGs and gray composites inspected",
+      "Online/local hash equality independently rechecked by parent",
+      "Official static references viewed, no new motion video viewed",
+      "Projected lengths are approximate, not real geometry",
+      "Browser playback success is not artistic approval"
+    ],
+    "publicEvidence": [
+      "01-sheath-continuity.png",
+      "02-sheathing-jump.png",
+      "03-identity-detail.png",
+      "04-all-frames.png"
+    ],
+    "privateEvidence": [
+      "03-identity-reference.png"
+    ],
+    "assetHashes": {
+      "design.png": "6176961f65ad4889989a3760d9d643e24db8fa3cbe1234836d85762b097ae742",
+      "animation-sheet.png": "347532a1dbfde5437083ba2fdaa8ba365656d812b9146b92302201a97402ad16",
+      "frames/01.png": "2ef2e392d4e9193a8bb3b4040448dad2488e442ecab351242ab9629e643daeee",
+      "frames/02.png": "7c0cd763994e576c068921558d694f82b062ffe4b0978dba35e7325fce5c1ad7",
+      "frames/03.png": "3a9e93f2d11317106a4327e3725a83ea8633d9a039e893efad1266c6eaccad9c",
+      "frames/04.png": "9d00c336c396e080aedd4b0ae99b3307c88c323cc65c06bd1d881034be52aa7a",
+      "frames/05.png": "2618e35d5d6e623c697bedc175c92a91035ff374ba76a63eeef39fae5541006d",
+      "frames/06.png": "8bd30f751e9c7ccd8203861fb0a7805eb559a60ef1afc7c765239d38a90da2a2",
+      "frames/07.png": "c903c3751016ff008e8daef9a1a4d279fd6025b34868b7c3fc93f4283c36cbc5",
+      "frames/08.png": "eb5cbb02fdd292eb29553ff311f5ef620a64c3bf08f867e78a8f37a6fc50d96a"
+    },
+    "references": [
+      {
+        "url": "https://kimetsu.com/anime/risshihen/character/?chara=zennitsu",
+        "kind": "official-static-image-viewed"
+      },
+      {
+        "url": "https://asia.sega.com/kimetsu_hinokami/cht/character/",
+        "kind": "official-static-image-viewed"
+      }
+    ]
+  },
+  "previousReport": "reviews/review-2-findings.json"
+}

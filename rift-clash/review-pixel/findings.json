@@ -1,135 +1,529 @@
 {
-  "revision": "pixel-r6-review-2-recheck",
-  "status": "changes-requested",
+  "revision": "pixel-r6-review-3",
   "approvalSummary": {
     "approved": 8,
-    "changes": 2,
-    "pending": 0
+    "changes": 0,
+    "pending": 2
   },
   "independentReview": {
-    "revision": "pixel-r6-review-2",
-    "auditType": "fresh-independent-visual-recheck",
-    "status": "requires-redraw",
-    "userApproval": "rejected-by-latest-user-feedback",
     "scope": [
       "design-zenitsu",
       "zenitsu-lightning"
     ],
-    "otherEightItems": "out-of-scope-do-not-modify",
-    "findings": [
+    "revision": "zenitsu-r3-no-scabbard",
+    "status": "ready-for-user-review",
+    "userApproval": "pending",
+    "requirements": [
+      "one drawn physical sword",
+      "zero scabbards",
+      "continuous grip and body connections",
+      "single-edged long blade",
+      "readable cutting trajectory and hip/shoulder drive",
+      "drawn-blade recovery",
+      "official-reference identity cues"
+    ],
+    "retiredRequirements": [
+      "draw from scabbard",
+      "scabbard-mouth alignment",
+      "resheathing"
+    ],
+    "findings": [],
+    "artInspected": true,
+    "designPrecheck": {
+      "source": "design-source.png",
+      "sha256": "dd766eee31f16c7934cfd7a5c91c9251b57fe15c40765fbd521369c684eac78e",
+      "observed": [
+        "one physical drawn sword",
+        "no scabbard",
+        "near right hand grips handle and far left hand is open",
+        "single-edge curved long-blade silhouette",
+        "amber/gold eyes",
+        "layered blunt bangs",
+        "yellow triangular-pattern gaiters"
+      ],
+      "result": "suitable as animation identity reference, not final group approval"
+    },
+    "animationPrecheck": {
+      "source": "animation-source.png",
+      "observed": [
+        "one physical sword per pose",
+        "zero scabbards",
+        "continuous near-hand grip and open balancing hand",
+        "amber eyes and consistent hair/gaiters",
+        "blade stays drawn in recovery",
+        "clearer overhead/cross-body/follow-through phases than R2"
+      ],
+      "result": "not yet ready; blade-profile and effect-border corrections pending"
+    },
+    "otherEightApprovedAssets": {
+      "count": 24,
+      "verifiedAgainst": "reviews/pixel-r6-review-1.manifest.json",
+      "unchanged": true,
+      "files": [
+        {
+          "image": "designs/cloud.png",
+          "sha256": "cfb02033e4948bc28776644674b9fd9a16a91a8c14e5cfe1a69c411c4006f7d5"
+        },
+        {
+          "image": "designs/lara.png",
+          "sha256": "74ed2ce9c0ee33465ed4475ce490b2baa6999320c3a2bd4bc79171ad9e664f7b"
+        },
+        {
+          "image": "designs/destined-one.png",
+          "sha256": "55229bbd7c63a68b00f997115de8f21aaa8b5d9a3774438f7c35591bba70d9f9"
+        },
+        {
+          "image": "designs/nathan-drake.png",
+          "sha256": "f3746e33a0df527067fcbc821574a6a2c584286dae090dfaa8b0ccc9b7219599"
+        },
+        {
+          "image": "designs/tanjiro.png",
+          "sha256": "6a500fbbed83345284dd3ba85fe98d938e8c213fbe26216550c35b6df331ba08"
+        },
+        {
+          "image": "cloud-slash-clean-sheet.png",
+          "sha256": "bccc12e38ecf2dfdf49b56f146ecc8370a47c7daac9b41229ee1bf93712efb07"
+        },
+        {
+          "image": "frames/cloud-slash/01.png",
+          "sha256": "df7b7761cc648c7c4a80f4752d65c37b11e632aae86fd5a90efcf72f79957f28"
+        },
+        {
+          "image": "frames/cloud-slash/02.png",
+          "sha256": "7b6b0f197849079aab77d63edd9ba46a25fd7fe0a3ed21400132d02fe3add4c1"
+        },
+        {
+          "image": "frames/cloud-slash/03.png",
+          "sha256": "478fe75ec68bf98b061822afb058374a04e317aabd7df336bdbe16e4e8faa662"
+        },
+        {
+          "image": "frames/cloud-slash/04.png",
+          "sha256": "ad957a23da9d32727939ab74da05f3d07eb66d4400a4bd49541f610d3351d38f"
+        },
+        {
+          "image": "frames/cloud-slash/05.png",
+          "sha256": "2582795571052a3d46ec5073bae46a0311ff6e95a6efdac579f4bdd4f80aa17f"
+        },
+        {
+          "image": "frames/cloud-slash/06.png",
+          "sha256": "5e345f0bf828fc0ce5256b310abd340d37f13d38ef52034acfa454b285865e64"
+        },
+        {
+          "image": "frames/cloud-slash/07.png",
+          "sha256": "c740fd8f54501e56ede2d12889057417a1818c2cfacfc493c57c8d0d18a29fba"
+        },
+        {
+          "image": "frames/cloud-slash/08.png",
+          "sha256": "34941c8d799dcb8ab0c91ee4b49ee567db918601b7e3b409e6fdc028aebdd0fc"
+        },
+        {
+          "image": "tanjiro-water-review-sheet.png",
+          "sha256": "8c3fc2bf6cafac3b5b997b8abed213436762ef863786e4b01fbfc4bf3986ddb3"
+        },
+        {
+          "image": "frames/tanjiro-water/01.png",
+          "sha256": "c70aadcaaf9b49956445454c5bfe755438a73d5eaba0800d556db73e1809e068"
+        },
+        {
+          "image": "frames/tanjiro-water/02.png",
+          "sha256": "ac213b87b509265e93936d60da76d332e6fe9ea3bc2b74f278d4de7c41bc7af7"
+        },
+        {
+          "image": "frames/tanjiro-water/03.png",
+          "sha256": "8d0b4b816b254b5ec09292ad674cd2488fa4556c6c3909c6e670cda5deb2886b"
+        },
+        {
+          "image": "frames/tanjiro-water/04.png",
+          "sha256": "09855923656973a931e2cf40690b6f688d149933efd9e7441804018b4bae8bbe"
+        },
+        {
+          "image": "frames/tanjiro-water/05.png",
+          "sha256": "3b3990eb7317f593a016dc6ae176696c93621866f8191d7e32ea2582ebe10e0b"
+        },
+        {
+          "image": "frames/tanjiro-water/06.png",
+          "sha256": "fa78ba9ebca25f2f0750897e567617dbeb386b86ef9c0dcddd6726154d8227e8"
+        },
+        {
+          "image": "frames/tanjiro-water/07.png",
+          "sha256": "68e099a0aa8147ed7a69951ebfd4fe48ed72fa30c0d4cb3be52441b5e0a01bed"
+        },
+        {
+          "image": "frames/tanjiro-water/08.png",
+          "sha256": "d79e9a39d43da9445f1f5f8d574f1158e5179e68426e679002ba1dab2fda1757"
+        },
+        {
+          "image": "arena-1200x640.png",
+          "sha256": "ffb0018ca68dc6a7dcd8841fd13cf6e5ea00e86b9346e2c87f8e3ddd02574603"
+        }
+      ]
+    },
+    "finalTechnicalCheck": {
+      "assetHashesVerified": 10,
+      "frameCount": 8,
+      "frames": [
+        {
+          "frame": 1,
+          "width": 496,
+          "height": 444,
+          "alphaOver16Bounds": [
+            109,
+            46,
+            397,
+            413
+          ],
+          "edgePixels": 0
+        },
+        {
+          "frame": 2,
+          "width": 496,
+          "height": 444,
+          "alphaOver16Bounds": [
+            44,
+            69,
+            381,
+            413
+          ],
+          "edgePixels": 0
+        },
+        {
+          "frame": 3,
+          "width": 496,
+          "height": 444,
+          "alphaOver16Bounds": [
+            56,
+            17,
+            380,
+            413
+          ],
+          "edgePixels": 0
+        },
+        {
+          "frame": 4,
+          "width": 496,
+          "height": 444,
+          "alphaOver16Bounds": [
+            50,
+            66,
+            446,
+            413
+          ],
+          "edgePixels": 0
+        },
+        {
+          "frame": 5,
+          "width": 496,
+          "height": 444,
+          "alphaOver16Bounds": [
+            53,
+            60,
+            401,
+            412
+          ],
+          "edgePixels": 0
+        },
+        {
+          "frame": 6,
+          "width": 496,
+          "height": 444,
+          "alphaOver16Bounds": [
+            26,
+            69,
+            390,
+            412
+          ],
+          "edgePixels": 0
+        },
+        {
+          "frame": 7,
+          "width": 496,
+          "height": 444,
+          "alphaOver16Bounds": [
+            103,
+            55,
+            414,
+            412
+          ],
+          "edgePixels": 0
+        },
+        {
+          "frame": 8,
+          "width": 496,
+          "height": 444,
+          "alphaOver16Bounds": [
+            108,
+            42,
+            405,
+            412
+          ],
+          "edgePixels": 0
+        }
+      ],
+      "totalPreviewDurationMs": 890,
+      "note": "No runtime anchors or combat timing measured"
+    },
+    "resolvedFindings": [
       {
-        "id": "scabbard-direction-jump",
-        "severity": "blocking",
-        "frames": [
-          3,
-          4,
-          5,
-          7,
-          8
-        ],
-        "certainty": "directly-visible",
-        "detail": "Gold scabbard tip flips right to left at 3→4, then right again; no matching hand/torso transition.",
-        "evidence": "01-sheath-continuity.png"
-      },
-      {
-        "id": "instant-resheathing",
-        "severity": "blocking",
-        "frames": [
-          7,
-          8
-        ],
-        "certainty": "directly-visible",
-        "detail": "Blade tip is down-left and away from scabbard mouth at7;8 is fully sheathed without alignment/entry pose.",
-        "evidence": "02-sheathing-jump.png"
-      },
-      {
-        "id": "identity-palette-and-silhouette",
+        "id": "blade-profile-2-3",
         "severity": "major",
-        "frames": "design and sequence",
-        "certainty": "compared-with-viewed-official-stills",
-        "detail": "Blue-purple eyes, spiky bangs, and white leg wrapping differ from official amber eyes, layered/blunt bangs and yellow patterned gaiters.",
-        "evidence": "03-identity-detail.png"
+        "frames": [
+          2,
+          3
+        ],
+        "certainty": "visual-readability",
+        "detail": "Short strongly hooked blade silhouette differs visibly from long gentle curve in design and frame4. Perspective alone cannot be ruled out, but current cues fail to establish one consistent blade.",
+        "requestedFix": "Keep correct hands/body and calibrate the same long single-edge profile across views.",
+        "status": "resolved-in-final-actual-slices"
       },
       {
-        "id": "weapon-silhouette",
-        "severity": "major",
+        "id": "source-effect-edge",
+        "severity": "technical-pending-check",
         "frames": [
           4,
-          5,
-          6,
-          7
+          5
         ],
-        "certainty": "visual-readability-not-complete-canon-weapon-verification",
-        "detail": "Straight tapered silhouette reads as short straight sword; establish clear single-edge katana profile from weapon reference."
-      },
-      {
-        "id": "scabbard-projection-and-occlusion",
-        "severity": "major",
-        "frames": [
-          3,
-          4,
-          7
-        ],
-        "certainty": "projection-varies-hidden-structure-unresolved",
-        "detail": "Visible scabbard spans roughly126/214/100px; do not claim exact real dimensions or rule out occlusion. Need consistent model and visible occlusion explanation."
-      },
-      {
-        "id": "draw-cut-trajectory",
-        "severity": "major",
-        "frames": [
-          3,
-          4,
-          5,
-          6
-        ],
-        "certainty": "animation-readability-assessment",
-        "detail": "Leftward partial draw→raised blade→forward straight blade does not convey continuous draw-cut; torso follow-through at6 alone insufficient."
+        "detail": "Lightning touches outer right/left source borders; check actual composited source for truncation before final slice.",
+        "status": "resolved-in-final-actual-slices"
       }
     ],
-    "correctlyResolved": [
-      "Both hands visibly present in design",
-      "Partially drawn frame3 does not visibly grip exposed blade",
-      "Frame6 far-hand occlusion is not proof of a missing hand",
-      "Fully drawn steel blade is longer than original R1"
-    ],
-    "limits": [
-      "Actual final PNGs and gray composites inspected",
-      "Online/local hash equality independently rechecked by parent",
-      "Official static references viewed, no new motion video viewed",
-      "Projected lengths are approximate, not real geometry",
-      "Browser playback success is not artistic approval"
-    ],
-    "publicEvidence": [
-      "01-sheath-continuity.png",
-      "02-sheathing-jump.png",
-      "03-identity-detail.png",
-      "04-all-frames.png"
-    ],
-    "privateEvidence": [
-      "03-identity-reference.png"
-    ],
-    "assetHashes": {
-      "design.png": "6176961f65ad4889989a3760d9d643e24db8fa3cbe1234836d85762b097ae742",
-      "animation-sheet.png": "347532a1dbfde5437083ba2fdaa8ba365656d812b9146b92302201a97402ad16",
-      "frames/01.png": "2ef2e392d4e9193a8bb3b4040448dad2488e442ecab351242ab9629e643daeee",
-      "frames/02.png": "7c0cd763994e576c068921558d694f82b062ffe4b0978dba35e7325fce5c1ad7",
-      "frames/03.png": "3a9e93f2d11317106a4327e3725a83ea8633d9a039e893efad1266c6eaccad9c",
-      "frames/04.png": "9d00c336c396e080aedd4b0ae99b3307c88c323cc65c06bd1d881034be52aa7a",
-      "frames/05.png": "2618e35d5d6e623c697bedc175c92a91035ff374ba76a63eeef39fae5541006d",
-      "frames/06.png": "8bd30f751e9c7ccd8203861fb0a7805eb559a60ef1afc7c765239d38a90da2a2",
-      "frames/07.png": "c903c3751016ff008e8daef9a1a4d279fd6025b34868b7c3fc93f4283c36cbc5",
-      "frames/08.png": "eb5cbb02fdd292eb29553ff311f5ef620a64c3bf08f867e78a8f37a6fc50d96a"
+    "finalVisualCheck": {
+      "onePhysicalSwordEveryFrame": true,
+      "zeroScabbardsEveryFrame": true,
+      "gripContinuity": true,
+      "drawnBladeRecovery": true,
+      "singleEdgeProfileReadable": true,
+      "identityCuesConsistent": true,
+      "adjacentFramesInspected": true,
+      "loop8To1Inspected": true,
+      "actualGrayAndDarkCompositesViewed": true,
+      "evidence": [
+        "audit-contact.png",
+        "audit-loop.png"
+      ],
+      "frame3ProjectionNote": "Shorter projected blade is compatible with raised oblique pose after curvature correction; equal projected length is not required."
     },
-    "references": [
+    "remainingLimitations": [
+      "user artistic approval pending",
+      "combined character and FX layer",
+      "runtime foot anchors, root motion, hit timing and direction flip not yet verified",
+      "eight key poses, not full78 animation completion",
+      "official static references only; no new original move video viewed"
+    ],
+    "finalAssetHashes": {
+      "zenitsu-r3/design.png": "dd766eee31f16c7934cfd7a5c91c9251b57fe15c40765fbd521369c684eac78e",
+      "zenitsu-r3/animation-sheet.png": "7df8be3e293728c804f040eab34315146bcbbbca9fc6973e0bc4e6a805e12d93",
+      "zenitsu-r3/frames/01.png": "e9e0e4911dc1f724626c209f811f6f8bcb166ce5879caac05b89e10420d7aef3",
+      "zenitsu-r3/frames/02.png": "6ebff2ca6233d6d338bfda73af9d41bc30732d6f0c82a16279553e732d7b56f8",
+      "zenitsu-r3/frames/03.png": "d5971b4958e574754884efc5eb7eb44b95172a0c46b199f33ff7a1b46de733dd",
+      "zenitsu-r3/frames/04.png": "02af17c208a9ffeb3e8f27eb756aa0ebd551f3ca4e1d9c696bbfc0c8207e7541",
+      "zenitsu-r3/frames/05.png": "89e27b62eadcdc259815e796a6accc6987c21a4a907809ec31f395abefed5901",
+      "zenitsu-r3/frames/06.png": "422e48b9642b624cd04a7ec39cfbba14c52977a5f4f4974252b77ca66c9e4e06",
+      "zenitsu-r3/frames/07.png": "77c0cf26cea3a46b791c34a2e2188f8179dbf49655a07e7b767448ef04746c1a",
+      "zenitsu-r3/frames/08.png": "29d0f8b10a1188fb119d6091f020af0397ebc78615f061dbea2baa5c8f2fb665"
+    },
+    "frameVisualResults": [
       {
-        "url": "https://kimetsu.com/anime/risshihen/character/?chara=zennitsu",
-        "kind": "official-static-image-viewed"
+        "frame": 1,
+        "physicalSwords": 1,
+        "scabbards": 0,
+        "swordState": "drawn",
+        "grip": "consistent near right hand",
+        "phase": "ready"
       },
       {
-        "url": "https://asia.sega.com/kimetsu_hinokami/cht/character/",
-        "kind": "official-static-image-viewed"
+        "frame": 2,
+        "physicalSwords": 1,
+        "scabbards": 0,
+        "swordState": "drawn",
+        "grip": "consistent near right hand",
+        "phase": "compress-and-draw-back"
+      },
+      {
+        "frame": 3,
+        "physicalSwords": 1,
+        "scabbards": 0,
+        "swordState": "drawn",
+        "grip": "consistent near right hand",
+        "phase": "shoulder-lift"
+      },
+      {
+        "frame": 4,
+        "physicalSwords": 1,
+        "scabbards": 0,
+        "swordState": "drawn",
+        "grip": "consistent near right hand",
+        "phase": "cross-body-cut"
+      },
+      {
+        "frame": 5,
+        "physicalSwords": 1,
+        "scabbards": 0,
+        "swordState": "drawn",
+        "grip": "consistent near right hand",
+        "phase": "torso-follow-through"
+      },
+      {
+        "frame": 6,
+        "physicalSwords": 1,
+        "scabbards": 0,
+        "swordState": "drawn",
+        "grip": "consistent near right hand",
+        "phase": "low-brake"
+      },
+      {
+        "frame": 7,
+        "physicalSwords": 1,
+        "scabbards": 0,
+        "swordState": "drawn",
+        "grip": "consistent near right hand",
+        "phase": "recover-drawn"
+      },
+      {
+        "frame": 8,
+        "physicalSwords": 1,
+        "scabbards": 0,
+        "swordState": "drawn",
+        "grip": "consistent near right hand",
+        "phase": "ready-drawn"
       }
     ]
   },
-  "previousReport": "reviews/review-2-findings.json"
+  "verifiedAssets": [
+    {
+      "image": "designs/cloud.png",
+      "sha256": "cfb02033e4948bc28776644674b9fd9a16a91a8c14e5cfe1a69c411c4006f7d5"
+    },
+    {
+      "image": "designs/lara.png",
+      "sha256": "74ed2ce9c0ee33465ed4475ce490b2baa6999320c3a2bd4bc79171ad9e664f7b"
+    },
+    {
+      "image": "designs/destined-one.png",
+      "sha256": "55229bbd7c63a68b00f997115de8f21aaa8b5d9a3774438f7c35591bba70d9f9"
+    },
+    {
+      "image": "designs/nathan-drake.png",
+      "sha256": "f3746e33a0df527067fcbc821574a6a2c584286dae090dfaa8b0ccc9b7219599"
+    },
+    {
+      "image": "designs/tanjiro.png",
+      "sha256": "6a500fbbed83345284dd3ba85fe98d938e8c213fbe26216550c35b6df331ba08"
+    },
+    {
+      "image": "zenitsu-r3/design.png",
+      "sha256": "dd766eee31f16c7934cfd7a5c91c9251b57fe15c40765fbd521369c684eac78e"
+    },
+    {
+      "image": "cloud-slash-clean-sheet.png",
+      "sha256": "bccc12e38ecf2dfdf49b56f146ecc8370a47c7daac9b41229ee1bf93712efb07"
+    },
+    {
+      "image": "frames/cloud-slash/01.png",
+      "sha256": "df7b7761cc648c7c4a80f4752d65c37b11e632aae86fd5a90efcf72f79957f28"
+    },
+    {
+      "image": "frames/cloud-slash/02.png",
+      "sha256": "7b6b0f197849079aab77d63edd9ba46a25fd7fe0a3ed21400132d02fe3add4c1"
+    },
+    {
+      "image": "frames/cloud-slash/03.png",
+      "sha256": "478fe75ec68bf98b061822afb058374a04e317aabd7df336bdbe16e4e8faa662"
+    },
+    {
+      "image": "frames/cloud-slash/04.png",
+      "sha256": "ad957a23da9d32727939ab74da05f3d07eb66d4400a4bd49541f610d3351d38f"
+    },
+    {
+      "image": "frames/cloud-slash/05.png",
+      "sha256": "2582795571052a3d46ec5073bae46a0311ff6e95a6efdac579f4bdd4f80aa17f"
+    },
+    {
+      "image": "frames/cloud-slash/06.png",
+      "sha256": "5e345f0bf828fc0ce5256b310abd340d37f13d38ef52034acfa454b285865e64"
+    },
+    {
+      "image": "frames/cloud-slash/07.png",
+      "sha256": "c740fd8f54501e56ede2d12889057417a1818c2cfacfc493c57c8d0d18a29fba"
+    },
+    {
+      "image": "frames/cloud-slash/08.png",
+      "sha256": "34941c8d799dcb8ab0c91ee4b49ee567db918601b7e3b409e6fdc028aebdd0fc"
+    },
+    {
+      "image": "tanjiro-water-review-sheet.png",
+      "sha256": "8c3fc2bf6cafac3b5b997b8abed213436762ef863786e4b01fbfc4bf3986ddb3"
+    },
+    {
+      "image": "frames/tanjiro-water/01.png",
+      "sha256": "c70aadcaaf9b49956445454c5bfe755438a73d5eaba0800d556db73e1809e068"
+    },
+    {
+      "image": "frames/tanjiro-water/02.png",
+      "sha256": "ac213b87b509265e93936d60da76d332e6fe9ea3bc2b74f278d4de7c41bc7af7"
+    },
+    {
+      "image": "frames/tanjiro-water/03.png",
+      "sha256": "8d0b4b816b254b5ec09292ad674cd2488fa4556c6c3909c6e670cda5deb2886b"
+    },
+    {
+      "image": "frames/tanjiro-water/04.png",
+      "sha256": "09855923656973a931e2cf40690b6f688d149933efd9e7441804018b4bae8bbe"
+    },
+    {
+      "image": "frames/tanjiro-water/05.png",
+      "sha256": "3b3990eb7317f593a016dc6ae176696c93621866f8191d7e32ea2582ebe10e0b"
+    },
+    {
+      "image": "frames/tanjiro-water/06.png",
+      "sha256": "fa78ba9ebca25f2f0750897e567617dbeb386b86ef9c0dcddd6726154d8227e8"
+    },
+    {
+      "image": "frames/tanjiro-water/07.png",
+      "sha256": "68e099a0aa8147ed7a69951ebfd4fe48ed72fa30c0d4cb3be52441b5e0a01bed"
+    },
+    {
+      "image": "frames/tanjiro-water/08.png",
+      "sha256": "d79e9a39d43da9445f1f5f8d574f1158e5179e68426e679002ba1dab2fda1757"
+    },
+    {
+      "image": "zenitsu-r3/animation-sheet.png",
+      "sha256": "7df8be3e293728c804f040eab34315146bcbbbca9fc6973e0bc4e6a805e12d93"
+    },
+    {
+      "image": "zenitsu-r3/frames/01.png",
+      "sha256": "e9e0e4911dc1f724626c209f811f6f8bcb166ce5879caac05b89e10420d7aef3"
+    },
+    {
+      "image": "zenitsu-r3/frames/02.png",
+      "sha256": "6ebff2ca6233d6d338bfda73af9d41bc30732d6f0c82a16279553e732d7b56f8"
+    },
+    {
+      "image": "zenitsu-r3/frames/03.png",
+      "sha256": "d5971b4958e574754884efc5eb7eb44b95172a0c46b199f33ff7a1b46de733dd"
+    },
+    {
+      "image": "zenitsu-r3/frames/04.png",
+      "sha256": "02af17c208a9ffeb3e8f27eb756aa0ebd551f3ca4e1d9c696bbfc0c8207e7541"
+    },
+    {
+      "image": "zenitsu-r3/frames/05.png",
+      "sha256": "89e27b62eadcdc259815e796a6accc6987c21a4a907809ec31f395abefed5901"
+    },
+    {
+      "image": "zenitsu-r3/frames/06.png",
+      "sha256": "422e48b9642b624cd04a7ec39cfbba14c52977a5f4f4974252b77ca66c9e4e06"
+    },
+    {
+      "image": "zenitsu-r3/frames/07.png",
+      "sha256": "77c0cf26cea3a46b791c34a2e2188f8179dbf49655a07e7b767448ef04746c1a"
+    },
+    {
+      "image": "zenitsu-r3/frames/08.png",
+      "sha256": "29d0f8b10a1188fb119d6091f020af0397ebc78615f061dbea2baa5c8f2fb665"
+    },
+    {
+      "image": "arena-1200x640.png",
+      "sha256": "ffb0018ca68dc6a7dcd8841fd13cf6e5ea00e86b9346e2c87f8e3ddd02574603"
+    }
+  ]
 }
