@@ -1,0 +1,44 @@
+{
+  "checkedAt": "2026-11-07T01:56:19.811Z",
+  "totalFrames": 260,
+  "sourceAtlasesVerified": 30,
+  "manifestSha256": "39dd2379971b90be33c66e0c27cd378c4dfc4c383cb44cca6e8f03e116d35e9d",
+  "results": [
+    {
+      "hero": "lara",
+      "clips": 13,
+      "frames": 52,
+      "status": "PASS_STRUCTURAL",
+      "warnings": []
+    },
+    {
+      "hero": "wukong",
+      "clips": 13,
+      "frames": 52,
+      "status": "PASS_STRUCTURAL",
+      "warnings": []
+    },
+    {
+      "hero": "drake",
+      "clips": 13,
+      "frames": 52,
+      "status": "PASS_STRUCTURAL",
+      "warnings": []
+    },
+    {
+      "hero": "tanjiro",
+      "clips": 13,
+      "frames": 52,
+      "status": "PASS_STRUCTURAL",
+      "warnings": []
+    },
+    {
+      "hero": "zenitsu",
+      "clips": 13,
+      "frames": 52,
+      "status": "PASS_STRUCTURAL",
+      "warnings": []
+    }
+  ],
+  "scope": "File count, ownership, draft status, unique bytes, hashes, dimensions and real alpha only. Does not certify anatomy, choreography, gait or full animation quality."
+}
