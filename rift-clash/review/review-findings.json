@@ -1,0 +1,432 @@
+{
+  "scope": "Independent choreography review, not file-count approval",
+  "characters": {
+    "cloud": {
+      "attack1": {
+        "status": "PASS_DRAFT_CHOREOGRAPHY",
+        "sourceSha256": "2053b524096de5fda1885e77707091eebdfd0e1a0863843a9be51243c1ccb6ed",
+        "findings": [
+          "High-to-low slash: back-loaded 1–3, over-crown4, diagonal contact5, low followthrough6–7. Similar anticipation2–3 is acceptable, not eight forward pushes."
+        ],
+        "limitations": [
+          "Authored eight-keypose draft; not user approval or proof of fully natural continuous animation."
+        ],
+        "eventPose": 5
+      },
+      "attack2": {
+        "status": "PASS_DRAFT_CHOREOGRAPHY",
+        "sourceSha256": "950f3e45a84431c604a7d3c705e23d60cd973cc04d9a1d644fffcfdf116040cb",
+        "findings": [
+          "Regenerated after rejection: contact4–5 now crosses chest6 and turns behind the body7. Original candidate repeated forward push6–7 and was rejected. New direction passes; sparse transition still needs playback polish."
+        ],
+        "limitations": [
+          "Authored eight-keypose draft; not user approval or proof of fully natural continuous animation."
+        ],
+        "eventPose": 5
+      },
+      "attack3": {
+        "status": "PASS_DRAFT_CHOREOGRAPHY",
+        "sourceSha256": "a94eec92c0d077413645719c43fc825bda1d04d9fc56f7b82e9f7e7a82093286",
+        "findings": [
+          "Overhead3, vertical acceleration4, low contact5, compression6 and settle7 read as heavy chop. Similar low5–7 should represent absorption, not three repeated hits."
+        ],
+        "limitations": [
+          "Authored eight-keypose draft; not user approval or proof of fully natural continuous animation."
+        ],
+        "eventPose": 5
+      },
+      "skill": {
+        "status": "PASS_DRAFT_CHOREOGRAPHY",
+        "sourceSha256": "14e47d1817f95f339a7e6f16ae2be5feade851e9d9380d43faaa78a0bc6dfac7",
+        "findings": [
+          "Low backload1–3 unwinds into rising cut4–5 and travels above/behind shoulder6–7. Similar2–3 is anticipation; not a forward thrust."
+        ],
+        "limitations": [
+          "Authored eight-keypose draft; not user approval or proof of fully natural continuous animation."
+        ],
+        "eventPose": 5
+      },
+      "ultimate": {
+        "status": "PASS_DRAFT_CHOREOGRAPHY",
+        "sourceSha256": "6f4cde96d6f16d7b7f1970b2012915370be2791e5f174d7e2c3a6eeccbc344e1",
+        "findings": [
+          "Regenerated low-right5 to opposite high shoulder6 and rear torso7 removes rejected upward-point finish. First downward contact is pose3; reverse slash pose6. Major missing intermediate between5–6 remains, so only draft direction passes."
+        ],
+        "eventPose": 3,
+        "limitations": [
+          "Eight authored keyposes; not complete smooth animation or user approval."
+        ]
+      }
+    },
+    "lara": {
+      "attack1": {
+        "status": "PASS_DRAFT_CHOREOGRAPHY",
+        "sourceSha256": "ac1379134ed28fb3f13ffc9a05270fcc3cc18892f696255a7b6242c2c82eae78",
+        "eventPose": 5,
+        "findings": [
+          "Targeted recoil correction passes: pose6 keeps arm nearly extended, modest muzzle rise and chest absorption instead of severe elbow collapse. Aim4→flash5→recoil6→reacquire7 clearly depicts shooting."
+        ],
+        "limitations": [
+          "Eight authored keyposes; requires timing/compositing polish, not user approval."
+        ]
+      },
+      "attack2": {
+        "status": "PASS_DRAFT_CHOREOGRAPHY",
+        "sourceSha256": "eb1f4c3e7901ff8e154c39a7a2b59afa9d2e21aa3e9a213f4fb68bd9280b8ec5",
+        "eventPose": 5,
+        "findings": [
+          "Controlled lead-arm shot with flash5 then recoil6 and re-aim7. Pose6 still lifts muzzle around20–25 degrees and is more exaggerated than corrected attack1; polish limitation, not a melee/thrust or limb-swap blocker. Alternating hands not required by single-bullet mechanics."
+        ],
+        "limitations": [
+          "Eight authored keyposes; requires timing/compositing polish, not user approval."
+        ]
+      },
+      "attack3": {
+        "status": "PASS_DRAFT_CHOREOGRAPHY",
+        "sourceSha256": "086ed7a11778e48e008dd6a4ca9f932be61e59cd1fe7a337b33e328c44cd860e",
+        "eventPose": 5,
+        "findings": [
+          "One strong shot flash5, recoil6, re-aim7 and lowering8 matches one-finisher-bullet logic. Second gun in pose2 is largely occluded, not clearly an extra/missing arm."
+        ],
+        "limitations": [
+          "Eight authored keyposes; requires timing/compositing polish, not user approval."
+        ]
+      },
+      "skill": {
+        "status": "PASS_DRAFT_CHOREOGRAPHY",
+        "sourceSha256": "7eae38296adf065f40975eea3701c24c720a69b1c6b50e1008c1234193060e73",
+        "findings": [
+          "Arrow nock2, draw3, cheek anchor4, release5 with draw hand back, extended bow followthrough6 and lowering7–8. Grounded feet are appropriate. Upper bow tip gutter is tight."
+        ],
+        "limitations": [
+          "Authored eight-keypose draft; not user approval or proof of fully natural continuous animation."
+        ],
+        "eventPose": 5
+      },
+      "ultimate": {
+        "status": "PASS_DRAFT_CHOREOGRAPHY",
+        "sourceSha256": "9f03f7a300e74f3f60679d0c43eca68a1295aed2aad01bfefe1027b5c0a5a57a",
+        "eventPose": 3,
+        "findings": [
+          "Shooting volley intent is clear, but poses3–6 all have baked muzzle flashes and recoil differences are weak. Runtime should emit flash pose3 only on actual shot ticks and use nonflash7/8 between shots. Alternation of left/right gun is not a requirement; do not claim six uniquely drawn recoil cycles."
+        ],
+        "limitations": [
+          "Eight authored keyposes; requires timing/compositing polish, not user approval."
+        ]
+      },
+      "launcher": {
+        "status": "PASS_DRAFT_CHOREOGRAPHY",
+        "sourceSha256": "619955bbdc383bdb6ec7e42d29fd8a28b53e371e3c5baaf143dff5f7fc554a1c",
+        "eventPose": 5,
+        "findings": [
+          "Grounded brace raises firing hand for upward shot5; barrel rises about10 degrees, broadly matching fixed vy-4/vx19 trajectory. Recoil6 is a little steeper, then7 returns to aim; no whole-body rotation hack."
+        ],
+        "limitations": [
+          "Eight authored keyposes; requires timing/compositing polish, not user approval."
+        ]
+      },
+      "air": {
+        "status": "PASS_DRAFT_CHOREOGRAPHY",
+        "sourceSha256": "7af9ddf0a39b99fbe64cc1159f6749cbdbe4aa5277f97b72ddf44d029162e338",
+        "eventPose": 5,
+        "findings": [
+          "Tucked airborne pose aims gun down-right, flash5, short recoil6 and reacquire7. Barrel appears roughly30–35 degrees versus logical27.5 degrees; close direction match with residual angle calibration. Jump itself remains engine physics."
+        ],
+        "limitations": [
+          "Eight authored keyposes; requires timing/compositing polish, not user approval."
+        ]
+      }
+    },
+    "wukong": {
+      "attack1": {
+        "status": "PASS_DRAFT_CHOREOGRAPHY",
+        "sourceSha256": "68a0bda69bfc232e47a254aa4de13446dd48b157f6bfbe9b4a963a760394ea16",
+        "findings": [
+          "Staff changes diagonal→vertical load→foreshortened acceleration4→horizontal contact5→far-side low followthrough6–7 with visible back rotation. Implied shaft foreshortening remains uneven."
+        ],
+        "limitations": [
+          "Authored eight-keypose draft; not user approval or proof of fully natural continuous animation."
+        ],
+        "eventPose": 5
+      },
+      "attack2": {
+        "status": "PASS_DRAFT_CHOREOGRAPHY",
+        "sourceSha256": "57ff2c447a5cfd3ec27efb1a39a5baa3dd1d4f5f86a5859004ccbfcca8245ebd",
+        "findings": [
+          "Broad torso/back rotation3–5 carries staff around waist then rises6–8. Horizontal early shaft is part of horizontal sweep, not forward push. Some occluded grip detail remains ambiguous."
+        ],
+        "eventPose": 5,
+        "limitations": [
+          "Eight authored keyposes; not complete smooth animation or user approval."
+        ]
+      },
+      "attack3": {
+        "status": "PASS_DRAFT_CHOREOGRAPHY",
+        "sourceSha256": "ccd3b68b0e9a548d05ce853097c6a3042fe2ffba4f38d24320c6c08e39d90f5e",
+        "eventPose": 5,
+        "findings": [
+          "Overhead3–4 descends diagonally across front5, then low sinking6–7. Different contact direction from forward-projected ultimate, though shared anticipation silhouette remains."
+        ],
+        "limitations": [
+          "Eight authored keyposes, not complete smooth inbetweens or user approval."
+        ]
+      },
+      "skill": {
+        "status": "PASS_DRAFT_CHOREOGRAPHY",
+        "sourceSha256": "fedd625c78ebcc7700f3ffe197e426a55b3569b8b53c5b02c4dd556b632b5bbd",
+        "findings": [
+          "Back-three-quarter coil2–3 unwinds into lunge/finger cast5 then retract7. Planted staff and casting hand are legible; this is a cast, not a melee strike."
+        ],
+        "limitations": [
+          "Authored eight-keypose draft; not user approval or proof of fully natural continuous animation."
+        ],
+        "eventPose": 5
+      },
+      "ultimate": {
+        "status": "PASS_DRAFT_CHOREOGRAPHY",
+        "sourceSha256": "379f1a49558c65aa2929a7dd3c2b6c03fbaed485d47d75bfd4eeb56398459dd5",
+        "findings": [
+          "Overhead windup3 descends through4 to projected contact5 then low crouched followthrough6–7. Forward staff at contact is part of descending arc. Grip/foreshortening transition remains sparse; frame5 needs adaptive gutter extraction."
+        ],
+        "limitations": [
+          "Authored eight-keypose draft; not user approval or proof of fully natural continuous animation."
+        ],
+        "eventPose": 5
+      }
+    },
+    "drake": {
+      "attack1": {
+        "status": "PASS_DRAFT_WITH_LIMITATION",
+        "findings": [
+          "Visible pose4 is a lead/watch-hand straight and pose5 a rear straight. This can read as a one-two action, not eight poses of the same single right punch. Runtime still applies one hit; do not claim two damage events. Weight transfer and torso rotation are visible."
+        ],
+        "eventPose": 5,
+        "sourceSha256": "b94429d9f2925d06eb95fbdc89c3b2c6316bfa835a445a4814438521bc7d2fce",
+        "limitations": [
+          "Hand change retained and disclosed as combo choreography limitation, not evidence of a perfectly continuous single punch."
+        ]
+      },
+      "attack2": {
+        "status": "PASS_DRAFT_CHOREOGRAPHY",
+        "sourceSha256": "915c99e1476ce71385d1849ca0ccbc33022c790195f1c447b3449b457b639c3a",
+        "eventPose": 5,
+        "findings": [
+          "Rear coil2–3, open-shoulder acceleration4, right hook contact5 and turned followthrough6, guard7–8. Right punch and left/watch guard remain consistent; passes draft force transfer."
+        ],
+        "limitations": [
+          "Eight authored keyposes; requires timing/compositing polish, not user approval."
+        ]
+      },
+      "attack3": {
+        "status": "PASS_DRAFT_CHOREOGRAPHY",
+        "sourceSha256": "e26200115fb6ec9ea48f2afd663cedb3c2edcbef652f2a5c44ff8f9f1392495e",
+        "eventPose": 5,
+        "findings": [
+          "Targeted candidate c541afb5 fixes the rejected pose5: three-quarter back view with RIGHT elbow forward and LEFT/watch hand down behind, continuous with4/6. Previous left-elbow swap was explicitly rejected. Remaining middle poses have limited torso-angle variety, so this is draft continuity, not complete realism."
+        ],
+        "limitations": [
+          "Eight keyposes with sparse transitions; no user approval implied."
+        ]
+      },
+      "skill": {
+        "status": "PASS_DRAFT_CHOREOGRAPHY",
+        "sourceSha256": "307ee867a11c5dab635b8e0b5a427c32c225222a966ca908a0cfafd228a10869",
+        "findings": [
+          "Grenade rear load2–3, trunk/shoulder rotation4, release5 and arm-down weight absorption6. Actual projectile should leave on pose5; overhead hand has tight top gutter."
+        ],
+        "limitations": [
+          "Authored eight-keypose draft; not user approval or proof of fully natural continuous animation."
+        ],
+        "eventPose": 5
+      },
+      "ultimate": {
+        "status": "PASS_DRAFT_CHOREOGRAPHY",
+        "sourceSha256": "d7cb9b4838e11ebc366c514859b098776af7b6e4db833038581d2502e2f40dc5",
+        "findings": [
+          "Shoulder-braced rifle with supporting hand under fore-end; flash4 and6 alternate with level re-aim5/7. First event is pose4, not5. Runtime [3,4,6] zero-index active cycle avoids extra baked flash6 between actual shots."
+        ],
+        "limitations": [
+          "Authored eight-keypose draft; not user approval or proof of fully natural continuous animation."
+        ],
+        "eventPose": 4
+      }
+    },
+    "tanjiro": {
+      "attack1": {
+        "status": "PASS_DRAFT_CHOREOGRAPHY",
+        "sourceSha256": "6b34237d9a830137eeb9d9cca9d294213dcf11f5c46fa22d4d373e129c21d5a2",
+        "findings": [
+          "Back load2–3, open-chest waist cut4–5, cross-body step6, down arc7 and low recovery8. Frame5 blade crosses nominal cell boundary but transparent gap separates next figure."
+        ],
+        "limitations": [
+          "Authored eight-keypose draft; not user approval or proof of fully natural continuous animation."
+        ],
+        "eventPose": 5
+      },
+      "attack2": {
+        "status": "PASS_DRAFT_CHOREOGRAPHY",
+        "sourceSha256": "e419343f07ac85d04d93048784757a9dd823b982be44e5a732fe96c33df2dce9",
+        "findings": [
+          "Low rear load1–2 rises through4–5 and continues over shoulder6–8. Ends in high guard suitable to chain attack3; standalone idle return still needs transition."
+        ],
+        "limitations": [
+          "Authored eight-keypose draft; not user approval or proof of fully natural continuous animation."
+        ],
+        "eventPose": 5
+      },
+      "attack3": {
+        "status": "PASS_DRAFT_CHOREOGRAPHY",
+        "sourceSha256": "db717c7e61c722e218701b12caf8c331690ce5763295f068001ffce6eadff32c",
+        "findings": [
+          "Back-facing coil3, step4, downward slash5–6, cross-body low finish7. Blade/hip orientations show actual cutting; sparse acceleration4→5 requires timing polish."
+        ],
+        "limitations": [
+          "Authored eight-keypose draft; not user approval or proof of fully natural continuous animation."
+        ],
+        "eventPose": 5
+      },
+      "skill": {
+        "status": "PASS_DRAFT_CHOREOGRAPHY",
+        "sourceSha256": "05b3de76e94905a5279e86f99a7e96c3e494b748c243a0dd10749d14b0928957",
+        "findings": [
+          "Crouch→coil→horizontal airborne→full inversion→rotation→landing shows whole-body Water Wheel direction. No obvious extra limbs. Eight poses still need anchor/timing review, not rigid-body rotation."
+        ],
+        "limitations": [
+          "Authored eight-keypose draft; not user approval or proof of fully natural continuous animation."
+        ],
+        "eventPose": 5
+      },
+      "ultimate": {
+        "status": "PASS_DRAFT_CHOREOGRAPHY",
+        "sourceSha256": "96988fd407ab458ed65ab21cef6c7d5bd6dbf898c00e419c8d12d7a208612640",
+        "eventPose": 3,
+        "findings": [
+          "Overhead2→descending cut3→low4→ascending5→overhead follow6→low7→guard8. Four-hit runtime needs scheduled contact alignment;6→7 could look like another cut if effects added. Pale blade fringe still requires native compositing QA."
+        ],
+        "limitations": [
+          "Eight authored keyposes, not complete smooth inbetweens or user approval."
+        ]
+      }
+    },
+    "zenitsu": {
+      "attack1": {
+        "status": "PASS_DRAFT_CHOREOGRAPHY",
+        "sourceSha256": "e6169a33e9e9b5e0df46a86fc4a6ac6eccf433823ab107d13fec6bc6ed7ea6e6",
+        "findings": [
+          "Sheathed load, back-three-quarter coil2, draw3–4, waist cut5, downward followthrough6–7 and high recovery8. Scabbard becomes occluded/indistinct in middle poses; return is drawn guard rather than complete resheathing."
+        ],
+        "limitations": [
+          "Authored eight-keypose draft; not user approval or proof of fully natural continuous animation."
+        ],
+        "eventPose": 5
+      },
+      "attack2": {
+        "status": "PASS_DRAFT_CHOREOGRAPHY",
+        "sourceSha256": "60f40e07342f4b1f34977c7d726b3e15cd4ab00e42349ac9c1f87a6e5c9abf09",
+        "eventPose": 5,
+        "findings": [
+          "Rear coil2–3→low cross-body4→rising cut5→overhead settle6–8. Last three poses are similar guard, not more impacts. Scabbard/grip occlusion remains in middle poses."
+        ],
+        "limitations": [
+          "Eight authored keyposes, not complete smooth inbetweens or user approval."
+        ]
+      },
+      "attack3": {
+        "status": "PASS_DRAFT_CHOREOGRAPHY",
+        "sourceSha256": "1302b9787db156434c91abc9f52d8d884dcabbb812babd51aa9ce070d6c3feb3",
+        "eventPose": 4,
+        "findings": [
+          "Back-shoulder load2–3 turns into downward cut4, lower crossed-arm followthrough5 and sinking6–7. Missing acceleration is3→4; 4→5 is deceleration, not another hit. Top blade tip margin is tight."
+        ],
+        "limitations": [
+          "Eight authored keyposes, not complete smooth inbetweens or user approval."
+        ]
+      },
+      "skill": {
+        "status": "PASS_DRAFT_CHOREOGRAPHY",
+        "sourceSha256": "4090a125fc49917b7679b92ab2fdf17af54af971f0232bc4e5d84b218e07815d",
+        "findings": [
+          "Sheathed crouch→weight shift→draw→low strike→blade across front→back-three-quarter followthrough→brake→resheath. Insertion between7–8 remains underspecified."
+        ],
+        "limitations": [
+          "Authored eight-keypose draft; not user approval or proof of fully natural continuous animation."
+        ],
+        "eventPose": 5
+      },
+      "ultimate": {
+        "status": "PASS_DRAFT_CHOREOGRAPHY",
+        "sourceSha256": "b7769980d1d69c03f88f41b1eb76b1519b73c4935d4be83560cec2a0334b2641",
+        "eventPose": 4,
+        "findings": [
+          "Draw3→cut4→low follow5→reload6→second cut7→settle8. Two clear strike directions but sparse transitions. Runtime six-hit schedule needs alternating contact indices3 and6 rather than uniform eight-frame playback."
+        ],
+        "limitations": [
+          "Eight authored keyposes, not complete smooth inbetweens or user approval."
+        ]
+      }
+    }
+  },
+  "crossCutting": [
+    {
+      "id": "cloud_reference_identity",
+      "status": "RESOLVED_EVIDENCE_SCOPE",
+      "finding": "Researcher excluded Yuffie/Scarlet DLC action samples. Cloud evidence now official static slash keyposes only, with all eight-pose timing authored. Lara and Wukong actual official video excerpts verified; Drake rescue is Sam, not brawl; katana static evidence only."
+    },
+    {
+      "id": "lara_airshot_vertical_reach",
+      "status": "FIXED_AND_TESTED",
+      "finding": "Changed to fixed vy12, range360 with matching downward muzzle. Actual jump-apex-to-ground projectile hit test passes; no target seeking."
+    },
+    {
+      "id": "lara_procedural_attack_regression",
+      "status": "RESOLVED_IN_OPTIONAL_PREVIEW_DESIGN",
+      "finding": "Agent removed whole-body procedural gun override. Optional high-art preview hook takes precedence, tested independently. Dedicated launcher/air art still pending rather than treating horizontal borrowed art as finished."
+    },
+    {
+      "id": "water_wheel_detached_fx",
+      "status": "FIXED_AND_BROWSER_VERIFIED",
+      "finding": "Actual Chromium before/after checked: original stationary ellipse x437.496 while caster moved x364→399→430.68; R3 drawing now follows explicit caster x+locked-dir24 and y-80+local lift. Damage/target tracking unchanged. Still procedural ellipse, not blade/bone-attached FX."
+    },
+    {
+      "id": "airshot_feedback_origin_angle",
+      "status": "FIXED_AND_BROWSER_VERIFIED",
+      "finding": "Old browser snapshot showed shot flare at chest. Rebuilt R3 profile unifies projectile/shot origin; feedback muzzle now applies captured dir mirror and projectile angle. New airborne screenshot shows flare at downward gun and aligned projectile; not target seeking."
+    }
+  ],
+  "mechanics": {
+    "laraTests": 11,
+    "status": "PASS_TARGETED_LOGIC",
+    "scope": "Source inspection and Node state tests, not real browser feel or completed painted art.",
+    "previewTests": 24,
+    "previewScope": "Optional preview hook tested for priority, event mapping, combat-clock freeze and lack of procedural whole-body rotation; browser feel not established by Node checks.",
+    "browser": {
+      "status": "PASS_TARGETED_VISUAL_SNAPSHOTS",
+      "pageErrors": 0,
+      "scenarios": [
+        "Tanjiro skill ticks11/16/23",
+        "Zenitsu ultimate tick24",
+        "Lara air tick7"
+      ],
+      "screenshots": [
+        "audit-tanjiro-skill-11.png",
+        "audit-tanjiro-skill-16.png",
+        "audit-tanjiro-skill-23.png",
+        "audit-zenitsu-ultimate-24.png",
+        "audit-lara-air-7.png"
+      ],
+      "limitations": "Manual fixed combat-clock snapshots, not all-character full gameplay feel acceptance."
+    }
+  },
+  "summary": {
+    "clipsReviewed": 32,
+    "posesPerClip": 8,
+    "status": "DRAFT_DIRECTION_REVIEW_COMPLETE",
+    "userApproval": false,
+    "limitations": [
+      "Eight keyposes per action; full inbetween animation is not complete.",
+      "Source-video availability varies; official static keyposes are not continuous motion capture.",
+      "Lara ultimate repeated flashes/recoil and Drake attack1 one-two semantics retain explicit limitations.",
+      "Most existing scene/skill procedural effects were not redesigned in this round."
+    ]
+  }
+}

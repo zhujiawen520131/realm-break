@@ -1,185 +1,92 @@
-# 操控方向与必杀海报：独立机制审核
+# R3 动作与机制独立复核
 
-日期：2026-11-07（Asia/Shanghai）。本报告为源码与 Node 状态机检查，不是浏览器真人试玩或音效验收。
+日期：2026-11-07（Asia/Shanghai）。本批是对用户明确指出的「挥砍像刺击、技能缺少转体、劳拉持枪普攻却搏击」的修正。R2文件数、透明通道和裁切合格不能证明动作自然，本次不沿用该结论作为动作质量通过。
 
-## 初审确认的问题
+## 判定依据
 
-1. 空闲或移动状态的 `f.dir` 每帧根据敌人位置重算，因此玩家按向后移动时仍朝敌人，冲刺和起手也继承敌方方向。
-2. 旧 I 以敌人的位置和方向为锚点传送，不是从玩家当前位置按输入方向位移；传送结束还会自动朝敌方。
-3. 呼吸技把移动速度限制到 `gap-52`，是随敌人位置改变的追击距离，而非固定出招轨迹。
+逐组按八个姿态的顺序检查，而非把单张漂亮姿势当成完整动作：
 
-## 接入风险与验收要求
+1. **武器轨迹与动作类别**：挥砍应有刃尖从身后或上侧绕经攻击平面、越过接触点、落到另一侧的连续轨迹；刺击、拔刀瞬切与射击各自判断，不将真实刺棍强改旋转斩。
+2. **身体传力**：脚掌支撑或蹬地、髋部转动、胸肩随动、手臂/武器滞后与超越、恢复支撑可被看出。仅摆动武器或加光弧不算修正。
+3. **可读的时间结构**：蓄力、加速、接触、惯性随动、减速和收招不能全部同速。八张关键姿态仍不等于补齐全部中间帧。
+4. **解剖与连续性**：手脚数量、握持手、肩肘关节、衣服/武器体积保持合理；允许转背和前后三分之四角度，不能以「朝右」锁死躯干侧面。
+5. **射击一致性**：枪口方向与弹道一致，击发有腕/肩后坐，后续瞄准重新回正；弓弦、投掷手、步枪枪托和双枪分别判断。
+6. **几何检查仅为基础**：透明、裁切、相邻格不串入、脚底与身体尺度可支持预览，但不单独构成动作通过。
 
-- 瞬移方向必须在按键时快照；命中停顿期间排队后，不能因敌人移动或随后输入而改变该次瞬移方向。
-- 无方向输入时保留最后朝向；左右同时按住时行为必须一致。攻击和冲刺起手后锁定本次方向。
-- 必杀海报演出期间冻结世界帧、对局计时、招式时间、位置、弹体、粒子、冷却和气力；演出自己的时间独立前进。
-- 海报触发当帧不得出现 P1 已暂停但 P2 继续动作的半帧状态；同一必杀只扣一次气力，不因重复按键重启海报。
-- 旧精确帧机制测试可以在夹具中关闭演出，另用专门测试覆盖正常、减弱和关闭演出的暂停与恢复。
-- 移除 gap 追踪后应检查高速突进的身体碰撞、墙角、左右镜像和同帧互换，避免穿越或对象顺序偏置。
+## 证据范围
 
-## 接入后的逻辑复核
+动作研究代理负责官方来源和实际视频抽帧，研究记录保存在 `motion-study/`；未实际看过的片段不得写成已逐帧核验。生成稿的具体视觉发现、退回项和剩余限制将在下面逐组记录。
 
-新增 `tests/direction.cjs` 的 **24 项检查全部通过**，逐项结果见 `direction-cutin-results.json`。旧机制测试已调整演出开关与镜像输入夹具，其余伤害、连段、格挡、AI 和逃脱断言保留；17 项旧机制与23项鬼灭角色检查均通过。
+## 当前状态与证据纠正
 
-| 项目 | 实测结果 |
-|---|---|
-| 空闲与移动朝向 | 敌人换边不会自动转身；A/D 决定移动朝向；松键后保持最后朝向，双方向同时按住保持朝向且不移动。 |
-| 定向瞬移 | 从角色自身位置沿输入方向位移240逻辑单位，与敌人位置和朝向无关；无输入沿最后移动意图；边界截断到42/1158，空中高度保持。 |
-| 冻结中的瞬移 | 第一次按键方向被保存；重复反向按键不覆盖该次排队；冻结结束后只执行一次、只扣40气并开始冷却。 |
-| 起手与锁向 | 攻击、技能和冲刺按起手输入捕获方向；途中改变移动按键不使正在出招的角色转向敌人。 |
-| 固定突进 | 炭治郎与善逸的技能位移曲线在不同敌人位置下相同，速度不再读取目标距离；实体碰撞仍能阻挡前进。 |
-| 身体碰撞 | 高速有伤害无敌的突进仍被身体阻挡，左右镜像不穿越；普通冲刺仍按设计允许穿身。 |
-| 手动防御 | 背向攻击来源的防御不会自动转向并挡住攻击。 |
-| AI | AI 通过自己的方向意图转向，不会替玩家决定朝向。六角色AI对局仍通过。 |
-| 必杀海报起手 | 在世界推进前接受必杀，扣气一次，招式时间保持0；不让另一方、弹体或粒子在该帧偷偷前进。 |
-| 演出暂停 | 默认36逻辑调用（60Hz下约0.6秒）；世界帧、对局时间、位置、技能时间、气力、无敌、冷却、弹体、粒子、已排程攻击均暂停，只有演出倒计时前进。 |
-| 恢复与重复输入 | 演出结束下一逻辑步恢复；重复按必杀不会重启演出或重复扣气；气力不足不产生海报。演出中关闭开关可立即恢复，且不二次扣气。 |
-| 双方同帧必杀 | 双方均可接受起手、各扣一次气，分享一次海报暂停，随后同帧恢复各自招式。 |
-| 演出中的瞬移 | 对手可排队定向瞬移，演出结束后仅执行一次；重置会清空海报和排队状态。 |
+32组动作已逐组看过，每组8个关键姿态。动作方向草案复核完成，31组标为方向通过、德雷克普攻一段保留前后手一二拳的明确限制；“动作方向通过”仅表示解决本轮关键问题，不能代替用户批准，也不等于完整自然动画。具体源文件 SHA 与待修正项见同目录 `review-findings.json`。
 
-## 应用层与剩余范围
+审核曾发现所谓克劳德视频切片实际含尤菲/斯卡蕾特，已要求研究代理纠正。当前克劳德仅采用官方静态挥砍关键姿势，八帧编排与时序明确属于创作；不再声称是克劳德实机连续抽帧。劳拉双枪、悟空横扫有实际官方视频片段；德雷克救援镜头是山姆，不作为本人拳击证据；鬼灭动作仅有官方静态参考，未把无法访问的视频说成已看过。
 
-完整 `npm test`（包含单文件HTML启动）与 `node tests/app.cjs --reduced` 已通过。应用测试实际覆盖同一浏览器帧内 A/D+I 的方向传入、演出时世界/场景/反馈三种时钟暂停，以及减少动态偏好默认关闭海报、震屏和强闪。
+## 劳拉射击机制复核
 
-新增 `tests/posters.cjs` 也通过：六名角色的内嵌海报字节与资产SHA一致，每名角色使用自己的海报，绘制不改变演出计时状态；单张图失败、无Image API和缺资源包三种情况均保留角色名与招式文字演出，不抛异常。
+独立阅读新机制并重新运行 `tests/lara-shooting.cjs`，11项检查通过：普攻只发射真实弹体而无近战判定、有限射程、三段输入衔接及第三段收招、持续正面格挡、瞬移换边后的弹道方向、旧弹体不能确认新招式、上挑射击、正常跳跃顶点向地面射击、命中停顿/海报冻结，以及近距离双向互射。
 
-这里只验证逻辑和模拟DOM输入，不是实际浏览器键盘、触屏或帧率验收；不评价新海报画面与音效。减少动态偏好采用默认关闭必杀海报，不是缩短默认36帧的演出；用户仍可用开关启用。
+初版空中射击下落速度不足，正常跳跃顶点无法在射程内命中地面目标。已改为固定向下速度12、水平23、射程360，并用真实跳跃后的命中检查验证，没有增加自动寻敌。第三段是一枚较强子弹，名称改为“终结点射”。
 
-## 可复现检查
+临时整身程序枪击绘制会让手绘待机突然变简单几何，此问题已要求移除。现在采用独立预览页的可选手绘动作挂钩，并独立运行最终24项预览模块检查，覆盖资源优先级、接触姿态、战斗时钟冻结和不以程序旋转整个人物。正式版暂不替换。上挑与空射须使用新增专用八姿态图，不以水平枪击借帧当最终完成。
 
-在源码目录运行：
+## 时序和特效对齐建议
 
-```text
-node tests/direction.cjs
-node tests/combat.cjs
-node tests/heroes.cjs
-node tests/review.cjs
-node tests/demon.cjs
-node tests/app.cjs
-node tests/app.cjs --reduced
-node tests/posters.cjs
-```
+- 劳拉普攻前摇分别7/7/10tick，挑空10、空射6；前四个蓄势姿态压缩于前摇内，枪火接触姿态在弹体实际生成tick显示。接触后短促后坐，再分配回正与收招；不能将八帧均匀铺满导致枪火晚于子弹。
+- 劳拉普攻的真实三段输入可在前两枪生成8tick后无命中续接，第三枪仍有收招；视觉也应能从重新瞄准衔接下一枪，而不是强制等完整慢速展示结束。
+- 德雷克必杀首次枪火是第4姿态，eventFrame=3（零基）；运行时用[3,4,6]随实际7tick射击周期循环，跳过自带第二次火光的第6姿态，避免无弹假开火。审核画廊仍保留完整八张。
+- 克劳德必杀新图第一记下斩在第3姿态、第二记反斩在第6姿态。当前引擎必杀只有前摇结束时一次direct230/39伤害，后续反斩只是画面随动，不声称双命中，也不增加伤害。不可套默认第5姿态作为首次接触；反斩5→6仍缺中间动作，需强调是关键姿态草案。
+- 炭治郎水车建议局部垂直偏移[0,-35,-85,-120,-80,-45,0,0]并在预览保留偏移，约48px最高视觉抬升。它是画面里的翻滚弧线，不是新增物理跳跃；不得改变真实判定或以整人旋转伪造动作。
+- 命中停顿冻结动画与特效同一战斗时钟；华丽刀光应跟随真实武器方向，不可遮住握持错乱。当前Node检查不证明实机手感已通过。
 
-`RIFT_DIRECTION_REPORT` 环境变量可指定方向检查的JSON输出位置。
+## 逐组视觉复核记录
 
-审核时引擎 SHA256：`f0778bf4d5f204a721483f389046e2bafa6ea6c132c573130c5ea5ca604c4380`。
+以下为实际源图顺序检查结果，自动生成于同目录JSON，未到的组保持待审。
 
+| 角色 / 动作 | 状态 | 可见证据与限制 |
+|---|---|---|
+| cloud / attack1 | PASS_DRAFT_CHOREOGRAPHY | High-to-low slash: back-loaded 1–3, over-crown4, diagonal contact5, low followthrough6–7. Similar anticipation2–3 is acceptable, not eight forward pushes. |
+| cloud / attack2 | PASS_DRAFT_CHOREOGRAPHY | Regenerated after rejection: contact4–5 now crosses chest6 and turns behind the body7. Original candidate repeated forward push6–7 and was rejected. New direction passes; sparse transition still needs playback polish. |
+| cloud / attack3 | PASS_DRAFT_CHOREOGRAPHY | Overhead3, vertical acceleration4, low contact5, compression6 and settle7 read as heavy chop. Similar low5–7 should represent absorption, not three repeated hits. |
+| cloud / skill | PASS_DRAFT_CHOREOGRAPHY | Low backload1–3 unwinds into rising cut4–5 and travels above/behind shoulder6–7. Similar2–3 is anticipation; not a forward thrust. |
+| cloud / ultimate | PASS_DRAFT_CHOREOGRAPHY | Regenerated low-right5 to opposite high shoulder6 and rear torso7 removes rejected upward-point finish. First downward contact is pose3; reverse slash pose6. Major missing intermediate between5–6 remains, so only draft direction passes. |
+| lara / attack1 | PASS_DRAFT_CHOREOGRAPHY | Targeted recoil correction passes: pose6 keeps arm nearly extended, modest muzzle rise and chest absorption instead of severe elbow collapse. Aim4→flash5→recoil6→reacquire7 clearly depicts shooting. |
+| lara / attack2 | PASS_DRAFT_CHOREOGRAPHY | Controlled lead-arm shot with flash5 then recoil6 and re-aim7. Pose6 still lifts muzzle around20–25 degrees and is more exaggerated than corrected attack1; polish limitation, not a melee/thrust or limb-swap blocker. Alternating hands not required by single-bullet mechanics. |
+| lara / attack3 | PASS_DRAFT_CHOREOGRAPHY | One strong shot flash5, recoil6, re-aim7 and lowering8 matches one-finisher-bullet logic. Second gun in pose2 is largely occluded, not clearly an extra/missing arm. |
+| lara / skill | PASS_DRAFT_CHOREOGRAPHY | Arrow nock2, draw3, cheek anchor4, release5 with draw hand back, extended bow followthrough6 and lowering7–8. Grounded feet are appropriate. Upper bow tip gutter is tight. |
+| lara / ultimate | PASS_DRAFT_CHOREOGRAPHY | Shooting volley intent is clear, but poses3–6 all have baked muzzle flashes and recoil differences are weak. Runtime should emit flash pose3 only on actual shot ticks and use nonflash7/8 between shots. Alternation of left/right gun is not a requirement; do not claim six uniquely drawn recoil cycles. |
+| lara / launcher | PASS_DRAFT_CHOREOGRAPHY | Grounded brace raises firing hand for upward shot5; barrel rises about10 degrees, broadly matching fixed vy-4/vx19 trajectory. Recoil6 is a little steeper, then7 returns to aim; no whole-body rotation hack. |
+| lara / air | PASS_DRAFT_CHOREOGRAPHY | Tucked airborne pose aims gun down-right, flash5, short recoil6 and reacquire7. Barrel appears roughly30–35 degrees versus logical27.5 degrees; close direction match with residual angle calibration. Jump itself remains engine physics. |
+| wukong / attack1 | PASS_DRAFT_CHOREOGRAPHY | Staff changes diagonal→vertical load→foreshortened acceleration4→horizontal contact5→far-side low followthrough6–7 with visible back rotation. Implied shaft foreshortening remains uneven. |
+| wukong / attack2 | PASS_DRAFT_CHOREOGRAPHY | Broad torso/back rotation3–5 carries staff around waist then rises6–8. Horizontal early shaft is part of horizontal sweep, not forward push. Some occluded grip detail remains ambiguous. |
+| wukong / attack3 | PASS_DRAFT_CHOREOGRAPHY | Overhead3–4 descends diagonally across front5, then low sinking6–7. Different contact direction from forward-projected ultimate, though shared anticipation silhouette remains. |
+| wukong / skill | PASS_DRAFT_CHOREOGRAPHY | Back-three-quarter coil2–3 unwinds into lunge/finger cast5 then retract7. Planted staff and casting hand are legible; this is a cast, not a melee strike. |
+| wukong / ultimate | PASS_DRAFT_CHOREOGRAPHY | Overhead windup3 descends through4 to projected contact5 then low crouched followthrough6–7. Forward staff at contact is part of descending arc. Grip/foreshortening transition remains sparse; frame5 needs adaptive gutter extraction. |
+| drake / attack1 | PASS_DRAFT_WITH_LIMITATION | Visible pose4 is a lead/watch-hand straight and pose5 a rear straight. This can read as a one-two action, not eight poses of the same single right punch. Runtime still applies one hit; do not claim two damage events. Weight transfer and torso rotation are visible. |
+| drake / attack2 | PASS_DRAFT_CHOREOGRAPHY | Rear coil2–3, open-shoulder acceleration4, right hook contact5 and turned followthrough6, guard7–8. Right punch and left/watch guard remain consistent; passes draft force transfer. |
+| drake / attack3 | PASS_DRAFT_CHOREOGRAPHY | Targeted candidate c541afb5 fixes the rejected pose5: three-quarter back view with RIGHT elbow forward and LEFT/watch hand down behind, continuous with4/6. Previous left-elbow swap was explicitly rejected. Remaining middle poses have limited torso-angle variety, so this is draft continuity, not complete realism. |
+| drake / skill | PASS_DRAFT_CHOREOGRAPHY | Grenade rear load2–3, trunk/shoulder rotation4, release5 and arm-down weight absorption6. Actual projectile should leave on pose5; overhead hand has tight top gutter. |
+| drake / ultimate | PASS_DRAFT_CHOREOGRAPHY | Shoulder-braced rifle with supporting hand under fore-end; flash4 and6 alternate with level re-aim5/7. First event is pose4, not5. Runtime [3,4,6] zero-index active cycle avoids extra baked flash6 between actual shots. |
+| tanjiro / attack1 | PASS_DRAFT_CHOREOGRAPHY | Back load2–3, open-chest waist cut4–5, cross-body step6, down arc7 and low recovery8. Frame5 blade crosses nominal cell boundary but transparent gap separates next figure. |
+| tanjiro / attack2 | PASS_DRAFT_CHOREOGRAPHY | Low rear load1–2 rises through4–5 and continues over shoulder6–8. Ends in high guard suitable to chain attack3; standalone idle return still needs transition. |
+| tanjiro / attack3 | PASS_DRAFT_CHOREOGRAPHY | Back-facing coil3, step4, downward slash5–6, cross-body low finish7. Blade/hip orientations show actual cutting; sparse acceleration4→5 requires timing polish. |
+| tanjiro / skill | PASS_DRAFT_CHOREOGRAPHY | Crouch→coil→horizontal airborne→full inversion→rotation→landing shows whole-body Water Wheel direction. No obvious extra limbs. Eight poses still need anchor/timing review, not rigid-body rotation. |
+| tanjiro / ultimate | PASS_DRAFT_CHOREOGRAPHY | Overhead2→descending cut3→low4→ascending5→overhead follow6→low7→guard8. Four-hit runtime needs scheduled contact alignment;6→7 could look like another cut if effects added. Pale blade fringe still requires native compositing QA. |
+| zenitsu / attack1 | PASS_DRAFT_CHOREOGRAPHY | Sheathed load, back-three-quarter coil2, draw3–4, waist cut5, downward followthrough6–7 and high recovery8. Scabbard becomes occluded/indistinct in middle poses; return is drawn guard rather than complete resheathing. |
+| zenitsu / attack2 | PASS_DRAFT_CHOREOGRAPHY | Rear coil2–3→low cross-body4→rising cut5→overhead settle6–8. Last three poses are similar guard, not more impacts. Scabbard/grip occlusion remains in middle poses. |
+| zenitsu / attack3 | PASS_DRAFT_CHOREOGRAPHY | Back-shoulder load2–3 turns into downward cut4, lower crossed-arm followthrough5 and sinking6–7. Missing acceleration is3→4; 4→5 is deceleration, not another hit. Top blade tip margin is tight. |
+| zenitsu / skill | PASS_DRAFT_CHOREOGRAPHY | Sheathed crouch→weight shift→draw→low strike→blade across front→back-three-quarter followthrough→brake→resheath. Insertion between7–8 remains underspecified. |
+| zenitsu / ultimate | PASS_DRAFT_CHOREOGRAPHY | Draw3→cut4→low follow5→reload6→second cut7→settle8. Two clear strike directions but sparse transitions. Runtime six-hit schedule needs alternating contact indices3 and6 rather than uniform eight-frame playback. |
 
----
+## 实际浏览器与现有效果复核
 
-# v0.4.1 克劳德动作接入审核（上一版本）
+使用本地 Chromium 打开独立R3预览、载入手绘动作，捕获 `audit-tanjiro-skill-{11,16,23}.png`、`audit-zenitsu-ultimate-24.png` 与 `audit-lara-air-7.png`，无页面JavaScript错误。截图记录的是当前构建快照，不等于最终全角色交互手感通过。
 
-# 克劳德已通过动作：接入审核
+水车特效原本固定生成于x437.496，角色在第11/16/23tick分别移动到x364/399/430.68，视觉中心在初期明显偏到身体前方。已在源app中修正为仅R3页面跟随施法者位置、锁定施放方向与局部翻滚抬升；已在最新构建再次截图核实，轮弧围绕身体并随局部跃起，原本固定在前方的问题已消除。它依然是程序椭圆水弧，不是依据每帧刀尖/骨骼重建的水流，不能宣称特效全部重做。
 
-审核日期：2026-11-07（Asia/Shanghai）。范围：已获用户通过的 13 组、52 张关键姿态如何映射到浏览器原型状态。这里只审核接入，不将四张关键姿态称为完整商业逐帧动画。
+善逸雷光是攻击发生时留下的固定空间轨迹，作为残影合理；不是对手位置追踪。现有水龙、棍波、交叉斩等仍是旧的程序特效，本轮主要修接触时序与动作。角色八帧里的视觉反斩和枪火必须按真实判定调度；克劳德必杀后半反斩不增加伤害，劳拉必杀不能在无子弹tick一直显示烘焙枪火。
 
-## 初始资产与引擎核对
+最终复拍同时验证空中射击反馈：旧构建枪火在胸口且朝横向，新构建弹体与shot事件共享校准枪口，反馈绘制采用锁定朝向镜像和局部弹道角。`audit-lara-air-7.png`显示枪火位于下瞄枪口且与弹体方向一致。独立重跑`tests/motion-preview.cjs`最终24项通过；近距枪管占据段与R3弹体160高命中范围属于机制代理的配套修改，不能将截图当作所有碰撞边界的证明。
 
-- 清单中每组均为 4 帧，共同画幅 896×640，公共锚点 `[384,600]`。
-- 实际查看：跳跃第 2 帧、空中斩第 3 帧、普攻一段第 3 帧、必杀第 3 帧；另将普攻一段第 3 帧用原生 Canvas 合成到不透明底上，确认透明区域显示正常。直接图片查看器展示的彩色水平条纹是该查看路径的透明显示问题，未在 Canvas 合成中出现。
-- `jump.previewOffsetY` 为 `[0,-70,-50,0]`；`air.previewOffsetY` 为 `[-65,-100,-100,-60]`。接游戏时绘制偏移应为 `-anchorY-previewOffsetY` 后统一缩放，抵消预览时烘焙的升空位移，避免与 `f.y` 物理升空重复。
-- 三段普攻、挑空、空中斩必须按 `attack.name` 选择独立 clip；不能仅依赖统一的 `animState=attack`。
-- `guardStun && block` 的防御表现优先于普通受击。否则连续防御会显示为被打中。
-- 命中停顿中引擎直接返回，`attack.t` 与 `animTime` 均停止。取帧须依赖模拟状态，不能依赖持续增加的全局绘制时钟。
-- 跳跃前三帧用于起跳、上升、下降；第 4 帧应在实际落地恢复时选用，不能在空中按固定循环反复落地。
-- 普攻/技能以当前招式的 startup、active、end 阶段映射蓄势、出手、接触、收招。技能与必杀只有 1 个生效逻辑帧；不能单为播放美术而扩大伤害窗口。命中时接触姿态会被 hitstop 留住；落空时的短接触姿态是现有招式时序的结果。
-- 防御、受击及冲刺不应无条件循环全部四帧：防御进入后保持架势，受击与冲刺按进度单次推进。需要的释放姿态必须有真实状态依据。
-
-## 接入代码复核
-
-接入代码已独立复核，新增 **15 项检查全部通过**。原始 52 张文件已实际解码且与审核清单 SHA256 一致；打包后的数据 URL 与游戏资产文件也逐一校验一致。
-
-| 检查 | 结果 |
-|---|---|
-| 独立招式 | `slash1/2/3`、挑空、空中斩、技能、必杀分别选用七组独立素材，按真实 `attack.t` 映射蓄势、出手、接触、恢复。 |
-| 单帧生效 | 技能与必杀仍仅 1 个生效逻辑帧；下一逻辑帧进入收招图，没有为了美术延长伤害窗口。 |
-| 待机和跑动 | 各四帧按清单时长循环；使用 `animTime`，不会随独立渲染时钟偷偷前进。 |
-| 跳跃和落地 | 起跳、上升、下降与实际落地分别选用对应姿态，空中不循环显示落地帧。 |
-| 锚点与升空 | 每张图共同锚点；`y=-(anchorY+previewOffsetY)*scale` 正确抵消预览偏移。世界物理位置与画面偏移分开。 |
-| 防御和受击 | 入防、保持、承压、释放有明确选择；连续格挡优先于普通受击。释放计时是视觉字段，不锁住攻击。 |
-| 受击和冲刺 | 按进度单次推进并保持末姿态，不以循环方式重复抬放。 |
-| 命中冻结 | 命中后直至 freeze 归零，双方位置、招式时间、动画时间与选帧均保持不变；改变渲染时钟也不会改变帧。 |
-| 镜像与残影 | 左右朝向使用同一公共锚点翻转；冲刺残影使用保存的状态和动画时间。 |
-| 失败回退 | 任一新动作图片加载失败时回退至旧角色图集；缺少新包或 Image API 时仍有备用绘制，不因缺图抛异常。 |
-| 其他角色 | 劳拉仍走原有手绘图集；新增代码未误把其他角色绘为克劳德。 |
-
-另已实际查看主代理生成的 **13 状态原生 Canvas 总览及近身命中图**。姿态能区分三段攻击、挑空、空中斩与必杀；近身命中图中刀刃与目标接触位置清楚，未看到透明条纹或预览升空重复叠加。该检查是原生 Canvas 静态渲染与状态机验证，不是完整浏览器录屏，也不能证明所有距离和中间帧都像素级吻合。
-
-## 可复现检查
-
-在游戏源码目录运行：
-
-```text
-node tests/cloud-animation.cjs
-```
-
-设置 `RIFT_CLOUD_REPORT` 可导出每项结果 JSON；本次逐项结果见 `cloud-integration-results.json`。
-
-## 剩余范围
-
-- 本轮接入的是用户批准的每组四张关键姿态，共 52 张，尚未补齐所有动作的中间帧。
-- 原图边界及已接受的细节保持原样，没有以复核名义重绘已批准图片。
-- 静态检查不能代替实际连段录像、音效试听、不同移动浏览器首次加载和性能验收。
-- 克劳德动作批准不扩展到其他五位角色的动作；他们的造型批准记录与动作审核仍独立。
-
-
-## 复核文件标识
-
-- `engine.js` SHA256：`1ac04d82100602c4dd79089d96e5ff6b2edfa2b94c3205bf27378b7ece1d063d`
-- `fighters.js` SHA256：`4e1ad44d631874d01245060910594077c314ad6af59d41a86a1f643ab0ce9270`
-- `cloud-frames.js` SHA256：`b399e4355412ca05b03aba7eea3f16fcea0e461fbb483f4a19499ed700db9ebb`
-- `tests/cloud-animation.cjs` SHA256：`394f0624892b448a69c039d0c49828315110a179e845ee0bbeb4e88f70a7542d`
-
-
----
-
-# v0.4.0 角色机制审核记录（上一版本）
-
-# 炭治郎与善逸：独立战斗机制审核
-
-审核日期：2026-11-07（Asia/Shanghai）。对象：当前浏览器原型引擎。审核方式为实际运行 Node 状态机仿真及源码检查，不是浏览器真人试玩或画面、音效验收；招式帧数与伤害是本原型的设计参数，不是从《鬼灭之刃》或《死神 VS 火影》测得的原作数值。
-
-## 当前结论
-
-角色名单已替换为克劳德、劳拉、天命人、内森、炭治郎、善逸，钢铁侠和卢克不再可选。新增 23 项角色与技能检查通过；保留的 17 项旧机制回归检查通过；六角色的技能、气力限制及 AI 完整回合检查通过。
-
-旧审核中的光剑回程和持续光束两项随对应角色及机制移除，其余检查保留。不是把旧版 19 项全部原样宣称通过。
-
-## 新招式验收结果
-
-| 项目 | 实测结果 |
-|---|---|
-| 炭治郎 U 水车 | 180距离内命中一次、造成18伤害，并有前移；700距离落空。左右镜像结果一致。 |
-| 炭治郎 O 生生流转 | 60距离内4段命中，共40伤害，末段向上击飞；不同距离可能只命中后续段，不保证所有距离都完整连段。 |
-| 善逸 U 霹雳一闪 | 180距离内命中一次、造成20伤害，突进有明确最大距离；700距离落空。左右镜像一致。 |
-| 善逸 O 六连 | 60距离内6段命中，共39伤害，末段击飞；每个分段至多产生一次接触。 |
-| 连续防御 | 炭治郎4段均格挡、只扣4HP；善逸6段均格挡、只扣6HP。 |
-| 替身脱离 | 首次命中冻结中按替身，不立即位移；冻结结束执行一次，剩余段没有再次命中。 |
-| 命中与落空衔接 | U命中后满足取消窗口可跳跃；远距离落空时无法立即跳过收招；O命中后仍不能跳取消。 |
-| 墙角与高度 | 双方不越出舞台边界；高出300单位的目标不会被地面招式隔空击中。 |
-| 双方同帧 | 同角色同时施放U，两个镜像站位均双方受到相同伤害；未出现固定P1优先。 |
-| 气力限制 | Duel模式禁用AI干扰，连续尝试U会耗尽可用气力并出现无法施放的空档；不会无成本持续出技。 |
-| 无成本普攻循环 | 两名新角色在墙角每7逻辑帧按J、持续900帧，指定策略最大3连，存在多次中断。 |
-| 命中停顿 | 两名新角色奥义接触进入冻结后，双方位置和招式时间在全部冻结逻辑帧内均保持不变，冻结后才继续。 |
-| 反馈强弱 | 已修正并验证炭治郎前三段、善逸前五段 hit 事件为轻击，最后一段为重击；实际画面/音效仍需独立验收。 |
-| 对局稳定性 | 六种AI对手均完成对局，未出现NaN/非法坐标；多段结束后特效和残影正常清理。 |
-
-## 待进一步制作与验证
-
-1. 当前通用取消规则仍把被格挡也计为接触确认，允许相应跳/冲取消。此次不宣称已完成独立的 onHit / onBlock / onWhiff 数据表。
-2. 上述循环检查只覆盖明确列出的策略，不能证明穷尽所有混合连招不存在无限循环；训练模式本来会快速回气，气力消耗检查因此使用Duel回复率。
-3. 新角色最终手绘动作尚需用户审核；本次没有把造型通过当成动作通过，也不评价绘制姿态与攻击框是否逐帧对齐。
-4. 奥义前段轻、末段重的事件分层已修正并复核；真实渲染是否清晰、强闪是否遮挡角色仍需画面验收。
-5. 音效、震屏开关、移动设备操作及真实浏览器性能仍需实际运行验证，本报告没有把Node仿真当成端到端试玩。
-
-## 可复现检查
-
-在游戏源码目录运行：
-
-```text
-node tests/heroes.cjs
-node tests/review.cjs
-node tests/demon.cjs
-```
-
-逐项结果见 `demon-combat-results.json`。审核时引擎 SHA256：`66bea86f37194d0d32f38ca7e8967bdad7bfe54f46e3d5f2b770463cfffb2e91`。
+本轮的明确退回历史包括：克劳德二段斩仍像推刺、克劳德必杀第二刀只向上指、劳拉第一枪过大折肘后坐、德雷克肘击中途左右手交换。各项均先指出具体姿态，再检查修正稿；德雷克肘击最终c541afb5稿保持右肘与左腕表手连续，前两次失败未被放行。仍保留的草案局限包括刀棍透视与握持的细节跳变、少量相似蓄势/收招、缺乏全套中间帧、劳拉必杀后坐区分弱及德雷克第一招一二拳语义。审核完成不等于用户已批准32组，不宣称“全部动作已经真实流畅”。

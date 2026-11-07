@@ -1,0 +1,147 @@
+{
+  "cloud-steam-trailer": {
+    "url": "https://store.steampowered.com/app/1462040/",
+    "mediaUrl": "https://video.akamai.steamstatic.com/store_trailers/1462040/448849/9cebfd6851e2861a87c90e58db2cdb5476f43801/1750691718/dash_h264.mpd?t=1655416854",
+    "title": "FINAL FANTASY VII REMAKE INTERGRADE / ESRB_EN",
+    "localVideo": "cloud-reference.mp4",
+    "evidenceKind": "excluded-actor-mismatch",
+    "viewedRanges": [
+      "6–10s",
+      "14–22s"
+    ],
+    "limitations": [
+      "These inspected action sections show Yuffie/Sonon/Scarlet, not Cloud Buster Sword motion. Excluded from Cloud choreography evidence."
+    ]
+  },
+  "lara-steam-trailer": {
+    "url": "https://store.steampowered.com/app/2478970/",
+    "mediaUrl": "https://video.akamai.steamstatic.com/store_trailers/2478970/661828/5dac2e40c0cfbbe7093ebff12e9211698e24d269/1750815598/dash_h264.mpd?t=1707889124",
+    "title": "Tomb Raider I-III Remastered Starring Lara Croft / Tomb Raider I-III Remastered Launch Trailer",
+    "localVideo": "lara-reference.mp4",
+    "evidenceKind": "sampled-video-frames",
+    "viewedRanges": [
+      "39.25–40.625s"
+    ],
+    "limitations": [
+      "Different costume used only for aim/locomotion relationship. Cannot determine exact modern recoil or trigger animation from these frames."
+    ],
+    "localCapture": "lara-guns-detail.jpg",
+    "observed": "Lara in orange jacket strafes with dual guns kept toward target while feet and legs move sideways."
+  },
+  "wukong-steam-trailer": {
+    "url": "https://store.steampowered.com/app/2358720/",
+    "mediaUrl": "https://video.akamai.steamstatic.com/store_trailers/2358720/743632/6acf4311bb6a59d300b902ab6a3f445215089d9c/1750812851/dash_h264.mpd?t=1729236218",
+    "title": "Black Myth: Wukong / Black Myth: Wukong - Launch Trailer",
+    "localVideo": "wukong-reference.mp4",
+    "evidenceKind": "sampled-video-frames",
+    "viewedRanges": [
+      "45.25–45.875s"
+    ],
+    "limitations": [
+      "Does not establish exact prototype immobilize or ultimate. Eight poses/timing are adapted."
+    ],
+    "localCapture": "wukong-staff-detail.jpg",
+    "observed": "Monkey/staff fighter in yellow-brown clothing rotates torso, sweeps long staff through a broad arc, and follows through with gold weapon trail."
+  },
+  "drake-steam-trailer": {
+    "url": "https://store.steampowered.com/app/1659420/",
+    "mediaUrl": "https://video.akamai.steamstatic.com/store_trailers/1659420/504310/8f30b7f0dfd643ce47a42a82c5babcf1a6694457/1750721102/dash_h264.mpd?t=1671505478",
+    "title": "UNCHARTED™: Legacy of Thieves Collection / Launch Trailer (US-EN)",
+    "localVideo": "drake-reference.mp4",
+    "evidenceKind": "sampled-video-frames",
+    "viewedRanges": [
+      "0–63s sampled at3s",
+      "33.7–35.575s detail"
+    ],
+    "limitations": [
+      "No inspected complete punch, grenade or rifle cycle. Do not cite rescue shot as a melee attack."
+    ],
+    "localCapture": "drake-overview-compact.jpg",
+    "observed": "Mixed Nathan/Chloe/Sam montage. Detail section shows motorcycle rescue with Sam reaching toward Nathan, not a fist combo."
+  },
+  "demon-steam-trailer": {
+    "url": "https://store.steampowered.com/app/1490890/",
+    "mediaUrl": "https://video.akamai.steamstatic.com/store_trailers/1490890/384108/48f20a2b3ef20a46d46136f5aefe9a972a8d14ea/1750694266/dash_h264.mpd?t=1626110279",
+    "title": "Demon Slayer -Kimetsu no Yaiba- The Hinokami Chronicles / Latest Trailer",
+    "localVideo": "demon-reference.mp4",
+    "evidenceKind": "excluded-actor-mismatch",
+    "viewedRanges": [],
+    "limitations": [
+      "Overview is Nezuko-focused; not evidence for Tanjiro or Zenitsu sword movement."
+    ]
+  },
+  "cloud-official-combat": {
+    "url": "https://blog.playstation.com/2019/11/25/new-final-fantasy-vii-remake-screens-feature-cloud-combat-and-more/",
+    "evidenceKind": "official-static-combat-image-and-text",
+    "localCapture": "../references/cloud-psblog-03.jpg",
+    "observed": "Viewed contact sheet: Cloud low bent-knee stance, two-handed sword and large ascending curved slash trail. Confirms broad arc keypose, not chronological motion.",
+    "limitations": [
+      "Timing and8pose sequence authored."
+    ]
+  },
+  "cloud-official-horizontal": {
+    "url": "https://www.jp.square-enix.com/ffvii_remake/character/index.html",
+    "mediaUrl": "https://www.jp.square-enix.com/ffvii_remake/character/_img/cloud/pic02_l.jpg?191126",
+    "evidenceKind": "official-static-combat-image",
+    "localCapture": "../references/cloud-remake-official-scene-large-02.jpg",
+    "observed": "Viewed full image: Cloud deep front-knee bend, long rear leg, torso reaching across the cut, broad sword extends behind with wide purple arc; proves keypose and sweep silhouette, not actual frame ordering.",
+    "limitations": [
+      "Do not infer velocity direction from one still alone."
+    ]
+  },
+  "lara-official-arsenal": {
+    "url": "https://www.tombraider.com/news/community/tomb-raider-franchise-feature-the-arsenal",
+    "evidenceKind": "official-text-viewed",
+    "observed": "Classic dual pistols and reboot archery are different eras; prototype intentionally combines them.",
+    "limitations": [
+      "Not motion footage."
+    ]
+  },
+  "wukong-official-page": {
+    "url": "https://www.playstation.com/en-us/games/black-myth-wukong/",
+    "evidenceKind": "official-text-reference",
+    "limitations": [
+      "General staff/spell identity, not motion timing."
+    ]
+  },
+  "drake-official-game": {
+    "url": "https://www.playstation.com/en-us/games/uncharted-4-a-thiefs-end/",
+    "evidenceKind": "official-static-character-reference",
+    "localCapture": "../references/nathan-uc4-official-01.jpg",
+    "limitations": [
+      "Establishes Nathan identity/costume, not exact brawl/grenade/rifle choreography."
+    ]
+  },
+  "tanjiro-official-character": {
+    "url": "https://asia.sega.com/kimetsu_hinokami/en/character/",
+    "evidenceKind": "official-static-character-image-viewed",
+    "localCapture": "../references/tanjiro-sega-hinokami-official.png",
+    "observed": "Bent knees, katana held across torso and broad looped blue/white water graphic.",
+    "limitations": [
+      "One still does not establish any8pose action or exact timing. Zenitsu yellow runtime lightning is an artistic choice; source illustration lightning is cyan-white."
+    ]
+  },
+  "tanjiro-official-trailer-unviewed": {
+    "url": "https://www.youtube.com/watch?v=B-NFjj595bg",
+    "officialIndex": "https://asia.sega.com/kimetsu_hinokami/en/movie/",
+    "evidenceKind": "official-url-verified-video-unviewed",
+    "blockedReason": "Public yt-dlp retrieval through configured proxy failed: Tunnel connection failed:403 Forbidden. No decoded frames obtained.",
+    "viewedRanges": []
+  },
+  "zenitsu-official-character": {
+    "url": "https://asia.sega.com/kimetsu_hinokami/en/character/",
+    "evidenceKind": "official-static-character-image-viewed",
+    "localCapture": "../references/zenitsu-sega-hinokami-official.png",
+    "observed": "Deep asymmetrical crouch, hand at hilt/scabbard, yellow haori and cyan-white lightning around torso.",
+    "limitations": [
+      "One still does not establish any8pose action or exact timing. Zenitsu yellow runtime lightning is an artistic choice; source illustration lightning is cyan-white."
+    ]
+  },
+  "zenitsu-official-trailer-unviewed": {
+    "url": "https://www.youtube.com/watch?v=QACQyVdOz34",
+    "officialIndex": "https://asia.sega.com/kimetsu_hinokami/en/movie/",
+    "evidenceKind": "official-url-verified-video-unviewed",
+    "blockedReason": "Public yt-dlp retrieval through configured proxy failed: Tunnel connection failed:403 Forbidden. No decoded frames obtained.",
+    "viewedRanges": []
+  }
+}

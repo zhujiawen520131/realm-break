@@ -1,0 +1,45 @@
+{
+  "browser": "Chromium + Playwright",
+  "newClips": 32,
+  "newFrames": 256,
+  "rendered": [
+    {
+      "hero": "cloud",
+      "clip": "attack1",
+      "index": 4
+    },
+    {
+      "hero": "lara",
+      "clip": "attack1",
+      "index": 4
+    },
+    {
+      "hero": "wukong",
+      "clip": "attack1",
+      "index": 4
+    },
+    {
+      "hero": "drake",
+      "clip": "attack1",
+      "index": 4
+    },
+    {
+      "hero": "tanjiro",
+      "clip": "attack1",
+      "index": 4
+    },
+    {
+      "hero": "zenitsu",
+      "clip": "attack1",
+      "index": 4
+    }
+  ],
+  "shots": {
+    "bullets": 1,
+    "pose": 4,
+    "kind": "bullet"
+  },
+  "manualDirection": 1,
+  "errors": [],
+  "failed": []
+}

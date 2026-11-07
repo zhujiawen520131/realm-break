@@ -1,0 +1,2927 @@
+{
+  "schemaVersion": 1,
+  "status": "choreography-proposal-informed-by-references",
+  "notMeasuredSourceFrames": true,
+  "globalRules": [
+    "These are new side-view fighting-game adaptations, not frame-perfect copies of any source game.",
+    "Actor attacks toward screen right, but chest/hips MUST rotate through front-three-quarter and back-three-quarter views. Do not force all 8 drawings into the same side silhouette.",
+    "At least 3 clearly different blade orientations and two visibly different torso orientations per cutting move. The tip must sweep an arc, not remain aimed forward while the arm extends.",
+    "Eight individually drawn poses: load, counter-rotate, drive, accelerate, contact, pass-through, decelerate, recover. Timing is not uniform.",
+    "Plant a pivot foot; heel and pelvis lead the shoulders, wrists trail the body, cloth/hair trail the wrists. Keep anatomy coherent.",
+    "FX are secondary: body and blade motion must read with all FX hidden. Thin blade-attached trails only in asset art; runtime trails follow the blade arc, not a straight generic beam.",
+    "Preserve full weapon and feet with generous transparent gutters. No changing weapon length to fit the panel."
+  ],
+  "heroes": {
+    "cloud": {
+      "sources": [
+        "cloud-official-combat",
+        "cloud-official-horizontal"
+      ],
+      "moves": {
+        "attack1": {
+          "name": "巨剑斜下斩",
+          "type": "descending-slash",
+          "poses": [
+            {
+              "index": 1,
+              "phase": "load",
+              "body": "Wide stance, sword held back over rear shoulder, front knee soft; chest three-quarter toward viewer.",
+              "weaponTip": "back-high",
+              "captionZh": "蓄势",
+              "suggestedProjectedWeaponAngleDeg": 145
+            },
+            {
+              "index": 2,
+              "phase": "counter-rotate",
+              "body": "Pull both hands behind head, hips counter-rotate away from target; show rear shoulder and sword flat.",
+              "weaponTip": "behind-head",
+              "captionZh": "反向预备",
+              "suggestedProjectedWeaponAngleDeg": 170
+            },
+            {
+              "index": 3,
+              "phase": "drive",
+              "body": "Rear foot pushes and heel pivots, pelvis turns toward target before shoulders; sword tip still lags behind.",
+              "weaponTip": "high-back",
+              "captionZh": "蹬地转髋",
+              "suggestedProjectedWeaponAngleDeg": 155
+            },
+            {
+              "index": 4,
+              "phase": "accelerate",
+              "body": "Bring sword over crown in a large diagonal arc, elbows partly bent, shoulders uncoil; no forward poke.",
+              "weaponTip": "overhead",
+              "captionZh": "转肩加速",
+              "suggestedProjectedWeaponAngleDeg": 85
+            },
+            {
+              "index": 5,
+              "phase": "contact",
+              "body": "Blade edge crosses front-right chest-height target on a diagonal, arms extend along tangent, front knee takes weight.",
+              "weaponTip": "front-diagonal-down",
+              "captionZh": "命中／释放",
+              "suggestedProjectedWeaponAngleDeg": 20
+            },
+            {
+              "index": 6,
+              "phase": "follow-through",
+              "body": "Continue blade past contact down beside front knee; torso rotates beyond neutral and hair trails behind.",
+              "weaponTip": "front-low",
+              "captionZh": "随动贯穿",
+              "suggestedProjectedWeaponAngleDeg": -55
+            },
+            {
+              "index": 7,
+              "phase": "decelerate",
+              "body": "Brake with legs and abdomen, blade low ahead; elbows soften, rear foot catches up.",
+              "weaponTip": "low-side",
+              "captionZh": "制动",
+              "suggestedProjectedWeaponAngleDeg": -70
+            },
+            {
+              "index": 8,
+              "phase": "recover",
+              "body": "Recover sword along side to ready stance; maintain forward attention, no instantaneous reset.",
+              "weaponTip": "ready-high",
+              "captionZh": "回收",
+              "suggestedProjectedWeaponAngleDeg": 45
+            }
+          ],
+          "durationsMs": [
+            70,
+            85,
+            55,
+            35,
+            35,
+            55,
+            90,
+            95
+          ],
+          "fx": "One cyan crescent follows the diagonal blade arc from frame4 to6; brief contact spark only frame5; no permanent beam.",
+          "sourceIds": [
+            "cloud-official-combat",
+            "cloud-official-horizontal"
+          ],
+          "notes": [],
+          "evidenceKind": "authored-choreography-informed-by-listed-references",
+          "promptEnglish": "Eight individually drawn chronological full-body key poses, attacking screen-right with planted foot pivots and visibly rotating pelvis/shoulders. 巨剑斜下斩. Pose 1: Wide stance, sword held back over rear shoulder, front knee soft; chest three-quarter toward viewer. Weapon endpoint: back-high. Pose 2: Pull both hands behind head, hips counter-rotate away from target; show rear shoulder and sword flat. Weapon endpoint: behind-head. Pose 3: Rear foot pushes and heel pivots, pelvis turns toward target before shoulders; sword tip still lags behind. Weapon endpoint: high-back. Pose 4: Bring sword over crown in a large diagonal arc, elbows partly bent, shoulders uncoil; no forward poke. Weapon endpoint: overhead. Pose 5: Blade edge crosses front-right chest-height target on a diagonal, arms extend along tangent, front knee takes weight. Weapon endpoint: front-diagonal-down. Pose 6: Continue blade past contact down beside front knee; torso rotates beyond neutral and hair trails behind. Weapon endpoint: front-low. Pose 7: Brake with legs and abdomen, blade low ahead; elbows soften, rear foot catches up. Weapon endpoint: low-side. Pose 8: Recover sword along side to ready stance; maintain forward attention, no instantaneous reset. Weapon endpoint: ready-high. FX separate from body: One cyan crescent follows the diagonal blade arc from frame4 to6; brief contact spark only frame5; no permanent beam.",
+          "angleConvention": "Illustrative side-view hilt-to-tip projection:0°=screen-right,+90°=up; horizontal sweeps also require foreshortening/depth. These are art targets, not measured source angles.",
+          "evidenceNotes": "The listed sources inform identity or isolated mechanics only. Do not describe this8pose proposal as a traced, frame-measured reproduction."
+        },
+        "attack2": {
+          "name": "巨剑回身横斩",
+          "type": "horizontal-slash",
+          "poses": [
+            {
+              "index": 1,
+              "phase": "load",
+              "body": "Start from previous low finish; sword low on front side, weight over front leg.",
+              "weaponTip": "front-low",
+              "captionZh": "蓄势",
+              "suggestedProjectedWeaponAngleDeg": -55
+            },
+            {
+              "index": 2,
+              "phase": "counter-rotate",
+              "body": "Draw sword across hip to rear side while rear heel lifts; torso visibly turns away from viewer.",
+              "weaponTip": "rear-low",
+              "captionZh": "反向预备",
+              "suggestedProjectedWeaponAngleDeg": -145
+            },
+            {
+              "index": 3,
+              "phase": "drive",
+              "body": "Pivot planted forefoot and open hips toward target; sword trails at waist height behind body.",
+              "weaponTip": "behind-waist",
+              "captionZh": "蹬地转髋",
+              "suggestedProjectedWeaponAngleDeg": -165
+            },
+            {
+              "index": 4,
+              "phase": "accelerate",
+              "body": "Unwind shoulders through front-three-quarter, sword sweeps broad waist-height horizontal plane; show blade foreshortening.",
+              "weaponTip": "side-sweep",
+              "captionZh": "转肩加速",
+              "suggestedProjectedWeaponAngleDeg": -95
+            },
+            {
+              "index": 5,
+              "phase": "contact",
+              "body": "Long edge, not point, crosses rightward target; both arms guide the sweep while head stays target-focused.",
+              "weaponTip": "across-target",
+              "captionZh": "命中／释放",
+              "suggestedProjectedWeaponAngleDeg": 30
+            },
+            {
+              "index": 6,
+              "phase": "follow-through",
+              "body": "Follow through to opposite side of torso; chest turns past target line, rear leg stretches to brake.",
+              "weaponTip": "opposite-side",
+              "captionZh": "随动贯穿",
+              "suggestedProjectedWeaponAngleDeg": 110
+            },
+            {
+              "index": 7,
+              "phase": "decelerate",
+              "body": "Sword slows at far side; torso begins to untwist, knees remain loaded.",
+              "weaponTip": "braked-side",
+              "captionZh": "制动",
+              "suggestedProjectedWeaponAngleDeg": 100
+            },
+            {
+              "index": 8,
+              "phase": "recover",
+              "body": "Recover toward opposite shoulder to link into overhead heavy strike.",
+              "weaponTip": "opposite-shoulder",
+              "captionZh": "回收",
+              "suggestedProjectedWeaponAngleDeg": 70
+            }
+          ],
+          "durationsMs": [
+            70,
+            85,
+            55,
+            35,
+            35,
+            55,
+            90,
+            95
+          ],
+          "fx": "Flattened curved cyan ribbon traces horizontal sweep, short near-to-far perspective arc; no straight thrust streak.",
+          "sourceIds": [
+            "cloud-official-combat",
+            "cloud-official-horizontal"
+          ],
+          "notes": [],
+          "evidenceKind": "authored-choreography-informed-by-listed-references",
+          "promptEnglish": "Eight individually drawn chronological full-body key poses, attacking screen-right with planted foot pivots and visibly rotating pelvis/shoulders. 巨剑回身横斩. Pose 1: Start from previous low finish; sword low on front side, weight over front leg. Weapon endpoint: front-low. Pose 2: Draw sword across hip to rear side while rear heel lifts; torso visibly turns away from viewer. Weapon endpoint: rear-low. Pose 3: Pivot planted forefoot and open hips toward target; sword trails at waist height behind body. Weapon endpoint: behind-waist. Pose 4: Unwind shoulders through front-three-quarter, sword sweeps broad waist-height horizontal plane; show blade foreshortening. Weapon endpoint: side-sweep. Pose 5: Long edge, not point, crosses rightward target; both arms guide the sweep while head stays target-focused. Weapon endpoint: across-target. Pose 6: Follow through to opposite side of torso; chest turns past target line, rear leg stretches to brake. Weapon endpoint: opposite-side. Pose 7: Sword slows at far side; torso begins to untwist, knees remain loaded. Weapon endpoint: braked-side. Pose 8: Recover toward opposite shoulder to link into overhead heavy strike. Weapon endpoint: opposite-shoulder. FX separate from body: Flattened curved cyan ribbon traces horizontal sweep, short near-to-far perspective arc; no straight thrust streak.",
+          "angleConvention": "Illustrative side-view hilt-to-tip projection:0°=screen-right,+90°=up; horizontal sweeps also require foreshortening/depth. These are art targets, not measured source angles.",
+          "evidenceNotes": "The listed sources inform identity or isolated mechanics only. Do not describe this8pose proposal as a traced, frame-measured reproduction."
+        },
+        "attack3": {
+          "name": "巨剑重劈",
+          "type": "overhead-heavy",
+          "poses": [
+            {
+              "index": 1,
+              "phase": "load",
+              "body": "Raise sword from prior shoulder with both hands, stance widens.",
+              "weaponTip": "raised-side",
+              "captionZh": "蓄势",
+              "suggestedProjectedWeaponAngleDeg": 80
+            },
+            {
+              "index": 2,
+              "phase": "counter-rotate",
+              "body": "Bend knees deeply and lean torso slightly back under weight; blade mass visibly behind shoulders.",
+              "weaponTip": "rear-high",
+              "captionZh": "反向预备",
+              "suggestedProjectedWeaponAngleDeg": 130
+            },
+            {
+              "index": 3,
+              "phase": "drive",
+              "body": "Push up from legs, lift hilt above crown; chest opens and rear heel rises.",
+              "weaponTip": "above-head",
+              "captionZh": "蹬地转髋",
+              "suggestedProjectedWeaponAngleDeg": 120
+            },
+            {
+              "index": 4,
+              "phase": "accelerate",
+              "body": "Fold hips forward and pull shoulders down, sword accelerates in vertical-to-diagonal plane.",
+              "weaponTip": "descending",
+              "captionZh": "转肩加速",
+              "suggestedProjectedWeaponAngleDeg": 80
+            },
+            {
+              "index": 5,
+              "phase": "contact",
+              "body": "Edge cuts down through front-right target, torso compresses and front knee absorbs landing force.",
+              "weaponTip": "down-forward",
+              "captionZh": "命中／释放",
+              "suggestedProjectedWeaponAngleDeg": -20
+            },
+            {
+              "index": 6,
+              "phase": "follow-through",
+              "body": "Blade continues to low forward stop, spine and arms follow instead of freezing at contact.",
+              "weaponTip": "ground-forward",
+              "captionZh": "随动贯穿",
+              "suggestedProjectedWeaponAngleDeg": -75
+            },
+            {
+              "index": 7,
+              "phase": "decelerate",
+              "body": "Hold low heavy recoil, shoulders dip, rear foot catches balance.",
+              "weaponTip": "low",
+              "captionZh": "制动",
+              "suggestedProjectedWeaponAngleDeg": -65
+            },
+            {
+              "index": 8,
+              "phase": "recover",
+              "body": "Pull blade free into a compact ready guard with visible effort.",
+              "weaponTip": "guard",
+              "captionZh": "回收",
+              "suggestedProjectedWeaponAngleDeg": 50
+            }
+          ],
+          "durationsMs": [
+            90,
+            100,
+            70,
+            40,
+            45,
+            80,
+            110,
+            110
+          ],
+          "fx": "Tall cyan slash crescent and short low impact burst, active only frame4–6; delayed dust after contact.",
+          "sourceIds": [
+            "cloud-official-combat",
+            "cloud-official-horizontal"
+          ],
+          "notes": [],
+          "evidenceKind": "authored-choreography-informed-by-listed-references",
+          "promptEnglish": "Eight individually drawn chronological full-body key poses, attacking screen-right with planted foot pivots and visibly rotating pelvis/shoulders. 巨剑重劈. Pose 1: Raise sword from prior shoulder with both hands, stance widens. Weapon endpoint: raised-side. Pose 2: Bend knees deeply and lean torso slightly back under weight; blade mass visibly behind shoulders. Weapon endpoint: rear-high. Pose 3: Push up from legs, lift hilt above crown; chest opens and rear heel rises. Weapon endpoint: above-head. Pose 4: Fold hips forward and pull shoulders down, sword accelerates in vertical-to-diagonal plane. Weapon endpoint: descending. Pose 5: Edge cuts down through front-right target, torso compresses and front knee absorbs landing force. Weapon endpoint: down-forward. Pose 6: Blade continues to low forward stop, spine and arms follow instead of freezing at contact. Weapon endpoint: ground-forward. Pose 7: Hold low heavy recoil, shoulders dip, rear foot catches balance. Weapon endpoint: low. Pose 8: Pull blade free into a compact ready guard with visible effort. Weapon endpoint: guard. FX separate from body: Tall cyan slash crescent and short low impact burst, active only frame4–6; delayed dust after contact.",
+          "angleConvention": "Illustrative side-view hilt-to-tip projection:0°=screen-right,+90°=up; horizontal sweeps also require foreshortening/depth. These are art targets, not measured source angles.",
+          "evidenceNotes": "The listed sources inform identity or isolated mechanics only. Do not describe this8pose proposal as a traced, frame-measured reproduction."
+        },
+        "skill": {
+          "name": "破晄击",
+          "type": "projectile-slash",
+          "poses": [
+            {
+              "index": 1,
+              "phase": "load",
+              "body": "Sword drawn low behind back hip, knees bent and torso coiled away from target.",
+              "weaponTip": "rear-low",
+              "captionZh": "蓄势"
+            },
+            {
+              "index": 2,
+              "phase": "counter-rotate",
+              "body": "Load rear leg and rotate chest farther back; show back-three-quarter armour silhouette.",
+              "weaponTip": "low-behind",
+              "captionZh": "反向预备"
+            },
+            {
+              "index": 3,
+              "phase": "drive",
+              "body": "Drive rear foot and rotate pelvis forward; hilt moves first while tip lags low.",
+              "weaponTip": "low-lag",
+              "captionZh": "蹬地转髋"
+            },
+            {
+              "index": 4,
+              "phase": "accelerate",
+              "body": "Uncoil through a rising diagonal sword sweep, elbows guide a curved path.",
+              "weaponTip": "rising-front",
+              "captionZh": "转肩加速"
+            },
+            {
+              "index": 5,
+              "phase": "contact",
+              "body": "Blade crosses right-front and releases energy from its travelling edge, chest now open toward viewer.",
+              "weaponTip": "front-up",
+              "captionZh": "命中／释放"
+            },
+            {
+              "index": 6,
+              "phase": "follow-through",
+              "body": "Continue sword above the opposite shoulder; weight transfers to forward foot.",
+              "weaponTip": "above-opposite-shoulder",
+              "captionZh": "随动贯穿"
+            },
+            {
+              "index": 7,
+              "phase": "decelerate",
+              "body": "Brake the upward arc with shoulders and core, hair and cloth settle late.",
+              "weaponTip": "upper-brake",
+              "captionZh": "制动"
+            },
+            {
+              "index": 8,
+              "phase": "recover",
+              "body": "Return sword to guard without changing facing target.",
+              "weaponTip": "guard",
+              "captionZh": "回收"
+            }
+          ],
+          "durationsMs": [
+            70,
+            85,
+            55,
+            35,
+            35,
+            55,
+            90,
+            95
+          ],
+          "fx": "Energy crescent separates from blade only at release frame5, then travels independently forward; prior frames only a restrained blade-edge glow.",
+          "sourceIds": [
+            "cloud-official-combat",
+            "cloud-official-horizontal"
+          ],
+          "notes": [
+            "Blade Beam adaptation for the prototype; the trailer is not evidence of this exact eight-pose sequence."
+          ],
+          "evidenceKind": "authored-choreography-informed-by-listed-references",
+          "promptEnglish": "Eight individually drawn chronological full-body key poses, attacking screen-right with planted foot pivots and visibly rotating pelvis/shoulders. 破晄击. Pose 1: Sword drawn low behind back hip, knees bent and torso coiled away from target. Weapon endpoint: rear-low. Pose 2: Load rear leg and rotate chest farther back; show back-three-quarter armour silhouette. Weapon endpoint: low-behind. Pose 3: Drive rear foot and rotate pelvis forward; hilt moves first while tip lags low. Weapon endpoint: low-lag. Pose 4: Uncoil through a rising diagonal sword sweep, elbows guide a curved path. Weapon endpoint: rising-front. Pose 5: Blade crosses right-front and releases energy from its travelling edge, chest now open toward viewer. Weapon endpoint: front-up. Pose 6: Continue sword above the opposite shoulder; weight transfers to forward foot. Weapon endpoint: above-opposite-shoulder. Pose 7: Brake the upward arc with shoulders and core, hair and cloth settle late. Weapon endpoint: upper-brake. Pose 8: Return sword to guard without changing facing target. Weapon endpoint: guard. FX separate from body: Energy crescent separates from blade only at release frame5, then travels independently forward; prior frames only a restrained blade-edge glow.",
+          "evidenceNotes": "The listed sources inform identity or isolated mechanics only. Do not describe this8pose proposal as a traced, frame-measured reproduction."
+        },
+        "ultimate": {
+          "name": "十字斩",
+          "type": "two-plane-cross-slash",
+          "poses": [
+            {
+              "index": 1,
+              "phase": "load",
+              "body": "Deep load with sword high behind right shoulder, hips coiled.",
+              "weaponTip": "rear-high",
+              "captionZh": "蓄势"
+            },
+            {
+              "index": 2,
+              "phase": "counter-rotate",
+              "body": "Rear heel pivots; pull hilt forward while blade remains behind crown.",
+              "weaponTip": "above-head",
+              "captionZh": "反向预备"
+            },
+            {
+              "index": 3,
+              "phase": "drive",
+              "body": "First diagonal descending cut passes through front-right target, broad torso uncoil.",
+              "weaponTip": "first-diagonal-down",
+              "captionZh": "蹬地转髋"
+            },
+            {
+              "index": 4,
+              "phase": "accelerate",
+              "body": "Let blade pass down to opposite hip; knees compress to reload instead of resetting.",
+              "weaponTip": "opposite-low",
+              "captionZh": "转肩加速"
+            },
+            {
+              "index": 5,
+              "phase": "contact",
+              "body": "Reverse hips and shoulders into a rising diagonal cut crossing the first plane; front foot pivots.",
+              "weaponTip": "second-diagonal-up",
+              "captionZh": "命中／释放"
+            },
+            {
+              "index": 6,
+              "phase": "follow-through",
+              "body": "Finish above opposite shoulder with full-body extension and head looking right.",
+              "weaponTip": "opposite-high",
+              "captionZh": "随动贯穿"
+            },
+            {
+              "index": 7,
+              "phase": "decelerate",
+              "body": "Heavy deceleration, torso comes back from over-rotation and blade lowers.",
+              "weaponTip": "lowering",
+              "captionZh": "制动"
+            },
+            {
+              "index": 8,
+              "phase": "recover",
+              "body": "Settle in guard with sword ready, feet re-established.",
+              "weaponTip": "guard",
+              "captionZh": "回收"
+            }
+          ],
+          "durationsMs": [
+            100,
+            110,
+            45,
+            70,
+            45,
+            85,
+            110,
+            120
+          ],
+          "fx": "Two crossing cyan slash planes timed to frames3 and5, first fades before second finishes; contact flashes brief; no static X while body is motionless.",
+          "sourceIds": [
+            "cloud-official-combat",
+            "cloud-official-horizontal"
+          ],
+          "notes": [
+            "Prototype cross-slash choreography; not a claim of exact source Limit Break timing."
+          ],
+          "evidenceKind": "authored-choreography-informed-by-listed-references",
+          "promptEnglish": "Eight individually drawn chronological full-body key poses, attacking screen-right with planted foot pivots and visibly rotating pelvis/shoulders. 十字斩. Pose 1: Deep load with sword high behind right shoulder, hips coiled. Weapon endpoint: rear-high. Pose 2: Rear heel pivots; pull hilt forward while blade remains behind crown. Weapon endpoint: above-head. Pose 3: First diagonal descending cut passes through front-right target, broad torso uncoil. Weapon endpoint: first-diagonal-down. Pose 4: Let blade pass down to opposite hip; knees compress to reload instead of resetting. Weapon endpoint: opposite-low. Pose 5: Reverse hips and shoulders into a rising diagonal cut crossing the first plane; front foot pivots. Weapon endpoint: second-diagonal-up. Pose 6: Finish above opposite shoulder with full-body extension and head looking right. Weapon endpoint: opposite-high. Pose 7: Heavy deceleration, torso comes back from over-rotation and blade lowers. Weapon endpoint: lowering. Pose 8: Settle in guard with sword ready, feet re-established. Weapon endpoint: guard. FX separate from body: Two crossing cyan slash planes timed to frames3 and5, first fades before second finishes; contact flashes brief; no static X while body is motionless.",
+          "evidenceNotes": "The listed sources inform identity or isolated mechanics only. Do not describe this8pose proposal as a traced, frame-measured reproduction."
+        }
+      },
+      "evidenceStatus": "Official static Cloud slash keyposes visually inspected. DLC trailer action samples were other actors and excluded. Every8pose sequence and timing is authored.",
+      "sourceDetails": {
+        "cloud-official-combat": {
+          "url": "https://blog.playstation.com/2019/11/25/new-final-fantasy-vii-remake-screens-feature-cloud-combat-and-more/",
+          "evidenceKind": "official-static-combat-image-and-text",
+          "localCapture": "../references/cloud-psblog-03.jpg",
+          "observed": "Viewed contact sheet: Cloud low bent-knee stance, two-handed sword and large ascending curved slash trail. Confirms broad arc keypose, not chronological motion.",
+          "limitations": [
+            "Timing and8pose sequence authored."
+          ]
+        },
+        "cloud-official-horizontal": {
+          "url": "https://www.jp.square-enix.com/ffvii_remake/character/index.html",
+          "mediaUrl": "https://www.jp.square-enix.com/ffvii_remake/character/_img/cloud/pic02_l.jpg?191126",
+          "evidenceKind": "official-static-combat-image",
+          "localCapture": "../references/cloud-remake-official-scene-large-02.jpg",
+          "observed": "Viewed full image: Cloud deep front-knee bend, long rear leg, torso reaching across the cut, broad sword extends behind with wide purple arc; proves keypose and sweep silhouette, not actual frame ordering.",
+          "limitations": [
+            "Do not infer velocity direction from one still alone."
+          ]
+        }
+      }
+    },
+    "lara": {
+      "sources": [
+        "lara-steam-trailer",
+        "lara-official-arsenal"
+      ],
+      "moves": {
+        "attack1": {
+          "name": "右枪点射",
+          "type": "pistol-shot",
+          "poses": [
+            {
+              "index": 1,
+              "phase": "load",
+              "body": "Both pistols drawn at low ready, staggered stance, soft knees and shoulders forward.",
+              "weaponTip": "low-right",
+              "captionZh": "蓄势"
+            },
+            {
+              "index": 2,
+              "phase": "counter-rotate",
+              "body": "Bring right pistol toward eye line; left pistol remains compact near ribs, eyes look right.",
+              "weaponTip": "raising-right",
+              "captionZh": "反向预备"
+            },
+            {
+              "index": 3,
+              "phase": "drive",
+              "body": "Extend right arm with slight elbow bend, shoulder rolls forward, torso stable.",
+              "weaponTip": "level-right",
+              "captionZh": "蹬地转髋"
+            },
+            {
+              "index": 4,
+              "phase": "accelerate",
+              "body": "Final aim settles with wrist and barrel level; rear heel loads modestly.",
+              "weaponTip": "aim-right",
+              "captionZh": "转肩加速"
+            },
+            {
+              "index": 5,
+              "phase": "contact",
+              "body": "Fire right pistol: small muzzle rise, elbow yields and shoulder absorbs recoil, chest shifts slightly back.",
+              "weaponTip": "right-up-small",
+              "captionZh": "命中／释放"
+            },
+            {
+              "index": 6,
+              "phase": "follow-through",
+              "body": "Recoil peak: right elbow bends a little more, braid and shirt lag; do not turn shot into a punch.",
+              "weaponTip": "recoil-up",
+              "captionZh": "随动贯穿"
+            },
+            {
+              "index": 7,
+              "phase": "decelerate",
+              "body": "Wrist and elbow guide muzzle back to target line.",
+              "weaponTip": "return-level",
+              "captionZh": "制动"
+            },
+            {
+              "index": 8,
+              "phase": "recover",
+              "body": "Hold right gun on target or transition left gun forward for second shot.",
+              "weaponTip": "on-target",
+              "captionZh": "回收"
+            }
+          ],
+          "durationsMs": [
+            55,
+            55,
+            45,
+            30,
+            25,
+            45,
+            65,
+            65
+          ],
+          "fx": "Single brief muzzle flash exactly atframe5, short barrel-aligned bullet tracer independent of arms; small ejected casing optional. No melee arc.",
+          "sourceIds": [
+            "lara-steam-trailer",
+            "lara-official-arsenal"
+          ],
+          "notes": [],
+          "evidenceKind": "authored-choreography-informed-by-listed-references",
+          "promptEnglish": "Eight individually drawn chronological full-body key poses, attacking screen-right with planted foot pivots and visibly rotating pelvis/shoulders. 右枪点射. Pose 1: Both pistols drawn at low ready, staggered stance, soft knees and shoulders forward. Weapon endpoint: low-right. Pose 2: Bring right pistol toward eye line; left pistol remains compact near ribs, eyes look right. Weapon endpoint: raising-right. Pose 3: Extend right arm with slight elbow bend, shoulder rolls forward, torso stable. Weapon endpoint: level-right. Pose 4: Final aim settles with wrist and barrel level; rear heel loads modestly. Weapon endpoint: aim-right. Pose 5: Fire right pistol: small muzzle rise, elbow yields and shoulder absorbs recoil, chest shifts slightly back. Weapon endpoint: right-up-small. Pose 6: Recoil peak: right elbow bends a little more, braid and shirt lag; do not turn shot into a punch. Weapon endpoint: recoil-up. Pose 7: Wrist and elbow guide muzzle back to target line. Weapon endpoint: return-level. Pose 8: Hold right gun on target or transition left gun forward for second shot. Weapon endpoint: on-target. FX separate from body: Single brief muzzle flash exactly atframe5, short barrel-aligned bullet tracer independent of arms; small ejected casing optional. No melee arc.",
+          "evidenceNotes": "The listed sources inform identity or isolated mechanics only. Do not describe this8pose proposal as a traced, frame-measured reproduction."
+        },
+        "attack2": {
+          "name": "左枪接射",
+          "type": "alternate-pistol-shot",
+          "poses": [
+            {
+              "index": 1,
+              "phase": "load",
+              "body": "Right gun remains aimed after first shot; left gun compact against ribs.",
+              "weaponTip": "right-on-target",
+              "captionZh": "蓄势"
+            },
+            {
+              "index": 2,
+              "phase": "counter-rotate",
+              "body": "Rotate hips a little to exchange shoulder lead, left elbow comes forward.",
+              "weaponTip": "left-raising",
+              "captionZh": "反向预备"
+            },
+            {
+              "index": 3,
+              "phase": "drive",
+              "body": "Left pistol reaches target line while right gun retracts safely toward chest.",
+              "weaponTip": "left-level",
+              "captionZh": "蹬地转髋"
+            },
+            {
+              "index": 4,
+              "phase": "accelerate",
+              "body": "Brief left-hand aim with shoulders squared and front knee braced.",
+              "weaponTip": "left-aim",
+              "captionZh": "转肩加速"
+            },
+            {
+              "index": 5,
+              "phase": "contact",
+              "body": "Fire left pistol; left wrist and elbow absorb small upward recoil.",
+              "weaponTip": "left-recoil",
+              "captionZh": "命中／释放"
+            },
+            {
+              "index": 6,
+              "phase": "follow-through",
+              "body": "Torso rocks back subtly while right shoulder prepares next aim; braid trails rotation.",
+              "weaponTip": "left-up",
+              "captionZh": "随动贯穿"
+            },
+            {
+              "index": 7,
+              "phase": "decelerate",
+              "body": "Left muzzle returns to level and both guns come forward.",
+              "weaponTip": "both-level",
+              "captionZh": "制动"
+            },
+            {
+              "index": 8,
+              "phase": "recover",
+              "body": "Stable dual-gun ready pose links to finisher.",
+              "weaponTip": "dual-ready",
+              "captionZh": "回收"
+            }
+          ],
+          "durationsMs": [
+            45,
+            55,
+            45,
+            30,
+            25,
+            45,
+            65,
+            70
+          ],
+          "fx": "Left muzzle flash and a single corresponding tracer at frame5; no new forward body lunge.",
+          "sourceIds": [
+            "lara-official-arsenal"
+          ],
+          "notes": [],
+          "evidenceKind": "authored-choreography-informed-by-listed-references",
+          "promptEnglish": "Eight individually drawn chronological full-body key poses, attacking screen-right with planted foot pivots and visibly rotating pelvis/shoulders. 左枪接射. Pose 1: Right gun remains aimed after first shot; left gun compact against ribs. Weapon endpoint: right-on-target. Pose 2: Rotate hips a little to exchange shoulder lead, left elbow comes forward. Weapon endpoint: left-raising. Pose 3: Left pistol reaches target line while right gun retracts safely toward chest. Weapon endpoint: left-level. Pose 4: Brief left-hand aim with shoulders squared and front knee braced. Weapon endpoint: left-aim. Pose 5: Fire left pistol; left wrist and elbow absorb small upward recoil. Weapon endpoint: left-recoil. Pose 6: Torso rocks back subtly while right shoulder prepares next aim; braid trails rotation. Weapon endpoint: left-up. Pose 7: Left muzzle returns to level and both guns come forward. Weapon endpoint: both-level. Pose 8: Stable dual-gun ready pose links to finisher. Weapon endpoint: dual-ready. FX separate from body: Left muzzle flash and a single corresponding tracer at frame5; no new forward body lunge.",
+          "evidenceNotes": "The listed sources inform identity or isolated mechanics only. Do not describe this8pose proposal as a traced, frame-measured reproduction."
+        },
+        "attack3": {
+          "name": "终结点射",
+          "type": "single-shot-pistol-finisher",
+          "poses": [
+            {
+              "index": 1,
+              "phase": "load",
+              "body": "Dual pistols held at low-to-mid ready, front foot planted and rear knee loaded.",
+              "weaponTip": "dual-low",
+              "captionZh": "蓄势"
+            },
+            {
+              "index": 2,
+              "phase": "counter-rotate",
+              "body": "Take a compact bracing step forward; chest turns toward front-three-quarter.",
+              "weaponTip": "right-raise-left-ready",
+              "captionZh": "反向预备"
+            },
+            {
+              "index": 3,
+              "phase": "drive",
+              "body": "Extend right firing arm toward target; left pistol remains held in a distinct lower ready line.",
+              "weaponTip": "right-level-left-ready",
+              "captionZh": "蹬地转髋"
+            },
+            {
+              "index": 4,
+              "phase": "accelerate",
+              "body": "Settle right sight, shoulder down and firing elbow softly bent; left gun does not fire.",
+              "weaponTip": "right-aim",
+              "captionZh": "转肩加速"
+            },
+            {
+              "index": 5,
+              "phase": "contact",
+              "body": "Fire ONE finishing round from right pistol only; right muzzle rises slightly and shoulder absorbs recoil; left muzzle remains quiet.",
+              "weaponTip": "right-recoil-left-stable",
+              "captionZh": "命中／释放"
+            },
+            {
+              "index": 6,
+              "phase": "follow-through",
+              "body": "Absorb right-arm recoil through bent elbow and tiny torso movement, keeping left gun controlled at ready.",
+              "weaponTip": "right-up-small",
+              "captionZh": "随动贯穿"
+            },
+            {
+              "index": 7,
+              "phase": "decelerate",
+              "body": "Recover right muzzle to target; both pistols remain held, knees absorb return.",
+              "weaponTip": "right-return-level",
+              "captionZh": "制动"
+            },
+            {
+              "index": 8,
+              "phase": "recover",
+              "body": "Finish at dual-gun low-ready without holstering, kicking or a second shot.",
+              "weaponTip": "dual-low-ready",
+              "captionZh": "回收"
+            }
+          ],
+          "durationsMs": [
+            65,
+            70,
+            55,
+            40,
+            30,
+            55,
+            80,
+            85
+          ],
+          "fx": "Exactly ONE brief right muzzle flash and ONE projectile release at frame5. Left gun held but no flash, recoil or projectile. No paired traces.",
+          "sourceIds": [
+            "lara-steam-trailer",
+            "lara-official-arsenal"
+          ],
+          "notes": [
+            "Matches existing engine 终结点射: one finisher bullet per clip, despite two guns being held. Do not increase projectile count."
+          ],
+          "evidenceKind": "authored-choreography-informed-by-listed-references",
+          "promptEnglish": "Eight individually drawn chronological full-body key poses, attacking screen-right with planted foot pivots and visibly rotating pelvis/shoulders. 终结点射. Pose 1: Dual pistols held at low-to-mid ready, front foot planted and rear knee loaded. Weapon endpoint: dual-low. Pose 2: Take a compact bracing step forward; chest turns toward front-three-quarter. Weapon endpoint: right-raise-left-ready. Pose 3: Extend right firing arm toward target; left pistol remains held in a distinct lower ready line. Weapon endpoint: right-level-left-ready. Pose 4: Settle right sight, shoulder down and firing elbow softly bent; left gun does not fire. Weapon endpoint: right-aim. Pose 5: Fire ONE finishing round from right pistol only; right muzzle rises slightly and shoulder absorbs recoil; left muzzle remains quiet. Weapon endpoint: right-recoil-left-stable. Pose 6: Absorb right-arm recoil through bent elbow and tiny torso movement, keeping left gun controlled at ready. Weapon endpoint: right-up-small. Pose 7: Recover right muzzle to target; both pistols remain held, knees absorb return. Weapon endpoint: right-return-level. Pose 8: Finish at dual-gun low-ready without holstering, kicking or a second shot. Weapon endpoint: dual-low-ready. FX separate from body: Exactly ONE brief right muzzle flash and ONE projectile release at frame5. Left gun held but no flash, recoil or projectile. No paired traces.",
+          "evidenceNotes": "The listed sources inform identity or isolated mechanics only. Do not describe this8pose proposal as a traced, frame-measured reproduction."
+        },
+        "skill": {
+          "name": "蓄力箭",
+          "type": "bow-shot",
+          "poses": [
+            {
+              "index": 1,
+              "phase": "load",
+              "body": "Pistols holstered, bow held low in left hand; turn body side-on with right shoulder back.",
+              "weaponTip": "bow-low",
+              "captionZh": "蓄势"
+            },
+            {
+              "index": 2,
+              "phase": "counter-rotate",
+              "body": "Raise bow toward target while right hand nocks arrow close to bowstring.",
+              "weaponTip": "bow-rising",
+              "captionZh": "反向预备"
+            },
+            {
+              "index": 3,
+              "phase": "drive",
+              "body": "Pull string using back/shoulder muscles; right elbow travels rearward, chest opens.",
+              "weaponTip": "arrow-aligned",
+              "captionZh": "蹬地转髋"
+            },
+            {
+              "index": 4,
+              "phase": "accelerate",
+              "body": "Full draw anchored near cheek; front arm extended with soft elbow, hips stable.",
+              "weaponTip": "full-draw-right",
+              "captionZh": "转肩加速"
+            },
+            {
+              "index": 5,
+              "phase": "contact",
+              "body": "Release: right fingers open and draw hand travels backward along cheek; bow arm stays aimed.",
+              "weaponTip": "release-right",
+              "captionZh": "命中／释放"
+            },
+            {
+              "index": 6,
+              "phase": "follow-through",
+              "body": "Bow flexes and settles, front wrist tips slightly while torso remains controlled.",
+              "weaponTip": "followthrough-right",
+              "captionZh": "随动贯穿"
+            },
+            {
+              "index": 7,
+              "phase": "decelerate",
+              "body": "Lower bow with shoulder release and exhale, no abrupt weapon disappearance.",
+              "weaponTip": "lowering",
+              "captionZh": "制动"
+            },
+            {
+              "index": 8,
+              "phase": "recover",
+              "body": "Return to ready carry for weapon transition.",
+              "weaponTip": "carry",
+              "captionZh": "回收"
+            }
+          ],
+          "durationsMs": [
+            90,
+            100,
+            120,
+            150,
+            25,
+            70,
+            90,
+            100
+          ],
+          "fx": "Arrow departs only from string release frame5; small string vibration and narrow trail, no muzzle flash.",
+          "sourceIds": [
+            "lara-official-arsenal"
+          ],
+          "notes": [
+            "Intentional crossover kit: classic dual pistols plus reboot-era archery, not one historically exact Lara loadout."
+          ],
+          "evidenceKind": "authored-choreography-informed-by-listed-references",
+          "promptEnglish": "Eight individually drawn chronological full-body key poses, attacking screen-right with planted foot pivots and visibly rotating pelvis/shoulders. 蓄力箭. Pose 1: Pistols holstered, bow held low in left hand; turn body side-on with right shoulder back. Weapon endpoint: bow-low. Pose 2: Raise bow toward target while right hand nocks arrow close to bowstring. Weapon endpoint: bow-rising. Pose 3: Pull string using back/shoulder muscles; right elbow travels rearward, chest opens. Weapon endpoint: arrow-aligned. Pose 4: Full draw anchored near cheek; front arm extended with soft elbow, hips stable. Weapon endpoint: full-draw-right. Pose 5: Release: right fingers open and draw hand travels backward along cheek; bow arm stays aimed. Weapon endpoint: release-right. Pose 6: Bow flexes and settles, front wrist tips slightly while torso remains controlled. Weapon endpoint: followthrough-right. Pose 7: Lower bow with shoulder release and exhale, no abrupt weapon disappearance. Weapon endpoint: lowering. Pose 8: Return to ready carry for weapon transition. Weapon endpoint: carry. FX separate from body: Arrow departs only from string release frame5; small string vibration and narrow trail, no muzzle flash.",
+          "evidenceNotes": "The listed sources inform identity or isolated mechanics only. Do not describe this8pose proposal as a traced, frame-measured reproduction."
+        },
+        "ultimate": {
+          "name": "双枪机动连射",
+          "type": "dual-pistol-volley",
+          "poses": [
+            {
+              "index": 1,
+              "phase": "load",
+              "body": "Deep low ready with both guns near chest, rear hip loaded.",
+              "weaponTip": "dual-ready",
+              "captionZh": "蓄势"
+            },
+            {
+              "index": 2,
+              "phase": "counter-rotate",
+              "body": "Step diagonally toward right and open torso from side to front-three-quarter.",
+              "weaponTip": "dual-rising",
+              "captionZh": "反向预备"
+            },
+            {
+              "index": 3,
+              "phase": "drive",
+              "body": "Extend right gun and fire while left gun remains aimed; right shoulder yields.",
+              "weaponTip": "right-fire",
+              "captionZh": "蹬地转髋"
+            },
+            {
+              "index": 4,
+              "phase": "accelerate",
+              "body": "Pivot hips to change shoulder lead; left gun fires as right recovers.",
+              "weaponTip": "left-fire",
+              "captionZh": "转肩加速"
+            },
+            {
+              "index": 5,
+              "phase": "contact",
+              "body": "Both guns aim forward during a compact travelling step, knees bent; repeat distinct right recoil.",
+              "weaponTip": "right-fire",
+              "captionZh": "命中／释放"
+            },
+            {
+              "index": 6,
+              "phase": "follow-through",
+              "body": "Left recoil follows with braid and straps trailing the torso turn; no stationary arm duplication.",
+              "weaponTip": "left-fire",
+              "captionZh": "随动贯穿"
+            },
+            {
+              "index": 7,
+              "phase": "decelerate",
+              "body": "Brake movement into a wider stance, both barrels come back on line.",
+              "weaponTip": "dual-aim",
+              "captionZh": "制动"
+            },
+            {
+              "index": 8,
+              "phase": "recover",
+              "body": "Recover low-ready with two complete visible guns and planted feet.",
+              "weaponTip": "low-ready",
+              "captionZh": "回收"
+            }
+          ],
+          "durationsMs": [
+            100,
+            110,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100
+          ],
+          "fx": "Alternating muzzle flashes follow firing hand frames3–6, repeated at runtime over6shots; bullet paths leave barrels and persist independently. Small smoke after recoil.",
+          "sourceIds": [
+            "lara-steam-trailer",
+            "lara-official-arsenal"
+          ],
+          "notes": [
+            "Eight poses illustrate a firing cycle; runtime must schedule all six projectiles explicitly."
+          ],
+          "evidenceKind": "authored-choreography-informed-by-listed-references",
+          "promptEnglish": "Eight individually drawn chronological full-body key poses, attacking screen-right with planted foot pivots and visibly rotating pelvis/shoulders. 双枪机动连射. Pose 1: Deep low ready with both guns near chest, rear hip loaded. Weapon endpoint: dual-ready. Pose 2: Step diagonally toward right and open torso from side to front-three-quarter. Weapon endpoint: dual-rising. Pose 3: Extend right gun and fire while left gun remains aimed; right shoulder yields. Weapon endpoint: right-fire. Pose 4: Pivot hips to change shoulder lead; left gun fires as right recovers. Weapon endpoint: left-fire. Pose 5: Both guns aim forward during a compact travelling step, knees bent; repeat distinct right recoil. Weapon endpoint: right-fire. Pose 6: Left recoil follows with braid and straps trailing the torso turn; no stationary arm duplication. Weapon endpoint: left-fire. Pose 7: Brake movement into a wider stance, both barrels come back on line. Weapon endpoint: dual-aim. Pose 8: Recover low-ready with two complete visible guns and planted feet. Weapon endpoint: low-ready. FX separate from body: Alternating muzzle flashes follow firing hand frames3–6, repeated at runtime over6shots; bullet paths leave barrels and persist independently. Small smoke after recoil.",
+          "evidenceNotes": "The listed sources inform identity or isolated mechanics only. Do not describe this8pose proposal as a traced, frame-measured reproduction."
+        }
+      },
+      "evidenceStatus": "Actual strafe/dualgun posture sampled; exact recoil and bow/ultimate8pose sequence authored.",
+      "sourceDetails": {
+        "lara-steam-trailer": {
+          "url": "https://store.steampowered.com/app/2478970/",
+          "mediaUrl": "https://video.akamai.steamstatic.com/store_trailers/2478970/661828/5dac2e40c0cfbbe7093ebff12e9211698e24d269/1750815598/dash_h264.mpd?t=1707889124",
+          "title": "Tomb Raider I-III Remastered Starring Lara Croft / Tomb Raider I-III Remastered Launch Trailer",
+          "localVideo": "lara-reference.mp4",
+          "evidenceKind": "sampled-video-frames",
+          "viewedRanges": [
+            "39.25–40.625s"
+          ],
+          "limitations": [
+            "Different costume used only for aim/locomotion relationship. Cannot determine exact modern recoil or trigger animation from these frames."
+          ],
+          "localCapture": "lara-guns-detail.jpg",
+          "observed": "Lara in orange jacket strafes with dual guns kept toward target while feet and legs move sideways."
+        },
+        "lara-official-arsenal": {
+          "url": "https://www.tombraider.com/news/community/tomb-raider-franchise-feature-the-arsenal",
+          "evidenceKind": "official-text-viewed",
+          "observed": "Classic dual pistols and reboot archery are different eras; prototype intentionally combines them.",
+          "limitations": [
+            "Not motion footage."
+          ]
+        }
+      }
+    },
+    "wukong": {
+      "sources": [
+        "wukong-steam-trailer",
+        "wukong-official-page"
+      ],
+      "moves": {
+        "attack1": {
+          "name": "棍身横扫",
+          "type": "staff-horizontal-sweep",
+          "poses": [
+            {
+              "index": 1,
+              "phase": "load",
+              "body": "Hold staff across rear hip with two hands spaced apart, front knee bent and rear leg loaded.",
+              "weaponTip": "rear-hip",
+              "captionZh": "蓄势",
+              "suggestedProjectedWeaponAngleDeg": 145
+            },
+            {
+              "index": 2,
+              "phase": "counter-rotate",
+              "body": "Coil hips and shoulders away from target; back-three-quarter silhouette, long staff trailing behind.",
+              "weaponTip": "behind-back",
+              "captionZh": "反向预备",
+              "suggestedProjectedWeaponAngleDeg": 170
+            },
+            {
+              "index": 3,
+              "phase": "drive",
+              "body": "Push rear foot and pivot front foot; rear hand drives while front hand guides the shaft.",
+              "weaponTip": "lagging-side",
+              "captionZh": "蹬地转髋",
+              "suggestedProjectedWeaponAngleDeg": 155
+            },
+            {
+              "index": 4,
+              "phase": "accelerate",
+              "body": "Unwind torso through front-three-quarter, staff sweeps a wide horizontal arc at waist height.",
+              "weaponTip": "wide-sweep",
+              "captionZh": "转肩加速",
+              "suggestedProjectedWeaponAngleDeg": 85
+            },
+            {
+              "index": 5,
+              "phase": "contact",
+              "body": "Staff middle/outer section sweeps across right-front target, not merely the end poking forward.",
+              "weaponTip": "cross-target",
+              "captionZh": "命中／释放",
+              "suggestedProjectedWeaponAngleDeg": 20
+            },
+            {
+              "index": 6,
+              "phase": "follow-through",
+              "body": "Continue sweep past torso to far side, shoulders over-rotate and sash lags behind.",
+              "weaponTip": "far-side",
+              "captionZh": "随动贯穿",
+              "suggestedProjectedWeaponAngleDeg": -55
+            },
+            {
+              "index": 7,
+              "phase": "decelerate",
+              "body": "Brake shaft with the guiding hand and sink into front knee.",
+              "weaponTip": "brake-side",
+              "captionZh": "制动",
+              "suggestedProjectedWeaponAngleDeg": -70
+            },
+            {
+              "index": 8,
+              "phase": "recover",
+              "body": "Reload staff across opposite hip for reverse sweep.",
+              "weaponTip": "opposite-hip",
+              "captionZh": "回收",
+              "suggestedProjectedWeaponAngleDeg": 45
+            }
+          ],
+          "durationsMs": [
+            70,
+            85,
+            55,
+            35,
+            35,
+            55,
+            90,
+            95
+          ],
+          "fx": "Thin gold crescent follows staff sweep frames4–6, dust from pivot foot, contact spark atframe5 only.",
+          "sourceIds": [
+            "wukong-steam-trailer"
+          ],
+          "notes": [],
+          "evidenceKind": "authored-choreography-informed-by-listed-references",
+          "promptEnglish": "Eight individually drawn chronological full-body key poses, attacking screen-right with planted foot pivots and visibly rotating pelvis/shoulders. 棍身横扫. Pose 1: Hold staff across rear hip with two hands spaced apart, front knee bent and rear leg loaded. Weapon endpoint: rear-hip. Pose 2: Coil hips and shoulders away from target; back-three-quarter silhouette, long staff trailing behind. Weapon endpoint: behind-back. Pose 3: Push rear foot and pivot front foot; rear hand drives while front hand guides the shaft. Weapon endpoint: lagging-side. Pose 4: Unwind torso through front-three-quarter, staff sweeps a wide horizontal arc at waist height. Weapon endpoint: wide-sweep. Pose 5: Staff middle/outer section sweeps across right-front target, not merely the end poking forward. Weapon endpoint: cross-target. Pose 6: Continue sweep past torso to far side, shoulders over-rotate and sash lags behind. Weapon endpoint: far-side. Pose 7: Brake shaft with the guiding hand and sink into front knee. Weapon endpoint: brake-side. Pose 8: Reload staff across opposite hip for reverse sweep. Weapon endpoint: opposite-hip. FX separate from body: Thin gold crescent follows staff sweep frames4–6, dust from pivot foot, contact spark atframe5 only.",
+          "angleConvention": "Illustrative side-view hilt-to-tip projection:0°=screen-right,+90°=up; horizontal sweeps also require foreshortening/depth. These are art targets, not measured source angles.",
+          "evidenceNotes": "The listed sources inform identity or isolated mechanics only. Do not describe this8pose proposal as a traced, frame-measured reproduction."
+        },
+        "attack2": {
+          "name": "回身反扫",
+          "type": "staff-reverse-sweep",
+          "poses": [
+            {
+              "index": 1,
+              "phase": "load",
+              "body": "Staff rests across the opposite hip after first sweep, shoulders turned beyond neutral.",
+              "weaponTip": "far-hip",
+              "captionZh": "蓄势",
+              "suggestedProjectedWeaponAngleDeg": -55
+            },
+            {
+              "index": 2,
+              "phase": "counter-rotate",
+              "body": "Pull front hand toward ribs and push rear hand around to start reverse rotation.",
+              "weaponTip": "rear-side",
+              "captionZh": "反向预备",
+              "suggestedProjectedWeaponAngleDeg": -145
+            },
+            {
+              "index": 3,
+              "phase": "drive",
+              "body": "Pivot heel and rotate pelvis back, briefly show more of the back while eyes track right.",
+              "weaponTip": "behind-waist",
+              "captionZh": "蹬地转髋",
+              "suggestedProjectedWeaponAngleDeg": -165
+            },
+            {
+              "index": 4,
+              "phase": "accelerate",
+              "body": "Reverse-sweep shaft around waist with visibly changing hand separation and forearm angles.",
+              "weaponTip": "reverse-sweep",
+              "captionZh": "转肩加速",
+              "suggestedProjectedWeaponAngleDeg": -95
+            },
+            {
+              "index": 5,
+              "phase": "contact",
+              "body": "Cross the opponent line with the opposite side of staff, front foot stays planted.",
+              "weaponTip": "cross-target",
+              "captionZh": "命中／释放",
+              "suggestedProjectedWeaponAngleDeg": 30
+            },
+            {
+              "index": 6,
+              "phase": "follow-through",
+              "body": "Let staff and torso continue around behind shoulder, tail/sash follow the arc.",
+              "weaponTip": "behind-shoulder",
+              "captionZh": "随动贯穿",
+              "suggestedProjectedWeaponAngleDeg": 110
+            },
+            {
+              "index": 7,
+              "phase": "decelerate",
+              "body": "Slow spin into compact bent-knee balance, shaft rises along shoulder.",
+              "weaponTip": "rising",
+              "captionZh": "制动",
+              "suggestedProjectedWeaponAngleDeg": 100
+            },
+            {
+              "index": 8,
+              "phase": "recover",
+              "body": "Catch staff high with both hands to prepare a heavy downward strike.",
+              "weaponTip": "high-ready",
+              "captionZh": "回收",
+              "suggestedProjectedWeaponAngleDeg": 70
+            }
+          ],
+          "durationsMs": [
+            70,
+            85,
+            55,
+            35,
+            35,
+            55,
+            90,
+            95
+          ],
+          "fx": "Opposite-direction gold trail, must reverse curvature relative to attack1; no duplicate forward streak.",
+          "sourceIds": [
+            "wukong-steam-trailer"
+          ],
+          "notes": [],
+          "evidenceKind": "authored-choreography-informed-by-listed-references",
+          "promptEnglish": "Eight individually drawn chronological full-body key poses, attacking screen-right with planted foot pivots and visibly rotating pelvis/shoulders. 回身反扫. Pose 1: Staff rests across the opposite hip after first sweep, shoulders turned beyond neutral. Weapon endpoint: far-hip. Pose 2: Pull front hand toward ribs and push rear hand around to start reverse rotation. Weapon endpoint: rear-side. Pose 3: Pivot heel and rotate pelvis back, briefly show more of the back while eyes track right. Weapon endpoint: behind-waist. Pose 4: Reverse-sweep shaft around waist with visibly changing hand separation and forearm angles. Weapon endpoint: reverse-sweep. Pose 5: Cross the opponent line with the opposite side of staff, front foot stays planted. Weapon endpoint: cross-target. Pose 6: Let staff and torso continue around behind shoulder, tail/sash follow the arc. Weapon endpoint: behind-shoulder. Pose 7: Slow spin into compact bent-knee balance, shaft rises along shoulder. Weapon endpoint: rising. Pose 8: Catch staff high with both hands to prepare a heavy downward strike. Weapon endpoint: high-ready. FX separate from body: Opposite-direction gold trail, must reverse curvature relative to attack1; no duplicate forward streak.",
+          "angleConvention": "Illustrative side-view hilt-to-tip projection:0°=screen-right,+90°=up; horizontal sweeps also require foreshortening/depth. These are art targets, not measured source angles.",
+          "evidenceNotes": "The listed sources inform identity or isolated mechanics only. Do not describe this8pose proposal as a traced, frame-measured reproduction."
+        },
+        "attack3": {
+          "name": "转肩斜劈棍",
+          "type": "staff-heavy-diagonal",
+          "poses": [
+            {
+              "index": 1,
+              "phase": "load",
+              "body": "Bring staff from shoulder toward overhead, knees compress.",
+              "weaponTip": "high-ready",
+              "captionZh": "蓄势",
+              "suggestedProjectedWeaponAngleDeg": 80
+            },
+            {
+              "index": 2,
+              "phase": "counter-rotate",
+              "body": "Twist torso away and raise both hands behind crown; shaft lies diagonally behind body.",
+              "weaponTip": "behind-crown",
+              "captionZh": "反向预备",
+              "suggestedProjectedWeaponAngleDeg": 130
+            },
+            {
+              "index": 3,
+              "phase": "drive",
+              "body": "Drive from rear leg and rotate hips toward target, hands remain high.",
+              "weaponTip": "overhead",
+              "captionZh": "蹬地转髋",
+              "suggestedProjectedWeaponAngleDeg": 120
+            },
+            {
+              "index": 4,
+              "phase": "accelerate",
+              "body": "Pull staff down in a large oblique arc; shoulders follow pelvis and spine folds slightly.",
+              "weaponTip": "diagonal-down",
+              "captionZh": "转肩加速",
+              "suggestedProjectedWeaponAngleDeg": 80
+            },
+            {
+              "index": 5,
+              "phase": "contact",
+              "body": "Outer shaft contacts front-right target at upper-body height, front knee takes weight.",
+              "weaponTip": "front-torso",
+              "captionZh": "命中／释放",
+              "suggestedProjectedWeaponAngleDeg": -20
+            },
+            {
+              "index": 6,
+              "phase": "follow-through",
+              "body": "Follow through toward low front-right; trailing hand continues the lever action.",
+              "weaponTip": "front-low",
+              "captionZh": "随动贯穿",
+              "suggestedProjectedWeaponAngleDeg": -75
+            },
+            {
+              "index": 7,
+              "phase": "decelerate",
+              "body": "Decelerate with a low torso and planted stance, shaft no longer moves straight forward.",
+              "weaponTip": "low-brake",
+              "captionZh": "制动",
+              "suggestedProjectedWeaponAngleDeg": -65
+            },
+            {
+              "index": 8,
+              "phase": "recover",
+              "body": "Recover staff to side guard with a small balancing step.",
+              "weaponTip": "side-guard",
+              "captionZh": "回收",
+              "suggestedProjectedWeaponAngleDeg": 50
+            }
+          ],
+          "durationsMs": [
+            85,
+            100,
+            60,
+            40,
+            40,
+            75,
+            95,
+            100
+          ],
+          "fx": "Tall gold diagonal arc and short contact burst; no detached projectile or floor-wide explosion.",
+          "sourceIds": [
+            "wukong-steam-trailer"
+          ],
+          "notes": [],
+          "evidenceKind": "authored-choreography-informed-by-listed-references",
+          "promptEnglish": "Eight individually drawn chronological full-body key poses, attacking screen-right with planted foot pivots and visibly rotating pelvis/shoulders. 转肩斜劈棍. Pose 1: Bring staff from shoulder toward overhead, knees compress. Weapon endpoint: high-ready. Pose 2: Twist torso away and raise both hands behind crown; shaft lies diagonally behind body. Weapon endpoint: behind-crown. Pose 3: Drive from rear leg and rotate hips toward target, hands remain high. Weapon endpoint: overhead. Pose 4: Pull staff down in a large oblique arc; shoulders follow pelvis and spine folds slightly. Weapon endpoint: diagonal-down. Pose 5: Outer shaft contacts front-right target at upper-body height, front knee takes weight. Weapon endpoint: front-torso. Pose 6: Follow through toward low front-right; trailing hand continues the lever action. Weapon endpoint: front-low. Pose 7: Decelerate with a low torso and planted stance, shaft no longer moves straight forward. Weapon endpoint: low-brake. Pose 8: Recover staff to side guard with a small balancing step. Weapon endpoint: side-guard. FX separate from body: Tall gold diagonal arc and short contact burst; no detached projectile or floor-wide explosion.",
+          "angleConvention": "Illustrative side-view hilt-to-tip projection:0°=screen-right,+90°=up; horizontal sweeps also require foreshortening/depth. These are art targets, not measured source angles.",
+          "evidenceNotes": "The listed sources inform identity or isolated mechanics only. Do not describe this8pose proposal as a traced, frame-measured reproduction."
+        },
+        "skill": {
+          "name": "定身术",
+          "type": "spell-gesture",
+          "poses": [
+            {
+              "index": 1,
+              "phase": "load",
+              "body": "Hold staff securely in supporting left hand, bend knees and draw casting hand near waist.",
+              "weaponTip": "staff-held",
+              "captionZh": "蓄势"
+            },
+            {
+              "index": 2,
+              "phase": "counter-rotate",
+              "body": "Turn chest away from target to load the gesture; right elbow folds across body.",
+              "weaponTip": "staff-held",
+              "captionZh": "反向预备"
+            },
+            {
+              "index": 3,
+              "phase": "drive",
+              "body": "Roll shoulder forward while pelvis stays grounded, casting forearm crosses centerline.",
+              "weaponTip": "staff-held",
+              "captionZh": "蹬地转髋"
+            },
+            {
+              "index": 4,
+              "phase": "accelerate",
+              "body": "Extend two-finger spell gesture toward right, wrist aligned with elbow; supporting arm still gripsstaff.",
+              "weaponTip": "finger-forward",
+              "captionZh": "转肩加速"
+            },
+            {
+              "index": 5,
+              "phase": "contact",
+              "body": "Finish sharp finger point with small forward chest snap and rear heel pivot.",
+              "weaponTip": "finger-point",
+              "captionZh": "命中／释放"
+            },
+            {
+              "index": 6,
+              "phase": "follow-through",
+              "body": "Hold point briefly while torso and cloth settle; do not add a third arm or release staff.",
+              "weaponTip": "point-hold",
+              "captionZh": "随动贯穿"
+            },
+            {
+              "index": 7,
+              "phase": "decelerate",
+              "body": "Retract casting hand across chest, exhale and relax shoulder.",
+              "weaponTip": "hand-return",
+              "captionZh": "制动"
+            },
+            {
+              "index": 8,
+              "phase": "recover",
+              "body": "Return to staff-ready stance with both hands visibly accounted for.",
+              "weaponTip": "staff-ready",
+              "captionZh": "回收"
+            }
+          ],
+          "durationsMs": [
+            80,
+            100,
+            70,
+            40,
+            35,
+            100,
+            90,
+            100
+          ],
+          "fx": "Gold rune appears at fingertip only atframe5; target immobilization effect is separate at enemyposition, not a staff strike.",
+          "sourceIds": [
+            "wukong-official-page"
+          ],
+          "notes": [
+            "Finger-gesture mechanics are a prototype animation proposal; trailer broad combat evidence does not establish these exact spell frames."
+          ],
+          "evidenceKind": "authored-choreography-informed-by-listed-references",
+          "promptEnglish": "Eight individually drawn chronological full-body key poses, attacking screen-right with planted foot pivots and visibly rotating pelvis/shoulders. 定身术. Pose 1: Hold staff securely in supporting left hand, bend knees and draw casting hand near waist. Weapon endpoint: staff-held. Pose 2: Turn chest away from target to load the gesture; right elbow folds across body. Weapon endpoint: staff-held. Pose 3: Roll shoulder forward while pelvis stays grounded, casting forearm crosses centerline. Weapon endpoint: staff-held. Pose 4: Extend two-finger spell gesture toward right, wrist aligned with elbow; supporting arm still gripsstaff. Weapon endpoint: finger-forward. Pose 5: Finish sharp finger point with small forward chest snap and rear heel pivot. Weapon endpoint: finger-point. Pose 6: Hold point briefly while torso and cloth settle; do not add a third arm or release staff. Weapon endpoint: point-hold. Pose 7: Retract casting hand across chest, exhale and relax shoulder. Weapon endpoint: hand-return. Pose 8: Return to staff-ready stance with both hands visibly accounted for. Weapon endpoint: staff-ready. FX separate from body: Gold rune appears at fingertip only atframe5; target immobilization effect is separate at enemyposition, not a staff strike.",
+          "evidenceNotes": "The listed sources inform identity or isolated mechanics only. Do not describe this8pose proposal as a traced, frame-measured reproduction."
+        },
+        "ultimate": {
+          "name": "重棍破阵",
+          "type": "staff-loaded-forward-heavy",
+          "poses": [
+            {
+              "index": 1,
+              "phase": "load",
+              "body": "Deep crouch, staff drawn behind hips, rear leg loaded.",
+              "weaponTip": "rear-low",
+              "captionZh": "蓄势"
+            },
+            {
+              "index": 2,
+              "phase": "counter-rotate",
+              "body": "Pivot body away, swing long shaft behind shoulder and over back; show back-three-quarter view.",
+              "weaponTip": "behind-shoulder",
+              "captionZh": "反向预备"
+            },
+            {
+              "index": 3,
+              "phase": "drive",
+              "body": "Extend through legs and lift hands above crown, shaft continues a visible circular windup.",
+              "weaponTip": "overhead-arc",
+              "captionZh": "蹬地转髋"
+            },
+            {
+              "index": 4,
+              "phase": "accelerate",
+              "body": "Plant forward foot and whip shoulders around, shaft accelerates down-forward along a broad arc.",
+              "weaponTip": "down-forward",
+              "captionZh": "转肩加速"
+            },
+            {
+              "index": 5,
+              "phase": "contact",
+              "body": "Long outer shaft strikes far front-right at torso height, body fully commits into front leg.",
+              "weaponTip": "far-right-torso",
+              "captionZh": "命中／释放"
+            },
+            {
+              "index": 6,
+              "phase": "follow-through",
+              "body": "Follow through low-right and across body, rear foot drags in to catch weight.",
+              "weaponTip": "low-right",
+              "captionZh": "随动贯穿"
+            },
+            {
+              "index": 7,
+              "phase": "decelerate",
+              "body": "Brace in a wide low stance as staff vibration and cloth settle.",
+              "weaponTip": "braced-low",
+              "captionZh": "制动"
+            },
+            {
+              "index": 8,
+              "phase": "recover",
+              "body": "Recover staff to diagonal guard with effort; do not snap instantly upright.",
+              "weaponTip": "diagonal-guard",
+              "captionZh": "回收"
+            }
+          ],
+          "durationsMs": [
+            110,
+            130,
+            100,
+            55,
+            45,
+            85,
+            120,
+            130
+          ],
+          "fx": "Growing gold arc along actual shaft sweep and one forward contact shockwave; avoid ground-only AOE or constant extendablebeam.",
+          "sourceIds": [
+            "wukong-steam-trailer"
+          ],
+          "notes": [
+            "The prototype keeps its existing forward-range heavy hit. Real game also contains distinct thrust and pillar stances; do not label every legitimate thrust an animation error."
+          ],
+          "evidenceKind": "authored-choreography-informed-by-listed-references",
+          "promptEnglish": "Eight individually drawn chronological full-body key poses, attacking screen-right with planted foot pivots and visibly rotating pelvis/shoulders. 重棍破阵. Pose 1: Deep crouch, staff drawn behind hips, rear leg loaded. Weapon endpoint: rear-low. Pose 2: Pivot body away, swing long shaft behind shoulder and over back; show back-three-quarter view. Weapon endpoint: behind-shoulder. Pose 3: Extend through legs and lift hands above crown, shaft continues a visible circular windup. Weapon endpoint: overhead-arc. Pose 4: Plant forward foot and whip shoulders around, shaft accelerates down-forward along a broad arc. Weapon endpoint: down-forward. Pose 5: Long outer shaft strikes far front-right at torso height, body fully commits into front leg. Weapon endpoint: far-right-torso. Pose 6: Follow through low-right and across body, rear foot drags in to catch weight. Weapon endpoint: low-right. Pose 7: Brace in a wide low stance as staff vibration and cloth settle. Weapon endpoint: braced-low. Pose 8: Recover staff to diagonal guard with effort; do not snap instantly upright. Weapon endpoint: diagonal-guard. FX separate from body: Growing gold arc along actual shaft sweep and one forward contact shockwave; avoid ground-only AOE or constant extendablebeam.",
+          "evidenceNotes": "The listed sources inform identity or isolated mechanics only. Do not describe this8pose proposal as a traced, frame-measured reproduction."
+        }
+      },
+      "evidenceStatus": "Actual staff-sweep frames45.25–45.875s inspected; full8pose sequences and spells authored.",
+      "sourceDetails": {
+        "wukong-steam-trailer": {
+          "url": "https://store.steampowered.com/app/2358720/",
+          "mediaUrl": "https://video.akamai.steamstatic.com/store_trailers/2358720/743632/6acf4311bb6a59d300b902ab6a3f445215089d9c/1750812851/dash_h264.mpd?t=1729236218",
+          "title": "Black Myth: Wukong / Black Myth: Wukong - Launch Trailer",
+          "localVideo": "wukong-reference.mp4",
+          "evidenceKind": "sampled-video-frames",
+          "viewedRanges": [
+            "45.25–45.875s"
+          ],
+          "limitations": [
+            "Does not establish exact prototype immobilize or ultimate. Eight poses/timing are adapted."
+          ],
+          "localCapture": "wukong-staff-detail.jpg",
+          "observed": "Monkey/staff fighter in yellow-brown clothing rotates torso, sweeps long staff through a broad arc, and follows through with gold weapon trail."
+        },
+        "wukong-official-page": {
+          "url": "https://www.playstation.com/en-us/games/black-myth-wukong/",
+          "evidenceKind": "official-text-reference",
+          "limitations": [
+            "General staff/spell identity, not motion timing."
+          ]
+        }
+      }
+    },
+    "drake": {
+      "sources": [
+        "drake-steam-trailer",
+        "drake-official-game"
+      ],
+      "moves": {
+        "attack1": {
+          "name": "踏步直拳",
+          "type": "jab",
+          "poses": [
+            {
+              "index": 1,
+              "phase": "load",
+              "body": "Unarmed close-combat guard, holstered pistol visible, feet staggered and chin tucked.",
+              "weaponTip": "fist-guard",
+              "captionZh": "蓄势"
+            },
+            {
+              "index": 2,
+              "phase": "counter-rotate",
+              "body": "Load rear shoulder slightly while lead fist remains near cheek, chest three-quarter.",
+              "weaponTip": "fist-load",
+              "captionZh": "反向预备"
+            },
+            {
+              "index": 3,
+              "phase": "drive",
+              "body": "Front foot steps in and rear heel pushes, hip turns before punching shoulder.",
+              "weaponTip": "fist-drive",
+              "captionZh": "蹬地转髋"
+            },
+            {
+              "index": 4,
+              "phase": "accelerate",
+              "body": "Lead arm extends along a compact straight line; nonpunching hand protects face.",
+              "weaponTip": "straight-forward",
+              "captionZh": "转肩加速"
+            },
+            {
+              "index": 5,
+              "phase": "contact",
+              "body": "Fist meets front-right target with shoulder engaged, wrist straight, elbow not hyperextended.",
+              "weaponTip": "contact",
+              "captionZh": "命中／释放"
+            },
+            {
+              "index": 6,
+              "phase": "follow-through",
+              "body": "Continue only a little past contact, torso weight over lead foot.",
+              "weaponTip": "short-follow",
+              "captionZh": "随动贯穿"
+            },
+            {
+              "index": 7,
+              "phase": "decelerate",
+              "body": "Retract fist to cheek as hip untwists; do not leave arm extended.",
+              "weaponTip": "retract",
+              "captionZh": "制动"
+            },
+            {
+              "index": 8,
+              "phase": "recover",
+              "body": "Stable guard links to rear cross/hook.",
+              "weaponTip": "guard",
+              "captionZh": "回收"
+            }
+          ],
+          "durationsMs": [
+            70,
+            85,
+            55,
+            35,
+            35,
+            55,
+            90,
+            95
+          ],
+          "fx": "Small contact spark atframe5, no sword arc or bullet. The fist is the hit point.",
+          "sourceIds": [
+            "drake-official-game"
+          ],
+          "notes": [],
+          "evidenceKind": "authored-choreography-informed-by-listed-references",
+          "promptEnglish": "Eight individually drawn chronological full-body key poses, attacking screen-right with planted foot pivots and visibly rotating pelvis/shoulders. 踏步直拳. Pose 1: Unarmed close-combat guard, holstered pistol visible, feet staggered and chin tucked. Weapon endpoint: fist-guard. Pose 2: Load rear shoulder slightly while lead fist remains near cheek, chest three-quarter. Weapon endpoint: fist-load. Pose 3: Front foot steps in and rear heel pushes, hip turns before punching shoulder. Weapon endpoint: fist-drive. Pose 4: Lead arm extends along a compact straight line; nonpunching hand protects face. Weapon endpoint: straight-forward. Pose 5: Fist meets front-right target with shoulder engaged, wrist straight, elbow not hyperextended. Weapon endpoint: contact. Pose 6: Continue only a little past contact, torso weight over lead foot. Weapon endpoint: short-follow. Pose 7: Retract fist to cheek as hip untwists; do not leave arm extended. Weapon endpoint: retract. Pose 8: Stable guard links to rear cross/hook. Weapon endpoint: guard. FX separate from body: Small contact spark atframe5, no sword arc or bullet. The fist is the hit point.",
+          "evidenceNotes": "The listed sources inform identity or isolated mechanics only. Do not describe this8pose proposal as a traced, frame-measured reproduction."
+        },
+        "attack2": {
+          "name": "转胯勾拳",
+          "type": "body-hook",
+          "poses": [
+            {
+              "index": 1,
+              "phase": "load",
+              "body": "Start guard with weight slightly forward, rear fist near ribs.",
+              "weaponTip": "guard",
+              "captionZh": "蓄势"
+            },
+            {
+              "index": 2,
+              "phase": "counter-rotate",
+              "body": "Sink and rotate torso away, rear elbow bent about90degrees.",
+              "weaponTip": "bent-load",
+              "captionZh": "反向预备"
+            },
+            {
+              "index": 3,
+              "phase": "drive",
+              "body": "Pivot rear foot and drive hip across target line before shoulder.",
+              "weaponTip": "rear-drive",
+              "captionZh": "蹬地转髋"
+            },
+            {
+              "index": 4,
+              "phase": "accelerate",
+              "body": "Bent arm follows a wide horizontal hook; chest turns from back-three-quarter toward front.",
+              "weaponTip": "hook-arc",
+              "captionZh": "转肩加速"
+            },
+            {
+              "index": 5,
+              "phase": "contact",
+              "body": "Knuckles cross right-front target on an arc, elbow remains bent and shoulder follows hips.",
+              "weaponTip": "hook-contact",
+              "captionZh": "命中／释放"
+            },
+            {
+              "index": 6,
+              "phase": "follow-through",
+              "body": "Chest turns past target, opposite hand stays near face and jacket lags.",
+              "weaponTip": "cross-body",
+              "captionZh": "随动贯穿"
+            },
+            {
+              "index": 7,
+              "phase": "decelerate",
+              "body": "Pull elbow back inward and sink to regain balance.",
+              "weaponTip": "retract",
+              "captionZh": "制动"
+            },
+            {
+              "index": 8,
+              "phase": "recover",
+              "body": "Recover guard with weight centered for finisher.",
+              "weaponTip": "guard",
+              "captionZh": "回收"
+            }
+          ],
+          "durationsMs": [
+            70,
+            85,
+            55,
+            35,
+            35,
+            55,
+            90,
+            95
+          ],
+          "fx": "Short curved impact streak near fist frame4–5, separate from body; no gun muzzle effects.",
+          "sourceIds": [
+            "drake-official-game"
+          ],
+          "notes": [],
+          "evidenceKind": "authored-choreography-informed-by-listed-references",
+          "promptEnglish": "Eight individually drawn chronological full-body key poses, attacking screen-right with planted foot pivots and visibly rotating pelvis/shoulders. 转胯勾拳. Pose 1: Start guard with weight slightly forward, rear fist near ribs. Weapon endpoint: guard. Pose 2: Sink and rotate torso away, rear elbow bent about90degrees. Weapon endpoint: bent-load. Pose 3: Pivot rear foot and drive hip across target line before shoulder. Weapon endpoint: rear-drive. Pose 4: Bent arm follows a wide horizontal hook; chest turns from back-three-quarter toward front. Weapon endpoint: hook-arc. Pose 5: Knuckles cross right-front target on an arc, elbow remains bent and shoulder follows hips. Weapon endpoint: hook-contact. Pose 6: Chest turns past target, opposite hand stays near face and jacket lags. Weapon endpoint: cross-body. Pose 7: Pull elbow back inward and sink to regain balance. Weapon endpoint: retract. Pose 8: Recover guard with weight centered for finisher. Weapon endpoint: guard. FX separate from body: Short curved impact streak near fist frame4–5, separate from body; no gun muzzle effects.",
+          "evidenceNotes": "The listed sources inform identity or isolated mechanics only. Do not describe this8pose proposal as a traced, frame-measured reproduction."
+        },
+        "attack3": {
+          "name": "踏步重肘",
+          "type": "elbow-finisher",
+          "poses": [
+            {
+              "index": 1,
+              "phase": "load",
+              "body": "Guard with front foot planted, punching hand drawn near chest.",
+              "weaponTip": "folded-ready",
+              "captionZh": "蓄势"
+            },
+            {
+              "index": 2,
+              "phase": "counter-rotate",
+              "body": "Turn shoulder and fold elbow sharply, torso coils away from target.",
+              "weaponTip": "elbow-load",
+              "captionZh": "反向预备"
+            },
+            {
+              "index": 3,
+              "phase": "drive",
+              "body": "Step in from rear leg and rotate pelvis, keeping arm folded.",
+              "weaponTip": "elbow-drive",
+              "captionZh": "蹬地转髋"
+            },
+            {
+              "index": 4,
+              "phase": "accelerate",
+              "body": "Drive shoulder forward in a short arc, elbow becomes leading contact point.",
+              "weaponTip": "short-arc",
+              "captionZh": "转肩加速"
+            },
+            {
+              "index": 5,
+              "phase": "contact",
+              "body": "Elbow crosses right-front target with torso three-quarter-front, front knee braced.",
+              "weaponTip": "elbow-contact",
+              "captionZh": "命中／释放"
+            },
+            {
+              "index": 6,
+              "phase": "follow-through",
+              "body": "Continue upper-body turn just beyond contact, belt/holster trail behind.",
+              "weaponTip": "past-contact",
+              "captionZh": "随动贯穿"
+            },
+            {
+              "index": 7,
+              "phase": "decelerate",
+              "body": "Unwind into a low balanced stance and pull elbow back.",
+              "weaponTip": "pullback",
+              "captionZh": "制动"
+            },
+            {
+              "index": 8,
+              "phase": "recover",
+              "body": "Reset guard, no weapon magically appears midstrike.",
+              "weaponTip": "guard",
+              "captionZh": "回收"
+            }
+          ],
+          "durationsMs": [
+            70,
+            85,
+            55,
+            35,
+            40,
+            60,
+            90,
+            100
+          ],
+          "fx": "One close-range impactburst onelbowcontact, no blade trail. Larger hitstop than jab if engine later supports.",
+          "sourceIds": [
+            "drake-official-game"
+          ],
+          "notes": [
+            "Close-combat sequence is a new fighting-game adaptation of Drake brawling identity, not copied source timing."
+          ],
+          "evidenceKind": "authored-choreography-informed-by-listed-references",
+          "promptEnglish": "Eight individually drawn chronological full-body key poses, attacking screen-right with planted foot pivots and visibly rotating pelvis/shoulders. 踏步重肘. Pose 1: Guard with front foot planted, punching hand drawn near chest. Weapon endpoint: folded-ready. Pose 2: Turn shoulder and fold elbow sharply, torso coils away from target. Weapon endpoint: elbow-load. Pose 3: Step in from rear leg and rotate pelvis, keeping arm folded. Weapon endpoint: elbow-drive. Pose 4: Drive shoulder forward in a short arc, elbow becomes leading contact point. Weapon endpoint: short-arc. Pose 5: Elbow crosses right-front target with torso three-quarter-front, front knee braced. Weapon endpoint: elbow-contact. Pose 6: Continue upper-body turn just beyond contact, belt/holster trail behind. Weapon endpoint: past-contact. Pose 7: Unwind into a low balanced stance and pull elbow back. Weapon endpoint: pullback. Pose 8: Reset guard, no weapon magically appears midstrike. Weapon endpoint: guard. FX separate from body: One close-range impactburst onelbowcontact, no blade trail. Larger hitstop than jab if engine later supports.",
+          "evidenceNotes": "The listed sources inform identity or isolated mechanics only. Do not describe this8pose proposal as a traced, frame-measured reproduction."
+        },
+        "skill": {
+          "name": "转体投掷手雷",
+          "type": "grenade-throw",
+          "poses": [
+            {
+              "index": 1,
+              "phase": "load",
+              "body": "Hold grenade close to chest with throwing hand; off-hand clear, knees bent.",
+              "weaponTip": "held-chest",
+              "captionZh": "蓄势"
+            },
+            {
+              "index": 2,
+              "phase": "counter-rotate",
+              "body": "Draw throwing elbow back and rotate chest away; rear leg takes load.",
+              "weaponTip": "behind-shoulder",
+              "captionZh": "反向预备"
+            },
+            {
+              "index": 3,
+              "phase": "drive",
+              "body": "Step forward and rotate hips first while grenade remains behind head.",
+              "weaponTip": "rear-high",
+              "captionZh": "蹬地转髋"
+            },
+            {
+              "index": 4,
+              "phase": "accelerate",
+              "body": "Accelerate shoulder then elbow, hand arcs over shoulder rather than straight push.",
+              "weaponTip": "overhead-arc",
+              "captionZh": "转肩加速"
+            },
+            {
+              "index": 5,
+              "phase": "contact",
+              "body": "Release grenade above/front of shoulder, fingers open at a high forward angle.",
+              "weaponTip": "release-up-forward",
+              "captionZh": "命中／释放"
+            },
+            {
+              "index": 6,
+              "phase": "follow-through",
+              "body": "Throwing hand follows down across opposite hip; torso turns through, rear heel lifts.",
+              "weaponTip": "hand-cross-body",
+              "captionZh": "随动贯穿"
+            },
+            {
+              "index": 7,
+              "phase": "decelerate",
+              "body": "Brake in forward stance while off-hand balances; grenade continues independently.",
+              "weaponTip": "empty-hand-low",
+              "captionZh": "制动"
+            },
+            {
+              "index": 8,
+              "phase": "recover",
+              "body": "Recover compact guard with empty throwing hand.",
+              "weaponTip": "guard",
+              "captionZh": "回收"
+            }
+          ],
+          "durationsMs": [
+            85,
+            100,
+            80,
+            45,
+            25,
+            75,
+            90,
+            100
+          ],
+          "fx": "Projectile begins onlyatreleaseframe5 and follows a ballistic arc. Explosion delayed atimpact; no grenade glued tohandafterrelease.",
+          "sourceIds": [
+            "drake-steam-trailer"
+          ],
+          "notes": [
+            "Trailer montage supports action/weapon identity; detailed throwing chain is authored biomechanics, not source-frame reconstruction."
+          ],
+          "evidenceKind": "authored-choreography-informed-by-listed-references",
+          "promptEnglish": "Eight individually drawn chronological full-body key poses, attacking screen-right with planted foot pivots and visibly rotating pelvis/shoulders. 转体投掷手雷. Pose 1: Hold grenade close to chest with throwing hand; off-hand clear, knees bent. Weapon endpoint: held-chest. Pose 2: Draw throwing elbow back and rotate chest away; rear leg takes load. Weapon endpoint: behind-shoulder. Pose 3: Step forward and rotate hips first while grenade remains behind head. Weapon endpoint: rear-high. Pose 4: Accelerate shoulder then elbow, hand arcs over shoulder rather than straight push. Weapon endpoint: overhead-arc. Pose 5: Release grenade above/front of shoulder, fingers open at a high forward angle. Weapon endpoint: release-up-forward. Pose 6: Throwing hand follows down across opposite hip; torso turns through, rear heel lifts. Weapon endpoint: hand-cross-body. Pose 7: Brake in forward stance while off-hand balances; grenade continues independently. Weapon endpoint: empty-hand-low. Pose 8: Recover compact guard with empty throwing hand. Weapon endpoint: guard. FX separate from body: Projectile begins onlyatreleaseframe5 and follows a ballistic arc. Explosion delayed atimpact; no grenade glued tohandafterrelease.",
+          "evidenceNotes": "The listed sources inform identity or isolated mechanics only. Do not describe this8pose proposal as a traced, frame-measured reproduction."
+        },
+        "ultimate": {
+          "name": "步枪火力压制",
+          "type": "rifle-burst",
+          "poses": [
+            {
+              "index": 1,
+              "phase": "load",
+              "body": "Rifle at low ready, stock close to shoulder, front hand correctly supports fore-end.",
+              "weaponTip": "low-ready",
+              "captionZh": "蓄势"
+            },
+            {
+              "index": 2,
+              "phase": "counter-rotate",
+              "body": "Plant staggered feet and lean forward from ankles, bring stock into shoulder pocket.",
+              "weaponTip": "stock-shoulder",
+              "captionZh": "反向预备"
+            },
+            {
+              "index": 3,
+              "phase": "drive",
+              "body": "Raise sights to eye line, cheek settles to stock and elbows support weapon.",
+              "weaponTip": "aim-right",
+              "captionZh": "蹬地转髋"
+            },
+            {
+              "index": 4,
+              "phase": "accelerate",
+              "body": "Fire first burst, rifle recoils backward into shoulder with slight muzzle rise, torso yields minimally.",
+              "weaponTip": "recoil-up-small",
+              "captionZh": "转肩加速"
+            },
+            {
+              "index": 5,
+              "phase": "contact",
+              "body": "Pull muzzle back onto target with forearm and shoulder control, knees keep weightforward.",
+              "weaponTip": "aim-return",
+              "captionZh": "命中／释放"
+            },
+            {
+              "index": 6,
+              "phase": "follow-through",
+              "body": "Fire another burst with a visibly different recoil peak, shirt and sling lag.",
+              "weaponTip": "second-recoil",
+              "captionZh": "随动贯穿"
+            },
+            {
+              "index": 7,
+              "phase": "decelerate",
+              "body": "Cease fire, keep sights on target as weapon settles; no instant drop.",
+              "weaponTip": "settled-aim",
+              "captionZh": "制动"
+            },
+            {
+              "index": 8,
+              "phase": "recover",
+              "body": "Lower to ready with safe barrel direction and both hands still supporting rifle.",
+              "weaponTip": "low-ready",
+              "captionZh": "回收"
+            }
+          ],
+          "durationsMs": [
+            100,
+            100,
+            100,
+            110,
+            110,
+            110,
+            120,
+            100
+          ],
+          "fx": "Muzzleflashes atframe4/6 then runtime repeated over5scheduledshots; shells and smoke detached; recoil in shoulder not full-body spin.",
+          "sourceIds": [
+            "drake-steam-trailer"
+          ],
+          "notes": [],
+          "evidenceKind": "authored-choreography-informed-by-listed-references",
+          "promptEnglish": "Eight individually drawn chronological full-body key poses, attacking screen-right with planted foot pivots and visibly rotating pelvis/shoulders. 步枪火力压制. Pose 1: Rifle at low ready, stock close to shoulder, front hand correctly supports fore-end. Weapon endpoint: low-ready. Pose 2: Plant staggered feet and lean forward from ankles, bring stock into shoulder pocket. Weapon endpoint: stock-shoulder. Pose 3: Raise sights to eye line, cheek settles to stock and elbows support weapon. Weapon endpoint: aim-right. Pose 4: Fire first burst, rifle recoils backward into shoulder with slight muzzle rise, torso yields minimally. Weapon endpoint: recoil-up-small. Pose 5: Pull muzzle back onto target with forearm and shoulder control, knees keep weightforward. Weapon endpoint: aim-return. Pose 6: Fire another burst with a visibly different recoil peak, shirt and sling lag. Weapon endpoint: second-recoil. Pose 7: Cease fire, keep sights on target as weapon settles; no instant drop. Weapon endpoint: settled-aim. Pose 8: Lower to ready with safe barrel direction and both hands still supporting rifle. Weapon endpoint: low-ready. FX separate from body: Muzzleflashes atframe4/6 then runtime repeated over5scheduledshots; shells and smoke detached; recoil in shoulder not full-body spin.",
+          "evidenceNotes": "The listed sources inform identity or isolated mechanics only. Do not describe this8pose proposal as a traced, frame-measured reproduction."
+        }
+      },
+      "evidenceStatus": "Mixed-cast action trailer inspected, but no full hero-specific brawl/grenade/rifle cycle established. Five8pose sequences are proposals informed by character identity.",
+      "sourceDetails": {
+        "drake-steam-trailer": {
+          "url": "https://store.steampowered.com/app/1659420/",
+          "mediaUrl": "https://video.akamai.steamstatic.com/store_trailers/1659420/504310/8f30b7f0dfd643ce47a42a82c5babcf1a6694457/1750721102/dash_h264.mpd?t=1671505478",
+          "title": "UNCHARTED™: Legacy of Thieves Collection / Launch Trailer (US-EN)",
+          "localVideo": "drake-reference.mp4",
+          "evidenceKind": "sampled-video-frames",
+          "viewedRanges": [
+            "0–63s sampled at3s",
+            "33.7–35.575s detail"
+          ],
+          "limitations": [
+            "No inspected complete punch, grenade or rifle cycle. Do not cite rescue shot as a melee attack."
+          ],
+          "localCapture": "drake-overview-compact.jpg",
+          "observed": "Mixed Nathan/Chloe/Sam montage. Detail section shows motorcycle rescue with Sam reaching toward Nathan, not a fist combo."
+        },
+        "drake-official-game": {
+          "url": "https://www.playstation.com/en-us/games/uncharted-4-a-thiefs-end/",
+          "evidenceKind": "official-static-character-reference",
+          "localCapture": "../references/nathan-uc4-official-01.jpg",
+          "limitations": [
+            "Establishes Nathan identity/costume, not exact brawl/grenade/rifle choreography."
+          ]
+        }
+      }
+    },
+    "tanjiro": {
+      "sources": [
+        "tanjiro-official-character",
+        "tanjiro-official-trailer-unviewed"
+      ],
+      "evidenceStatus": "Official character identity and Water Breathing verified; official trailer URL verified but video blocked by proxy403. All 8-phase mechanics below are authored choreography proposals, NOT viewed source frames.",
+      "moves": {
+        "attack1": {
+          "name": "水之横斩",
+          "type": "horizontal-katana-cut",
+          "poses": [
+            {
+              "index": 1,
+              "phase": "load",
+              "body": "Two hands hold katana near rear hip; bend knees and turn chest three-quarter away from target.",
+              "weaponTip": "rear-low",
+              "captionZh": "蓄势",
+              "suggestedProjectedWeaponAngleDeg": 145
+            },
+            {
+              "index": 2,
+              "phase": "counter-rotate",
+              "body": "Wind pelvis against shoulders, rear heel raised; sword lies behind waist, tip points rearward.",
+              "weaponTip": "behind-hip",
+              "captionZh": "反向预备",
+              "suggestedProjectedWeaponAngleDeg": 170
+            },
+            {
+              "index": 3,
+              "phase": "drive",
+              "body": "Drive from rear foot and turn belt buckle toward target; hands and blade lag behind pelvis.",
+              "weaponTip": "rear-waist",
+              "captionZh": "蹬地转髋",
+              "suggestedProjectedWeaponAngleDeg": 155
+            },
+            {
+              "index": 4,
+              "phase": "accelerate",
+              "body": "Uncoil shoulders and sweep edge through waist-height plane; haori lags and opens asymmetrically.",
+              "weaponTip": "side-arc",
+              "captionZh": "转肩加速",
+              "suggestedProjectedWeaponAngleDeg": 85
+            },
+            {
+              "index": 5,
+              "phase": "contact",
+              "body": "Long edge crosses target from rear to front; wrists align with cut, elbows not locked in a thrust.",
+              "weaponTip": "front-waist",
+              "captionZh": "命中／释放",
+              "suggestedProjectedWeaponAngleDeg": 20
+            },
+            {
+              "index": 6,
+              "phase": "follow-through",
+              "body": "Blade passes beyond target into opposite flank; chest now opposite three-quarter, rear foot pivots.",
+              "weaponTip": "opposite-waist",
+              "captionZh": "随动贯穿",
+              "suggestedProjectedWeaponAngleDeg": -55
+            },
+            {
+              "index": 7,
+              "phase": "decelerate",
+              "body": "Brake blade using bent elbows and abdomen; keep front knee loaded, head tracks target.",
+              "weaponTip": "side-low",
+              "captionZh": "制动",
+              "suggestedProjectedWeaponAngleDeg": -70
+            },
+            {
+              "index": 8,
+              "phase": "recover",
+              "body": "Recoil blade into low opposite-side chamber for next cut; settle haori after torso.",
+              "weaponTip": "low-chamber",
+              "captionZh": "回收",
+              "suggestedProjectedWeaponAngleDeg": 45
+            }
+          ],
+          "durationsMs": [
+            70,
+            85,
+            55,
+            35,
+            35,
+            55,
+            90,
+            95
+          ],
+          "fx": "Thin blue water ribbon follows horizontal blade path during4–6; small white foam at contact5, never replaces blade.",
+          "sourceIds": [
+            "tanjiro-official-character",
+            "tanjiro-official-trailer-unviewed"
+          ],
+          "notes": [
+            "All eight poses are a new choreography proposal; exact source motion not verified due video-access blocker."
+          ],
+          "evidenceKind": "authored-choreography-informed-by-listed-references",
+          "promptEnglish": "Eight individually drawn chronological full-body key poses, attacking screen-right with planted foot pivots and visibly rotating pelvis/shoulders. 水之横斩. Pose 1: Two hands hold katana near rear hip; bend knees and turn chest three-quarter away from target. Weapon endpoint: rear-low. Pose 2: Wind pelvis against shoulders, rear heel raised; sword lies behind waist, tip points rearward. Weapon endpoint: behind-hip. Pose 3: Drive from rear foot and turn belt buckle toward target; hands and blade lag behind pelvis. Weapon endpoint: rear-waist. Pose 4: Uncoil shoulders and sweep edge through waist-height plane; haori lags and opens asymmetrically. Weapon endpoint: side-arc. Pose 5: Long edge crosses target from rear to front; wrists align with cut, elbows not locked in a thrust. Weapon endpoint: front-waist. Pose 6: Blade passes beyond target into opposite flank; chest now opposite three-quarter, rear foot pivots. Weapon endpoint: opposite-waist. Pose 7: Brake blade using bent elbows and abdomen; keep front knee loaded, head tracks target. Weapon endpoint: side-low. Pose 8: Recoil blade into low opposite-side chamber for next cut; settle haori after torso. Weapon endpoint: low-chamber. FX separate from body: Thin blue water ribbon follows horizontal blade path during4–6; small white foam at contact5, never replaces blade.",
+          "angleConvention": "Illustrative side-view hilt-to-tip projection:0°=screen-right,+90°=up; horizontal sweeps also require foreshortening/depth. These are art targets, not measured source angles.",
+          "evidenceNotes": "The listed sources inform identity or isolated mechanics only. Do not describe this8pose proposal as a traced, frame-measured reproduction."
+        },
+        "attack2": {
+          "name": "逆袈裟上挑斩",
+          "type": "rising-diagonal-cut",
+          "poses": [
+            {
+              "index": 1,
+              "phase": "load",
+              "body": "Begin low on opposite side from first strike; torso and knees compressed.",
+              "weaponTip": "low-side",
+              "captionZh": "蓄势",
+              "suggestedProjectedWeaponAngleDeg": -55
+            },
+            {
+              "index": 2,
+              "phase": "counter-rotate",
+              "body": "Load hips away from target and draw blade low behind near thigh, tip down and rear.",
+              "weaponTip": "rear-low",
+              "captionZh": "反向预备",
+              "suggestedProjectedWeaponAngleDeg": -145
+            },
+            {
+              "index": 3,
+              "phase": "drive",
+              "body": "Push through rear toes and raise pelvis; shoulders begin unwinding after hips.",
+              "weaponTip": "below-hip",
+              "captionZh": "蹬地转髋",
+              "suggestedProjectedWeaponAngleDeg": -165
+            },
+            {
+              "index": 4,
+              "phase": "accelerate",
+              "body": "Katana edge rises across body on clear low-left to high-right diagonal; elbows follow torso.",
+              "weaponTip": "rising-diagonal",
+              "captionZh": "转肩加速",
+              "suggestedProjectedWeaponAngleDeg": -95
+            },
+            {
+              "index": 5,
+              "phase": "contact",
+              "body": "Cut through front target chest level along the rising diagonal, edge facing travel direction.",
+              "weaponTip": "front-up",
+              "captionZh": "命中／释放",
+              "suggestedProjectedWeaponAngleDeg": 30
+            },
+            {
+              "index": 6,
+              "phase": "follow-through",
+              "body": "Follow through above opposite shoulder, shoulders rotated fully; haori rises after arms.",
+              "weaponTip": "high-opposite",
+              "captionZh": "随动贯穿",
+              "suggestedProjectedWeaponAngleDeg": 110
+            },
+            {
+              "index": 7,
+              "phase": "decelerate",
+              "body": "Lower center of mass to brake the ascending blade, keep both feet coherent.",
+              "weaponTip": "high-braked",
+              "captionZh": "制动",
+              "suggestedProjectedWeaponAngleDeg": 100
+            },
+            {
+              "index": 8,
+              "phase": "recover",
+              "body": "Settle high guard above shoulder for descending finisher.",
+              "weaponTip": "high-guard",
+              "captionZh": "回收",
+              "suggestedProjectedWeaponAngleDeg": 70
+            }
+          ],
+          "durationsMs": [
+            70,
+            85,
+            55,
+            35,
+            35,
+            55,
+            90,
+            95
+          ],
+          "fx": "Blue curved water stream climbs blade diagonal; droplets trail behind blade, no straight blue beam.",
+          "sourceIds": [
+            "tanjiro-official-character",
+            "tanjiro-official-trailer-unviewed"
+          ],
+          "notes": [
+            "All eight poses are a new choreography proposal; exact source motion not verified due video-access blocker."
+          ],
+          "evidenceKind": "authored-choreography-informed-by-listed-references",
+          "promptEnglish": "Eight individually drawn chronological full-body key poses, attacking screen-right with planted foot pivots and visibly rotating pelvis/shoulders. 逆袈裟上挑斩. Pose 1: Begin low on opposite side from first strike; torso and knees compressed. Weapon endpoint: low-side. Pose 2: Load hips away from target and draw blade low behind near thigh, tip down and rear. Weapon endpoint: rear-low. Pose 3: Push through rear toes and raise pelvis; shoulders begin unwinding after hips. Weapon endpoint: below-hip. Pose 4: Katana edge rises across body on clear low-left to high-right diagonal; elbows follow torso. Weapon endpoint: rising-diagonal. Pose 5: Cut through front target chest level along the rising diagonal, edge facing travel direction. Weapon endpoint: front-up. Pose 6: Follow through above opposite shoulder, shoulders rotated fully; haori rises after arms. Weapon endpoint: high-opposite. Pose 7: Lower center of mass to brake the ascending blade, keep both feet coherent. Weapon endpoint: high-braked. Pose 8: Settle high guard above shoulder for descending finisher. Weapon endpoint: high-guard. FX separate from body: Blue curved water stream climbs blade diagonal; droplets trail behind blade, no straight blue beam.",
+          "angleConvention": "Illustrative side-view hilt-to-tip projection:0°=screen-right,+90°=up; horizontal sweeps also require foreshortening/depth. These are art targets, not measured source angles.",
+          "evidenceNotes": "The listed sources inform identity or isolated mechanics only. Do not describe this8pose proposal as a traced, frame-measured reproduction."
+        },
+        "attack3": {
+          "name": "水轮重斩",
+          "type": "descending-diagonal-heavy",
+          "poses": [
+            {
+              "index": 1,
+              "phase": "load",
+              "body": "High two-hand guard, front knee soft; blade behind top of head.",
+              "weaponTip": "crown-back",
+              "captionZh": "蓄势",
+              "suggestedProjectedWeaponAngleDeg": 80
+            },
+            {
+              "index": 2,
+              "phase": "counter-rotate",
+              "body": "Lower hips and turn ribs back, stretch front-side abdomen; load sword behind crown.",
+              "weaponTip": "behind-crown",
+              "captionZh": "反向预备",
+              "suggestedProjectedWeaponAngleDeg": 130
+            },
+            {
+              "index": 3,
+              "phase": "drive",
+              "body": "Rear foot drives forward, pelvis opens while katana remains high behind.",
+              "weaponTip": "overhead-back",
+              "captionZh": "蹬地转髋",
+              "suggestedProjectedWeaponAngleDeg": 120
+            },
+            {
+              "index": 4,
+              "phase": "accelerate",
+              "body": "Shoulders turn and both hands bring edge over head on diagonal cutting plane.",
+              "weaponTip": "overhead-front",
+              "captionZh": "转肩加速",
+              "suggestedProjectedWeaponAngleDeg": 80
+            },
+            {
+              "index": 5,
+              "phase": "contact",
+              "body": "Edge bites through forward target shoulder height on downward arc; front leg absorbs weight.",
+              "weaponTip": "diagonal-front",
+              "captionZh": "命中／释放",
+              "suggestedProjectedWeaponAngleDeg": -20
+            },
+            {
+              "index": 6,
+              "phase": "follow-through",
+              "body": "Continue cut down outside front knee, torso inclines without collapsing spine.",
+              "weaponTip": "front-low",
+              "captionZh": "随动贯穿",
+              "suggestedProjectedWeaponAngleDeg": -75
+            },
+            {
+              "index": 7,
+              "phase": "decelerate",
+              "body": "Brake low with flexed knees and elbows; haori overtakes torso after stop.",
+              "weaponTip": "low-brake",
+              "captionZh": "制动",
+              "suggestedProjectedWeaponAngleDeg": -65
+            },
+            {
+              "index": 8,
+              "phase": "recover",
+              "body": "Lift blade along flank into ready stance, no instant pose reset.",
+              "weaponTip": "ready",
+              "captionZh": "回收",
+              "suggestedProjectedWeaponAngleDeg": 50
+            }
+          ],
+          "durationsMs": [
+            70,
+            85,
+            55,
+            35,
+            35,
+            55,
+            90,
+            95
+          ],
+          "fx": "Larger blue crescent follows descending blade4–6 and breaks into white water on5.",
+          "sourceIds": [
+            "tanjiro-official-character",
+            "tanjiro-official-trailer-unviewed"
+          ],
+          "notes": [
+            "All eight poses are a new choreography proposal; exact source motion not verified due video-access blocker."
+          ],
+          "evidenceKind": "authored-choreography-informed-by-listed-references",
+          "promptEnglish": "Eight individually drawn chronological full-body key poses, attacking screen-right with planted foot pivots and visibly rotating pelvis/shoulders. 水轮重斩. Pose 1: High two-hand guard, front knee soft; blade behind top of head. Weapon endpoint: crown-back. Pose 2: Lower hips and turn ribs back, stretch front-side abdomen; load sword behind crown. Weapon endpoint: behind-crown. Pose 3: Rear foot drives forward, pelvis opens while katana remains high behind. Weapon endpoint: overhead-back. Pose 4: Shoulders turn and both hands bring edge over head on diagonal cutting plane. Weapon endpoint: overhead-front. Pose 5: Edge bites through forward target shoulder height on downward arc; front leg absorbs weight. Weapon endpoint: diagonal-front. Pose 6: Continue cut down outside front knee, torso inclines without collapsing spine. Weapon endpoint: front-low. Pose 7: Brake low with flexed knees and elbows; haori overtakes torso after stop. Weapon endpoint: low-brake. Pose 8: Lift blade along flank into ready stance, no instant pose reset. Weapon endpoint: ready. FX separate from body: Larger blue crescent follows descending blade4–6 and breaks into white water on5.",
+          "angleConvention": "Illustrative side-view hilt-to-tip projection:0°=screen-right,+90°=up; horizontal sweeps also require foreshortening/depth. These are art targets, not measured source angles.",
+          "evidenceNotes": "The listed sources inform identity or isolated mechanics only. Do not describe this8pose proposal as a traced, frame-measured reproduction."
+        },
+        "skill": {
+          "name": "水之呼吸·水车",
+          "type": "water-wheel-flip-slash",
+          "poses": [
+            {
+              "index": 1,
+              "phase": "crouch-load",
+              "body": "Crouch deeply with katana drawn in two hands; feet grounded, hips low, torso coiled for a forward somersault.",
+              "weaponTip": "low-rear",
+              "captionZh": "蹲身蓄力"
+            },
+            {
+              "index": 2,
+              "phase": "takeoff",
+              "body": "Push off both legs and lift hips into takeoff, blade held safely outside body; shoulders begin following pelvis.",
+              "weaponTip": "side-up",
+              "captionZh": "蹬地起跳"
+            },
+            {
+              "index": 3,
+              "phase": "tuck",
+              "body": "Tuck knees toward chest as torso tips forward; maintain two-hand hilt control and keep sword clear of legs.",
+              "weaponTip": "outside-tuck",
+              "captionZh": "收腿团身"
+            },
+            {
+              "index": 4,
+              "phase": "rotate",
+              "body": "Rotate into a sideways-readable forward somersault; hips pass above shoulders, blade sweeps the vertical wheel perimeter.",
+              "weaponTip": "wheel-upper-arc",
+              "captionZh": "向前翻转"
+            },
+            {
+              "index": 5,
+              "phase": "inverted-slash",
+              "body": "In inverted cutting pose, sweep katana edge through forward target along the wheel arc; visibly upside down, not a standing projectile slash.",
+              "weaponTip": "inverted-front-cut",
+              "captionZh": "倒置挥斩"
+            },
+            {
+              "index": 6,
+              "phase": "follow-spin",
+              "body": "Continue rotation after contact, extend legs toward landing and let blade follow the circular path; water ribbon trails sword.",
+              "weaponTip": "wheel-lower-follow",
+              "captionZh": "旋转随动"
+            },
+            {
+              "index": 7,
+              "phase": "landing",
+              "body": "Land on bent knees with weight absorbed through ankles, knees and hips; bring blade outside front leg without abrupt orientation reset.",
+              "weaponTip": "outside-front-low",
+              "captionZh": "屈膝落地"
+            },
+            {
+              "index": 8,
+              "phase": "recover",
+              "body": "Rise into stable ready stance, recover katana guard while haori and water settle after the body.",
+              "weaponTip": "ready-guard",
+              "captionZh": "回收站稳"
+            }
+          ],
+          "durationsMs": [
+            90,
+            70,
+            55,
+            45,
+            40,
+            55,
+            90,
+            95
+          ],
+          "fx": "Blue-white water wheel follows the rotating katana and body across4–6. Contact accent5, landing splash7. Preserve circular water-wheel identity; no detached water-crescent projectile.",
+          "sourceIds": [
+            "tanjiro-official-character",
+            "tanjiro-official-trailer-unviewed"
+          ],
+          "notes": [
+            "Keeps current engine skill identity 水之呼吸·水车. Eight forward-flip keyposes are an authored adaptation, not a verified source-video reconstruction. Body must visibly invert; do not substitute a standing crescent-release move.",
+            "All eight poses are a new choreography proposal; exact source motion not verified due video-access blocker."
+          ],
+          "evidenceKind": "authored-choreography-informed-by-listed-references",
+          "promptEnglish": "Eight individually drawn chronological full-body key poses, attacking screen-right with a true airborne forward somersault: grounded crouch and takeoff, airborne tuck/rotation/inverted slash, then grounded landing and recovery. Do not keep the pivot foot planted during the airborne middle poses. 水之呼吸·水车. Pose 1: Crouch deeply with katana drawn in two hands; feet grounded, hips low, torso coiled for a forward somersault. Weapon endpoint: low-rear. Pose 2: Push off both legs and lift hips into takeoff, blade held safely outside body; shoulders begin following pelvis. Weapon endpoint: side-up. Pose 3: Tuck knees toward chest as torso tips forward; maintain two-hand hilt control and keep sword clear of legs. Weapon endpoint: outside-tuck. Pose 4: Rotate into a sideways-readable forward somersault; hips pass above shoulders, blade sweeps the vertical wheel perimeter. Weapon endpoint: wheel-upper-arc. Pose 5: In inverted cutting pose, sweep katana edge through forward target along the wheel arc; visibly upside down, not a standing projectile slash. Weapon endpoint: inverted-front-cut. Pose 6: Continue rotation after contact, extend legs toward landing and let blade follow the circular path; water ribbon trails sword. Weapon endpoint: wheel-lower-follow. Pose 7: Land on bent knees with weight absorbed through ankles, knees and hips; bring blade outside front leg without abrupt orientation reset. Weapon endpoint: outside-front-low. Pose 8: Rise into stable ready stance, recover katana guard while haori and water settle after the body. Weapon endpoint: ready-guard. FX separate from body: Blue-white water wheel follows the rotating katana and body across4–6. Contact accent5, landing splash7. Preserve circular water-wheel identity; no detached water-crescent projectile.",
+          "evidenceNotes": "The listed sources inform identity or isolated mechanics only. Do not describe this8pose proposal as a traced, frame-measured reproduction."
+        },
+        "ultimate": {
+          "name": "水龙连斩·格斗改编",
+          "type": "water-combination-finisher",
+          "poses": [
+            {
+              "index": 1,
+              "phase": "load",
+              "body": "Compress knees, coil sword to rear shoulder, gather breath; eyes target, body three-quarter.",
+              "weaponTip": "rear-shoulder",
+              "captionZh": "蓄势"
+            },
+            {
+              "index": 2,
+              "phase": "counter-rotate",
+              "body": "Pivot hips into first broad diagonal cut; haori and hair trail, blade behind shoulder.",
+              "weaponTip": "high-rear",
+              "captionZh": "反向预备"
+            },
+            {
+              "index": 3,
+              "phase": "drive",
+              "body": "First descending cut crosses front target with visible diagonal blade and full torso turn.",
+              "weaponTip": "front-down",
+              "captionZh": "蹬地转髋"
+            },
+            {
+              "index": 4,
+              "phase": "accelerate",
+              "body": "Carry sword low around side and recoil hips opposite; readable change of cutting plane.",
+              "weaponTip": "low-side-reload",
+              "captionZh": "转肩加速"
+            },
+            {
+              "index": 5,
+              "phase": "contact",
+              "body": "Second rising cut drives from legs through torso and sword, edge crossing target again.",
+              "weaponTip": "front-up",
+              "captionZh": "命中／释放"
+            },
+            {
+              "index": 6,
+              "phase": "follow-through",
+              "body": "Follow sword into high outside finish; water-dragon outline follows already travelled arc.",
+              "weaponTip": "high-outside",
+              "captionZh": "随动贯穿"
+            },
+            {
+              "index": 7,
+              "phase": "decelerate",
+              "body": "Land/brake in low stable stance, blade forward-low, torso continues then settles.",
+              "weaponTip": "front-low",
+              "captionZh": "制动"
+            },
+            {
+              "index": 8,
+              "phase": "recover",
+              "body": "Recover both hands to guard, dragon fades after body movement ends.",
+              "weaponTip": "guard",
+              "captionZh": "回收"
+            }
+          ],
+          "durationsMs": [
+            100,
+            80,
+            40,
+            70,
+            45,
+            65,
+            110,
+            120
+          ],
+          "fx": "Poster before pose1; water dragon ribbon traces cuts3 and5 and expands behind actor, face/weapon never obscured.",
+          "sourceIds": [
+            "tanjiro-official-character",
+            "tanjiro-official-trailer-unviewed"
+          ],
+          "notes": [
+            "Grounded two-cut water-dragon finisher is prototype choreography, not a claim of a specific breathing-form reproduction.",
+            "All eight poses are a new choreography proposal; exact source motion not verified due video-access blocker."
+          ],
+          "evidenceKind": "authored-choreography-informed-by-listed-references",
+          "promptEnglish": "Eight individually drawn chronological full-body key poses, attacking screen-right with planted foot pivots and visibly rotating pelvis/shoulders. 水龙连斩·格斗改编. Pose 1: Compress knees, coil sword to rear shoulder, gather breath; eyes target, body three-quarter. Weapon endpoint: rear-shoulder. Pose 2: Pivot hips into first broad diagonal cut; haori and hair trail, blade behind shoulder. Weapon endpoint: high-rear. Pose 3: First descending cut crosses front target with visible diagonal blade and full torso turn. Weapon endpoint: front-down. Pose 4: Carry sword low around side and recoil hips opposite; readable change of cutting plane. Weapon endpoint: low-side-reload. Pose 5: Second rising cut drives from legs through torso and sword, edge crossing target again. Weapon endpoint: front-up. Pose 6: Follow sword into high outside finish; water-dragon outline follows already travelled arc. Weapon endpoint: high-outside. Pose 7: Land/brake in low stable stance, blade forward-low, torso continues then settles. Weapon endpoint: front-low. Pose 8: Recover both hands to guard, dragon fades after body movement ends. Weapon endpoint: guard. FX separate from body: Poster before pose1; water dragon ribbon traces cuts3 and5 and expands behind actor, face/weapon never obscured.",
+          "evidenceNotes": "The listed sources inform identity or isolated mechanics only. Do not describe this8pose proposal as a traced, frame-measured reproduction."
+        }
+      },
+      "sourceDetails": {
+        "tanjiro-official-character": {
+          "url": "https://asia.sega.com/kimetsu_hinokami/en/character/",
+          "evidenceKind": "official-static-character-image-viewed",
+          "localCapture": "../references/tanjiro-sega-hinokami-official.png",
+          "observed": "Bent knees, katana held across torso and broad looped blue/white water graphic.",
+          "limitations": [
+            "One still does not establish any8pose action or exact timing. Zenitsu yellow runtime lightning is an artistic choice; source illustration lightning is cyan-white."
+          ]
+        },
+        "tanjiro-official-trailer-unviewed": {
+          "url": "https://www.youtube.com/watch?v=B-NFjj595bg",
+          "officialIndex": "https://asia.sega.com/kimetsu_hinokami/en/movie/",
+          "evidenceKind": "official-url-verified-video-unviewed",
+          "blockedReason": "Public yt-dlp retrieval through configured proxy failed: Tunnel connection failed:403 Forbidden. No decoded frames obtained.",
+          "viewedRanges": []
+        }
+      }
+    },
+    "zenitsu": {
+      "sources": [
+        "zenitsu-official-character",
+        "zenitsu-official-trailer-unviewed"
+      ],
+      "evidenceStatus": "Official Thunder Breathing and personality identity verified; actual official trailer video blocked by proxy403. Iaido/body timings below are authored proposals, not viewed source frames.",
+      "moves": {
+        "attack1": {
+          "name": "居合拔刀斩",
+          "type": "iaido-draw-cut",
+          "poses": [
+            {
+              "index": 1,
+              "phase": "load",
+              "body": "Crouched stance with sheathed sword at left hip; left hand holds scabbard, right rests on hilt.",
+              "weaponTip": "sheathed",
+              "captionZh": "蓄势",
+              "suggestedProjectedWeaponAngleDeg": 145
+            },
+            {
+              "index": 2,
+              "phase": "counter-rotate",
+              "body": "Compress rear knee and twist hips away from target, pull scabbard mouth slightly back with left hand.",
+              "weaponTip": "sheathed-coiled",
+              "captionZh": "反向预备",
+              "suggestedProjectedWeaponAngleDeg": 170
+            },
+            {
+              "index": 3,
+              "phase": "drive",
+              "body": "Rear foot drives, pelvis opens; right hand draws blade while left hand retracts scabbard, never two swords.",
+              "weaponTip": "partly-drawn",
+              "captionZh": "蹬地转髋",
+              "suggestedProjectedWeaponAngleDeg": 155
+            },
+            {
+              "index": 4,
+              "phase": "accelerate",
+              "body": "Blade clears scabbard and turns into outward horizontal cutting arc; shoulder rotates with hips.",
+              "weaponTip": "outward-arc",
+              "captionZh": "转肩加速",
+              "suggestedProjectedWeaponAngleDeg": 85
+            },
+            {
+              "index": 5,
+              "phase": "contact",
+              "body": "Edge sweeps across forward target at waist/chest height, sword visibly free of sheath.",
+              "weaponTip": "front-horizontal",
+              "captionZh": "命中／释放",
+              "suggestedProjectedWeaponAngleDeg": 20
+            },
+            {
+              "index": 6,
+              "phase": "follow-through",
+              "body": "Follow cut beyond target with right arm extended along tangent; left hand retains empty scabbard.",
+              "weaponTip": "far-side",
+              "captionZh": "随动贯穿",
+              "suggestedProjectedWeaponAngleDeg": -55
+            },
+            {
+              "index": 7,
+              "phase": "decelerate",
+              "body": "Brake feet and torso, rotate wrist to safe blade alignment; no instant sheathing.",
+              "weaponTip": "side-brake",
+              "captionZh": "制动",
+              "suggestedProjectedWeaponAngleDeg": -70
+            },
+            {
+              "index": 8,
+              "phase": "recover",
+              "body": "Hold low extended sword ready to reverse, scabbard stays at left hip.",
+              "weaponTip": "low-ready",
+              "captionZh": "回收",
+              "suggestedProjectedWeaponAngleDeg": 45
+            }
+          ],
+          "durationsMs": [
+            70,
+            85,
+            55,
+            35,
+            35,
+            55,
+            90,
+            95
+          ],
+          "fx": "Short yellow arc only while blade leaves scabbard4–5; sparks trail tip, not a static forward spike.",
+          "sourceIds": [
+            "zenitsu-official-character",
+            "zenitsu-official-trailer-unviewed"
+          ],
+          "notes": [
+            "All eight poses are a new choreography proposal; exact source motion not verified due video-access blocker."
+          ],
+          "evidenceKind": "authored-choreography-informed-by-listed-references",
+          "promptEnglish": "Eight individually drawn chronological full-body key poses, attacking screen-right with planted foot pivots and visibly rotating pelvis/shoulders. 居合拔刀斩. Pose 1: Crouched stance with sheathed sword at left hip; left hand holds scabbard, right rests on hilt. Weapon endpoint: sheathed. Pose 2: Compress rear knee and twist hips away from target, pull scabbard mouth slightly back with left hand. Weapon endpoint: sheathed-coiled. Pose 3: Rear foot drives, pelvis opens; right hand draws blade while left hand retracts scabbard, never two swords. Weapon endpoint: partly-drawn. Pose 4: Blade clears scabbard and turns into outward horizontal cutting arc; shoulder rotates with hips. Weapon endpoint: outward-arc. Pose 5: Edge sweeps across forward target at waist/chest height, sword visibly free of sheath. Weapon endpoint: front-horizontal. Pose 6: Follow cut beyond target with right arm extended along tangent; left hand retains empty scabbard. Weapon endpoint: far-side. Pose 7: Brake feet and torso, rotate wrist to safe blade alignment; no instant sheathing. Weapon endpoint: side-brake. Pose 8: Hold low extended sword ready to reverse, scabbard stays at left hip. Weapon endpoint: low-ready. FX separate from body: Short yellow arc only while blade leaves scabbard4–5; sparks trail tip, not a static forward spike.",
+          "angleConvention": "Illustrative side-view hilt-to-tip projection:0°=screen-right,+90°=up; horizontal sweeps also require foreshortening/depth. These are art targets, not measured source angles.",
+          "evidenceNotes": "The listed sources inform identity or isolated mechanics only. Do not describe this8pose proposal as a traced, frame-measured reproduction."
+        },
+        "attack2": {
+          "name": "回身返斩",
+          "type": "reverse-katana-slash",
+          "poses": [
+            {
+              "index": 1,
+              "phase": "load",
+              "body": "Sword already drawn and low after first cut; left hand near sheath, knees flexed.",
+              "weaponTip": "low-outside",
+              "captionZh": "蓄势",
+              "suggestedProjectedWeaponAngleDeg": -55
+            },
+            {
+              "index": 2,
+              "phase": "counter-rotate",
+              "body": "Draw blade to outside hip and rotate belt away from target to reload torque.",
+              "weaponTip": "rear-low",
+              "captionZh": "反向预备",
+              "suggestedProjectedWeaponAngleDeg": -145
+            },
+            {
+              "index": 3,
+              "phase": "drive",
+              "body": "Pivot planted forefoot and drive hips back toward target; shoulder and blade lag.",
+              "weaponTip": "rear-hip",
+              "captionZh": "蹬地转髋",
+              "suggestedProjectedWeaponAngleDeg": -165
+            },
+            {
+              "index": 4,
+              "phase": "accelerate",
+              "body": "Reverse blade through rising diagonal with elbow bent, chest shifts front to back three-quarter.",
+              "weaponTip": "rising-side",
+              "captionZh": "转肩加速",
+              "suggestedProjectedWeaponAngleDeg": -95
+            },
+            {
+              "index": 5,
+              "phase": "contact",
+              "body": "Cut edge crosses front torso target upward; blade is diagonal, not held as a forward spear.",
+              "weaponTip": "front-up",
+              "captionZh": "命中／释放",
+              "suggestedProjectedWeaponAngleDeg": 30
+            },
+            {
+              "index": 6,
+              "phase": "follow-through",
+              "body": "Follow through above opposite shoulder, right wrist maintains edge alignment.",
+              "weaponTip": "high-opposite",
+              "captionZh": "随动贯穿",
+              "suggestedProjectedWeaponAngleDeg": 110
+            },
+            {
+              "index": 7,
+              "phase": "decelerate",
+              "body": "Brake hips and lower blade slightly; haori swings past torso after stopping.",
+              "weaponTip": "high-brake",
+              "captionZh": "制动",
+              "suggestedProjectedWeaponAngleDeg": 100
+            },
+            {
+              "index": 8,
+              "phase": "recover",
+              "body": "Hold high guard for downward cut; do not pretend blade is re-sheathed.",
+              "weaponTip": "high-guard",
+              "captionZh": "回收",
+              "suggestedProjectedWeaponAngleDeg": 70
+            }
+          ],
+          "durationsMs": [
+            70,
+            85,
+            55,
+            35,
+            35,
+            55,
+            90,
+            95
+          ],
+          "fx": "One narrow reversed lightning crescent follows blade4–6; trail curvature opposite attack1.",
+          "sourceIds": [
+            "zenitsu-official-character",
+            "zenitsu-official-trailer-unviewed"
+          ],
+          "notes": [
+            "All eight poses are a new choreography proposal; exact source motion not verified due video-access blocker."
+          ],
+          "evidenceKind": "authored-choreography-informed-by-listed-references",
+          "promptEnglish": "Eight individually drawn chronological full-body key poses, attacking screen-right with planted foot pivots and visibly rotating pelvis/shoulders. 回身返斩. Pose 1: Sword already drawn and low after first cut; left hand near sheath, knees flexed. Weapon endpoint: low-outside. Pose 2: Draw blade to outside hip and rotate belt away from target to reload torque. Weapon endpoint: rear-low. Pose 3: Pivot planted forefoot and drive hips back toward target; shoulder and blade lag. Weapon endpoint: rear-hip. Pose 4: Reverse blade through rising diagonal with elbow bent, chest shifts front to back three-quarter. Weapon endpoint: rising-side. Pose 5: Cut edge crosses front torso target upward; blade is diagonal, not held as a forward spear. Weapon endpoint: front-up. Pose 6: Follow through above opposite shoulder, right wrist maintains edge alignment. Weapon endpoint: high-opposite. Pose 7: Brake hips and lower blade slightly; haori swings past torso after stopping. Weapon endpoint: high-brake. Pose 8: Hold high guard for downward cut; do not pretend blade is re-sheathed. Weapon endpoint: high-guard. FX separate from body: One narrow reversed lightning crescent follows blade4–6; trail curvature opposite attack1.",
+          "angleConvention": "Illustrative side-view hilt-to-tip projection:0°=screen-right,+90°=up; horizontal sweeps also require foreshortening/depth. These are art targets, not measured source angles.",
+          "evidenceNotes": "The listed sources inform identity or isolated mechanics only. Do not describe this8pose proposal as a traced, frame-measured reproduction."
+        },
+        "attack3": {
+          "name": "雷光下斩",
+          "type": "descending-katana-cut",
+          "poses": [
+            {
+              "index": 1,
+              "phase": "load",
+              "body": "High drawn-sword guard, torso slightly rotated, left hand may join hilt for stronger cut.",
+              "weaponTip": "high-guard",
+              "captionZh": "蓄势",
+              "suggestedProjectedWeaponAngleDeg": 80
+            },
+            {
+              "index": 2,
+              "phase": "counter-rotate",
+              "body": "Compress knees and take blade behind crown; cloth pulls opposite intended turn.",
+              "weaponTip": "behind-crown",
+              "captionZh": "反向预备",
+              "suggestedProjectedWeaponAngleDeg": 130
+            },
+            {
+              "index": 3,
+              "phase": "drive",
+              "body": "Push rear foot, open hips first and bring torso forward under the raised blade.",
+              "weaponTip": "high-back",
+              "captionZh": "蹬地转髋",
+              "suggestedProjectedWeaponAngleDeg": 120
+            },
+            {
+              "index": 4,
+              "phase": "accelerate",
+              "body": "Swing edge over crown on steep diagonal with wrists trailing shoulders.",
+              "weaponTip": "overhead-front",
+              "captionZh": "转肩加速",
+              "suggestedProjectedWeaponAngleDeg": 80
+            },
+            {
+              "index": 5,
+              "phase": "contact",
+              "body": "Downward edge crosses forward target chest height; front knee bends to catch weight.",
+              "weaponTip": "front-down",
+              "captionZh": "命中／释放",
+              "suggestedProjectedWeaponAngleDeg": -20
+            },
+            {
+              "index": 6,
+              "phase": "follow-through",
+              "body": "Follow through low outside front knee; elbows remain soft, torso fully turned.",
+              "weaponTip": "front-low",
+              "captionZh": "随动贯穿",
+              "suggestedProjectedWeaponAngleDeg": -75
+            },
+            {
+              "index": 7,
+              "phase": "decelerate",
+              "body": "Brake and raise tip slightly; release support hand back toward scabbard.",
+              "weaponTip": "low-brake",
+              "captionZh": "制动",
+              "suggestedProjectedWeaponAngleDeg": -65
+            },
+            {
+              "index": 8,
+              "phase": "recover",
+              "body": "Align blade carefully toward scabbard mouth for subsequent ready pose; no instantaneous teleport into sheath.",
+              "weaponTip": "sheath-alignment",
+              "captionZh": "回收",
+              "suggestedProjectedWeaponAngleDeg": 50
+            }
+          ],
+          "durationsMs": [
+            70,
+            85,
+            55,
+            35,
+            35,
+            55,
+            90,
+            95
+          ],
+          "fx": "Steep yellow crescent at4–6, compact impactstar5; avoid persistent vertical lightning replacing sword.",
+          "sourceIds": [
+            "zenitsu-official-character",
+            "zenitsu-official-trailer-unviewed"
+          ],
+          "notes": [
+            "All eight poses are a new choreography proposal; exact source motion not verified due video-access blocker."
+          ],
+          "evidenceKind": "authored-choreography-informed-by-listed-references",
+          "promptEnglish": "Eight individually drawn chronological full-body key poses, attacking screen-right with planted foot pivots and visibly rotating pelvis/shoulders. 雷光下斩. Pose 1: High drawn-sword guard, torso slightly rotated, left hand may join hilt for stronger cut. Weapon endpoint: high-guard. Pose 2: Compress knees and take blade behind crown; cloth pulls opposite intended turn. Weapon endpoint: behind-crown. Pose 3: Push rear foot, open hips first and bring torso forward under the raised blade. Weapon endpoint: high-back. Pose 4: Swing edge over crown on steep diagonal with wrists trailing shoulders. Weapon endpoint: overhead-front. Pose 5: Downward edge crosses forward target chest height; front knee bends to catch weight. Weapon endpoint: front-down. Pose 6: Follow through low outside front knee; elbows remain soft, torso fully turned. Weapon endpoint: front-low. Pose 7: Brake and raise tip slightly; release support hand back toward scabbard. Weapon endpoint: low-brake. Pose 8: Align blade carefully toward scabbard mouth for subsequent ready pose; no instantaneous teleport into sheath. Weapon endpoint: sheath-alignment. FX separate from body: Steep yellow crescent at4–6, compact impactstar5; avoid persistent vertical lightning replacing sword.",
+          "angleConvention": "Illustrative side-view hilt-to-tip projection:0°=screen-right,+90°=up; horizontal sweeps also require foreshortening/depth. These are art targets, not measured source angles.",
+          "evidenceNotes": "The listed sources inform identity or isolated mechanics only. Do not describe this8pose proposal as a traced, frame-measured reproduction."
+        },
+        "skill": {
+          "name": "霹雳一闪·格斗改编",
+          "type": "iaido-dash-cut",
+          "poses": [
+            {
+              "index": 1,
+              "phase": "load",
+              "body": "Blade sheathed, deep crouch, right hand hilt, left hand scabbard; gaze lowered forward.",
+              "weaponTip": "sheathed",
+              "captionZh": "蓄势"
+            },
+            {
+              "index": 2,
+              "phase": "counter-rotate",
+              "body": "Load rear leg like a spring, hips low and back, shoulders counter-rotate; keep head above knees.",
+              "weaponTip": "sheathed-deep",
+              "captionZh": "反向预备"
+            },
+            {
+              "index": 3,
+              "phase": "drive",
+              "body": "Explode from rear foot and drive pelvis in input direction, front knee advances; sword just clearing sheath.",
+              "weaponTip": "drawing",
+              "captionZh": "蹬地转髋"
+            },
+            {
+              "index": 4,
+              "phase": "accelerate",
+              "body": "Draw blade into broad lateral arc while torso uncoils, trailing foot leaves a stretched stance.",
+              "weaponTip": "outward-arc",
+              "captionZh": "转肩加速"
+            },
+            {
+              "index": 5,
+              "phase": "contact",
+              "body": "Cut edge crosses forward target on a visible lateral slash during travel; no point-first lunge.",
+              "weaponTip": "front-lateral",
+              "captionZh": "命中／释放"
+            },
+            {
+              "index": 6,
+              "phase": "follow-through",
+              "body": "Pass-through sword finish opposite side, front heel plants and torso turns beyond neutral.",
+              "weaponTip": "opposite-side",
+              "captionZh": "随动贯穿"
+            },
+            {
+              "index": 7,
+              "phase": "decelerate",
+              "body": "Brake in low extended stance with drawn sword, left hand still holds scabbard.",
+              "weaponTip": "drawn-low",
+              "captionZh": "制动"
+            },
+            {
+              "index": 8,
+              "phase": "recover",
+              "body": "Begin controlled blade-to-scabbard alignment; runtime can blend to ready after full recovery.",
+              "weaponTip": "sheath-alignment",
+              "captionZh": "回收"
+            }
+          ],
+          "durationsMs": [
+            75,
+            120,
+            35,
+            25,
+            30,
+            45,
+            95,
+            105
+          ],
+          "fx": "Low lightning trail traces ground translation; short curved sword flash4–5; frame2 yellow charge, frame5 white impact.",
+          "sourceIds": [
+            "zenitsu-official-character",
+            "zenitsu-official-trailer-unviewed"
+          ],
+          "notes": [
+            "Dash direction follows player input, never automatic enemy tracking. Poses are in-place with runtime root translation.",
+            "All eight poses are a new choreography proposal; exact source motion not verified due video-access blocker."
+          ],
+          "evidenceKind": "authored-choreography-informed-by-listed-references",
+          "promptEnglish": "Eight individually drawn chronological full-body key poses, attacking screen-right with planted foot pivots and visibly rotating pelvis/shoulders. 霹雳一闪·格斗改编. Pose 1: Blade sheathed, deep crouch, right hand hilt, left hand scabbard; gaze lowered forward. Weapon endpoint: sheathed. Pose 2: Load rear leg like a spring, hips low and back, shoulders counter-rotate; keep head above knees. Weapon endpoint: sheathed-deep. Pose 3: Explode from rear foot and drive pelvis in input direction, front knee advances; sword just clearing sheath. Weapon endpoint: drawing. Pose 4: Draw blade into broad lateral arc while torso uncoils, trailing foot leaves a stretched stance. Weapon endpoint: outward-arc. Pose 5: Cut edge crosses forward target on a visible lateral slash during travel; no point-first lunge. Weapon endpoint: front-lateral. Pose 6: Pass-through sword finish opposite side, front heel plants and torso turns beyond neutral. Weapon endpoint: opposite-side. Pose 7: Brake in low extended stance with drawn sword, left hand still holds scabbard. Weapon endpoint: drawn-low. Pose 8: Begin controlled blade-to-scabbard alignment; runtime can blend to ready after full recovery. Weapon endpoint: sheath-alignment. FX separate from body: Low lightning trail traces ground translation; short curved sword flash4–5; frame2 yellow charge, frame5 white impact.",
+          "evidenceNotes": "The listed sources inform identity or isolated mechanics only. Do not describe this8pose proposal as a traced, frame-measured reproduction."
+        },
+        "ultimate": {
+          "name": "六连雷闪·格斗改编",
+          "type": "multi-dash-iaido-finisher",
+          "poses": [
+            {
+              "index": 1,
+              "phase": "load",
+              "body": "Deep sheathed crouch, full posterior-chain load, right hand hilt, left scabbard.",
+              "weaponTip": "sheathed",
+              "captionZh": "蓄势"
+            },
+            {
+              "index": 2,
+              "phase": "counter-rotate",
+              "body": "Hold compressed launch shape briefly; hips slightly rotate away and cloth settles for anticipation.",
+              "weaponTip": "sheathed-loaded",
+              "captionZh": "反向预备"
+            },
+            {
+              "index": 3,
+              "phase": "drive",
+              "body": "First draw slash sweeps lateral edge through target with hips fully opening.",
+              "weaponTip": "front-lateral",
+              "captionZh": "蹬地转髋"
+            },
+            {
+              "index": 4,
+              "phase": "accelerate",
+              "body": "Low pivot reload with sword still drawn, reverse shoulder/hip orientation; do not magically re-sheath.",
+              "weaponTip": "drawn-side-reload",
+              "captionZh": "转肩加速"
+            },
+            {
+              "index": 5,
+              "phase": "contact",
+              "body": "Second visible reverse cut slashes through target with opposite arc, torso torque unmistakable.",
+              "weaponTip": "front-reverse",
+              "captionZh": "命中／释放"
+            },
+            {
+              "index": 6,
+              "phase": "follow-through",
+              "body": "Long finishing follow-through with blade outside hip, trailing leg extended and head target-focused.",
+              "weaponTip": "far-side",
+              "captionZh": "随动贯穿"
+            },
+            {
+              "index": 7,
+              "phase": "decelerate",
+              "body": "Brake into low stable stance; carefully align blade with scabbard mouth.",
+              "weaponTip": "sheath-alignment",
+              "captionZh": "制动"
+            },
+            {
+              "index": 8,
+              "phase": "recover",
+              "body": "Complete composed recovery pose, hand near guard, sparks fading after movement.",
+              "weaponTip": "ready",
+              "captionZh": "回收"
+            }
+          ],
+          "durationsMs": [
+            110,
+            100,
+            35,
+            55,
+            35,
+            65,
+            120,
+            130
+          ],
+          "fx": "Poster before1; runtime six hit events/afterimages are separate from these8poses; two clear blade arcs3/5, yellow zigzag trails follow translated roots.",
+          "sourceIds": [
+            "zenitsu-official-character",
+            "zenitsu-official-trailer-unviewed"
+          ],
+          "notes": [
+            "Eight key poses represent launch/two visible cuts/recovery, not six individually animated source cuts. Six runtime hits are stylized adaptation. No claim of measured canon sixfold timing.",
+            "All eight poses are a new choreography proposal; exact source motion not verified due video-access blocker."
+          ],
+          "evidenceKind": "authored-choreography-informed-by-listed-references",
+          "promptEnglish": "Eight individually drawn chronological full-body key poses, attacking screen-right with planted foot pivots and visibly rotating pelvis/shoulders. 六连雷闪·格斗改编. Pose 1: Deep sheathed crouch, full posterior-chain load, right hand hilt, left scabbard. Weapon endpoint: sheathed. Pose 2: Hold compressed launch shape briefly; hips slightly rotate away and cloth settles for anticipation. Weapon endpoint: sheathed-loaded. Pose 3: First draw slash sweeps lateral edge through target with hips fully opening. Weapon endpoint: front-lateral. Pose 4: Low pivot reload with sword still drawn, reverse shoulder/hip orientation; do not magically re-sheath. Weapon endpoint: drawn-side-reload. Pose 5: Second visible reverse cut slashes through target with opposite arc, torso torque unmistakable. Weapon endpoint: front-reverse. Pose 6: Long finishing follow-through with blade outside hip, trailing leg extended and head target-focused. Weapon endpoint: far-side. Pose 7: Brake into low stable stance; carefully align blade with scabbard mouth. Weapon endpoint: sheath-alignment. Pose 8: Complete composed recovery pose, hand near guard, sparks fading after movement. Weapon endpoint: ready. FX separate from body: Poster before1; runtime six hit events/afterimages are separate from these8poses; two clear blade arcs3/5, yellow zigzag trails follow translated roots.",
+          "evidenceNotes": "The listed sources inform identity or isolated mechanics only. Do not describe this8pose proposal as a traced, frame-measured reproduction."
+        }
+      },
+      "sourceDetails": {
+        "zenitsu-official-character": {
+          "url": "https://asia.sega.com/kimetsu_hinokami/en/character/",
+          "evidenceKind": "official-static-character-image-viewed",
+          "localCapture": "../references/zenitsu-sega-hinokami-official.png",
+          "observed": "Deep asymmetrical crouch, hand at hilt/scabbard, yellow haori and cyan-white lightning around torso.",
+          "limitations": [
+            "One still does not establish any8pose action or exact timing. Zenitsu yellow runtime lightning is an artistic choice; source illustration lightning is cyan-white."
+          ]
+        },
+        "zenitsu-official-trailer-unviewed": {
+          "url": "https://www.youtube.com/watch?v=QACQyVdOz34",
+          "officialIndex": "https://asia.sega.com/kimetsu_hinokami/en/movie/",
+          "evidenceKind": "official-url-verified-video-unviewed",
+          "blockedReason": "Public yt-dlp retrieval through configured proxy failed: Tunnel connection failed:403 Forbidden. No decoded frames obtained.",
+          "viewedRanges": []
+        }
+      }
+    }
+  },
+  "sources": {
+    "cloud-steam-trailer": {
+      "url": "https://store.steampowered.com/app/1462040/",
+      "mediaUrl": "https://video.akamai.steamstatic.com/store_trailers/1462040/448849/9cebfd6851e2861a87c90e58db2cdb5476f43801/1750691718/dash_h264.mpd?t=1655416854",
+      "title": "FINAL FANTASY VII REMAKE INTERGRADE / ESRB_EN",
+      "localVideo": "cloud-reference.mp4",
+      "evidenceKind": "excluded-actor-mismatch",
+      "viewedRanges": [
+        "6–10s",
+        "14–22s"
+      ],
+      "limitations": [
+        "These inspected action sections show Yuffie/Sonon/Scarlet, not Cloud Buster Sword motion. Excluded from Cloud choreography evidence."
+      ]
+    },
+    "lara-steam-trailer": {
+      "url": "https://store.steampowered.com/app/2478970/",
+      "mediaUrl": "https://video.akamai.steamstatic.com/store_trailers/2478970/661828/5dac2e40c0cfbbe7093ebff12e9211698e24d269/1750815598/dash_h264.mpd?t=1707889124",
+      "title": "Tomb Raider I-III Remastered Starring Lara Croft / Tomb Raider I-III Remastered Launch Trailer",
+      "localVideo": "lara-reference.mp4",
+      "evidenceKind": "sampled-video-frames",
+      "viewedRanges": [
+        "39.25–40.625s"
+      ],
+      "limitations": [
+        "Different costume used only for aim/locomotion relationship. Cannot determine exact modern recoil or trigger animation from these frames."
+      ],
+      "localCapture": "lara-guns-detail.jpg",
+      "observed": "Lara in orange jacket strafes with dual guns kept toward target while feet and legs move sideways."
+    },
+    "wukong-steam-trailer": {
+      "url": "https://store.steampowered.com/app/2358720/",
+      "mediaUrl": "https://video.akamai.steamstatic.com/store_trailers/2358720/743632/6acf4311bb6a59d300b902ab6a3f445215089d9c/1750812851/dash_h264.mpd?t=1729236218",
+      "title": "Black Myth: Wukong / Black Myth: Wukong - Launch Trailer",
+      "localVideo": "wukong-reference.mp4",
+      "evidenceKind": "sampled-video-frames",
+      "viewedRanges": [
+        "45.25–45.875s"
+      ],
+      "limitations": [
+        "Does not establish exact prototype immobilize or ultimate. Eight poses/timing are adapted."
+      ],
+      "localCapture": "wukong-staff-detail.jpg",
+      "observed": "Monkey/staff fighter in yellow-brown clothing rotates torso, sweeps long staff through a broad arc, and follows through with gold weapon trail."
+    },
+    "drake-steam-trailer": {
+      "url": "https://store.steampowered.com/app/1659420/",
+      "mediaUrl": "https://video.akamai.steamstatic.com/store_trailers/1659420/504310/8f30b7f0dfd643ce47a42a82c5babcf1a6694457/1750721102/dash_h264.mpd?t=1671505478",
+      "title": "UNCHARTED™: Legacy of Thieves Collection / Launch Trailer (US-EN)",
+      "localVideo": "drake-reference.mp4",
+      "evidenceKind": "sampled-video-frames",
+      "viewedRanges": [
+        "0–63s sampled at3s",
+        "33.7–35.575s detail"
+      ],
+      "limitations": [
+        "No inspected complete punch, grenade or rifle cycle. Do not cite rescue shot as a melee attack."
+      ],
+      "localCapture": "drake-overview-compact.jpg",
+      "observed": "Mixed Nathan/Chloe/Sam montage. Detail section shows motorcycle rescue with Sam reaching toward Nathan, not a fist combo."
+    },
+    "demon-steam-trailer": {
+      "url": "https://store.steampowered.com/app/1490890/",
+      "mediaUrl": "https://video.akamai.steamstatic.com/store_trailers/1490890/384108/48f20a2b3ef20a46d46136f5aefe9a972a8d14ea/1750694266/dash_h264.mpd?t=1626110279",
+      "title": "Demon Slayer -Kimetsu no Yaiba- The Hinokami Chronicles / Latest Trailer",
+      "localVideo": "demon-reference.mp4",
+      "evidenceKind": "excluded-actor-mismatch",
+      "viewedRanges": [],
+      "limitations": [
+        "Overview is Nezuko-focused; not evidence for Tanjiro or Zenitsu sword movement."
+      ]
+    },
+    "cloud-official-combat": {
+      "url": "https://blog.playstation.com/2019/11/25/new-final-fantasy-vii-remake-screens-feature-cloud-combat-and-more/",
+      "evidenceKind": "official-static-combat-image-and-text",
+      "localCapture": "../references/cloud-psblog-03.jpg",
+      "observed": "Viewed contact sheet: Cloud low bent-knee stance, two-handed sword and large ascending curved slash trail. Confirms broad arc keypose, not chronological motion.",
+      "limitations": [
+        "Timing and8pose sequence authored."
+      ]
+    },
+    "cloud-official-horizontal": {
+      "url": "https://www.jp.square-enix.com/ffvii_remake/character/index.html",
+      "mediaUrl": "https://www.jp.square-enix.com/ffvii_remake/character/_img/cloud/pic02_l.jpg?191126",
+      "evidenceKind": "official-static-combat-image",
+      "localCapture": "../references/cloud-remake-official-scene-large-02.jpg",
+      "observed": "Viewed full image: Cloud deep front-knee bend, long rear leg, torso reaching across the cut, broad sword extends behind with wide purple arc; proves keypose and sweep silhouette, not actual frame ordering.",
+      "limitations": [
+        "Do not infer velocity direction from one still alone."
+      ]
+    },
+    "lara-official-arsenal": {
+      "url": "https://www.tombraider.com/news/community/tomb-raider-franchise-feature-the-arsenal",
+      "evidenceKind": "official-text-viewed",
+      "observed": "Classic dual pistols and reboot archery are different eras; prototype intentionally combines them.",
+      "limitations": [
+        "Not motion footage."
+      ]
+    },
+    "wukong-official-page": {
+      "url": "https://www.playstation.com/en-us/games/black-myth-wukong/",
+      "evidenceKind": "official-text-reference",
+      "limitations": [
+        "General staff/spell identity, not motion timing."
+      ]
+    },
+    "drake-official-game": {
+      "url": "https://www.playstation.com/en-us/games/uncharted-4-a-thiefs-end/",
+      "evidenceKind": "official-static-character-reference",
+      "localCapture": "../references/nathan-uc4-official-01.jpg",
+      "limitations": [
+        "Establishes Nathan identity/costume, not exact brawl/grenade/rifle choreography."
+      ]
+    },
+    "tanjiro-official-character": {
+      "url": "https://asia.sega.com/kimetsu_hinokami/en/character/",
+      "evidenceKind": "official-static-character-image-viewed",
+      "localCapture": "../references/tanjiro-sega-hinokami-official.png",
+      "observed": "Bent knees, katana held across torso and broad looped blue/white water graphic.",
+      "limitations": [
+        "One still does not establish any8pose action or exact timing. Zenitsu yellow runtime lightning is an artistic choice; source illustration lightning is cyan-white."
+      ]
+    },
+    "tanjiro-official-trailer-unviewed": {
+      "url": "https://www.youtube.com/watch?v=B-NFjj595bg",
+      "officialIndex": "https://asia.sega.com/kimetsu_hinokami/en/movie/",
+      "evidenceKind": "official-url-verified-video-unviewed",
+      "blockedReason": "Public yt-dlp retrieval through configured proxy failed: Tunnel connection failed:403 Forbidden. No decoded frames obtained.",
+      "viewedRanges": []
+    },
+    "zenitsu-official-character": {
+      "url": "https://asia.sega.com/kimetsu_hinokami/en/character/",
+      "evidenceKind": "official-static-character-image-viewed",
+      "localCapture": "../references/zenitsu-sega-hinokami-official.png",
+      "observed": "Deep asymmetrical crouch, hand at hilt/scabbard, yellow haori and cyan-white lightning around torso.",
+      "limitations": [
+        "One still does not establish any8pose action or exact timing. Zenitsu yellow runtime lightning is an artistic choice; source illustration lightning is cyan-white."
+      ]
+    },
+    "zenitsu-official-trailer-unviewed": {
+      "url": "https://www.youtube.com/watch?v=QACQyVdOz34",
+      "officialIndex": "https://asia.sega.com/kimetsu_hinokami/en/movie/",
+      "evidenceKind": "official-url-verified-video-unviewed",
+      "blockedReason": "Public yt-dlp retrieval through configured proxy failed: Tunnel connection failed:403 Forbidden. No decoded frames obtained.",
+      "viewedRanges": []
+    }
+  },
+  "scope": {
+    "researchMoves": 30,
+    "researchPoses": 240,
+    "auxiliaryLaraClips": {
+      "count": 2,
+      "owner": "parent",
+      "includedInResearchTotals": false,
+      "note": "Parent-owned two Lara auxiliary clips are separate from this30move research scope."
+    }
+  }
+}
