@@ -1,0 +1,245 @@
+{
+  "status": "technically-ready-for-user-re-review",
+  "scope": "Only Zenitsu design and eight-pose lightning draw revision",
+  "userApproval": "pending; reviewer does not approve on behalf of user",
+  "finalSources": {
+    "design": "design-handed-source.png",
+    "preparation": "prep-four-clean-source.png",
+    "action": "animation-final-source.png",
+    "updatesSha256": "26413e111a0126988246030ef870a7058ea9ab48cc75dce9699e0d9cec161513"
+  },
+  "inspection": {
+    "actuallyViewedFinalDesign": true,
+    "actuallyViewedGrayCompositeFinalSheet": true,
+    "individuallyViewedFinalFrames": [
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "allTenNewImageHashesMatch": true,
+    "allEightFramesTransparentEdgesOver16": 0,
+    "frameDimensions": [
+      496,
+      444
+    ]
+  },
+  "hardGoals": {
+    "twoVisibleHands": "resolved: near-side character right hand holds sword handle; far-side left hand holds scabbard, both identifiable in design",
+    "realBladeLength": "resolved for re-review: fully drawn frames 4-7 have visible silver steel blade with approximate projected lengths 168-223px, rather than the old ~94px frame6; lightning not counted as blade",
+    "handContinuity": "resolved in final handed/prep composition: near arm holds hilt through preparation and cut, far arm holds sheath; f3 visible steel is between guard and sheath mouth, not gripped directly",
+    "slashNotThrust": "improved: raised rear blade in frame4, cross-body sweep frame5, back-turn/down-left follow-through frame6; no longer only straight forward extension"
+  },
+  "bladeMeasurements": {
+    "method": "Independent approximate visual guard-to-tip coordinates in final 496x444 frames; not exact physical weapon dimensions or FX extent",
+    "fullyDrawn": [
+      {
+        "frame": 4,
+        "guardApprox": [
+          238,
+          136
+        ],
+        "tipApprox": [
+          77,
+          48
+        ],
+        "visibleBladeLengthApproxPx": 183.5
+      },
+      {
+        "frame": 5,
+        "guardApprox": [
+          241,
+          198
+        ],
+        "tipApprox": [
+          464,
+          196
+        ],
+        "visibleBladeLengthApproxPx": 223.0
+      },
+      {
+        "frame": 6,
+        "guardApprox": [
+          174,
+          267
+        ],
+        "tipApprox": [
+          52,
+          382
+        ],
+        "visibleBladeLengthApproxPx": 167.7
+      },
+      {
+        "frame": 7,
+        "guardApprox": [
+          174,
+          285
+        ],
+        "tipApprox": [
+          34,
+          392
+        ],
+        "visibleBladeLengthApproxPx": 176.2
+      }
+    ],
+    "sheathedFrames": [
+      1,
+      2,
+      8
+    ],
+    "partiallyDrawnFrame": 3,
+    "oldFrame6ApproxPx": 94,
+    "newFrame6ApproxPx": 167.7,
+    "projectionNote": "Projected lengths vary with pose and perspective; no claim of exact identical pixel length."
+  },
+  "frameChecks": [
+    {
+      "frame": 1,
+      "swordState": "sheathed",
+      "image": "zenitsu-r2/frames/01.png",
+      "dimensions": [
+        496,
+        444
+      ],
+      "visibleBBoxAlphaOver64": [
+        135,
+        42,
+        402,
+        412
+      ],
+      "edgePixelsAlphaOver16": 0,
+      "sha256Matches": true
+    },
+    {
+      "frame": 2,
+      "swordState": "sheathed",
+      "image": "zenitsu-r2/frames/02.png",
+      "dimensions": [
+        496,
+        444
+      ],
+      "visibleBBoxAlphaOver64": [
+        106,
+        95,
+        410,
+        410
+      ],
+      "edgePixelsAlphaOver16": 0,
+      "sha256Matches": true
+    },
+    {
+      "frame": 3,
+      "swordState": "partiallyDrawn",
+      "image": "zenitsu-r2/frames/03.png",
+      "dimensions": [
+        496,
+        444
+      ],
+      "visibleBBoxAlphaOver64": [
+        105,
+        99,
+        425,
+        412
+      ],
+      "edgePixelsAlphaOver16": 0,
+      "sha256Matches": true
+    },
+    {
+      "frame": 4,
+      "swordState": "drawn",
+      "image": "zenitsu-r2/frames/04.png",
+      "dimensions": [
+        496,
+        444
+      ],
+      "visibleBBoxAlphaOver64": [
+        73,
+        46,
+        419,
+        409
+      ],
+      "edgePixelsAlphaOver16": 0,
+      "sha256Matches": true
+    },
+    {
+      "frame": 5,
+      "swordState": "drawn",
+      "image": "zenitsu-r2/frames/05.png",
+      "dimensions": [
+        496,
+        444
+      ],
+      "visibleBBoxAlphaOver64": [
+        91,
+        77,
+        465,
+        411
+      ],
+      "edgePixelsAlphaOver16": 0,
+      "sha256Matches": true
+    },
+    {
+      "frame": 6,
+      "swordState": "drawn",
+      "image": "zenitsu-r2/frames/06.png",
+      "dimensions": [
+        496,
+        444
+      ],
+      "visibleBBoxAlphaOver64": [
+        50,
+        78,
+        427,
+        411
+      ],
+      "edgePixelsAlphaOver16": 0,
+      "sha256Matches": true
+    },
+    {
+      "frame": 7,
+      "swordState": "drawn",
+      "image": "zenitsu-r2/frames/07.png",
+      "dimensions": [
+        496,
+        444
+      ],
+      "visibleBBoxAlphaOver64": [
+        33,
+        78,
+        420,
+        411
+      ],
+      "edgePixelsAlphaOver16": 0,
+      "sha256Matches": true
+    },
+    {
+      "frame": 8,
+      "swordState": "sheathed",
+      "image": "zenitsu-r2/frames/08.png",
+      "dimensions": [
+        496,
+        444
+      ],
+      "visibleBBoxAlphaOver64": [
+        139,
+        43,
+        402,
+        414
+      ],
+      "edgePixelsAlphaOver16": 0,
+      "sha256Matches": true
+    }
+  ],
+  "preservation": {
+    "otherApprovedItems": 8,
+    "otherApprovedImageFiles": 24,
+    "independentBeforeAfterHashesUnchanged": true
+  },
+  "remainingBoundaries": [
+    "These two updated images still require user re-review; the prior eight approvals remain tied to their unchanged source hashes.",
+    "Content-bottom y409-414 gives a 5px spread; gameplay anchors/root-motion and hit timing are not calibrated by this review.",
+    "Character and lightning remain combined review frames; not independent FX layers.",
+    "No R5 gameplay retest or full78-animation completion claim."
+  ]
+}

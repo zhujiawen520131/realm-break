@@ -1,0 +1,189 @@
+{
+  "approvalId": "pixel-r6-user-review-1-20261107",
+  "reviewedRevision": "pixel-r6-review-1",
+  "source": "用户对话审核意见",
+  "date": "2026-11-07",
+  "decisions": [
+    {
+      "id": "design-cloud",
+      "label": "克劳德 Cloud",
+      "status": "approved",
+      "comment": "无补充意见",
+      "imageSha256": "cfb02033e4948bc28776644674b9fd9a16a91a8c14e5cfe1a69c411c4006f7d5",
+      "frameHashes": {},
+      "frameDurations": [],
+      "frameOrder": []
+    },
+    {
+      "id": "design-lara",
+      "label": "劳拉 Lara",
+      "status": "approved",
+      "comment": "无补充意见",
+      "imageSha256": "74ed2ce9c0ee33465ed4475ce490b2baa6999320c3a2bd4bc79171ad9e664f7b",
+      "frameHashes": {},
+      "frameDurations": [],
+      "frameOrder": []
+    },
+    {
+      "id": "design-destined-one",
+      "label": "天命人 Destined One",
+      "status": "approved",
+      "comment": "无补充意见",
+      "imageSha256": "55229bbd7c63a68b00f997115de8f21aaa8b5d9a3774438f7c35591bba70d9f9",
+      "frameHashes": {},
+      "frameDurations": [],
+      "frameOrder": []
+    },
+    {
+      "id": "design-nathan-drake",
+      "label": "内森 Nathan Drake",
+      "status": "approved",
+      "comment": "无补充意见",
+      "imageSha256": "f3746e33a0df527067fcbc821574a6a2c584286dae090dfaa8b0ccc9b7219599",
+      "frameHashes": {},
+      "frameDurations": [],
+      "frameOrder": []
+    },
+    {
+      "id": "design-tanjiro",
+      "label": "炭治郎 Tanjiro",
+      "status": "approved",
+      "comment": "无补充意见",
+      "imageSha256": "6a500fbbed83345284dd3ba85fe98d938e8c213fbe26216550c35b6df331ba08",
+      "frameHashes": {},
+      "frameDurations": [],
+      "frameOrder": []
+    },
+    {
+      "id": "design-zenitsu",
+      "label": "善逸 Zenitsu",
+      "status": "changes",
+      "comment": "少了一只手",
+      "imageSha256": "e1cd61374346bd19d653b752279c065e059f9310d3139fd839b94c1aa396c8dc",
+      "frameHashes": {},
+      "frameDurations": [],
+      "frameOrder": []
+    },
+    {
+      "id": "cloud-slash",
+      "label": "克劳德：大剑挥砍（8 姿态）",
+      "status": "approved",
+      "comment": "无补充意见",
+      "imageSha256": "bccc12e38ecf2dfdf49b56f146ecc8370a47c7daac9b41229ee1bf93712efb07",
+      "frameHashes": {
+        "frames/cloud-slash/01.png": "df7b7761cc648c7c4a80f4752d65c37b11e632aae86fd5a90efcf72f79957f28",
+        "frames/cloud-slash/02.png": "7b6b0f197849079aab77d63edd9ba46a25fd7fe0a3ed21400132d02fe3add4c1",
+        "frames/cloud-slash/03.png": "478fe75ec68bf98b061822afb058374a04e317aabd7df336bdbe16e4e8faa662",
+        "frames/cloud-slash/04.png": "ad957a23da9d32727939ab74da05f3d07eb66d4400a4bd49541f610d3351d38f",
+        "frames/cloud-slash/05.png": "2582795571052a3d46ec5073bae46a0311ff6e95a6efdac579f4bdd4f80aa17f",
+        "frames/cloud-slash/06.png": "5e345f0bf828fc0ce5256b310abd340d37f13d38ef52034acfa454b285865e64",
+        "frames/cloud-slash/07.png": "c740fd8f54501e56ede2d12889057417a1818c2cfacfc493c57c8d0d18a29fba",
+        "frames/cloud-slash/08.png": "34941c8d799dcb8ab0c91ee4b49ee567db918601b7e3b409e6fdc028aebdd0fc"
+      },
+      "frameDurations": [
+        120,
+        120,
+        130,
+        80,
+        80,
+        100,
+        120,
+        160
+      ],
+      "frameOrder": [
+        "frames/cloud-slash/01.png",
+        "frames/cloud-slash/02.png",
+        "frames/cloud-slash/03.png",
+        "frames/cloud-slash/04.png",
+        "frames/cloud-slash/05.png",
+        "frames/cloud-slash/06.png",
+        "frames/cloud-slash/07.png",
+        "frames/cloud-slash/08.png"
+      ]
+    },
+    {
+      "id": "tanjiro-water",
+      "label": "炭治郎：水流斩（8 姿态）",
+      "status": "approved",
+      "comment": "无补充意见",
+      "imageSha256": "8c3fc2bf6cafac3b5b997b8abed213436762ef863786e4b01fbfc4bf3986ddb3",
+      "frameHashes": {
+        "frames/tanjiro-water/01.png": "c70aadcaaf9b49956445454c5bfe755438a73d5eaba0800d556db73e1809e068",
+        "frames/tanjiro-water/02.png": "ac213b87b509265e93936d60da76d332e6fe9ea3bc2b74f278d4de7c41bc7af7",
+        "frames/tanjiro-water/03.png": "8d0b4b816b254b5ec09292ad674cd2488fa4556c6c3909c6e670cda5deb2886b",
+        "frames/tanjiro-water/04.png": "09855923656973a931e2cf40690b6f688d149933efd9e7441804018b4bae8bbe",
+        "frames/tanjiro-water/05.png": "3b3990eb7317f593a016dc6ae176696c93621866f8191d7e32ea2582ebe10e0b",
+        "frames/tanjiro-water/06.png": "fa78ba9ebca25f2f0750897e567617dbeb386b86ef9c0dcddd6726154d8227e8",
+        "frames/tanjiro-water/07.png": "68e099a0aa8147ed7a69951ebfd4fe48ed72fa30c0d4cb3be52441b5e0a01bed",
+        "frames/tanjiro-water/08.png": "d79e9a39d43da9445f1f5f8d574f1158e5179e68426e679002ba1dab2fda1757"
+      },
+      "frameDurations": [
+        120,
+        110,
+        110,
+        80,
+        100,
+        100,
+        110,
+        160
+      ],
+      "frameOrder": [
+        "frames/tanjiro-water/01.png",
+        "frames/tanjiro-water/02.png",
+        "frames/tanjiro-water/03.png",
+        "frames/tanjiro-water/04.png",
+        "frames/tanjiro-water/05.png",
+        "frames/tanjiro-water/06.png",
+        "frames/tanjiro-water/07.png",
+        "frames/tanjiro-water/08.png"
+      ]
+    },
+    {
+      "id": "zenitsu-lightning",
+      "label": "善逸：雷光拔刀（8 姿态）",
+      "status": "changes",
+      "comment": "斩鬼刀太短了",
+      "imageSha256": "81f340fa5e137a9db7f3517983e12a545c1c744122c5a5a96e22d1014b2907d6",
+      "frameHashes": {
+        "frames/zenitsu-lightning/01.png": "dbf720fb86f2a53cd54c61a278325749ebdac98025d9862357df03d888162748",
+        "frames/zenitsu-lightning/02.png": "6437e9c931d16a978b7c25d0bb39bf76d1925ffafe3c0dac7f2d32efbcccb2b8",
+        "frames/zenitsu-lightning/03.png": "6246ef9eaabe1f6368d0af9573744564baa1584417020279fb76e9b472fb89ee",
+        "frames/zenitsu-lightning/04.png": "e67a1cd2f9c2db4561a07913b5b9f9b65a19bbdf52263e1ffd2ea1eb305a0f00",
+        "frames/zenitsu-lightning/05.png": "16cc59692b4f0a740af0e08d81ed248f2961c866e32f7e1ccabe37fd0824934b",
+        "frames/zenitsu-lightning/06.png": "097319695a454a66c8aa40777ed67fb5dad8ea8e3f42a5ed7b37520e251562b7",
+        "frames/zenitsu-lightning/07.png": "0cdb9caa92f0d68bccb22731c380b055d10a0fd0bfc3c4ca6e599bc30ca8e9dd",
+        "frames/zenitsu-lightning/08.png": "21d2773fafeb5ccf10bfa285e8bfc3a4056f26625acaf3bb992b7425d2f3c4ae"
+      },
+      "frameDurations": [
+        120,
+        110,
+        130,
+        70,
+        90,
+        100,
+        110,
+        160
+      ],
+      "frameOrder": [
+        "frames/zenitsu-lightning/01.png",
+        "frames/zenitsu-lightning/02.png",
+        "frames/zenitsu-lightning/03.png",
+        "frames/zenitsu-lightning/04.png",
+        "frames/zenitsu-lightning/05.png",
+        "frames/zenitsu-lightning/06.png",
+        "frames/zenitsu-lightning/07.png",
+        "frames/zenitsu-lightning/08.png"
+      ]
+    },
+    {
+      "id": "background-arena",
+      "label": "像素战场：遗迹平地",
+      "status": "approved",
+      "comment": "无补充意见",
+      "imageSha256": "ffb0018ca68dc6a7dcd8841fd13cf6e5ea00e86b9346e2c87f8e3ddd02574603",
+      "frameHashes": {},
+      "frameDurations": [],
+      "frameOrder": []
+    }
+  ]
+}

@@ -4,10 +4,37 @@
  let manifest,items=[],selected=0,frameIndex=0,playing=false,lastFrameTime=0,storageAvailable=true;
  const decisions=new Map();
  function assetUrl(source){if(typeof source!=='string'||!source.trim())throw new Error('缺少图像路径');const url=new URL(source,document.baseURI);if(!['http:','https:','file:'].includes(url.protocol)||url.origin!==location.origin)throw new Error('图像必须使用本站资源路径');return url.href;}
- function key(item){return 'rift-pixel-review-v1:'+JSON.stringify([manifest.revision,item.id,item.image,item.sha256||item.sha||'',(item.frames||[]).map(f=>[f.image,f.sha256||f.sha||''])]);}
+ function key(item){return 'rift-pixel-review-v1:'+JSON.stringify([manifest.revision,item.id,item.image,item.sha256||item.sha||'',(item.frames||[]).map(f=>[f.image,f.sha256||f.sha||'',f.durationMs??null])]);}
  function decision(item){return decisions.get(item.id)||{status:'pending',comment:''};}
- function loadDecision(item){try{const saved=JSON.parse(localStorage.getItem(key(item))||'null');if(saved&&Object.hasOwn(statuses,saved.status))decisions.set(item.id,{status:saved.status,comment:typeof saved.comment==='string'?saved.comment:''});}catch{storageAvailable=false;}}
- function saveDecision(){const item=items[selected];if(!item)return;const checked=document.querySelector('input[name="decision"]:checked'),value={status:checked?.value||'pending',comment:$('comment').value};decisions.set(item.id,value);try{localStorage.setItem(key(item),JSON.stringify(value));$('saveStatus').textContent='已保存在本浏览器。点击“复制完整审核意见”后发送，即可提交。';}catch{storageAvailable=false;$('saveStatus').textContent='浏览器未允许本地保存，请在离开前复制完整审核意见。';}updateProgress();}
+ function validUserReview(item){
+  const review=item.userReview,frames=item.frames||[];
+  if(!review||typeof review.approvalId!=='string'||!review.approvalId.trim()||!['approved','changes'].includes(review.status))return null;
+  if(typeof item.sha256!=='string'||!item.sha256||review.imageSha256!==item.sha256)return null;
+  const hashes=review.frameHashes;
+  if(!hashes||typeof hashes!=='object'||Array.isArray(hashes)||Object.keys(hashes).length!==frames.length)return null;
+  if(new Set(frames.map(frame=>frame.image)).size!==frames.length)return null;
+  if(!frames.every(frame=>typeof frame.sha256==='string'&&frame.sha256&&Object.hasOwn(hashes,frame.image)&&hashes[frame.image]===frame.sha256))return null;
+  if(review.frameOrder!==undefined&&(!Array.isArray(review.frameOrder)||review.frameOrder.length!==frames.length||!frames.every((frame,index)=>review.frameOrder[index]===frame.image)))return null;
+  if(review.frameDurations!==undefined&&(!Array.isArray(review.frameDurations)||review.frameDurations.length!==frames.length||!frames.every((frame,index)=>review.frameDurations[index]===frame.durationMs)))return null;
+  return review;
+ }
+ function loadDecision(item){
+  let value={status:'pending',comment:'',appliedApprovalIds:[]};
+  try{const saved=JSON.parse(localStorage.getItem(key(item))||'null');if(saved&&Object.hasOwn(statuses,saved.status))value={status:saved.status,comment:typeof saved.comment==='string'?saved.comment:'',appliedApprovalIds:Array.isArray(saved.appliedApprovalIds)?saved.appliedApprovalIds.filter(id=>typeof id==='string'):[]};}catch{storageAvailable=false;}
+  const review=validUserReview(item);
+  if(review){
+   const marker=key(item)+':approval:'+review.approvalId;let applied=value.appliedApprovalIds.includes(review.approvalId);
+   try{applied=applied||localStorage.getItem(marker)==='1';}catch{storageAvailable=false;}
+   if(!applied){
+    value={status:review.status,comment:typeof review.comment==='string'?review.comment:'',appliedApprovalIds:[...value.appliedApprovalIds,review.approvalId]};
+    // Store the approval identity with the decision first. A partial storage write
+    // cannot cause the next reload to overwrite the user's later local feedback.
+    try{localStorage.setItem(key(item),JSON.stringify(value));localStorage.setItem(marker,'1');}catch{storageAvailable=false;}
+   }
+  }
+  decisions.set(item.id,value);
+ }
+ function saveDecision(){const item=items[selected];if(!item)return;const checked=document.querySelector('input[name="decision"]:checked'),value={status:checked?.value||'pending',comment:$('comment').value,appliedApprovalIds:decision(item).appliedApprovalIds||[]};decisions.set(item.id,value);try{localStorage.setItem(key(item),JSON.stringify(value));$('saveStatus').textContent='已保存在本浏览器。点击“复制完整审核意见”后发送，即可提交。';}catch{storageAvailable=false;$('saveStatus').textContent='浏览器未允许本地保存，请在离开前复制完整审核意见。';}updateProgress();}
  function updateProgress(){let done=0,approved=0;for(const [index,item] of items.entries()){const d=decision(item);if(d.status!=='pending')done++;if(d.status==='approved')approved++;const button=$('itemList').children[index];if(button){button.dataset.status=d.status;button.querySelector('small').textContent=`${kinds[item.kind]||'样稿'} · ${statuses[d.status]}`;}}$('progress').textContent=`已审核 ${done} / ${items.length} 项 · 通过 ${approved} 项`;}
  function makeCard(item,index){const button=document.createElement('button');button.className='item-card';button.type='button';const image=document.createElement('img');image.src=assetUrl(item.image);image.alt='';image.loading='lazy';image.onerror=()=>{image.hidden=true;};const copy=document.createElement('span'),title=document.createElement('strong'),status=document.createElement('small');title.textContent=item.label;copy.append(title,status);button.append(image,copy);button.onclick=()=>selectItem(index);return button;}
  function selectedFrame(){const item=items[selected];return item.frames?.[frameIndex]||{image:item.image};}
@@ -24,6 +51,6 @@
  for(const input of document.querySelectorAll('input[name="decision"]'))input.onchange=saveDecision;$('comment').oninput=saveDecision;$('copyAll').onclick=copyAll;$('closeCopy').onclick=()=>{$('copyPanel').hidden=true;};$('selectText').onclick=()=>{$('copyText').focus();$('copyText').select();};
  document.addEventListener('keydown',e=>{if(['INPUT','TEXTAREA','SELECT'].includes(e.target?.tagName)||!items.length)return;if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();selectItem(selected+(e.key==='ArrowRight'?1:-1));}});document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});
  function animate(now){if(playing){if(!lastFrameTime)lastFrameTime=now;if(now-lastFrameTime>=duration(selectedFrame())){showFrame(frameIndex+1);lastFrameTime=now;}}requestAnimationFrame(animate);}requestAnimationFrame(animate);
- async function boot(){try{const response=await fetch('manifest.json',{cache:'no-store'});if(!response.ok)throw new Error(response.status===404?'样稿清单尚未发布（404）。请稍后刷新此页。':`样稿清单载入失败（${response.status}）。`);manifest=await response.json();if(!manifest.revision||!Array.isArray(manifest.items)||!manifest.items.length)throw new Error('样稿清单暂无可审核项目，请等待新样稿发布。');const ids=new Set();for(const item of manifest.items){if(!item.id||!item.label||ids.has(item.id))throw new Error('样稿清单格式不完整，请等待修复后重试。');ids.add(item.id);assetUrl(item.image);for(const frame of item.frames||[])assetUrl(frame.image);}items=manifest.items;for(const item of items)loadDecision(item);$('revision').textContent=String(manifest.revision);$('itemList').replaceChildren(...items.map(makeCard));updateProgress();$('notice').hidden=true;$('review').hidden=false;const requested=new URLSearchParams(location.search).get('item');selectItem(Math.max(0,items.findIndex(item=>item.id===requested)));}catch(error){$('notice').hidden=false;$('notice').classList.add('error');$('notice').textContent=error instanceof Error?error.message:'网络异常，暂时无法载入样稿。';const retry=document.createElement('button');retry.textContent='重新载入';retry.onclick=()=>location.reload();$('notice').append(retry);}}
+ async function boot(){try{const response=await fetch('manifest.json',{cache:'no-store'});if(!response.ok)throw new Error(response.status===404?'样稿清单尚未发布（404）。请稍后刷新此页。':`样稿清单载入失败（${response.status}）。`);manifest=await response.json();if(!manifest.revision||!Array.isArray(manifest.items)||!manifest.items.length)throw new Error('样稿清单暂无可审核项目，请等待新样稿发布。');const ids=new Set();for(const item of manifest.items){if(!item.id||!item.label||ids.has(item.id))throw new Error('样稿清单格式不完整，请等待修复后重试。');ids.add(item.id);assetUrl(item.image);for(const frame of item.frames||[])assetUrl(frame.image);}items=manifest.items;for(const item of items)loadDecision(item);$('revision').textContent=String(manifest.revision);$('reviewSummary').textContent=typeof manifest.reviewSummary==='string'?manifest.reviewSummary:'';$('reviewSummary').hidden=!$('reviewSummary').textContent;$('itemList').replaceChildren(...items.map(makeCard));updateProgress();$('notice').hidden=true;$('review').hidden=false;const requested=new URLSearchParams(location.search).get('item'),focus=Array.isArray(manifest.reviewFocus)?manifest.reviewFocus:[manifest.reviewFocus],candidates=[requested,...focus],target=candidates.map(id=>items.findIndex(item=>item.id===id)).find(index=>index>=0),pending=items.findIndex(item=>decision(item).status==='pending');selectItem(target??Math.max(0,pending));}catch(error){$('notice').hidden=false;$('notice').classList.add('error');$('notice').textContent=error instanceof Error?error.message:'网络异常，暂时无法载入样稿。';const retry=document.createElement('button');retry.textContent='重新载入';retry.onclick=()=>location.reload();$('notice').append(retry);}}
  boot();
 })();
