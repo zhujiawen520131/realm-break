@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "title": "裂界 · 角色美术审阅",
-  "status": "partially-approved",
+  "status": "approved",
   "timingUnit": "milliseconds",
   "artDirection": "高精度 2D 手绘格斗",
   "canvas": {
@@ -427,7 +427,7 @@
           "eventFrame": 4,
           "frameCount": 8,
           "revision": "motion-r3-20261107",
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/cloud/r3/attack1/01.webp",
@@ -440,7 +440,7 @@
               "durationMs": 70,
               "previewOffsetY": 0,
               "phase": "宽步高位持剑",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-attack1-r3.png",
@@ -478,7 +478,7 @@
               "durationMs": 85,
               "previewOffsetY": 0,
               "phase": "背侧转体蓄势",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-attack1-r3.png",
@@ -516,7 +516,7 @@
               "durationMs": 55,
               "previewOffsetY": 0,
               "phase": "抬后跟，剑仍滞后",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-attack1-r3.png",
@@ -554,7 +554,7 @@
               "durationMs": 35,
               "previewOffsetY": 0,
               "phase": "转肩带剑过顶",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-attack1-r3.png",
@@ -592,7 +592,7 @@
               "durationMs": 35,
               "previewOffsetY": 0,
               "phase": "刃口向前下斩",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-attack1-r3.png",
@@ -630,7 +630,7 @@
               "durationMs": 55,
               "previewOffsetY": 0,
               "phase": "低位斜向随动",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-attack1-r3.png",
@@ -668,7 +668,7 @@
               "durationMs": 90,
               "previewOffsetY": 0,
               "phase": "屈膝低位制动",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-attack1-r3.png",
@@ -706,7 +706,7 @@
               "durationMs": 95,
               "previewOffsetY": 0,
               "phase": "回到斜向架势",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-attack1-r3.png",
@@ -735,9 +735,25 @@
             }
           ],
           "notes": [
-            "R3八张独立关键姿态：请检查肩胯转动、武器轨迹与收招。",
-            "仅接入R3试玩预览，等待你审核；正式版保持原版本。尚需中间帧与边缘精修。"
-          ]
+            "本组关键姿态已由用户审核通过，无补充意见。",
+            "美术审批不等于补间完成；战斗接入与动画精修进度单独记录。"
+          ],
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "frameHashes": {
+              "frames/cloud/r3/attack1/01.webp": "9d8ef5f6f7133793dc1615daa339ff769656680a4cda013ac021ed28cf6d65a0",
+              "frames/cloud/r3/attack1/02.webp": "a91cdfb290c1d5ef91cc100f57d4ba7dc3b553441242089c179075fd93777a57",
+              "frames/cloud/r3/attack1/03.webp": "aedb1e536c0de1509a736d42322dba1413b4e692a53d7c44e47a8f35b9367929",
+              "frames/cloud/r3/attack1/04.webp": "979b539240488bde3328d91cb11f2db2fdaf5bd2622130046529bbe08e79b157",
+              "frames/cloud/r3/attack1/05.webp": "824479b6d31a0a1f0740e99b2935c92cca62d0706c1a1548ed1a44454f65e52c",
+              "frames/cloud/r3/attack1/06.webp": "6b6ba44648cc37a9554c4e8727868a6bec61604ea2ab62f5370176c638605854",
+              "frames/cloud/r3/attack1/07.webp": "713993c031eb1e487075cf8da41c1a7380f8f5259971fe360c95ffaaf898f86e",
+              "frames/cloud/r3/attack1/08.webp": "05c5c7671881e3313dcf9304a9d606ca369be86d8df084844e6440ea610998ac"
+            },
+            "source": "用户对话确认"
+          }
         },
         {
           "id": "attack2",
@@ -750,7 +766,7 @@
           "eventFrame": 4,
           "frameCount": 8,
           "revision": "motion-r3-20261107",
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/cloud/r3/attack2/01.webp",
@@ -763,7 +779,7 @@
               "durationMs": 70,
               "previewOffsetY": 0,
               "phase": "刀身低位朝前",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-attack2-r3.png",
@@ -801,7 +817,7 @@
               "durationMs": 85,
               "previewOffsetY": 0,
               "phase": "背转收剑到髋后",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-attack2-r3.png",
@@ -839,7 +855,7 @@
               "durationMs": 55,
               "previewOffsetY": 0,
               "phase": "背侧蹬转，剑身滞后",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-attack2-r3.png",
@@ -877,7 +893,7 @@
               "durationMs": 35,
               "previewOffsetY": 0,
               "phase": "转体横扫过身前",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-attack2-r3.png",
@@ -915,7 +931,7 @@
               "durationMs": 35,
               "previewOffsetY": 0,
               "phase": "刀刃掠过腰前",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-attack2-r3.png",
@@ -953,7 +969,7 @@
               "durationMs": 55,
               "previewOffsetY": 0,
               "phase": "剑身横胸透视缩短",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-attack2-r3.png",
@@ -991,7 +1007,7 @@
               "durationMs": 90,
               "previewOffsetY": 0,
               "phase": "转体随剑掠向左后",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-attack2-r3.png",
@@ -1029,7 +1045,7 @@
               "durationMs": 95,
               "previewOffsetY": 0,
               "phase": "重新收剑至肩上",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-attack2-r3.png",
@@ -1058,9 +1074,25 @@
             }
           ],
           "notes": [
-            "R3八张独立关键姿态：请检查肩胯转动、武器轨迹与收招。",
-            "仅接入R3试玩预览，等待你审核；正式版保持原版本。尚需中间帧与边缘精修。"
-          ]
+            "本组关键姿态已由用户审核通过，无补充意见。",
+            "美术审批不等于补间完成；战斗接入与动画精修进度单独记录。"
+          ],
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "frameHashes": {
+              "frames/cloud/r3/attack2/01.webp": "cfdb9c42315234d4e6b57bd410e6352c4f6ecf35f0b3e1bc0925bedb30e532af",
+              "frames/cloud/r3/attack2/02.webp": "7d58db61308527864c089c0d8a0d9a695f646d93f0ec3d5f5f78d6ff345fd896",
+              "frames/cloud/r3/attack2/03.webp": "c430eec5aa2166155c2d674d9f7dfe2083f2dac940bfddc5b238bcd10b5f6669",
+              "frames/cloud/r3/attack2/04.webp": "edc35e907d01aee2a8b7a2ce82f01d90b817510879ac53cea2a8acffb3682182",
+              "frames/cloud/r3/attack2/05.webp": "34a45c9acf7e72c97e07e3594fa7658f43d266aff1c73031d96054f1f5d49c80",
+              "frames/cloud/r3/attack2/06.webp": "d1339e3ff73d8fb3627d7e8d875174042469821e9d4de45aa230a20b97a62bcb",
+              "frames/cloud/r3/attack2/07.webp": "96a9b5c4da0f5d2afdf9787886be462057e4c8e2b18ecee9c4c6a552ce6227a5",
+              "frames/cloud/r3/attack2/08.webp": "d5521442d0bfbb5c1affe7314d55067e8d9f2acb7afa179d04709023a9551d43"
+            },
+            "source": "用户对话确认"
+          }
         },
         {
           "id": "attack3",
@@ -1073,7 +1105,7 @@
           "eventFrame": 4,
           "frameCount": 8,
           "revision": "motion-r3-20261107",
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/cloud/r3/attack3/01.webp",
@@ -1086,7 +1118,7 @@
               "durationMs": 90,
               "previewOffsetY": 0,
               "phase": "抬剑向前架势",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-attack3-r3.png",
@@ -1124,7 +1156,7 @@
               "durationMs": 100,
               "previewOffsetY": 0,
               "phase": "深蹲收剑至脑后",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-attack3-r3.png",
@@ -1162,7 +1194,7 @@
               "durationMs": 70,
               "previewOffsetY": 0,
               "phase": "双手举剑过顶",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-attack3-r3.png",
@@ -1200,7 +1232,7 @@
               "durationMs": 40,
               "previewOffsetY": 0,
               "phase": "转肩向下拉剑",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-attack3-r3.png",
@@ -1238,7 +1270,7 @@
               "durationMs": 45,
               "previewOffsetY": 0,
               "phase": "低位斩击接触",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-attack3-r3.png",
@@ -1276,7 +1308,7 @@
               "durationMs": 80,
               "previewOffsetY": 0,
               "phase": "压低身体继续随动",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-attack3-r3.png",
@@ -1314,7 +1346,7 @@
               "durationMs": 110,
               "previewOffsetY": 0,
               "phase": "低位持剑制动",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-attack3-r3.png",
@@ -1352,7 +1384,7 @@
               "durationMs": 110,
               "previewOffsetY": 0,
               "phase": "恢复斜向持剑",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-attack3-r3.png",
@@ -1381,9 +1413,25 @@
             }
           ],
           "notes": [
-            "R3八张独立关键姿态：请检查肩胯转动、武器轨迹与收招。",
-            "仅接入R3试玩预览，等待你审核；正式版保持原版本。尚需中间帧与边缘精修。"
-          ]
+            "本组关键姿态已由用户审核通过，无补充意见。",
+            "美术审批不等于补间完成；战斗接入与动画精修进度单独记录。"
+          ],
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "frameHashes": {
+              "frames/cloud/r3/attack3/01.webp": "296e4f41c874fa4bec9846486b52e683a83dfed1e8aa2d6c41b8a6d567099fc8",
+              "frames/cloud/r3/attack3/02.webp": "b431d634a083ad484a45f471068a3d5bc3d8fe3980a64856b116d675fdff702b",
+              "frames/cloud/r3/attack3/03.webp": "8970e9d6bbb2a8220e05a548f27b0344fb46ac6c9bda59647636645792405f3e",
+              "frames/cloud/r3/attack3/04.webp": "a89c26b4588fc2ea6ee270465637b3457b9aafd15a8693d3ca67df0ee799764a",
+              "frames/cloud/r3/attack3/05.webp": "558628f77862b9af4cfce9c26d84a86ec8dd65630452a5258948e969bb3c0ea7",
+              "frames/cloud/r3/attack3/06.webp": "11f6b30873e950e3e4f56d2aadc5dc3068fe531feab964be3db6da413bf05efa",
+              "frames/cloud/r3/attack3/07.webp": "ee0bb8dd8357fe0a50542799216d984b1a1b078feca3b59d8b798bc74113703d",
+              "frames/cloud/r3/attack3/08.webp": "b2033e5a7459df562dfcab5036afbe5ffe9245d4d81a2ba8202d06519c5e1770"
+            },
+            "source": "用户对话确认"
+          }
         },
         {
           "id": "launcher",
@@ -2016,7 +2064,7 @@
           "eventFrame": 4,
           "frameCount": 8,
           "revision": "motion-r3-20261107",
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/cloud/r3/skill/01.webp",
@@ -2029,7 +2077,7 @@
               "durationMs": 70,
               "previewOffsetY": 0,
               "phase": "低位收剑至髋后",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-skill-r3.png",
@@ -2067,7 +2115,7 @@
               "durationMs": 85,
               "previewOffsetY": 0,
               "phase": "背侧转体蓄势",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-skill-r3.png",
@@ -2105,7 +2153,7 @@
               "durationMs": 55,
               "previewOffsetY": 0,
               "phase": "后腿与剑保持蓄力",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-skill-r3.png",
@@ -2143,7 +2191,7 @@
               "durationMs": 35,
               "previewOffsetY": 0,
               "phase": "转向正面开始上斩",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-skill-r3.png",
@@ -2181,7 +2229,7 @@
               "durationMs": 35,
               "previewOffsetY": 0,
               "phase": "刀刃上扬掠过身前",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-skill-r3.png",
@@ -2219,7 +2267,7 @@
               "durationMs": 55,
               "previewOffsetY": 0,
               "phase": "随剑收至对侧肩上",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-skill-r3.png",
@@ -2257,7 +2305,7 @@
               "durationMs": 90,
               "previewOffsetY": 0,
               "phase": "高位制动",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-skill-r3.png",
@@ -2295,7 +2343,7 @@
               "durationMs": 95,
               "previewOffsetY": 0,
               "phase": "恢复斜向持剑",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-skill-r3.png",
@@ -2324,9 +2372,25 @@
             }
           ],
           "notes": [
-            "R3八张独立关键姿态：请检查肩胯转动、武器轨迹与收招。",
-            "仅接入R3试玩预览，等待你审核；正式版保持原版本。尚需中间帧与边缘精修。"
-          ]
+            "本组关键姿态已由用户审核通过，无补充意见。",
+            "美术审批不等于补间完成；战斗接入与动画精修进度单独记录。"
+          ],
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "frameHashes": {
+              "frames/cloud/r3/skill/01.webp": "e19ea9d10b03aa3a32b02ad478134be2c8365e348b4b2ba8de085f8b344a3c11",
+              "frames/cloud/r3/skill/02.webp": "d29b8f99cca995bb78138b8ad9935243fc737e8c6d8962497be3c7f0072c942a",
+              "frames/cloud/r3/skill/03.webp": "2615ee2776637a48da3fe70bf31f92bae565ceadddbca80a5d126bda83288aab",
+              "frames/cloud/r3/skill/04.webp": "9a9f1c3e6605221810a633441d4a30e81fd84c34655d2aaf07f339f5ed760931",
+              "frames/cloud/r3/skill/05.webp": "7d9d009fe4e6e56ef07f4225e63a41a2367f0fd531adc3f1110815c64e4edfd1",
+              "frames/cloud/r3/skill/06.webp": "657863e3264dfc04b3825d17c71956d9f15d8abf5d354030e9caa9cec768776f",
+              "frames/cloud/r3/skill/07.webp": "e7b66362826c2634ae14af0170f496290308911ae1f279308f4027984fe7463e",
+              "frames/cloud/r3/skill/08.webp": "d8248435f3a31e69697a858be54992dbddc056c693bb37a3e6e038cc2f909662"
+            },
+            "source": "用户对话确认"
+          }
         },
         {
           "id": "ultimate",
@@ -2339,7 +2403,7 @@
           "eventFrame": 4,
           "frameCount": 8,
           "revision": "motion-r3-20261107",
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/cloud/r3/ultimate/01.webp",
@@ -2352,7 +2416,7 @@
               "durationMs": 100,
               "previewOffsetY": 0,
               "phase": "剑置肩后高位",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-ultimate-r3.png",
@@ -2390,7 +2454,7 @@
               "durationMs": 110,
               "previewOffsetY": 0,
               "phase": "背侧加深蓄势",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-ultimate-r3.png",
@@ -2428,7 +2492,7 @@
               "durationMs": 45,
               "previewOffsetY": 0,
               "phase": "第一记斜下斩接触",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-ultimate-r3.png",
@@ -2466,7 +2530,7 @@
               "durationMs": 70,
               "previewOffsetY": 0,
               "phase": "向右低位随动",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-ultimate-r3.png",
@@ -2504,7 +2568,7 @@
               "durationMs": 45,
               "previewOffsetY": 0,
               "phase": "低位蓄力准备反斩",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-ultimate-r3.png",
@@ -2542,7 +2606,7 @@
               "durationMs": 85,
               "previewOffsetY": 0,
               "phase": "剑身上扬至对侧肩上",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-ultimate-r3.png",
@@ -2580,7 +2644,7 @@
               "durationMs": 110,
               "previewOffsetY": 0,
               "phase": "背侧高位随动",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-ultimate-r3.png",
@@ -2618,7 +2682,7 @@
               "durationMs": 120,
               "previewOffsetY": 0,
               "phase": "回到持剑架势",
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/cloud-ultimate-r3.png",
@@ -2647,9 +2711,25 @@
             }
           ],
           "notes": [
-            "R3八张独立关键姿态：请检查肩胯转动、武器轨迹与收招。",
-            "仅接入R3试玩预览，等待你审核；正式版保持原版本。尚需中间帧与边缘精修。"
-          ]
+            "本组关键姿态已由用户审核通过，无补充意见。",
+            "美术审批不等于补间完成；战斗接入与动画精修进度单独记录。"
+          ],
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "frameHashes": {
+              "frames/cloud/r3/ultimate/01.webp": "f291f5bdd4f92b5e184abd4acb885e9420d847e3f97e155f32dffd7555208f40",
+              "frames/cloud/r3/ultimate/02.webp": "05f864cfc516e10f5dc7ff6c3023c8bb68ce91a30603897c16e867442455a814",
+              "frames/cloud/r3/ultimate/03.webp": "5a63e63927c696fd15c78853ff30ea45a1da5287d74b01afc007e2c374684463",
+              "frames/cloud/r3/ultimate/04.webp": "3669d38c04ce921db9456fe22deeabcc6d7d305609e05cfc6c684440d74fadf4",
+              "frames/cloud/r3/ultimate/05.webp": "3fe63214d0aa22361c3d5db7d45e3061249efd7a10d226a62c3f556705ecbb91",
+              "frames/cloud/r3/ultimate/06.webp": "c252a5b065cb5616868b6cbab2d815fe674e6439984e7ac6f64ae27a1d761d54",
+              "frames/cloud/r3/ultimate/07.webp": "0628753f0ade62ab6a1b3ec3de8f7cabbaa8be8db858307487ba187340c67f34",
+              "frames/cloud/r3/ultimate/08.webp": "a380d44caee7d630f1061f214e9bddf61be4694880f599d851427073ee085f9c"
+            },
+            "source": "用户对话确认"
+          }
         }
       ],
       "atlases": [
@@ -2713,7 +2793,7 @@
       },
       "animationReview": {
         "overview": "atlases/cloud-contact-r3.webp",
-        "status": "partially-approved",
+        "status": "approved",
         "notes": [
           "R3核心攻击动作；其他动作沿用上一版本。"
         ]
@@ -17601,7 +17681,7 @@
           "id": "guard",
           "label": "防御",
           "frameCount": 4,
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/zenitsu/guard/01.webp",
@@ -17613,7 +17693,7 @@
               ],
               "durationMs": 67,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/zenitsu-reaction-guard-r2.png",
@@ -17650,7 +17730,7 @@
               ],
               "durationMs": 200,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/zenitsu-reaction-guard-r2.png",
@@ -17687,7 +17767,7 @@
               ],
               "durationMs": 100,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/zenitsu-reaction-guard-r2.png",
@@ -17724,7 +17804,7 @@
               ],
               "durationMs": 100,
               "previewOffsetY": 0,
-              "status": "draft",
+              "status": "approved",
               "notes": [],
               "source": {
                 "atlas": "atlases/zenitsu-reaction-guard-r2.png",
@@ -17753,8 +17833,21 @@
             }
           ],
           "notes": [
-            "4 张独立绘制关键姿态，待你审核；尚未补齐中间帧或接入正式战斗。"
-          ]
+            "本组关键姿态已由用户审核通过，无补充意见。",
+            "美术审批不等于补间完成；战斗接入与动画精修进度单独记录。"
+          ],
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "frameHashes": {
+              "frames/zenitsu/guard/01.webp": "6ddcf05fa36895d0ccb576fe0d5b59ec540731029b7591d5e2a9f8cd455b09ed",
+              "frames/zenitsu/guard/02.webp": "20cac888f7c29ed48d4087738a0984dda09030a767f4af8ba730f748ebf92bae",
+              "frames/zenitsu/guard/03.webp": "f31e501d4efb12d6633f4aec21dbdab465d2b6753d6ea7b0b4a3e67f76510204",
+              "frames/zenitsu/guard/04.webp": "1268dc5a1313916bec9af17847a4528b7174526aa18f324ce46c9e0b638ce3d3"
+            },
+            "source": "用户对话确认"
+          }
         },
         {
           "id": "dash",
@@ -18640,7 +18733,7 @@
       },
       "animationReview": {
         "overview": "atlases/zenitsu-contact-r3.webp",
-        "status": "partially-approved",
+        "status": "approved",
         "notes": [
           "R3核心攻击动作；其他动作沿用上一版本。"
         ]
@@ -18665,8 +18758,8 @@
   "revision": "motion-r3-20261107",
   "approvalSummary": {
     "date": "2026-11-07",
-    "approvedClips": 72,
-    "pendingClips": 6,
+    "approvedClips": 78,
+    "pendingClips": 0,
     "approvedDesigns": 6
   }
 }
