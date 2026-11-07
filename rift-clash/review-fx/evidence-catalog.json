@@ -1,0 +1,82 @@
+{
+  "cloud-combat": {
+    "url": "https://blog.playstation.com/2019/11/25/new-final-fantasy-vii-remake-screens-feature-cloud-combat-and-more/",
+    "kind": "official-static-image-viewed",
+    "localResearchOnly": "../references/cloud-psblog-03.jpg",
+    "observed": "蓝白宽弧、青绿亮核、橙白撞击火星；单幅静图不能证明精确时序。"
+  },
+  "cloud-horizontal": {
+    "url": "https://www.jp.square-enix.com/ffvii_remake/character/index.html",
+    "mediaUrl": "https://www.jp.square-enix.com/ffvii_remake/character/_img/cloud/pic02_l.jpg?191126",
+    "kind": "prior-inspected-official-static",
+    "localResearchOnly": "../references/cloud-remake-official-scene-large-02.jpg",
+    "observed": "前轮已检查的紫蓝横向剑弧，本轮不把它升级成视频证据。"
+  },
+  "lara-arsenal": {
+    "url": "https://www.tombraider.com/news/community/tomb-raider-franchise-feature-the-arsenal",
+    "kind": "official-text-read",
+    "observed": "经典双枪与重启弓箭来自不同世代；本原型主动组合，不是某一代原作完整技能套件。"
+  },
+  "lara-trailer": {
+    "url": "https://store.steampowered.com/app/2478970/",
+    "kind": "official-trailer-sampled-frames-viewed",
+    "range": "39.25–40.625s",
+    "localResearchOnly": "../motion-study/lara-guns-detail.jpg",
+    "observed": "双枪向前与侧向移动关系；缩略采样不能精确判定每次枪火形状、颜色和寿命。"
+  },
+  "wukong-trailer": {
+    "url": "https://store.steampowered.com/app/2358720/",
+    "kind": "official-trailer-sampled-frames-viewed",
+    "range": "43.0–45.875s",
+    "localResearchOnly": "../motion-study/wukong-staff-detail.jpg",
+    "observed": "43秒段金色碎屑、细丝与头部金色定字，45.25秒后橙金棍轨、撞击火星；不是本原型完整必杀八帧。"
+  },
+  "drake-trailer": {
+    "url": "https://store.steampowered.com/app/1659420/",
+    "kind": "official-trailer-new-sampled-frames-viewed",
+    "range": "42.0–43.375s, 8 fps samples",
+    "localResearchOnly": "research-local/drake-franchise-explosion-42s.jpg",
+    "observed": "Chloe荡绳下方爆炸：强白热核心、黄边、细碎片、后段橙火。仅同系列爆炸美术依据，不是Nathan手雷动作证据；未完整看到烟散尾段。"
+  },
+  "drake-combat-text": {
+    "url": "https://blog.playstation.com/?p=164968",
+    "kind": "official-text-read",
+    "observed": "官方文章确认枪战、手雷与掩体战身份；不提供逐帧枪焰或拳击效果证据。"
+  },
+  "tanjiro-official": {
+    "url": "https://asia.sega.com/kimetsu_hinokami/en/character/",
+    "kind": "official-static-image-and-text-viewed",
+    "localResearchOnly": "../references/tanjiro-sega-hinokami-official.png",
+    "observed": "深蓝轮廓、青蓝条带、水浪白泡沫；官网正文确认Water Breathing。单图不能证实水车和水龙的完整时序。"
+  },
+  "zenitsu-official": {
+    "url": "https://asia.sega.com/kimetsu_hinokami/en/character/",
+    "kind": "official-static-image-and-text-viewed",
+    "localResearchOnly": "../references/zenitsu-sega-hinokami-official.png",
+    "observed": "青白电芯与青蓝枝杈，官网正文确认Thunder Breathing。金黄外辉为本原型强化选择，不谎称该官方图就是纯黄雷。"
+  },
+  "tanjiro-video-unviewed": {
+    "url": "https://www.youtube.com/watch?v=B-NFjj595bg",
+    "officialIndex": "https://asia.sega.com/kimetsu_hinokami/en/movie/",
+    "kind": "unviewed-video",
+    "reason": "前轮经代理取得403，未取得解码画面；本轮未重试或声称看过。"
+  },
+  "zenitsu-video-unviewed": {
+    "url": "https://www.youtube.com/watch?v=QACQyVdOz34",
+    "officialIndex": "https://asia.sega.com/kimetsu_hinokami/en/movie/",
+    "kind": "unviewed-video",
+    "reason": "前轮经代理取得403，未取得解码画面；本轮未重试或声称看过。"
+  },
+  "kimetsu-episode-17-stills": {
+    "url": "https://kimetsu.com/anime/risshihen/story/?story=17",
+    "kind": "official-episode-stills-viewed-excluded-from-fx-evidence",
+    "localResearchOnly": "research-local/kimetsu-ep17-01.jpg through 04.jpg",
+    "observed": "实际查看该集公开的4张场面图，主要是人物表情/剧情场景，没有所需水龙、六连雷轨效果，因此不作为这些技能FX的视觉证据。"
+  },
+  "kimetsu-episode-19-stills": {
+    "url": "https://kimetsu.com/anime/risshihen/story/?story=19",
+    "kind": "official-episode-stills-viewed-excluded-from-fx-evidence",
+    "localResearchOnly": "research-local/kimetsu-ep19-01.jpg through 04.jpg",
+    "observed": "实际查看该集公开的4张场面图，主要是人物表情/剧情场景，没有所需水龙、六连雷轨效果，因此不作为这些技能FX的视觉证据。"
+  }
+}

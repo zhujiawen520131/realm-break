@@ -1,0 +1,99 @@
+{
+  "browser": "Chromium + Playwright",
+  "reviewClipsChecked": 18,
+  "framesReady": 144,
+  "runtimeClips": [
+    {
+      "hero": "cloud",
+      "clip": "basic",
+      "ready": true
+    },
+    {
+      "hero": "cloud",
+      "clip": "skill",
+      "ready": true
+    },
+    {
+      "hero": "cloud",
+      "clip": "ultimate",
+      "ready": true
+    },
+    {
+      "hero": "lara",
+      "clip": "basic",
+      "ready": true
+    },
+    {
+      "hero": "lara",
+      "clip": "skill",
+      "ready": true
+    },
+    {
+      "hero": "lara",
+      "clip": "ultimate",
+      "ready": true
+    },
+    {
+      "hero": "wukong",
+      "clip": "basic",
+      "ready": true
+    },
+    {
+      "hero": "wukong",
+      "clip": "skill",
+      "ready": true
+    },
+    {
+      "hero": "wukong",
+      "clip": "ultimate",
+      "ready": true
+    },
+    {
+      "hero": "drake",
+      "clip": "basic",
+      "ready": true
+    },
+    {
+      "hero": "drake",
+      "clip": "skill",
+      "ready": true
+    },
+    {
+      "hero": "drake",
+      "clip": "ultimate",
+      "ready": true
+    },
+    {
+      "hero": "tanjiro",
+      "clip": "basic",
+      "ready": true
+    },
+    {
+      "hero": "tanjiro",
+      "clip": "skill",
+      "ready": true
+    },
+    {
+      "hero": "tanjiro",
+      "clip": "ultimate",
+      "ready": true
+    },
+    {
+      "hero": "zenitsu",
+      "clip": "basic",
+      "ready": true
+    },
+    {
+      "hero": "zenitsu",
+      "clip": "skill",
+      "ready": true
+    },
+    {
+      "hero": "zenitsu",
+      "clip": "ultimate",
+      "ready": true
+    }
+  ],
+  "errors": [],
+  "failed": []
+}

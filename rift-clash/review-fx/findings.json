@@ -1,0 +1,448 @@
+{
+  "date": "2026-11-07",
+  "scope": "Independent FX choreography, extraction and runtime review; not user approval",
+  "characters": {
+    "cloud": {
+      "basic": {
+        "status": "PASS_DRAFT_VISUAL",
+        "sourceSha256": "0889eef10b8f98e6ecf7dff82f1215b675a356c46c9be0baf70140d2ac155f5f",
+        "findings": [
+          "细青色引光逐渐扩为蓝白宽刀弧，第5姿态带少量橙白火星，后半破碎并消散。",
+          "分层笔触可辨，不是只把几何弧线重复缩放。"
+        ],
+        "limitations": [
+          "需运行时使接触峰值与真实命中同步，不能hitstop冻结初始暗点。"
+        ],
+        "suggestedReleaseFrame": 4,
+        "geometry": {
+          "file": "cloud-basic-r4.png",
+          "sha256": "0889eef10b8f98e6ecf7dff82f1215b675a356c46c9be0baf70140d2ac155f5f",
+          "dimensions": [
+            1774,
+            887
+          ],
+          "clearFraction": 0.9077480175248389,
+          "occupiedFraction": 0.07370079400688131,
+          "outerTwoPixelCount": 0
+        }
+      },
+      "skill": {
+        "status": "PASS_DRAFT_VISUAL",
+        "sourceSha256": "f85b15db14aa445d964f1e234048cea04d1c5abfab0ed1a1174de813cdad4678",
+        "findings": [
+          "薄弧版被退回后强化：多层蓝青笔触、开口新月和破碎后缘清晰，后半由宽波碎成残片。"
+        ],
+        "limitations": [
+          "飞行循环采用峰值邻帧，末尾消散由实际投射物生命周期控制。"
+        ],
+        "suggestedReleaseFrame": 4,
+        "geometry": {
+          "file": "cloud-skill-r4.png",
+          "sha256": "f85b15db14aa445d964f1e234048cea04d1c5abfab0ed1a1174de813cdad4678",
+          "dimensions": [
+            1774,
+            887
+          ],
+          "clearFraction": 0.9563118272326439,
+          "occupiedFraction": 0.03888371300851966,
+          "outerTwoPixelCount": 0
+        }
+      },
+      "ultimate": {
+        "status": "PASS_DRAFT_VISUAL",
+        "sourceSha256": "58e34b1cbf6ce1f71e33c8a63f0c714c11277bca8675813fb8070118d6f44191",
+        "findings": [
+          "细X星芒版被退回；新版两条宽剑带交叉并产生小范围橙白碰撞碎光，随后分裂消散。"
+        ],
+        "limitations": [
+          "十字图像并不增加伤害次数，仍按当前引擎单次命中。"
+        ],
+        "suggestedReleaseFrame": 4,
+        "geometry": {
+          "file": "cloud-ultimate-r4.png",
+          "sha256": "58e34b1cbf6ce1f71e33c8a63f0c714c11277bca8675813fb8070118d6f44191",
+          "dimensions": [
+            1774,
+            887
+          ],
+          "clearFraction": 0.8909635483858668,
+          "occupiedFraction": 0.08991711671405457,
+          "outerTwoPixelCount": 0
+        }
+      }
+    },
+    "lara": {
+      "basic": {
+        "status": "PASS_DRAFT_VISUAL",
+        "sourceSha256": "b81808242abac93957c26c8ac8225ffc4675f6e899019d278cfddbb435cd8ef9",
+        "findings": [
+          "固定枪口点→橙白火舌→前向火星→灰烟消散，峰值实际第4帧。"
+        ],
+        "limitations": [
+          "需从index3开始击发，避免默认index4只显示回落火光。"
+        ],
+        "suggestedReleaseFrame": 3,
+        "geometry": {
+          "file": "lara-basic-r4.png",
+          "sha256": "b81808242abac93957c26c8ac8225ffc4675f6e899019d278cfddbb435cd8ef9",
+          "dimensions": [
+            1774,
+            887
+          ],
+          "clearFraction": 0.9512550697854135,
+          "occupiedFraction": 0.03224389878096366,
+          "outerTwoPixelCount": 0
+        }
+      },
+      "skill": {
+        "status": "PASS_DRAFT_VISUAL",
+        "sourceSha256": "0f2fd5563096c3c051d15f307e80ac792f86bf83e077522e0c811399b88472b5",
+        "findings": [
+          "最终C稿提高亮白羽状风压纹理；前4帧为飞行箭迹，后4帧为接触碎屑，阶段明确分开。"
+        ],
+        "limitations": [
+          "碎屑未按目标材质细分；最窄14源像素透明边距，未见有效边缘截断。飞行只用0–3，真实未格挡命中才用4–7。"
+        ],
+        "suggestedReleaseFrame": 4,
+        "geometry": {
+          "file": "lara-skill-r4.png",
+          "sha256": "0f2fd5563096c3c051d15f307e80ac792f86bf83e077522e0c811399b88472b5",
+          "dimensions": [
+            1774,
+            887
+          ],
+          "clearFraction": 0.9414758334403109,
+          "occupiedFraction": 0.04791114037284133,
+          "outerTwoPixelCount": 0
+        }
+      },
+      "ultimate": {
+        "status": "PASS_DRAFT_VISUAL",
+        "sourceSha256": "d301e782025da3ddccbf532dcb7f29b1a0f0c6bcd059d19e0ee12d49669b7881",
+        "findings": [
+          "橙色层叠火舌比普攻更饱满；固定枪口到灰烟散去完整，峰值实际第4帧。"
+        ],
+        "limitations": [
+          "图集是单次枪口脉冲，运行时按六发真实子弹各自触发，不是一次图集自带六次判定。"
+        ],
+        "suggestedReleaseFrame": 3,
+        "geometry": {
+          "file": "lara-ultimate-r4.png",
+          "sha256": "d301e782025da3ddccbf532dcb7f29b1a0f0c6bcd059d19e0ee12d49669b7881",
+          "dimensions": [
+            1774,
+            887
+          ],
+          "clearFraction": 0.955990894404838,
+          "occupiedFraction": 0.03356194766189313,
+          "outerTwoPixelCount": 0
+        }
+      }
+    },
+    "wukong": {
+      "basic": {
+        "status": "PASS_DRAFT_VISUAL",
+        "sourceSha256": "da46ac4a505d8ba355202560735757f7b65deb2d47cb7cd78af67db4500849a7",
+        "findings": [
+          "金色窄引光→宽棍弧→接触火星→余烬，材质与Cloud蓝白剑光明确区分。"
+        ],
+        "limitations": [
+          "须按实际挥棍方向标定旋转和接触时刻。"
+        ],
+        "suggestedReleaseFrame": 4,
+        "geometry": {
+          "file": "wukong-basic-r4.png",
+          "sha256": "da46ac4a505d8ba355202560735757f7b65deb2d47cb7cd78af67db4500849a7",
+          "dimensions": [
+            1774,
+            887
+          ],
+          "clearFraction": 0.9488445782688438,
+          "occupiedFraction": 0.033860002109895024,
+          "outerTwoPixelCount": 0
+        }
+      },
+      "skill": {
+        "status": "PASS_DRAFT_VISUAL",
+        "sourceSha256": "024c74040706da6eafa20f4f49e81c2ea7823f66ce697ab8cf0eadc5bfa9fca4",
+        "findings": [
+          "金墨片与碎光围出空心束缚轮廓，亮点由稀到密再拆散，不是大面积球状雾底。"
+        ],
+        "limitations": [
+          "源图无文字；运行时在真实未格挡命中点另叠金色“定”字并随效果淡出，不声称复刻原作字形。"
+        ],
+        "suggestedReleaseFrame": 4,
+        "geometry": {
+          "file": "wukong-skill-r4.png",
+          "sha256": "024c74040706da6eafa20f4f49e81c2ea7823f66ce697ab8cf0eadc5bfa9fca4",
+          "dimensions": [
+            1774,
+            887
+          ],
+          "clearFraction": 0.9352541851547278,
+          "occupiedFraction": 0.047250844911276374,
+          "outerTwoPixelCount": 0
+        }
+      },
+      "ultimate": {
+        "status": "PASS_DRAFT_VISUAL",
+        "sourceSha256": "b4042b0cc9ac6f74bc2a75ab7bbfd4c3cdfa177439d4ea6ff8012d8b030aae1e",
+        "findings": [
+          "金墨下冲弧、冲击碎片和烟丝有独立阶段；实机在命中目标旁呈现重棍冲击余波。"
+        ],
+        "limitations": [
+          "向下余波与R3动作前送棍不同，已明确为强化改编；无需把它称为棍尖实时描线。"
+        ],
+        "suggestedReleaseFrame": 4,
+        "geometry": {
+          "file": "wukong-ultimate-r4.png",
+          "sha256": "b4042b0cc9ac6f74bc2a75ab7bbfd4c3cdfa177439d4ea6ff8012d8b030aae1e",
+          "dimensions": [
+            1774,
+            887
+          ],
+          "clearFraction": 0.8645599915604198,
+          "occupiedFraction": 0.10975584955685849,
+          "outerTwoPixelCount": 0
+        }
+      }
+    },
+    "drake": {
+      "basic": {
+        "status": "PASS_DRAFT_VISUAL",
+        "sourceSha256": "878c4707f4e696685062388b8354b140da2d9b4c9a288ec319dfa62e3eae1f42",
+        "findings": [
+          "粉白短撞击纹、细碎尘粒从接触点向外散开，非魔法能量球。"
+        ],
+        "limitations": [
+          "相对法术类更克制；仅真实近身hit时替换旧反馈，不用于手雷或步枪命中。"
+        ],
+        "suggestedReleaseFrame": 3,
+        "geometry": {
+          "file": "drake-basic-r4.png",
+          "sha256": "878c4707f4e696685062388b8354b140da2d9b4c9a288ec319dfa62e3eae1f42",
+          "dimensions": [
+            1774,
+            887
+          ],
+          "clearFraction": 0.9902633428617549,
+          "occupiedFraction": 0.00784474223056577,
+          "outerTwoPixelCount": 0
+        }
+      },
+      "skill": {
+        "status": "PASS_DRAFT_VISUAL",
+        "sourceSha256": "524484c9193c786d6f1868af5538efdd8c4e6c211ca5031d3febf0248d3c356e",
+        "findings": [
+          "地面火星萌发、橙焰扩张、灰烟翻涌，再拆散成火种和烟丝，爆心稳定。"
+        ],
+        "limitations": [
+          "峰值为index3而非余烟index4；局部遮挡需要受尺寸上限约束。"
+        ],
+        "suggestedReleaseFrame": 3,
+        "geometry": {
+          "file": "drake-skill-r4.png",
+          "sha256": "524484c9193c786d6f1868af5538efdd8c4e6c211ca5031d3febf0248d3c356e",
+          "dimensions": [
+            1774,
+            887
+          ],
+          "clearFraction": 0.9479688447307913,
+          "occupiedFraction": 0.04452259811965138,
+          "outerTwoPixelCount": 0
+        }
+      },
+      "ultimate": {
+        "status": "PASS_DRAFT_VISUAL",
+        "sourceSha256": "d6a22776d86df36ee82f0f99a8a04eeafc811469ece7edb69f304a90fa5b300b",
+        "findings": [
+          "有纹理的步枪枪口火舌与细曳光，第4帧峰值后逐步烟散，方向一致。",
+          "R4实机枪管与枪火/真实子弹原点已独立校准，左右朝向复核通过。"
+        ],
+        "limitations": [
+          "最窄透明边距约13源像素，未见实际截断；末端低alpha噪点不能当有效图像。图内曳光是视觉强化，不增加弹体。"
+        ],
+        "suggestedReleaseFrame": 3,
+        "geometry": {
+          "file": "drake-ultimate-r4.png",
+          "sha256": "d6a22776d86df36ee82f0f99a8a04eeafc811469ece7edb69f304a90fa5b300b",
+          "dimensions": [
+            1774,
+            887
+          ],
+          "clearFraction": 0.9060874284573999,
+          "occupiedFraction": 0.06556371692326464,
+          "outerTwoPixelCount": 0
+        }
+      }
+    },
+    "tanjiro": {
+      "basic": {
+        "status": "PASS_DRAFT_VISUAL",
+        "sourceSha256": "5af97f1b8df623caea375b577b33f2f22bdbe3133b56cc4baa9175b55321a795",
+        "findings": [
+          "深蓝描边、青蓝水带与白泡沫卷浪清晰，由水滴形成弧带再分裂消散。"
+        ],
+        "limitations": [
+          "8张关键姿态不是连续原作视频逐帧拷贝。"
+        ],
+        "suggestedReleaseFrame": 4,
+        "geometry": {
+          "file": "tanjiro-basic-r4.png",
+          "sha256": "5af97f1b8df623caea375b577b33f2f22bdbe3133b56cc4baa9175b55321a795",
+          "dimensions": [
+            1774,
+            887
+          ],
+          "clearFraction": 0.8974241486382916,
+          "occupiedFraction": 0.0963681843082277,
+          "outerTwoPixelCount": 0
+        }
+      },
+      "skill": {
+        "status": "PASS_DRAFT_VISUAL",
+        "sourceSha256": "882e29793b7ad01449761ef8c0afd0261670f58fdf655a907a11d484355e655f",
+        "findings": [
+          "水纹从左侧生成空心环，闭合到水车后破开为散浪与水滴；中心保持透明供角色翻转。"
+        ],
+        "limitations": [
+          "环心须跟随施法者局部跃起，不能重新固定在敌人前方。"
+        ],
+        "suggestedReleaseFrame": 4,
+        "geometry": {
+          "file": "tanjiro-skill-r4.png",
+          "sha256": "882e29793b7ad01449761ef8c0afd0261670f58fdf655a907a11d484355e655f",
+          "dimensions": [
+            1774,
+            887
+          ],
+          "clearFraction": 0.8567985012119186,
+          "occupiedFraction": 0.13294054544599496,
+          "outerTwoPixelCount": 0
+        }
+      },
+      "ultimate": {
+        "status": "PASS_DRAFT_VISUAL",
+        "sourceSha256": "e96495e7bc5f53886e7707529cfc230d5b54f7d19f6ab4cb32c1e1d2cd010336",
+        "findings": [
+          "水带卷成龙身，泡沫形成龙首和龙角，龙口打开冲击后解体；末帧非完整龙重复缩小。"
+        ],
+        "limitations": [
+          "水龙为官方风格基础上的原创关键姿态；四次判定的循环须校准，避免消散后突然重亮。"
+        ],
+        "suggestedReleaseFrame": 4,
+        "geometry": {
+          "file": "tanjiro-ultimate-r4.png",
+          "sha256": "e96495e7bc5f53886e7707529cfc230d5b54f7d19f6ab4cb32c1e1d2cd010336",
+          "dimensions": [
+            1774,
+            887
+          ],
+          "clearFraction": 0.7957011524348315,
+          "occupiedFraction": 0.18322150466019888,
+          "outerTwoPixelCount": 0
+        }
+      }
+    },
+    "zenitsu": {
+      "basic": {
+        "status": "PASS_DRAFT_VISUAL",
+        "sourceSha256": "62d483ed6e1750b972c4ad57ac6947a59e77243fc27bc8de047988ced2efd511",
+        "findings": [
+          "青白电芯、青蓝枝杈、金色外辉，电带增长后分叉断裂消散。"
+        ],
+        "limitations": [
+          "高亮部分仍需实机控制尺寸/不透明度，不能遮住持刀动作。"
+        ],
+        "suggestedReleaseFrame": 4,
+        "geometry": {
+          "file": "zenitsu-basic-r4.png",
+          "sha256": "62d483ed6e1750b972c4ad57ac6947a59e77243fc27bc8de047988ced2efd511",
+          "dimensions": [
+            1774,
+            887
+          ],
+          "clearFraction": 0.913250903378247,
+          "occupiedFraction": 0.06732662318927156,
+          "outerTwoPixelCount": 0
+        }
+      },
+      "skill": {
+        "status": "PASS_DRAFT_VISUAL",
+        "sourceSha256": "09c5b73b1f353cea626e7da54b90c83238f1419a47ea055b2ded4e23a56146a1",
+        "findings": [
+          "青白主电带沿右方向加速，前端金色爆点，尾端分枝拉长后裂解为余电。"
+        ],
+        "limitations": [
+          "属于冲刺速度轨迹，不应被当作远程弹体或产生额外伤害。"
+        ],
+        "suggestedReleaseFrame": 4,
+        "geometry": {
+          "file": "zenitsu-skill-r4.png",
+          "sha256": "09c5b73b1f353cea626e7da54b90c83238f1419a47ea055b2ded4e23a56146a1",
+          "dimensions": [
+            1774,
+            887
+          ],
+          "clearFraction": 0.8946221826228538,
+          "occupiedFraction": 0.08284960388627412,
+          "outerTwoPixelCount": 0
+        }
+      },
+      "ultimate": {
+        "status": "PASS_DRAFT_VISUAL",
+        "sourceSha256": "11159b7b97073591e144c67e189c4618c50e470fca930efc398d183071d2a699",
+        "findings": [
+          "固定左端点火星，多道青白/青蓝雷枝向右汇聚，中央留空，第5帧前端金光后拆散。"
+        ],
+        "limitations": [
+          "运行时六次命中各触发一个脉冲；需要把长雷轨主要放在身后，避免前端超出实际刀口太远。"
+        ],
+        "suggestedReleaseFrame": 4,
+        "geometry": {
+          "file": "zenitsu-ultimate-r4.png",
+          "sha256": "11159b7b97073591e144c67e189c4618c50e470fca930efc398d183071d2a699",
+          "dimensions": [
+            1774,
+            887
+          ],
+          "clearFraction": 0.9094924939848926,
+          "occupiedFraction": 0.06994683318737774,
+          "outerTwoPixelCount": 0
+        }
+      }
+    }
+  },
+  "runtime": {
+    "status": "PASS_DRAFT_BROWSER_AND_RUNTIME",
+    "unitChecks": 19,
+    "browserErrors": [],
+    "observed": [
+      "浏览器实拍确认水车环保持空心、跟随人物；水龙、蓝剑光、金棍弧存在分层绘制纹理。",
+      "善逸U/O锚点改到源格[360,222]后，雷轨主要在施法者身后，前端不再提前触及未进入判定范围的敌人。",
+      "重棍命中旧白星缩小/减亮后，金墨余波与目标动作均可见。",
+      "劳拉地面左/右枪火、空中斜向枪火均位于已校准枪口且与实际弹道同向。",
+      "劳拉C稿箭迹亮度改善，飞行0–3与真实命中4–7分离；命中目标生命下降18。",
+      "定身金墨纹理中的“定”字由运行时单独叠加，源图无文字；只在未格挡的实际命中出现。",
+      "Drake O实际子弹与纹理枪火共用已校准枪管原点，左右朝向实拍均贴合枪管；R4独立校准未改动已发布R3。",
+      "Cloud必杀起手实拍保留角色蓄力动作，旧四重charge圆环不再叠加。"
+    ],
+    "mustFix": [],
+    "resolvedIssues": [
+      "Cloud技能和必杀最初过细、几何感强，退回改成分层宽笔触。",
+      "部分初稿灰雾与边界粘连，重做为安全透明边缘。",
+      "善逸雷轨前端超出真实刀口太多，已重新标定。",
+      "Lara箭迹过暗已换C稿；飞行不得提前播放接触碎屑。",
+      "hitstop初始微亮帧问题已分开蓄力与释放，从峰值冻结。",
+      "旧白色星爆遮挡手绘效果，已仅在R4加载成功时减弱。",
+      "Drake必杀默认枪口偏下约59世界像素，已用源帧枪管[464,228]校准真实子弹与枪火，左右实拍复核通过。",
+      "R4成功加载必杀图集后抑制旧charge圆环，回退版本保持原表现。"
+    ],
+    "evidence": [
+      "audit-previews/browser-partial.json",
+      "audit-previews/browser-final.json"
+    ],
+    "calibrationChecks": 6,
+    "browserSceneCount": 14
+  }
+}

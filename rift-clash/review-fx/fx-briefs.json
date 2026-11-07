@@ -1,0 +1,1034 @@
+{
+  "schemaVersion": 1,
+  "revision": "fx-r4-20261107",
+  "status": "reference-and-authoring-brief-not-user-approved",
+  "scope": {
+    "heroes": 6,
+    "clipsPerHero": 3,
+    "clips": 18,
+    "framesPerClip": 8,
+    "keyframes": 144
+  },
+  "globalRules": [
+    "参考原作可识别的形状和颜色，但本稿全部是新制作的特效，不是原作提取素材。",
+    "透明背景、4列2行8张独立图、全特效留在单格内，边缘保留透明留白，不画人物、武器实体、地面板或场景。",
+    "以锐核、形态层次、切向碎屑和快慢节奏制造冲击，不靠持续满屏白光。",
+    "命中闪光只响应真实命中；空挥只表现刀路或枪口释放。",
+    "枪火、箭迹与实际枪口/箭位一致；瞬移与雷轨仍尊重操控方向。",
+    "命中停顿与必杀海报期间暂停特效生命周期，不能让特效先消失。",
+    "推荐峰值占屏面积：普通攻击不超过约15%，技能约25%，必杀主FX约40%；这些是本项目设计目标，不是原作参数。",
+    "适配减少动态/关闭重击闪光选项；性能优先采用图集重用和短寿命实例，控制叠加层数。",
+    "八张是独立生命周期关键帧，实际每击时序需战斗时钟校准；禁止只缩放同一张图冒充8帧。"
+  ],
+  "sources": {
+    "cloud-combat": {
+      "url": "https://blog.playstation.com/2019/11/25/new-final-fantasy-vii-remake-screens-feature-cloud-combat-and-more/",
+      "kind": "official-static-image-viewed",
+      "localResearchOnly": "../references/cloud-psblog-03.jpg",
+      "observed": "蓝白宽弧、青绿亮核、橙白撞击火星；单幅静图不能证明精确时序。"
+    },
+    "cloud-horizontal": {
+      "url": "https://www.jp.square-enix.com/ffvii_remake/character/index.html",
+      "mediaUrl": "https://www.jp.square-enix.com/ffvii_remake/character/_img/cloud/pic02_l.jpg?191126",
+      "kind": "prior-inspected-official-static",
+      "localResearchOnly": "../references/cloud-remake-official-scene-large-02.jpg",
+      "observed": "前轮已检查的紫蓝横向剑弧，本轮不把它升级成视频证据。"
+    },
+    "lara-arsenal": {
+      "url": "https://www.tombraider.com/news/community/tomb-raider-franchise-feature-the-arsenal",
+      "kind": "official-text-read",
+      "observed": "经典双枪与重启弓箭来自不同世代；本原型主动组合，不是某一代原作完整技能套件。"
+    },
+    "lara-trailer": {
+      "url": "https://store.steampowered.com/app/2478970/",
+      "kind": "official-trailer-sampled-frames-viewed",
+      "range": "39.25–40.625s",
+      "localResearchOnly": "../motion-study/lara-guns-detail.jpg",
+      "observed": "双枪向前与侧向移动关系；缩略采样不能精确判定每次枪火形状、颜色和寿命。"
+    },
+    "wukong-trailer": {
+      "url": "https://store.steampowered.com/app/2358720/",
+      "kind": "official-trailer-sampled-frames-viewed",
+      "range": "43.0–45.875s",
+      "localResearchOnly": "../motion-study/wukong-staff-detail.jpg",
+      "observed": "43秒段金色碎屑、细丝与头部金色定字，45.25秒后橙金棍轨、撞击火星；不是本原型完整必杀八帧。"
+    },
+    "drake-trailer": {
+      "url": "https://store.steampowered.com/app/1659420/",
+      "kind": "official-trailer-new-sampled-frames-viewed",
+      "range": "42.0–43.375s, 8 fps samples",
+      "localResearchOnly": "research-local/drake-franchise-explosion-42s.jpg",
+      "observed": "Chloe荡绳下方爆炸：强白热核心、黄边、细碎片、后段橙火。仅同系列爆炸美术依据，不是Nathan手雷动作证据；未完整看到烟散尾段。"
+    },
+    "drake-combat-text": {
+      "url": "https://blog.playstation.com/?p=164968",
+      "kind": "official-text-read",
+      "observed": "官方文章确认枪战、手雷与掩体战身份；不提供逐帧枪焰或拳击效果证据。"
+    },
+    "tanjiro-official": {
+      "url": "https://asia.sega.com/kimetsu_hinokami/en/character/",
+      "kind": "official-static-image-and-text-viewed",
+      "localResearchOnly": "../references/tanjiro-sega-hinokami-official.png",
+      "observed": "深蓝轮廓、青蓝条带、水浪白泡沫；官网正文确认Water Breathing。单图不能证实水车和水龙的完整时序。"
+    },
+    "zenitsu-official": {
+      "url": "https://asia.sega.com/kimetsu_hinokami/en/character/",
+      "kind": "official-static-image-and-text-viewed",
+      "localResearchOnly": "../references/zenitsu-sega-hinokami-official.png",
+      "observed": "青白电芯与青蓝枝杈，官网正文确认Thunder Breathing。金黄外辉为本原型强化选择，不谎称该官方图就是纯黄雷。"
+    },
+    "tanjiro-video-unviewed": {
+      "url": "https://www.youtube.com/watch?v=B-NFjj595bg",
+      "officialIndex": "https://asia.sega.com/kimetsu_hinokami/en/movie/",
+      "kind": "unviewed-video",
+      "reason": "前轮经代理取得403，未取得解码画面；本轮未重试或声称看过。"
+    },
+    "zenitsu-video-unviewed": {
+      "url": "https://www.youtube.com/watch?v=QACQyVdOz34",
+      "officialIndex": "https://asia.sega.com/kimetsu_hinokami/en/movie/",
+      "kind": "unviewed-video",
+      "reason": "前轮经代理取得403，未取得解码画面；本轮未重试或声称看过。"
+    },
+    "kimetsu-episode-17-stills": {
+      "url": "https://kimetsu.com/anime/risshihen/story/?story=17",
+      "kind": "official-episode-stills-viewed-excluded-from-fx-evidence",
+      "localResearchOnly": "research-local/kimetsu-ep17-01.jpg through 04.jpg",
+      "observed": "实际查看该集公开的4张场面图，主要是人物表情/剧情场景，没有所需水龙、六连雷轨效果，因此不作为这些技能FX的视觉证据。"
+    },
+    "kimetsu-episode-19-stills": {
+      "url": "https://kimetsu.com/anime/risshihen/story/?story=19",
+      "kind": "official-episode-stills-viewed-excluded-from-fx-evidence",
+      "localResearchOnly": "research-local/kimetsu-ep19-01.jpg through 04.jpg",
+      "observed": "实际查看该集公开的4张场面图，主要是人物表情/剧情场景，没有所需水龙、六连雷轨效果，因此不作为这些技能FX的视觉证据。"
+    }
+  },
+  "heroes": {
+    "cloud": {
+      "name": "克劳德",
+      "palette": {
+        "core": "#F2FFFF",
+        "arc": "#79CBFF",
+        "inner": "#6FF6C8",
+        "impact": "#FFD4A0"
+      },
+      "sourceIds": [
+        "cloud-combat",
+        "cloud-horizontal"
+      ],
+      "evidenceLimitations": [
+        "已见官方静态战斗图；此八帧、新月离体运动及X交叉布局均为本原型改编。"
+      ],
+      "clips": {
+        "basic": {
+          "name": "青蓝重剑斩弧",
+          "shape": "宽度逐渐扩大的楔形光弧，锐利外刃与青绿细内缘",
+          "anchor": "sword-swing-origin",
+          "direction": "先高后低向右，尾迹留在左侧",
+          "frames": [
+            {
+              "index": 0,
+              "captionZh": "短青绿剑缘聚光"
+            },
+            {
+              "index": 1,
+              "captionZh": "蓝白细弧伸出"
+            },
+            {
+              "index": 2,
+              "captionZh": "尖端先行形成宽弧"
+            },
+            {
+              "index": 3,
+              "captionZh": "锐白外刃达到最清晰一击"
+            },
+            {
+              "index": 4,
+              "captionZh": "弧面越过接触点并拉出细尾"
+            },
+            {
+              "index": 5,
+              "captionZh": "尾缘裂成细光片"
+            },
+            {
+              "index": 6,
+              "captionZh": "青绿星屑下落"
+            },
+            {
+              "index": 7,
+              "captionZh": "少量冷白残点熄灭"
+            }
+          ],
+          "designDurationMs": 220,
+          "temporalScope": "一次特效释放周期的作者设计，不是原作逐帧提取；需与真实战斗事件校准",
+          "notes": [
+            "只命中时另播撞击火花；不能把未命中的挥刀画成爆炸。",
+            "普通三段可随既有刀路调整朝向，不旋转角色图来冒充动作。"
+          ]
+        },
+        "skill": {
+          "name": "离体新月剑气",
+          "shape": "纵向青蓝月牙，白色前缘、青绿色薄内层",
+          "anchor": "projectile-center",
+          "direction": "右行；飞行位置由真实弹体决定",
+          "frames": [
+            {
+              "index": 0,
+              "captionZh": "细青白弯线压缩"
+            },
+            {
+              "index": 1,
+              "captionZh": "月牙轮廓快速张开"
+            },
+            {
+              "index": 2,
+              "captionZh": "锐白前缘饱满成形"
+            },
+            {
+              "index": 3,
+              "captionZh": "青蓝中段流动、尖端锐长"
+            },
+            {
+              "index": 4,
+              "captionZh": "内层光丝沿弧滑动"
+            },
+            {
+              "index": 5,
+              "captionZh": "后缘分离成短丝"
+            },
+            {
+              "index": 6,
+              "captionZh": "光丝碎裂变细"
+            },
+            {
+              "index": 7,
+              "captionZh": "残点消散"
+            }
+          ],
+          "designDurationMs": 300,
+          "temporalScope": "一次特效释放周期的作者设计，不是原作逐帧提取；需与真实战斗事件校准",
+          "notes": [
+            "不是追踪弹或火球；飞行持续部分可取中间帧循环，末段消散只在结束时播。"
+          ]
+        },
+        "ultimate": {
+          "name": "交叉终结斩",
+          "shape": "两条大斜刃交叉形成X，交点短促白核与橙白火花",
+          "anchor": "attack-front-center",
+          "direction": "第一斜切后反向斜切；整体朝输入方向",
+          "frames": [
+            {
+              "index": 0,
+              "captionZh": "第一条冷青窄斜线蓄势"
+            },
+            {
+              "index": 1,
+              "captionZh": "第一斜刃白亮向下劈开"
+            },
+            {
+              "index": 2,
+              "captionZh": "主接触白核与短橙星爆发"
+            },
+            {
+              "index": 3,
+              "captionZh": "第二斜刃穿过形成X"
+            },
+            {
+              "index": 4,
+              "captionZh": "X边缘向外剥离成光片"
+            },
+            {
+              "index": 5,
+              "captionZh": "交点暗下，橙白火星飞散"
+            },
+            {
+              "index": 6,
+              "captionZh": "两条细青轨迹残留"
+            },
+            {
+              "index": 7,
+              "captionZh": "碎光完全衰退"
+            }
+          ],
+          "designDurationMs": 420,
+          "temporalScope": "一次特效释放周期的作者设计，不是原作逐帧提取；需与真实战斗事件校准",
+          "notes": [
+            "当前引擎只有一次实际必杀伤害；第二视觉反斩不可增加未授权伤害或伪造命中事件。"
+          ]
+        }
+      }
+    },
+    "lara": {
+      "name": "劳拉",
+      "palette": {
+        "core": "#FFFDEA",
+        "fire": "#FFD56B",
+        "rim": "#F39839",
+        "smoke": "#A9A6A0"
+      },
+      "sourceIds": [
+        "lara-arsenal",
+        "lara-trailer"
+      ],
+      "evidenceLimitations": [
+        "枪焰具体8帧与曳光为风格化设计；官方采样主要证实双枪身份，并未测得该8帧。",
+        "双枪加弓箭是跨世代同人组合。"
+      ],
+      "clips": {
+        "basic": {
+          "name": "手枪短促枪焰",
+          "shape": "白热星核、短黄橙火瓣与少量烟丝",
+          "anchor": "muzzle",
+          "direction": "沿实际弹道；空中射击向下，上挑射击向上",
+          "frames": [
+            {
+              "index": 0,
+              "captionZh": "枪口小白点点燃"
+            },
+            {
+              "index": 1,
+              "captionZh": "短黄橙火瓣展开"
+            },
+            {
+              "index": 2,
+              "captionZh": "白热星核瞬间最亮"
+            },
+            {
+              "index": 3,
+              "captionZh": "火瓣收短并甩出细火星"
+            },
+            {
+              "index": 4,
+              "captionZh": "核心消失留暖灰烟"
+            },
+            {
+              "index": 5,
+              "captionZh": "烟丝上浮、火星变暗"
+            },
+            {
+              "index": 6,
+              "captionZh": "仅少量稀薄灰丝"
+            },
+            {
+              "index": 7,
+              "captionZh": "透明消散"
+            }
+          ],
+          "designDurationMs": 100,
+          "temporalScope": "一次特效释放周期的作者设计，不是原作逐帧提取；需与真实战斗事件校准",
+          "notes": [
+            "枪焰紧贴实测枪口，不能从胸口喷出；不加魔法光环。",
+            "所有帧是一次shot，三段J各触发一次。"
+          ]
+        },
+        "skill": {
+          "name": "弓箭空气尾迹",
+          "shape": "细银白箭迹、淡金短尾和压缩风线",
+          "anchor": "arrow-center",
+          "direction": "沿固定箭矢方向右行",
+          "frames": [
+            {
+              "index": 0,
+              "captionZh": "短淡银风线聚拢"
+            },
+            {
+              "index": 1,
+              "captionZh": "细金前点划出"
+            },
+            {
+              "index": 2,
+              "captionZh": "银白细长尾迹完整伸展"
+            },
+            {
+              "index": 3,
+              "captionZh": "两侧微弱空气流线拉直"
+            },
+            {
+              "index": 4,
+              "captionZh": "尾迹变窄断开"
+            },
+            {
+              "index": 5,
+              "captionZh": "极细尘点分离"
+            },
+            {
+              "index": 6,
+              "captionZh": "淡银尾端收束"
+            },
+            {
+              "index": 7,
+              "captionZh": "完全消散"
+            }
+          ],
+          "designDurationMs": 180,
+          "temporalScope": "一次特效释放周期的作者设计，不是原作逐帧提取；需与真实战斗事件校准",
+          "notes": [
+            "普通箭没有火球爆炸或法阵；命中另用木屑/短尘冲击。",
+            "不要把箭矢本体重复画入FX造成两支箭。"
+          ]
+        },
+        "ultimate": {
+          "name": "连续精准火力",
+          "shape": "强化但紧凑的白金枪焰与短橙火瓣",
+          "anchor": "muzzle",
+          "direction": "沿每次真实出弹方向",
+          "frames": [
+            {
+              "index": 0,
+              "captionZh": "枪口白点积亮"
+            },
+            {
+              "index": 1,
+              "captionZh": "白金短射流冲出"
+            },
+            {
+              "index": 2,
+              "captionZh": "锐星枪焰达到峰值"
+            },
+            {
+              "index": 3,
+              "captionZh": "火瓣向前收拢"
+            },
+            {
+              "index": 4,
+              "captionZh": "单点暖星离开枪口"
+            },
+            {
+              "index": 5,
+              "captionZh": "少量烟丝卷起"
+            },
+            {
+              "index": 6,
+              "captionZh": "烟丝减淡"
+            },
+            {
+              "index": 7,
+              "captionZh": "回到透明"
+            }
+          ],
+          "designDurationMs": 100,
+          "temporalScope": "一次特效释放周期的作者设计，不是原作逐帧提取；需与真实战斗事件校准",
+          "notes": [
+            "这是一次开枪特效周期，按6次真实shot重触发；不能画六个悬空枪口或用大光柱代替子弹。"
+          ]
+        }
+      }
+    },
+    "wukong": {
+      "name": "天命人",
+      "palette": {
+        "core": "#FFF1C4",
+        "gold": "#E9B453",
+        "ember": "#E67C2C",
+        "ink": "#5E3B20"
+      },
+      "sourceIds": [
+        "wukong-trailer"
+      ],
+      "evidenceLimitations": [
+        "已见官方预告金色定字与棍轨采样；精确定身法印构图和重棍终结八帧仍是改编。"
+      ],
+      "clips": {
+        "basic": {
+          "name": "金色棍势",
+          "shape": "长而薄的琥珀金弧、白金锐芯与细碎火星",
+          "anchor": "staff-swing-origin",
+          "direction": "跟随棍端扫过方向",
+          "frames": [
+            {
+              "index": 0,
+              "captionZh": "金色短细线亮起"
+            },
+            {
+              "index": 1,
+              "captionZh": "薄弧迅速拉长"
+            },
+            {
+              "index": 2,
+              "captionZh": "棍势金弧横扫成形"
+            },
+            {
+              "index": 3,
+              "captionZh": "白金前缘越过接触区"
+            },
+            {
+              "index": 4,
+              "captionZh": "金弧拖长但变薄"
+            },
+            {
+              "index": 5,
+              "captionZh": "细火星沿切向散开"
+            },
+            {
+              "index": 6,
+              "captionZh": "琥珀残丝短暂悬停"
+            },
+            {
+              "index": 7,
+              "captionZh": "残点熄灭"
+            }
+          ],
+          "designDurationMs": 220,
+          "temporalScope": "一次特效释放周期的作者设计，不是原作逐帧提取；需与真实战斗事件校准",
+          "notes": [
+            "不画实体第二根棍，不把普通扫棍变成满屏熔岩。"
+          ]
+        },
+        "skill": {
+          "name": "定身金印",
+          "shape": "短促金色定身字意象、细金丝与悬浮碎金",
+          "anchor": "victim-hit-anchor-or-cast-front",
+          "direction": "命中后在目标受击处呈现，未命中只保留施法前方短光",
+          "frames": [
+            {
+              "index": 0,
+              "captionZh": "细小金点凝聚"
+            },
+            {
+              "index": 1,
+              "captionZh": "金色印痕快速出现"
+            },
+            {
+              "index": 2,
+              "captionZh": "金印与细丝瞬间清晰"
+            },
+            {
+              "index": 3,
+              "captionZh": "细丝收束并出现悬浮金粒"
+            },
+            {
+              "index": 4,
+              "captionZh": "印痕边缘轻微碎裂"
+            },
+            {
+              "index": 5,
+              "captionZh": "细粒缓慢脱离"
+            },
+            {
+              "index": 6,
+              "captionZh": "只留稀疏金点"
+            },
+            {
+              "index": 7,
+              "captionZh": "金点逐个隐去"
+            }
+          ],
+          "designDurationMs": 420,
+          "temporalScope": "一次特效释放周期的作者设计，不是原作逐帧提取；需与真实战斗事件校准",
+          "notes": [
+            "原作截图确有金色定字；若文字生成不可靠，图层只画金丝/碎金，中文字由单独文字层准确绘制。",
+            "不使用大型西式魔法阵或追踪光球；视觉挂点不改变瞬移方向。"
+          ]
+        },
+        "ultimate": {
+          "name": "金棍重压",
+          "shape": "强定向白金棍势、斜压气痕、地面琥珀放射火星和尘环",
+          "anchor": "actual-impact-center",
+          "direction": "上方向右下压；尘环向两侧扩散",
+          "frames": [
+            {
+              "index": 0,
+              "captionZh": "细长金势竖起"
+            },
+            {
+              "index": 1,
+              "captionZh": "金白锐线迅速压下"
+            },
+            {
+              "index": 2,
+              "captionZh": "落点短促白金爆核"
+            },
+            {
+              "index": 3,
+              "captionZh": "橙金放射火星沿地面迸开"
+            },
+            {
+              "index": 4,
+              "captionZh": "扁平尘环向两边推开"
+            },
+            {
+              "index": 5,
+              "captionZh": "金屑与小碎石下落"
+            },
+            {
+              "index": 6,
+              "captionZh": "尘边变薄、火星减少"
+            },
+            {
+              "index": 7,
+              "captionZh": "少量暗金尘点消散"
+            }
+          ],
+          "designDurationMs": 420,
+          "temporalScope": "一次特效释放周期的作者设计，不是原作逐帧提取；需与真实战斗事件校准",
+          "notes": [
+            "棍势与伤害范围绑定，不能生成屏幕外巨大实体棍让玩家误判范围。"
+          ]
+        }
+      }
+    },
+    "drake": {
+      "name": "内森·德雷克",
+      "palette": {
+        "core": "#FFF5D8",
+        "fire": "#FFCB63",
+        "ember": "#D76B28",
+        "dust": "#8B7B65"
+      },
+      "sourceIds": [
+        "drake-trailer",
+        "drake-combat-text"
+      ],
+      "evidenceLimitations": [
+        "已看同系列Chloe镜头中的爆炸形态，不是Nathan手雷完整动作。",
+        "拳击、步枪枪焰及爆炸烟散尾段为写实风格的手绘强化。"
+      ],
+      "clips": {
+        "basic": {
+          "name": "近身搏击冲击",
+          "shape": "短白冲击线、少量暖尘与小星点",
+          "anchor": "confirmed-hit-center",
+          "direction": "沿真实打击方向短促放射",
+          "frames": [
+            {
+              "index": 0,
+              "captionZh": "小白接触点闪起"
+            },
+            {
+              "index": 1,
+              "captionZh": "短锐冲击线向外弹开"
+            },
+            {
+              "index": 2,
+              "captionZh": "稀疏白线与暖尘达到最大"
+            },
+            {
+              "index": 3,
+              "captionZh": "冲击线快速断裂"
+            },
+            {
+              "index": 4,
+              "captionZh": "暖尘颗粒稍微扩散"
+            },
+            {
+              "index": 5,
+              "captionZh": "颗粒向下减速"
+            },
+            {
+              "index": 6,
+              "captionZh": "仅两三粒淡尘"
+            },
+            {
+              "index": 7,
+              "captionZh": "完全消散"
+            }
+          ],
+          "designDurationMs": 160,
+          "temporalScope": "一次特效释放周期的作者设计，不是原作逐帧提取；需与真实战斗事件校准",
+          "notes": [
+            "只在命中时播放，不是手臂发射拳气；不画血液、魔法、拳头或敌人。"
+          ]
+        },
+        "skill": {
+          "name": "手雷爆破",
+          "shape": "强白核→黄橙不规则火瓣→暖灰烟与散射碎屑",
+          "anchor": "grenade-detonation-center",
+          "direction": "以爆点为中心，地面接触时下缘压扁",
+          "frames": [
+            {
+              "index": 0,
+              "captionZh": "小白热核点燃"
+            },
+            {
+              "index": 1,
+              "captionZh": "黄色锐瓣向四周弹开"
+            },
+            {
+              "index": 2,
+              "captionZh": "白核与橙色外火团爆发"
+            },
+            {
+              "index": 3,
+              "captionZh": "火瓣裂开，碎屑飞离"
+            },
+            {
+              "index": 4,
+              "captionZh": "橙火退到边缘，灰烟膨胀"
+            },
+            {
+              "index": 5,
+              "captionZh": "稀疏烟团上浮"
+            },
+            {
+              "index": 6,
+              "captionZh": "烟团破成薄片与少量余烬"
+            },
+            {
+              "index": 7,
+              "captionZh": "烟与余烬渐隐"
+            }
+          ],
+          "designDurationMs": 500,
+          "temporalScope": "一次特效释放周期的作者设计，不是原作逐帧提取；需与真实战斗事件校准",
+          "notes": [
+            "爆炸只能在实际爆点/伤害时刻出现，投掷阶段不提前播放爆炸。",
+            "同系列预告证实强白核心与碎屑；烟散尾段是设计改编。"
+          ]
+        },
+        "ultimate": {
+          "name": "步枪压制枪焰",
+          "shape": "比手枪更窄长的白橙喷焰与极短暖金尾迹",
+          "anchor": "rifle-muzzle",
+          "direction": "沿真实步枪弹道",
+          "frames": [
+            {
+              "index": 0,
+              "captionZh": "窄白点点燃"
+            },
+            {
+              "index": 1,
+              "captionZh": "长而细的白橙喷焰冲出"
+            },
+            {
+              "index": 2,
+              "captionZh": "亮核形成清晰三叉短星"
+            },
+            {
+              "index": 3,
+              "captionZh": "前缘收缩并甩出细火星"
+            },
+            {
+              "index": 4,
+              "captionZh": "核心熄灭，暖烟流出"
+            },
+            {
+              "index": 5,
+              "captionZh": "烟丝沿枪口上卷"
+            },
+            {
+              "index": 6,
+              "captionZh": "少量暗金点衰退"
+            },
+            {
+              "index": 7,
+              "captionZh": "透明消散"
+            }
+          ],
+          "designDurationMs": 117,
+          "temporalScope": "一次特效释放周期的作者设计，不是原作逐帧提取；需与真实战斗事件校准",
+          "notes": [
+            "按5次实际shot重触发，禁止连绵不断激光束；弹壳若存在仅为小装饰，不增加可误认弹体。"
+          ]
+        }
+      }
+    },
+    "tanjiro": {
+      "name": "灶门炭治郎",
+      "palette": {
+        "outline": "#083D72",
+        "water": "#188AD5",
+        "light": "#68DFF6",
+        "foam": "#FFFFFF"
+      },
+      "sourceIds": [
+        "tanjiro-official"
+      ],
+      "evidenceLimitations": [
+        "官方静图与正文支持水之呼吸、水带及白泡沫风格；水车/水龙的逐帧生命周期为本原型改编。",
+        "官方人物视频前轮无法访问；不把封面或网页文字当成看过动画。"
+      ],
+      "clips": {
+        "basic": {
+          "name": "水之呼吸斩弧",
+          "shape": "深蓝轮廓、双层青蓝带与白泡沫尖浪",
+          "anchor": "sword-swing-origin",
+          "direction": "随着刀刃向右划出",
+          "frames": [
+            {
+              "index": 0,
+              "captionZh": "细深蓝弯线与少量水珠"
+            },
+            {
+              "index": 1,
+              "captionZh": "青蓝带迅速变宽"
+            },
+            {
+              "index": 2,
+              "captionZh": "尖浪与白泡沫卷起"
+            },
+            {
+              "index": 3,
+              "captionZh": "宽水弧沿刀刃扫过"
+            },
+            {
+              "index": 4,
+              "captionZh": "尾端分裂为两层水带"
+            },
+            {
+              "index": 5,
+              "captionZh": "泡沫碎成小卷浪"
+            },
+            {
+              "index": 6,
+              "captionZh": "水珠沿切向飞散"
+            },
+            {
+              "index": 7,
+              "captionZh": "稀疏水滴消失"
+            }
+          ],
+          "designDurationMs": 260,
+          "temporalScope": "一次特效释放周期的作者设计，不是原作逐帧提取；需与真实战斗事件校准",
+          "notes": [
+            "保留漫画木刻般锐利白浪纹，不能变成半透明圆形蓝雾。"
+          ]
+        },
+        "skill": {
+          "name": "水车回旋环",
+          "shape": "由刀路形成的环形青蓝水带、白浪波峰，中心透明",
+          "anchor": "caster-flip-center",
+          "direction": "围绕施法者翻滚旋转，位置跟随施法者而非敌人",
+          "frames": [
+            {
+              "index": 0,
+              "captionZh": "细弯水线从下方升起"
+            },
+            {
+              "index": 1,
+              "captionZh": "水带绕至半环"
+            },
+            {
+              "index": 2,
+              "captionZh": "白浪头跨过顶部"
+            },
+            {
+              "index": 3,
+              "captionZh": "完整水环达到高峰"
+            },
+            {
+              "index": 4,
+              "captionZh": "环下缘破开随翻滚流动"
+            },
+            {
+              "index": 5,
+              "captionZh": "水带分成两道螺旋尾"
+            },
+            {
+              "index": 6,
+              "captionZh": "泡沫和水滴向外散开"
+            },
+            {
+              "index": 7,
+              "captionZh": "少量水珠衰退"
+            }
+          ],
+          "designDurationMs": 350,
+          "temporalScope": "一次特效释放周期的作者设计，不是原作逐帧提取；需与真实战斗事件校准",
+          "notes": [
+            "中央应大面积透明，保证倒置角色可见。",
+            "不要把水车画成固定在敌人脚下的法阵。"
+          ]
+        },
+        "ultimate": {
+          "name": "生生流转水龙",
+          "shape": "由层叠水带形成的长蛇形龙首与盘曲身段、白浪鬃须",
+          "anchor": "attacking-front",
+          "direction": "龙首向输入方向扑出，尾部回旋跟随施法者",
+          "frames": [
+            {
+              "index": 0,
+              "captionZh": "细蓝水带聚成弯钩"
+            },
+            {
+              "index": 1,
+              "captionZh": "白浪卷起露出龙首轮廓"
+            },
+            {
+              "index": 2,
+              "captionZh": "蓝白龙首清晰向前探出"
+            },
+            {
+              "index": 3,
+              "captionZh": "水龙身段盘曲、白浪沿脊展开"
+            },
+            {
+              "index": 4,
+              "captionZh": "龙首随斩击穿过命中区"
+            },
+            {
+              "index": 5,
+              "captionZh": "龙体拆为多道水带"
+            },
+            {
+              "index": 6,
+              "captionZh": "白泡沫与水珠飞散"
+            },
+            {
+              "index": 7,
+              "captionZh": "水珠尾迹衰退"
+            }
+          ],
+          "designDurationMs": 500,
+          "temporalScope": "一次特效释放周期的作者设计，不是原作逐帧提取；需与真实战斗事件校准",
+          "notes": [
+            "四次真实命中必须有独立短亮脉冲；不要用一个常亮龙头掩盖判定节奏。",
+            "龙形是风格化水流，不是带肉身鳞片的西方龙。"
+          ]
+        }
+      }
+    },
+    "zenitsu": {
+      "name": "我妻善逸",
+      "palette": {
+        "core": "#F6FFFF",
+        "electric": "#71DEFF",
+        "halo": "#FFD364",
+        "edge": "#C09237"
+      },
+      "sourceIds": [
+        "zenitsu-official"
+      ],
+      "evidenceLimitations": [
+        "已见SEGA静图为青白/青蓝雷电；金黄外辉是本原型强化而非对此图的照搬。",
+        "未观看受阻官方人物视频，六连具体轨迹与时序由游戏机制决定。"
+      ],
+      "clips": {
+        "basic": {
+          "name": "雷切短弧",
+          "shape": "青白锐芯、金色外辉、少量锯齿电枝",
+          "anchor": "sword-swing-origin",
+          "direction": "向右斜切，电枝向后分叉",
+          "frames": [
+            {
+              "index": 0,
+              "captionZh": "细青白电点跳起"
+            },
+            {
+              "index": 1,
+              "captionZh": "短斜雷线拉开"
+            },
+            {
+              "index": 2,
+              "captionZh": "主雷切锐芯瞬间饱满"
+            },
+            {
+              "index": 3,
+              "captionZh": "两三条电枝向外迸开"
+            },
+            {
+              "index": 4,
+              "captionZh": "主线断成分段"
+            },
+            {
+              "index": 5,
+              "captionZh": "金辉先退、青白枝杈变细"
+            },
+            {
+              "index": 6,
+              "captionZh": "孤立小电点跳动"
+            },
+            {
+              "index": 7,
+              "captionZh": "完全消散"
+            }
+          ],
+          "designDurationMs": 180,
+          "temporalScope": "一次特效释放周期的作者设计，不是原作逐帧提取；需与真实战斗事件校准",
+          "notes": [
+            "不画发射到远处的雷球；雷切仍是刀路的强化。"
+          ]
+        },
+        "skill": {
+          "name": "霹雳一闪雷轨",
+          "shape": "横向尖锐白青雷束、金黄冲刺光、背向锯齿尾",
+          "anchor": "caster-dash-trail",
+          "direction": "沿玩家输入方向横冲，雷尾留在移动后方",
+          "frames": [
+            {
+              "index": 0,
+              "captionZh": "短细电枝汇聚"
+            },
+            {
+              "index": 1,
+              "captionZh": "锐白横线突然拉长"
+            },
+            {
+              "index": 2,
+              "captionZh": "主雷轨与金辉达到峰值"
+            },
+            {
+              "index": 3,
+              "captionZh": "两侧分支从主线撕开"
+            },
+            {
+              "index": 4,
+              "captionZh": "雷尾断成三四段"
+            },
+            {
+              "index": 5,
+              "captionZh": "金辉消退留青白电枝"
+            },
+            {
+              "index": 6,
+              "captionZh": "碎电点快速熄灭"
+            },
+            {
+              "index": 7,
+              "captionZh": "透明消散"
+            }
+          ],
+          "designDurationMs": 200,
+          "temporalScope": "一次特效释放周期的作者设计，不是原作逐帧提取；需与真实战斗事件校准",
+          "notes": [
+            "不要生成连接到敌人的自动瞄准电缆；不能用大面积白矩形遮挡人物。"
+          ]
+        },
+        "ultimate": {
+          "name": "雷之呼吸六连",
+          "shape": "多次定向折返的锐雷切轨、交错金辉，爆发后迅速断裂",
+          "anchor": "actual-strike-front",
+          "direction": "轨迹由每次真实位移决定，不凭美术提前连接敌人",
+          "frames": [
+            {
+              "index": 0,
+              "captionZh": "小范围电枝压缩"
+            },
+            {
+              "index": 1,
+              "captionZh": "第一条白青雷切突现"
+            },
+            {
+              "index": 2,
+              "captionZh": "金辉边缘与锐电枝爆发"
+            },
+            {
+              "index": 3,
+              "captionZh": "主线收束形成下一次装载感"
+            },
+            {
+              "index": 4,
+              "captionZh": "另一方向切线瞬间发亮"
+            },
+            {
+              "index": 5,
+              "captionZh": "交错雷轨裂成短枝"
+            },
+            {
+              "index": 6,
+              "captionZh": "金色余辉退去"
+            },
+            {
+              "index": 7,
+              "captionZh": "细蓝电点消散"
+            }
+          ],
+          "designDurationMs": 300,
+          "temporalScope": "一次特效释放周期的作者设计，不是原作逐帧提取；需与真实战斗事件校准",
+          "notes": [
+            "此图集不是六个独立判定；按引擎6次命中对接触亮帧重新触发或交替。",
+            "青白核心要锐利，金色只作外辉，保留人物轮廓。"
+          ]
+        }
+      }
+    }
+  }
+}
