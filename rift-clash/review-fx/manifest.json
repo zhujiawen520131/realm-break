@@ -1,7 +1,7 @@
 {
   "reviewId": "fx-r4-20261107",
   "title": "裂界 · 特效帧图审核",
-  "status": "draft",
+  "status": "approved",
   "characters": [
     {
       "id": "cloud",
@@ -12,7 +12,7 @@
           "label": "魔晄斩光",
           "category": "普攻",
           "revision": "fx-r4-20261107",
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/cloud/basic/01.webp",
@@ -36,7 +36,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 908
+              "alphaPixels": 908,
+              "status": "approved"
             },
             {
               "image": "frames/cloud/basic/02.webp",
@@ -60,7 +61,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 4521
+              "alphaPixels": 4521,
+              "status": "approved"
             },
             {
               "image": "frames/cloud/basic/03.webp",
@@ -84,7 +86,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 12238
+              "alphaPixels": 12238,
+              "status": "approved"
             },
             {
               "image": "frames/cloud/basic/04.webp",
@@ -108,7 +111,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 31076
+              "alphaPixels": 31076,
+              "status": "approved"
             },
             {
               "image": "frames/cloud/basic/05.webp",
@@ -132,7 +136,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 43042
+              "alphaPixels": 43042,
+              "status": "approved"
             },
             {
               "image": "frames/cloud/basic/06.webp",
@@ -156,7 +161,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 18999
+              "alphaPixels": 18999,
+              "status": "approved"
             },
             {
               "image": "frames/cloud/basic/07.webp",
@@ -180,7 +186,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 4866
+              "alphaPixels": 4866,
+              "status": "approved"
             },
             {
               "image": "frames/cloud/basic/08.webp",
@@ -204,7 +211,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 321
+              "alphaPixels": 321,
+              "status": "approved"
             }
           ],
           "contentBounds": [
@@ -214,17 +222,37 @@
             389.63
           ],
           "notes": [
-            "Terra生成的8张独立透明特效关键帧，等待用户审核。",
+            "Terra生成的8张独立透明特效关键帧，已由用户审核通过，无补充意见。",
             "原点在整组序列内固定；不以单张居中掩盖位置漂移。"
           ],
-          "atlas": "atlases/cloud-basic-r4.png"
+          "atlas": "atlases/cloud-basic-r4.png",
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "revision": "fx-r4-20261107",
+            "frameHashes": {
+              "frames/cloud/basic/01.webp": "348cfef09d28b072ddde5ae5f27c34f5e8308f2a9caaf9fb8de49ebc955abb7b",
+              "frames/cloud/basic/02.webp": "611f45ac66a49e67a36a08454decb5d469f80af493602bb722c8eab743f877dc",
+              "frames/cloud/basic/03.webp": "6d7a94de2bb0b6e8b87331f935f1f4f87f57ab24b9d25b048c82db3d2107aee6",
+              "frames/cloud/basic/04.webp": "7d2419d7d892db056bfbbd2c14208aa236c0091e7d0af8e4efec958f0474057d",
+              "frames/cloud/basic/05.webp": "38749c59936cd0d76b8d1d86015d006d10563f8a3354a5d171596b498039fd71",
+              "frames/cloud/basic/06.webp": "f2059cc1e0a7a4f474ba24d2326f353fb3f5e52ac0ff94fd3c3bc11c4526172d",
+              "frames/cloud/basic/07.webp": "e5c8377a118b740bcfb39ab3e7da770acd1935086463e21ac770e5683acfb4e8",
+              "frames/cloud/basic/08.webp": "403615829a388c48e9779b13cc9634b990eb53dc27eaf9f3f48a10cfc729309d"
+            },
+            "atlasHashes": {
+              "atlases/cloud-basic-r4.png": "0889eef10b8f98e6ecf7dff82f1215b675a356c46c9be0baf70140d2ac155f5f"
+            },
+            "id": "fx-r4-user-approval-20261107"
+          }
         },
         {
           "id": "skill",
           "label": "剑气",
           "category": "技能",
           "revision": "fx-r4-20261107",
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/cloud/skill/01.webp",
@@ -248,7 +276,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 118
+              "alphaPixels": 118,
+              "status": "approved"
             },
             {
               "image": "frames/cloud/skill/02.webp",
@@ -272,7 +301,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 652
+              "alphaPixels": 652,
+              "status": "approved"
             },
             {
               "image": "frames/cloud/skill/03.webp",
@@ -296,7 +326,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 3394
+              "alphaPixels": 3394,
+              "status": "approved"
             },
             {
               "image": "frames/cloud/skill/04.webp",
@@ -320,7 +351,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 14021
+              "alphaPixels": 14021,
+              "status": "approved"
             },
             {
               "image": "frames/cloud/skill/05.webp",
@@ -344,7 +376,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 30396
+              "alphaPixels": 30396,
+              "status": "approved"
             },
             {
               "image": "frames/cloud/skill/06.webp",
@@ -368,7 +401,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 11107
+              "alphaPixels": 11107,
+              "status": "approved"
             },
             {
               "image": "frames/cloud/skill/07.webp",
@@ -392,7 +426,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 1370
+              "alphaPixels": 1370,
+              "status": "approved"
             },
             {
               "image": "frames/cloud/skill/08.webp",
@@ -416,7 +451,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 127
+              "alphaPixels": 127,
+              "status": "approved"
             }
           ],
           "contentBounds": [
@@ -426,17 +462,37 @@
             404.64
           ],
           "notes": [
-            "Terra生成的8张独立透明特效关键帧，等待用户审核。",
+            "Terra生成的8张独立透明特效关键帧，已由用户审核通过，无补充意见。",
             "原点在整组序列内固定；不以单张居中掩盖位置漂移。"
           ],
-          "atlas": "atlases/cloud-skill-r4.png"
+          "atlas": "atlases/cloud-skill-r4.png",
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "revision": "fx-r4-20261107",
+            "frameHashes": {
+              "frames/cloud/skill/01.webp": "29e3be6124d97debf2f0a191d0af668cc31375da37be95acb2742df36d1a5633",
+              "frames/cloud/skill/02.webp": "7063af582355ee36756a528129b2b9d1b126e28ebc62d1be2324be26407bd201",
+              "frames/cloud/skill/03.webp": "249f302b4fca23e32161542f6be57f995e3571f9e8f740741fb16842e565be3a",
+              "frames/cloud/skill/04.webp": "d3aa64f0d5018b9b78226c914e8327ad5731719ebdad9af3729572f73c42aa60",
+              "frames/cloud/skill/05.webp": "8b82116050368a7eaf643d711024230a1116f1e470a8149fcb1c1d5bd45ff65a",
+              "frames/cloud/skill/06.webp": "806da0475e002c4d8f10350399dc07f9830d6efc7cf3fd61737f882e90c6bf60",
+              "frames/cloud/skill/07.webp": "1668d4f40fcf8c19391ea0733ca2c7b44f74331187fe553b90d955da28b4714d",
+              "frames/cloud/skill/08.webp": "7fecd278cd26d448e8930864a945cfeeafa8bcd7438e8c1914f547c097473973"
+            },
+            "atlasHashes": {
+              "atlases/cloud-skill-r4.png": "f85b15db14aa445d964f1e234048cea04d1c5abfab0ed1a1174de813cdad4678"
+            },
+            "id": "fx-r4-user-approval-20261107"
+          }
         },
         {
           "id": "ultimate",
           "label": "十字终结",
           "category": "必杀",
           "revision": "fx-r4-20261107",
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/cloud/ultimate/01.webp",
@@ -460,7 +516,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 846
+              "alphaPixels": 846,
+              "status": "approved"
             },
             {
               "image": "frames/cloud/ultimate/02.webp",
@@ -484,7 +541,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 6512
+              "alphaPixels": 6512,
+              "status": "approved"
             },
             {
               "image": "frames/cloud/ultimate/03.webp",
@@ -508,7 +566,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 19943
+              "alphaPixels": 19943,
+              "status": "approved"
             },
             {
               "image": "frames/cloud/ultimate/04.webp",
@@ -532,7 +591,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 26244
+              "alphaPixels": 26244,
+              "status": "approved"
             },
             {
               "image": "frames/cloud/ultimate/05.webp",
@@ -556,7 +616,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 48235
+              "alphaPixels": 48235,
+              "status": "approved"
             },
             {
               "image": "frames/cloud/ultimate/06.webp",
@@ -580,7 +641,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 29181
+              "alphaPixels": 29181,
+              "status": "approved"
             },
             {
               "image": "frames/cloud/ultimate/07.webp",
@@ -604,7 +666,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 9993
+              "alphaPixels": 9993,
+              "status": "approved"
             },
             {
               "image": "frames/cloud/ultimate/08.webp",
@@ -628,7 +691,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 534
+              "alphaPixels": 534,
+              "status": "approved"
             }
           ],
           "contentBounds": [
@@ -638,12 +702,33 @@
             416.18
           ],
           "notes": [
-            "Terra生成的8张独立透明特效关键帧，等待用户审核。",
+            "Terra生成的8张独立透明特效关键帧，已由用户审核通过，无补充意见。",
             "原点在整组序列内固定；不以单张居中掩盖位置漂移。"
           ],
-          "atlas": "atlases/cloud-ultimate-r4.png"
+          "atlas": "atlases/cloud-ultimate-r4.png",
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "revision": "fx-r4-20261107",
+            "frameHashes": {
+              "frames/cloud/ultimate/01.webp": "8fd046b830ec21c70763e3b8b0be04a49f66e80e5339123f2332bacceda4e48c",
+              "frames/cloud/ultimate/02.webp": "28e3520218c40af44dfc7f91072772d50af45406bbec7898a07e1882ab530c11",
+              "frames/cloud/ultimate/03.webp": "491a8d7924710895fab7c2cf2c27c9bf5af3ff3f143cc618346ad2c4b3e211da",
+              "frames/cloud/ultimate/04.webp": "61709fb450fbb1fc4a969325ec07bdd817da0fea90cf260ffdfcb7635d2e5178",
+              "frames/cloud/ultimate/05.webp": "07fa6e1ce05a532644dcb0b1c226a5d02ce47185915b3e2f223afa08fa7f2e66",
+              "frames/cloud/ultimate/06.webp": "778eb8f2aa47b719284f749ebc3bbbee574b5358e6f752c8b00740838583967d",
+              "frames/cloud/ultimate/07.webp": "01a80531ca523662b3d13a73d1feed91a99ecccd0fe60adbdad44589f2cbb805",
+              "frames/cloud/ultimate/08.webp": "e72cc80406c61d938682669c1bc4604fa55f8df41489f70c9afd8b464d8025ad"
+            },
+            "atlasHashes": {
+              "atlases/cloud-ultimate-r4.png": "58e34b1cbf6ce1f71e33c8a63f0c714c11277bca8675813fb8070118d6f44191"
+            },
+            "id": "fx-r4-user-approval-20261107"
+          }
         }
-      ]
+      ],
+      "status": "approved"
     },
     {
       "id": "lara",
@@ -654,7 +739,7 @@
           "label": "手枪火光",
           "category": "普攻",
           "revision": "fx-r4-20261107",
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/lara/basic/01.webp",
@@ -678,7 +763,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 326
+              "alphaPixels": 326,
+              "status": "approved"
             },
             {
               "image": "frames/lara/basic/02.webp",
@@ -702,7 +788,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 3050
+              "alphaPixels": 3050,
+              "status": "approved"
             },
             {
               "image": "frames/lara/basic/03.webp",
@@ -726,7 +813,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 8315
+              "alphaPixels": 8315,
+              "status": "approved"
             },
             {
               "image": "frames/lara/basic/04.webp",
@@ -750,7 +838,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 19041
+              "alphaPixels": 19041,
+              "status": "approved"
             },
             {
               "image": "frames/lara/basic/05.webp",
@@ -774,7 +863,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 9758
+              "alphaPixels": 9758,
+              "status": "approved"
             },
             {
               "image": "frames/lara/basic/06.webp",
@@ -798,7 +888,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 7862
+              "alphaPixels": 7862,
+              "status": "approved"
             },
             {
               "image": "frames/lara/basic/07.webp",
@@ -822,7 +913,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 2385
+              "alphaPixels": 2385,
+              "status": "approved"
             },
             {
               "image": "frames/lara/basic/08.webp",
@@ -846,7 +938,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 0
+              "alphaPixels": 0,
+              "status": "approved"
             }
           ],
           "contentBounds": [
@@ -856,17 +949,37 @@
             340.56
           ],
           "notes": [
-            "Terra生成的8张独立透明特效关键帧，等待用户审核。",
+            "Terra生成的8张独立透明特效关键帧，已由用户审核通过，无补充意见。",
             "原点在整组序列内固定；不以单张居中掩盖位置漂移。"
           ],
-          "atlas": "atlases/lara-basic-r4.png"
+          "atlas": "atlases/lara-basic-r4.png",
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "revision": "fx-r4-20261107",
+            "frameHashes": {
+              "frames/lara/basic/01.webp": "acb64793ac819d575a5f6f7300188590e70cc794a2c1d9362fb128f624dda827",
+              "frames/lara/basic/02.webp": "e0b272e29a0a0d0f78e88766194bdbd001bacd7f98b37ff2a040624cbcd32640",
+              "frames/lara/basic/03.webp": "09d8b3560c01bbb85e49fe82f918ae07a6e2ad785e1ec557e73687261a45f068",
+              "frames/lara/basic/04.webp": "50fd8a06279b6afc945ca3b75b23d96e4454e3849d36fd0501c58f6226fc51e2",
+              "frames/lara/basic/05.webp": "0e5dbf7c7d6a8451c9d4c40b6c33851c88a1dab03159841cf5b94f3d17304d32",
+              "frames/lara/basic/06.webp": "b758c19238b0aa45c89e8137e94e3b7a03587b3a96cef9f068bcc435d19fa8d9",
+              "frames/lara/basic/07.webp": "d67804ed4f4ea9413f9a79c800a991027a2b01adec2d4ede412778f278e056fe",
+              "frames/lara/basic/08.webp": "9aabfbb437fc9f1a129c865b66d397ca95c8822f6071773e008ca03f63b40286"
+            },
+            "atlasHashes": {
+              "atlases/lara-basic-r4.png": "b81808242abac93957c26c8ac8225ffc4675f6e899019d278cfddbb435cd8ef9"
+            },
+            "id": "fx-r4-user-approval-20261107"
+          }
         },
         {
           "id": "skill",
           "label": "箭矢破空",
           "category": "技能",
           "revision": "fx-r4-20261107",
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/lara/skill/01.webp",
@@ -890,7 +1003,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 4405
+              "alphaPixels": 4405,
+              "status": "approved"
             },
             {
               "image": "frames/lara/skill/02.webp",
@@ -914,7 +1028,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 12562
+              "alphaPixels": 12562,
+              "status": "approved"
             },
             {
               "image": "frames/lara/skill/03.webp",
@@ -938,7 +1053,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 28410
+              "alphaPixels": 28410,
+              "status": "approved"
             },
             {
               "image": "frames/lara/skill/04.webp",
@@ -962,7 +1078,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 5833
+              "alphaPixels": 5833,
+              "status": "approved"
             },
             {
               "image": "frames/lara/skill/05.webp",
@@ -986,7 +1103,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 2435
+              "alphaPixels": 2435,
+              "status": "approved"
             },
             {
               "image": "frames/lara/skill/06.webp",
@@ -1010,7 +1128,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 15748
+              "alphaPixels": 15748,
+              "status": "approved"
             },
             {
               "image": "frames/lara/skill/07.webp",
@@ -1034,7 +1153,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 5432
+              "alphaPixels": 5432,
+              "status": "approved"
             },
             {
               "image": "frames/lara/skill/08.webp",
@@ -1058,7 +1178,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 565
+              "alphaPixels": 565,
+              "status": "approved"
             }
           ],
           "contentBounds": [
@@ -1068,17 +1189,37 @@
             402.9
           ],
           "notes": [
-            "Terra生成的8张独立透明特效关键帧，等待用户审核。",
+            "Terra生成的8张独立透明特效关键帧，已由用户审核通过，无补充意见。",
             "原点在整组序列内固定；不以单张居中掩盖位置漂移。"
           ],
-          "atlas": "atlases/lara-skill-r4.png"
+          "atlas": "atlases/lara-skill-r4.png",
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "revision": "fx-r4-20261107",
+            "frameHashes": {
+              "frames/lara/skill/01.webp": "5f8b12e84aff340f8b5e35589cd18711866a890ad90171d26bfc5999bbc80243",
+              "frames/lara/skill/02.webp": "6f9264072d8abe76543e144daabfd7dd2fc4a27d82e19efa262e5029cc7696e9",
+              "frames/lara/skill/03.webp": "35b974d4848543b3ed163e09d30d53ab2320a9798b917252eefeaca1f95159fc",
+              "frames/lara/skill/04.webp": "71f501204f75430452d81923caa4191880d1b79903aa8df6bde43151378f37f2",
+              "frames/lara/skill/05.webp": "364f473ad747b7deb8aa456e456b98b1dd1d971f8937e510dfca2c4e494fb772",
+              "frames/lara/skill/06.webp": "ea5f874375228c6555c2a032fe3ced94a3d1d2ee1ec646dd35a18c2ebc15b804",
+              "frames/lara/skill/07.webp": "d326cb8fc57baa21ecaba7cbbe09b8ca974759320683b12d0760b51109cd35ac",
+              "frames/lara/skill/08.webp": "fc869ad205fdf42024a9ffcdf4e7dd2841acdb948e1ab1be9678e5d39165da6b"
+            },
+            "atlasHashes": {
+              "atlases/lara-skill-r4.png": "0f2fd5563096c3c051d15f307e80ac792f86bf83e077522e0c811399b88472b5"
+            },
+            "id": "fx-r4-user-approval-20261107"
+          }
         },
         {
           "id": "ultimate",
           "label": "双枪连发",
           "category": "必杀",
           "revision": "fx-r4-20261107",
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/lara/ultimate/01.webp",
@@ -1102,7 +1243,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 1132
+              "alphaPixels": 1132,
+              "status": "approved"
             },
             {
               "image": "frames/lara/ultimate/02.webp",
@@ -1126,7 +1268,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 5089
+              "alphaPixels": 5089,
+              "status": "approved"
             },
             {
               "image": "frames/lara/ultimate/03.webp",
@@ -1150,7 +1293,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 13716
+              "alphaPixels": 13716,
+              "status": "approved"
             },
             {
               "image": "frames/lara/ultimate/04.webp",
@@ -1174,7 +1318,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 22583
+              "alphaPixels": 22583,
+              "status": "approved"
             },
             {
               "image": "frames/lara/ultimate/05.webp",
@@ -1198,7 +1343,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 7672
+              "alphaPixels": 7672,
+              "status": "approved"
             },
             {
               "image": "frames/lara/ultimate/06.webp",
@@ -1222,7 +1368,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 2137
+              "alphaPixels": 2137,
+              "status": "approved"
             },
             {
               "image": "frames/lara/ultimate/07.webp",
@@ -1246,7 +1393,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 450
+              "alphaPixels": 450,
+              "status": "approved"
             },
             {
               "image": "frames/lara/ultimate/08.webp",
@@ -1270,7 +1418,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 32
+              "alphaPixels": 32,
+              "status": "approved"
             }
           ],
           "contentBounds": [
@@ -1280,12 +1429,33 @@
             344.03
           ],
           "notes": [
-            "Terra生成的8张独立透明特效关键帧，等待用户审核。",
+            "Terra生成的8张独立透明特效关键帧，已由用户审核通过，无补充意见。",
             "原点在整组序列内固定；不以单张居中掩盖位置漂移。"
           ],
-          "atlas": "atlases/lara-ultimate-r4.png"
+          "atlas": "atlases/lara-ultimate-r4.png",
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "revision": "fx-r4-20261107",
+            "frameHashes": {
+              "frames/lara/ultimate/01.webp": "6dd24f63c003764542c846dd588acf5b0237115fe4982cd43f28fd21b45be424",
+              "frames/lara/ultimate/02.webp": "22e762050ab57b6d71d544f113b64d5d7794c7fc284ed1e2a2f3792a877413e2",
+              "frames/lara/ultimate/03.webp": "593bbb8fcd95417535835f8adc23dc2661df8e62b745227147207f3ea77ad81f",
+              "frames/lara/ultimate/04.webp": "21b93b98e34313426a4e24c8550e6f5f98dfb9ea776052b45d0b6128b916d056",
+              "frames/lara/ultimate/05.webp": "a434e6dc62e4b14b95c3be858f2307a9c501aec77b39b3ab8dfda7d7a9478dfc",
+              "frames/lara/ultimate/06.webp": "fc615f9eabd8d218d14ef9c54b221ef8eb0eb2a18f092dc7ec1e69247b90eae7",
+              "frames/lara/ultimate/07.webp": "fcee7db5f6e320f937b5a60d2e74abab94840650aebc7be2d204d632e3e68122",
+              "frames/lara/ultimate/08.webp": "cfd0e7780a9f27a78f1a9ed993caa79eac1dfbbdfe6b97d3aa403b3648f9f5da"
+            },
+            "atlasHashes": {
+              "atlases/lara-ultimate-r4.png": "d301e782025da3ddccbf532dcb7f29b1a0f0c6bcd059d19e0ee12d49669b7881"
+            },
+            "id": "fx-r4-user-approval-20261107"
+          }
         }
-      ]
+      ],
+      "status": "approved"
     },
     {
       "id": "wukong",
@@ -1296,7 +1466,7 @@
           "label": "金色棍势",
           "category": "普攻",
           "revision": "fx-r4-20261107",
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/wukong/basic/01.webp",
@@ -1320,7 +1490,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 556
+              "alphaPixels": 556,
+              "status": "approved"
             },
             {
               "image": "frames/wukong/basic/02.webp",
@@ -1344,7 +1515,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 1806
+              "alphaPixels": 1806,
+              "status": "approved"
             },
             {
               "image": "frames/wukong/basic/03.webp",
@@ -1368,7 +1540,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 5968
+              "alphaPixels": 5968,
+              "status": "approved"
             },
             {
               "image": "frames/wukong/basic/04.webp",
@@ -1392,7 +1565,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 14326
+              "alphaPixels": 14326,
+              "status": "approved"
             },
             {
               "image": "frames/wukong/basic/05.webp",
@@ -1416,7 +1590,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 22616
+              "alphaPixels": 22616,
+              "status": "approved"
             },
             {
               "image": "frames/wukong/basic/06.webp",
@@ -1440,7 +1615,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 6878
+              "alphaPixels": 6878,
+              "status": "approved"
             },
             {
               "image": "frames/wukong/basic/07.webp",
@@ -1464,7 +1640,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 1071
+              "alphaPixels": 1071,
+              "status": "approved"
             },
             {
               "image": "frames/wukong/basic/08.webp",
@@ -1488,7 +1665,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 59
+              "alphaPixels": 59,
+              "status": "approved"
             }
           ],
           "contentBounds": [
@@ -1498,17 +1676,37 @@
             381.55
           ],
           "notes": [
-            "Terra生成的8张独立透明特效关键帧，等待用户审核。",
+            "Terra生成的8张独立透明特效关键帧，已由用户审核通过，无补充意见。",
             "原点在整组序列内固定；不以单张居中掩盖位置漂移。"
           ],
-          "atlas": "atlases/wukong-basic-r4.png"
+          "atlas": "atlases/wukong-basic-r4.png",
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "revision": "fx-r4-20261107",
+            "frameHashes": {
+              "frames/wukong/basic/01.webp": "25a0b292aa8fcd601bdd9d0dc1456345869203ea18e656e424272e680756a447",
+              "frames/wukong/basic/02.webp": "7c6d1b4d1c7e5c8cc958706facab10fb02afe4a9cf1041ccbcbb4a6de644c43f",
+              "frames/wukong/basic/03.webp": "6e54e29e28c5108695b8a8f7805125ad9df5977f5d5ae00a93bf188a752c6e95",
+              "frames/wukong/basic/04.webp": "603294a02ebbbaf46f0c5ac0861eea6ac1d57181c70bffcd84423a420f70dfc6",
+              "frames/wukong/basic/05.webp": "30272ccc21e3a99f6c009a4fc61321c83491eb38d3958b9eca9ee8802d13fb12",
+              "frames/wukong/basic/06.webp": "2248f7757e2234c106dbdddbdb652d66e0f08f77414872272a8285d4bb468f0e",
+              "frames/wukong/basic/07.webp": "76da0a78fe5fe8acead54c204819ec547574d83a9e2dd151b39dd0dc5c9ac689",
+              "frames/wukong/basic/08.webp": "c5579a6fa1620c0552c13e9cc07604c61d1aa692acdf2d89c6e8ab4d9d2aea5a"
+            },
+            "atlasHashes": {
+              "atlases/wukong-basic-r4.png": "da46ac4a505d8ba355202560735757f7b65deb2d47cb7cd78af67db4500849a7"
+            },
+            "id": "fx-r4-user-approval-20261107"
+          }
         },
         {
           "id": "skill",
           "label": "定身符印",
           "category": "技能",
           "revision": "fx-r4-20261107",
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/wukong/skill/01.webp",
@@ -1532,7 +1730,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 330
+              "alphaPixels": 330,
+              "status": "approved"
             },
             {
               "image": "frames/wukong/skill/02.webp",
@@ -1556,7 +1755,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 1200
+              "alphaPixels": 1200,
+              "status": "approved"
             },
             {
               "image": "frames/wukong/skill/03.webp",
@@ -1580,7 +1780,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 6229
+              "alphaPixels": 6229,
+              "status": "approved"
             },
             {
               "image": "frames/wukong/skill/04.webp",
@@ -1604,7 +1805,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 16515
+              "alphaPixels": 16515,
+              "status": "approved"
             },
             {
               "image": "frames/wukong/skill/05.webp",
@@ -1628,7 +1830,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 32526
+              "alphaPixels": 32526,
+              "status": "approved"
             },
             {
               "image": "frames/wukong/skill/06.webp",
@@ -1652,7 +1855,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 14443
+              "alphaPixels": 14443,
+              "status": "approved"
             },
             {
               "image": "frames/wukong/skill/07.webp",
@@ -1676,7 +1880,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 2945
+              "alphaPixels": 2945,
+              "status": "approved"
             },
             {
               "image": "frames/wukong/skill/08.webp",
@@ -1700,7 +1905,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 163
+              "alphaPixels": 163,
+              "status": "approved"
             }
           ],
           "contentBounds": [
@@ -1710,17 +1916,37 @@
             433.5
           ],
           "notes": [
-            "Terra生成的8张独立透明特效关键帧，等待用户审核。",
+            "Terra生成的8张独立透明特效关键帧，已由用户审核通过，无补充意见。",
             "原点在整组序列内固定；不以单张居中掩盖位置漂移。"
           ],
-          "atlas": "atlases/wukong-skill-r4.png"
+          "atlas": "atlases/wukong-skill-r4.png",
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "revision": "fx-r4-20261107",
+            "frameHashes": {
+              "frames/wukong/skill/01.webp": "47379cfa3ba1d77a02f4d495495c8c221e5f66eee9c26e2700527aa00157f99b",
+              "frames/wukong/skill/02.webp": "8f41fc98691b0ed2e39c2c5440ad37a506a4ad98d3e3c14cfa0aa4dd9c8d4188",
+              "frames/wukong/skill/03.webp": "d7b0c67777a72c14ac7f143178dc6207978744c79d4b30c1b2c2af4e1c438004",
+              "frames/wukong/skill/04.webp": "faa30061ad9264ff05f99093c3fbf1935e438df6efce39a6f8e33364b17aee2c",
+              "frames/wukong/skill/05.webp": "0ab021584d5851b778b59d1812fd36c836c7ad03635dea9e92670e7b28b97d15",
+              "frames/wukong/skill/06.webp": "8e812bc6cd0272fedbc90761f573c566bb7a9741fc467f6afcc98765c2eee0ff",
+              "frames/wukong/skill/07.webp": "55bc9cba08fbf449121bea234f1f2903478b6b0b339609343c928e504e98dffe",
+              "frames/wukong/skill/08.webp": "9d93064b28e3c4c93746197e28847f02809d969a1b36214f6127af214058ce83"
+            },
+            "atlasHashes": {
+              "atlases/wukong-skill-r4.png": "024c74040706da6eafa20f4f49e81c2ea7823f66ce697ab8cf0eadc5bfa9fca4"
+            },
+            "id": "fx-r4-user-approval-20261107"
+          }
         },
         {
           "id": "ultimate",
           "label": "重棍爆发",
           "category": "必杀",
           "revision": "fx-r4-20261107",
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/wukong/ultimate/01.webp",
@@ -1744,7 +1970,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 4432
+              "alphaPixels": 4432,
+              "status": "approved"
             },
             {
               "image": "frames/wukong/ultimate/02.webp",
@@ -1768,7 +1995,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 7027
+              "alphaPixels": 7027,
+              "status": "approved"
             },
             {
               "image": "frames/wukong/ultimate/03.webp",
@@ -1792,7 +2020,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 21284
+              "alphaPixels": 21284,
+              "status": "approved"
             },
             {
               "image": "frames/wukong/ultimate/04.webp",
@@ -1816,7 +2045,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 45907
+              "alphaPixels": 45907,
+              "status": "approved"
             },
             {
               "image": "frames/wukong/ultimate/05.webp",
@@ -1840,7 +2070,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 53504
+              "alphaPixels": 53504,
+              "status": "approved"
             },
             {
               "image": "frames/wukong/ultimate/06.webp",
@@ -1864,7 +2095,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 26151
+              "alphaPixels": 26151,
+              "status": "approved"
             },
             {
               "image": "frames/wukong/ultimate/07.webp",
@@ -1888,7 +2120,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 11916
+              "alphaPixels": 11916,
+              "status": "approved"
             },
             {
               "image": "frames/wukong/ultimate/08.webp",
@@ -1912,7 +2145,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 2484
+              "alphaPixels": 2484,
+              "status": "approved"
             }
           ],
           "contentBounds": [
@@ -1922,12 +2156,33 @@
             421.38
           ],
           "notes": [
-            "Terra生成的8张独立透明特效关键帧，等待用户审核。",
+            "Terra生成的8张独立透明特效关键帧，已由用户审核通过，无补充意见。",
             "原点在整组序列内固定；不以单张居中掩盖位置漂移。"
           ],
-          "atlas": "atlases/wukong-ultimate-r4.png"
+          "atlas": "atlases/wukong-ultimate-r4.png",
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "revision": "fx-r4-20261107",
+            "frameHashes": {
+              "frames/wukong/ultimate/01.webp": "1a61588cec4ce6bfd31597c5b96f9a142d033c3a8b11be40a51ba5566c12f56a",
+              "frames/wukong/ultimate/02.webp": "050a5c92de73738361511d5d72fec3fe485e83a15e7073a445e7170f05146a7c",
+              "frames/wukong/ultimate/03.webp": "407005c8f07fd2d9efd678042f776c8cad8e06b3cd3537c27e5bfdd26ddafd83",
+              "frames/wukong/ultimate/04.webp": "d4d7304367b60b5ea5e7034878ab817311c64eb78bbae6fffe2c8f7c6b7c6e6f",
+              "frames/wukong/ultimate/05.webp": "6eb2f1e7cc710d5116d4d39d973b1cf97474d56e11be3a53e1969d9432e1b476",
+              "frames/wukong/ultimate/06.webp": "2c62d4c9584bcc20740bd4a685d4a023bf6d7aff3e64f3c538303f5bc007b051",
+              "frames/wukong/ultimate/07.webp": "599882d74fee22df6cfe350e22bf137dc9cf1c0359dc5bf334e53d207e078306",
+              "frames/wukong/ultimate/08.webp": "e47bd30a1cf595bb21f48d385d49205fbef7250b3c59cc893989710b4a57a9fc"
+            },
+            "atlasHashes": {
+              "atlases/wukong-ultimate-r4.png": "b4042b0cc9ac6f74bc2a75ab7bbfd4c3cdfa177439d4ea6ff8012d8b030aae1e"
+            },
+            "id": "fx-r4-user-approval-20261107"
+          }
         }
-      ]
+      ],
+      "status": "approved"
     },
     {
       "id": "drake",
@@ -1938,7 +2193,7 @@
           "label": "搏击冲击",
           "category": "普攻",
           "revision": "fx-r4-20261107",
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/drake/basic/01.webp",
@@ -1962,7 +2217,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 162
+              "alphaPixels": 162,
+              "status": "approved"
             },
             {
               "image": "frames/drake/basic/02.webp",
@@ -1986,7 +2242,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 687
+              "alphaPixels": 687,
+              "status": "approved"
             },
             {
               "image": "frames/drake/basic/03.webp",
@@ -2010,7 +2267,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 2237
+              "alphaPixels": 2237,
+              "status": "approved"
             },
             {
               "image": "frames/drake/basic/04.webp",
@@ -2034,7 +2292,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 6365
+              "alphaPixels": 6365,
+              "status": "approved"
             },
             {
               "image": "frames/drake/basic/05.webp",
@@ -2058,7 +2317,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 1792
+              "alphaPixels": 1792,
+              "status": "approved"
             },
             {
               "image": "frames/drake/basic/06.webp",
@@ -2082,7 +2342,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 631
+              "alphaPixels": 631,
+              "status": "approved"
             },
             {
               "image": "frames/drake/basic/07.webp",
@@ -2106,7 +2367,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 415
+              "alphaPixels": 415,
+              "status": "approved"
             },
             {
               "image": "frames/drake/basic/08.webp",
@@ -2130,7 +2392,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 55
+              "alphaPixels": 55,
+              "status": "approved"
             }
           ],
           "contentBounds": [
@@ -2140,17 +2403,37 @@
             372.89
           ],
           "notes": [
-            "Terra生成的8张独立透明特效关键帧，等待用户审核。",
+            "Terra生成的8张独立透明特效关键帧，已由用户审核通过，无补充意见。",
             "原点在整组序列内固定；不以单张居中掩盖位置漂移。"
           ],
-          "atlas": "atlases/drake-basic-r4.png"
+          "atlas": "atlases/drake-basic-r4.png",
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "revision": "fx-r4-20261107",
+            "frameHashes": {
+              "frames/drake/basic/01.webp": "8f861df8cb3ca70afeef527a8129b107f3ab2e1b25231d1d29a39d9bd8d335b8",
+              "frames/drake/basic/02.webp": "5ae7328b1847659fe844dbf7ffad281743dbc215227540fadd5bc0adcc38f5b9",
+              "frames/drake/basic/03.webp": "4c023a260257207e6a712710ae95dd9c37d2c6b2dc0852e3b2d95d30d6464ec9",
+              "frames/drake/basic/04.webp": "d879b33763f750a259619a16a5dffb14dbb4d315bdbc5a895e236a31978a086f",
+              "frames/drake/basic/05.webp": "ee0d0aac3345aec83fc1c7bf19685c22d19d15fb4b9a71bdce3f7f0a9be10512",
+              "frames/drake/basic/06.webp": "aa8ab33370f9af0bdb9f0ba4008716ce85a3bacec31f9a136a674ad8b6cacaf2",
+              "frames/drake/basic/07.webp": "4b6946e0f06c5be308582e1544e803321fd3381ea25edd674649721cabacd8a6",
+              "frames/drake/basic/08.webp": "2a44eb922a14dfbd6bdd4243266ee6f3d5e5663673a6084ec3e3763a622d6b4a"
+            },
+            "atlasHashes": {
+              "atlases/drake-basic-r4.png": "878c4707f4e696685062388b8354b140da2d9b4c9a288ec319dfa62e3eae1f42"
+            },
+            "id": "fx-r4-user-approval-20261107"
+          }
         },
         {
           "id": "skill",
           "label": "手雷爆炸",
           "category": "技能",
           "revision": "fx-r4-20261107",
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/drake/skill/01.webp",
@@ -2174,7 +2457,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 2136
+              "alphaPixels": 2136,
+              "status": "approved"
             },
             {
               "image": "frames/drake/skill/02.webp",
@@ -2198,7 +2482,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 7102
+              "alphaPixels": 7102,
+              "status": "approved"
             },
             {
               "image": "frames/drake/skill/03.webp",
@@ -2222,7 +2507,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 15074
+              "alphaPixels": 15074,
+              "status": "approved"
             },
             {
               "image": "frames/drake/skill/04.webp",
@@ -2246,7 +2532,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 27459
+              "alphaPixels": 27459,
+              "status": "approved"
             },
             {
               "image": "frames/drake/skill/05.webp",
@@ -2270,7 +2557,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 12318
+              "alphaPixels": 12318,
+              "status": "approved"
             },
             {
               "image": "frames/drake/skill/06.webp",
@@ -2294,7 +2582,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 5059
+              "alphaPixels": 5059,
+              "status": "approved"
             },
             {
               "image": "frames/drake/skill/07.webp",
@@ -2318,7 +2607,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 910
+              "alphaPixels": 910,
+              "status": "approved"
             },
             {
               "image": "frames/drake/skill/08.webp",
@@ -2342,7 +2632,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 0
+              "alphaPixels": 0,
+              "status": "approved"
             }
           ],
           "contentBounds": [
@@ -2352,17 +2643,37 @@
             378.66
           ],
           "notes": [
-            "Terra生成的8张独立透明特效关键帧，等待用户审核。",
+            "Terra生成的8张独立透明特效关键帧，已由用户审核通过，无补充意见。",
             "原点在整组序列内固定；不以单张居中掩盖位置漂移。"
           ],
-          "atlas": "atlases/drake-skill-r4.png"
+          "atlas": "atlases/drake-skill-r4.png",
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "revision": "fx-r4-20261107",
+            "frameHashes": {
+              "frames/drake/skill/01.webp": "f1c82b0fdc5b4406e669aac92f24c543790b199378172b411a2f6e6a4245463b",
+              "frames/drake/skill/02.webp": "d69743be2264eafbb0a104f6be471f53a78a114f8b37b6048adc37cc85ab9ced",
+              "frames/drake/skill/03.webp": "9fc4681bedd11dbcbcadaacda74739316d9d7625bd81b7165a4441eb2e33d91f",
+              "frames/drake/skill/04.webp": "fcd0e1bac23347e15affe31d5ade9b751af795f71d2c4848ad2d6008b33c2622",
+              "frames/drake/skill/05.webp": "c1b38d3446666cd67dd602c5b58ad2fa4a7031ed8e694d9c2cf5f23caa38de46",
+              "frames/drake/skill/06.webp": "7c11db055887e900877fe0476a17cfc248ebea9f935292c0280d0c64e2925071",
+              "frames/drake/skill/07.webp": "fe30f32c47cb83463fefcba97164147ea450664b5a57c2e0349cd4cdc3dc7313",
+              "frames/drake/skill/08.webp": "58dd276144cb26d10bf62288a9adc19142a0d7db1c533766b9e8ff58b0d767df"
+            },
+            "atlasHashes": {
+              "atlases/drake-skill-r4.png": "524484c9193c786d6f1868af5538efdd8c4e6c211ca5031d3febf0248d3c356e"
+            },
+            "id": "fx-r4-user-approval-20261107"
+          }
         },
         {
           "id": "ultimate",
           "label": "步枪连发",
           "category": "必杀",
           "revision": "fx-r4-20261107",
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/drake/ultimate/01.webp",
@@ -2386,7 +2697,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 990
+              "alphaPixels": 990,
+              "status": "approved"
             },
             {
               "image": "frames/drake/ultimate/02.webp",
@@ -2410,7 +2722,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 6389
+              "alphaPixels": 6389,
+              "status": "approved"
             },
             {
               "image": "frames/drake/ultimate/03.webp",
@@ -2434,7 +2747,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 17425
+              "alphaPixels": 17425,
+              "status": "approved"
             },
             {
               "image": "frames/drake/ultimate/04.webp",
@@ -2458,7 +2772,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 42761
+              "alphaPixels": 42761,
+              "status": "approved"
             },
             {
               "image": "frames/drake/ultimate/05.webp",
@@ -2482,7 +2797,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 16736
+              "alphaPixels": 16736,
+              "status": "approved"
             },
             {
               "image": "frames/drake/ultimate/06.webp",
@@ -2506,7 +2822,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 10332
+              "alphaPixels": 10332,
+              "status": "approved"
             },
             {
               "image": "frames/drake/ultimate/07.webp",
@@ -2530,7 +2847,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 6421
+              "alphaPixels": 6421,
+              "status": "approved"
             },
             {
               "image": "frames/drake/ultimate/08.webp",
@@ -2554,7 +2872,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 2113
+              "alphaPixels": 2113,
+              "status": "approved"
             }
           ],
           "contentBounds": [
@@ -2564,12 +2883,33 @@
             389.05
           ],
           "notes": [
-            "Terra生成的8张独立透明特效关键帧，等待用户审核。",
+            "Terra生成的8张独立透明特效关键帧，已由用户审核通过，无补充意见。",
             "原点在整组序列内固定；不以单张居中掩盖位置漂移。"
           ],
-          "atlas": "atlases/drake-ultimate-r4.png"
+          "atlas": "atlases/drake-ultimate-r4.png",
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "revision": "fx-r4-20261107",
+            "frameHashes": {
+              "frames/drake/ultimate/01.webp": "baf0e9e199bba5ba4af2df81d800f06ef5a75d6e1a18af43039f5a6aaaa4175f",
+              "frames/drake/ultimate/02.webp": "006dfe94479d7b7f42e12cd3317ff510d268a57101568dd70b5e86ae7c5652c3",
+              "frames/drake/ultimate/03.webp": "a7eb219f47482083e7a0ff548276ad80fb3deeab6d7aa19a68ea09097c668455",
+              "frames/drake/ultimate/04.webp": "ae218edf4a6d58db95b2f429dfd53eb8e954a8ddeee0989b169f1a3a12e6c369",
+              "frames/drake/ultimate/05.webp": "a58236f969ac250056bb0911f488e6c15e26115554914ff601770f03132a68df",
+              "frames/drake/ultimate/06.webp": "68b61b86e2b0ebe68387c8d26e82efcc999d26d9432a5ac64a84bd2262bc57e7",
+              "frames/drake/ultimate/07.webp": "0455ab943c517566c959eb06199b4dc4cee5186994db9c8904f566d2edd66f06",
+              "frames/drake/ultimate/08.webp": "3743f93e9a74257afb2dd6fcad1001e4f1db834ca69cc426ff12544e803dbf84"
+            },
+            "atlasHashes": {
+              "atlases/drake-ultimate-r4.png": "d6a22776d86df36ee82f0f99a8a04eeafc811469ece7edb69f304a90fa5b300b"
+            },
+            "id": "fx-r4-user-approval-20261107"
+          }
         }
-      ]
+      ],
+      "status": "approved"
     },
     {
       "id": "tanjiro",
@@ -2580,7 +2920,7 @@
           "label": "水流斩",
           "category": "普攻",
           "revision": "fx-r4-20261107",
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/tanjiro/basic/01.webp",
@@ -2604,7 +2944,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 1014
+              "alphaPixels": 1014,
+              "status": "approved"
             },
             {
               "image": "frames/tanjiro/basic/02.webp",
@@ -2628,7 +2969,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 6239
+              "alphaPixels": 6239,
+              "status": "approved"
             },
             {
               "image": "frames/tanjiro/basic/03.webp",
@@ -2652,7 +2994,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 23951
+              "alphaPixels": 23951,
+              "status": "approved"
             },
             {
               "image": "frames/tanjiro/basic/04.webp",
@@ -2676,7 +3019,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 54271
+              "alphaPixels": 54271,
+              "status": "approved"
             },
             {
               "image": "frames/tanjiro/basic/05.webp",
@@ -2700,7 +3044,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 41634
+              "alphaPixels": 41634,
+              "status": "approved"
             },
             {
               "image": "frames/tanjiro/basic/06.webp",
@@ -2724,7 +3069,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 18677
+              "alphaPixels": 18677,
+              "status": "approved"
             },
             {
               "image": "frames/tanjiro/basic/07.webp",
@@ -2748,7 +3094,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 5022
+              "alphaPixels": 5022,
+              "status": "approved"
             },
             {
               "image": "frames/tanjiro/basic/08.webp",
@@ -2772,7 +3119,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 831
+              "alphaPixels": 831,
+              "status": "approved"
             }
           ],
           "contentBounds": [
@@ -2782,17 +3130,37 @@
             438.11
           ],
           "notes": [
-            "Terra生成的8张独立透明特效关键帧，等待用户审核。",
+            "Terra生成的8张独立透明特效关键帧，已由用户审核通过，无补充意见。",
             "原点在整组序列内固定；不以单张居中掩盖位置漂移。"
           ],
-          "atlas": "atlases/tanjiro-basic-r4.png"
+          "atlas": "atlases/tanjiro-basic-r4.png",
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "revision": "fx-r4-20261107",
+            "frameHashes": {
+              "frames/tanjiro/basic/01.webp": "97df3b62b48b78068d41a1d9193cb630ceb1eadc291fd6e38124f7b25a0c211e",
+              "frames/tanjiro/basic/02.webp": "a94bcebc89f61754e0fee642deabb33e723750f95dac19f2066db5ec5997042e",
+              "frames/tanjiro/basic/03.webp": "8af9582073a7262e854cd7f868ae090b06eb3876c618ccd1a9e33de45450d2e4",
+              "frames/tanjiro/basic/04.webp": "07a314d2ef288616d1fc4d6dee270621c806c6cf5be8c9bed460b92b64231eba",
+              "frames/tanjiro/basic/05.webp": "515d9c60f54e41a66d04150e1e44d1088b01323a497998e5bc252ff71c11ee1f",
+              "frames/tanjiro/basic/06.webp": "46ca0324109c96d2a0f130e74f6e3b868c1fd89c7f493145a244becdc6adc65a",
+              "frames/tanjiro/basic/07.webp": "7c47328836fa05ba6aae2d59d39e0952dfe7ae1d8c25eceb626172f0660776b7",
+              "frames/tanjiro/basic/08.webp": "cd220f14c685e9098c899b91edafc8f643f7b41d6fc4f32b7e8336222f635ea9"
+            },
+            "atlasHashes": {
+              "atlases/tanjiro-basic-r4.png": "5af97f1b8df623caea375b577b33f2f22bdbe3133b56cc4baa9175b55321a795"
+            },
+            "id": "fx-r4-user-approval-20261107"
+          }
         },
         {
           "id": "skill",
           "label": "水车",
           "category": "技能",
           "revision": "fx-r4-20261107",
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/tanjiro/skill/01.webp",
@@ -2816,7 +3184,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 2615
+              "alphaPixels": 2615,
+              "status": "approved"
             },
             {
               "image": "frames/tanjiro/skill/02.webp",
@@ -2840,7 +3209,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 10047
+              "alphaPixels": 10047,
+              "status": "approved"
             },
             {
               "image": "frames/tanjiro/skill/03.webp",
@@ -2864,7 +3234,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 23697
+              "alphaPixels": 23697,
+              "status": "approved"
             },
             {
               "image": "frames/tanjiro/skill/04.webp",
@@ -2888,7 +3259,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 42462
+              "alphaPixels": 42462,
+              "status": "approved"
             },
             {
               "image": "frames/tanjiro/skill/05.webp",
@@ -2912,7 +3284,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 62850
+              "alphaPixels": 62850,
+              "status": "approved"
             },
             {
               "image": "frames/tanjiro/skill/06.webp",
@@ -2936,7 +3309,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 45652
+              "alphaPixels": 45652,
+              "status": "approved"
             },
             {
               "image": "frames/tanjiro/skill/07.webp",
@@ -2960,7 +3334,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 18269
+              "alphaPixels": 18269,
+              "status": "approved"
             },
             {
               "image": "frames/tanjiro/skill/08.webp",
@@ -2984,7 +3359,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 3595
+              "alphaPixels": 3595,
+              "status": "approved"
             }
           ],
           "contentBounds": [
@@ -2994,17 +3370,37 @@
             469.29
           ],
           "notes": [
-            "Terra生成的8张独立透明特效关键帧，等待用户审核。",
+            "Terra生成的8张独立透明特效关键帧，已由用户审核通过，无补充意见。",
             "原点在整组序列内固定；不以单张居中掩盖位置漂移。"
           ],
-          "atlas": "atlases/tanjiro-skill-r4.png"
+          "atlas": "atlases/tanjiro-skill-r4.png",
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "revision": "fx-r4-20261107",
+            "frameHashes": {
+              "frames/tanjiro/skill/01.webp": "898fe1cf0c9fa301cad8887b088cdadf88819f1537e36ec3659f1446ed780926",
+              "frames/tanjiro/skill/02.webp": "0e47603bbc03423c97d801e8c9ff0aca4a41647f324c5b1e71ddf4c6f4fd7edd",
+              "frames/tanjiro/skill/03.webp": "8ee8d475ac65061aaccbdcb973b8d52443ba04b49916d168a16c4cfca702e695",
+              "frames/tanjiro/skill/04.webp": "64d7b431ac7337a50a555b83adcada03ca7ed81ddfd0bc2ea7cae54f74b2b85f",
+              "frames/tanjiro/skill/05.webp": "3840096a44e30cecb62a13b87c36c12d66e6a72d502fe93b01923d8ff2273644",
+              "frames/tanjiro/skill/06.webp": "04b18415d0411ea94effa6b2617f794548d7b86df691ebdfeb14b713a84929c0",
+              "frames/tanjiro/skill/07.webp": "4c66f203193e58d6e7e11ec3e7b96447ad4b2b2aa5b9a7b65a52e3e44e16633f",
+              "frames/tanjiro/skill/08.webp": "70813817b71ad141ff8aea44dc29bd24dbc4005dded939ec55e57cbc573c4996"
+            },
+            "atlasHashes": {
+              "atlases/tanjiro-skill-r4.png": "882e29793b7ad01449761ef8c0afd0261670f58fdf655a907a11d484355e655f"
+            },
+            "id": "fx-r4-user-approval-20261107"
+          }
         },
         {
           "id": "ultimate",
           "label": "生生流转",
           "category": "必杀",
           "revision": "fx-r4-20261107",
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/tanjiro/ultimate/01.webp",
@@ -3028,7 +3424,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 9204
+              "alphaPixels": 9204,
+              "status": "approved"
             },
             {
               "image": "frames/tanjiro/ultimate/02.webp",
@@ -3052,7 +3449,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 21380
+              "alphaPixels": 21380,
+              "status": "approved"
             },
             {
               "image": "frames/tanjiro/ultimate/03.webp",
@@ -3076,7 +3474,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 37228
+              "alphaPixels": 37228,
+              "status": "approved"
             },
             {
               "image": "frames/tanjiro/ultimate/04.webp",
@@ -3100,7 +3499,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 55798
+              "alphaPixels": 55798,
+              "status": "approved"
             },
             {
               "image": "frames/tanjiro/ultimate/05.webp",
@@ -3124,7 +3524,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 81080
+              "alphaPixels": 81080,
+              "status": "approved"
             },
             {
               "image": "frames/tanjiro/ultimate/06.webp",
@@ -3148,7 +3549,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 50827
+              "alphaPixels": 50827,
+              "status": "approved"
             },
             {
               "image": "frames/tanjiro/ultimate/07.webp",
@@ -3172,7 +3574,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 25471
+              "alphaPixels": 25471,
+              "status": "approved"
             },
             {
               "image": "frames/tanjiro/ultimate/08.webp",
@@ -3196,7 +3599,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 7318
+              "alphaPixels": 7318,
+              "status": "approved"
             }
           ],
           "contentBounds": [
@@ -3206,12 +3610,33 @@
             439.27
           ],
           "notes": [
-            "Terra生成的8张独立透明特效关键帧，等待用户审核。",
+            "Terra生成的8张独立透明特效关键帧，已由用户审核通过，无补充意见。",
             "原点在整组序列内固定；不以单张居中掩盖位置漂移。"
           ],
-          "atlas": "atlases/tanjiro-ultimate-r4.png"
+          "atlas": "atlases/tanjiro-ultimate-r4.png",
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "revision": "fx-r4-20261107",
+            "frameHashes": {
+              "frames/tanjiro/ultimate/01.webp": "70eea973d5487b2174f524778ffecb593d961550a9b9f4c2ec5751e7c3df2018",
+              "frames/tanjiro/ultimate/02.webp": "5f58b7ba3779110e07b9de7a1fba38aedd07240bf4a1d8eadfd0cae04ac8553e",
+              "frames/tanjiro/ultimate/03.webp": "a59a5776cf13c980709abfee59a8f86e37a2a7553bfe63ba11154808cb96d055",
+              "frames/tanjiro/ultimate/04.webp": "79d852b1164bb699d98c51ed0f2d171c4ad285178f052d177707a6431e375962",
+              "frames/tanjiro/ultimate/05.webp": "10340fc08c2286497e52e632fb34af2271c55859e33854523f1dca29ba548276",
+              "frames/tanjiro/ultimate/06.webp": "96f184781aee4e13c1b5919edcbb185201d6d33fc88b84b52aafba942fdbb73e",
+              "frames/tanjiro/ultimate/07.webp": "d44d9e8f2ed98ffa04e0243c755893fab93b03ae8a9f084d0164f81e9823022c",
+              "frames/tanjiro/ultimate/08.webp": "82a1e8ec042bbdc9ab387bb65fc9e0f8ca384eeab5f67270fff1f2456a488055"
+            },
+            "atlasHashes": {
+              "atlases/tanjiro-ultimate-r4.png": "e96495e7bc5f53886e7707529cfc230d5b54f7d19f6ab4cb32c1e1d2cd010336"
+            },
+            "id": "fx-r4-user-approval-20261107"
+          }
         }
-      ]
+      ],
+      "status": "approved"
     },
     {
       "id": "zenitsu",
@@ -3222,7 +3647,7 @@
           "label": "雷光斩",
           "category": "普攻",
           "revision": "fx-r4-20261107",
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/zenitsu/basic/01.webp",
@@ -3246,7 +3671,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 1668
+              "alphaPixels": 1668,
+              "status": "approved"
             },
             {
               "image": "frames/zenitsu/basic/02.webp",
@@ -3270,7 +3696,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 5481
+              "alphaPixels": 5481,
+              "status": "approved"
             },
             {
               "image": "frames/zenitsu/basic/03.webp",
@@ -3294,7 +3721,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 17147
+              "alphaPixels": 17147,
+              "status": "approved"
             },
             {
               "image": "frames/zenitsu/basic/04.webp",
@@ -3318,7 +3746,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 37238
+              "alphaPixels": 37238,
+              "status": "approved"
             },
             {
               "image": "frames/zenitsu/basic/05.webp",
@@ -3342,7 +3771,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 26401
+              "alphaPixels": 26401,
+              "status": "approved"
             },
             {
               "image": "frames/zenitsu/basic/06.webp",
@@ -3366,7 +3796,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 13416
+              "alphaPixels": 13416,
+              "status": "approved"
             },
             {
               "image": "frames/zenitsu/basic/07.webp",
@@ -3390,7 +3821,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 4116
+              "alphaPixels": 4116,
+              "status": "approved"
             },
             {
               "image": "frames/zenitsu/basic/08.webp",
@@ -3414,7 +3846,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 474
+              "alphaPixels": 474,
+              "status": "approved"
             }
           ],
           "contentBounds": [
@@ -3424,17 +3857,37 @@
             406.37
           ],
           "notes": [
-            "Terra生成的8张独立透明特效关键帧，等待用户审核。",
+            "Terra生成的8张独立透明特效关键帧，已由用户审核通过，无补充意见。",
             "原点在整组序列内固定；不以单张居中掩盖位置漂移。"
           ],
-          "atlas": "atlases/zenitsu-basic-r4.png"
+          "atlas": "atlases/zenitsu-basic-r4.png",
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "revision": "fx-r4-20261107",
+            "frameHashes": {
+              "frames/zenitsu/basic/01.webp": "d3630e225e64098d7c346d91ee30dac7d06a6cca7131e2588b006bc6ed32ae4c",
+              "frames/zenitsu/basic/02.webp": "922fd0271ccee0fb4bca58dab750b3a829a455c83af5d4a4cbee4f98e69c7cd3",
+              "frames/zenitsu/basic/03.webp": "3785da4d1276369199b74c006330cff9de1c93d8a83c7adfdfd9db5eebcac98d",
+              "frames/zenitsu/basic/04.webp": "1bb980318ff41e7a10b1418947e52259d6b1279f82750ca27e5ff556ddd1b770",
+              "frames/zenitsu/basic/05.webp": "cc9c4ad2484856a32e438a7e138114d6d79c455c839a513ccda8ec8df7c1f6c3",
+              "frames/zenitsu/basic/06.webp": "1796a57fb80ab55fd23166a75c068d123a7977ee68b4e541943d02327c3476c8",
+              "frames/zenitsu/basic/07.webp": "b9b625058bf25d05fef02efcb8b554573376821c30326a6c8f747fc81f04661f",
+              "frames/zenitsu/basic/08.webp": "5202fbe5a1c51ed0f0af63e018773422b03088b2d38b85e4ffb88c72392e79aa"
+            },
+            "atlasHashes": {
+              "atlases/zenitsu-basic-r4.png": "62d483ed6e1750b972c4ad57ac6947a59e77243fc27bc8de047988ced2efd511"
+            },
+            "id": "fx-r4-user-approval-20261107"
+          }
         },
         {
           "id": "skill",
           "label": "霹雳一闪",
           "category": "技能",
           "revision": "fx-r4-20261107",
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/zenitsu/skill/01.webp",
@@ -3458,7 +3911,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 6553
+              "alphaPixels": 6553,
+              "status": "approved"
             },
             {
               "image": "frames/zenitsu/skill/02.webp",
@@ -3482,7 +3936,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 8874
+              "alphaPixels": 8874,
+              "status": "approved"
             },
             {
               "image": "frames/zenitsu/skill/03.webp",
@@ -3506,7 +3961,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 15935
+              "alphaPixels": 15935,
+              "status": "approved"
             },
             {
               "image": "frames/zenitsu/skill/04.webp",
@@ -3530,7 +3986,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 25545
+              "alphaPixels": 25545,
+              "status": "approved"
             },
             {
               "image": "frames/zenitsu/skill/05.webp",
@@ -3554,7 +4011,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 41815
+              "alphaPixels": 41815,
+              "status": "approved"
             },
             {
               "image": "frames/zenitsu/skill/06.webp",
@@ -3578,7 +4036,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 22090
+              "alphaPixels": 22090,
+              "status": "approved"
             },
             {
               "image": "frames/zenitsu/skill/07.webp",
@@ -3602,7 +4061,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 7501
+              "alphaPixels": 7501,
+              "status": "approved"
             },
             {
               "image": "frames/zenitsu/skill/08.webp",
@@ -3626,7 +4086,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 2054
+              "alphaPixels": 2054,
+              "status": "approved"
             }
           ],
           "contentBounds": [
@@ -3636,17 +4097,37 @@
             380.39
           ],
           "notes": [
-            "Terra生成的8张独立透明特效关键帧，等待用户审核。",
+            "Terra生成的8张独立透明特效关键帧，已由用户审核通过，无补充意见。",
             "原点在整组序列内固定；不以单张居中掩盖位置漂移。"
           ],
-          "atlas": "atlases/zenitsu-skill-r4.png"
+          "atlas": "atlases/zenitsu-skill-r4.png",
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "revision": "fx-r4-20261107",
+            "frameHashes": {
+              "frames/zenitsu/skill/01.webp": "d1851329292ef77a735db74d2df8175019c55ecd3d4cfd20611ec823581c09fb",
+              "frames/zenitsu/skill/02.webp": "d31175d030999b2648d1c9897943a773dc9bec115bd0fc3b9ccb3df205c7e4b6",
+              "frames/zenitsu/skill/03.webp": "a8f3921f52a042bc774179fd3063172acce268f2803f847ba654fabc75527726",
+              "frames/zenitsu/skill/04.webp": "0a701a4c7f1d5618d5db6695f0167b42d276ed31811b41d7a4aa6c38f390126b",
+              "frames/zenitsu/skill/05.webp": "381af11840a35d241b91ab3c4b49d4d325c3630d23040a243f9ac908d57ecfa6",
+              "frames/zenitsu/skill/06.webp": "f8d06f8c048f4ec0a4a336a279307d9af9e689bfde3d3610157dd71ee9eaa403",
+              "frames/zenitsu/skill/07.webp": "a54faf6856f1fb7709a2abe4d63c3884bd00d75088b5efee31c477c3c639d44c",
+              "frames/zenitsu/skill/08.webp": "22d11495db7bc59e7853f274e0842d99f80653c94f1fe7e05e082e592c713758"
+            },
+            "atlasHashes": {
+              "atlases/zenitsu-skill-r4.png": "09c5b73b1f353cea626e7da54b90c83238f1419a47ea055b2ded4e23a56146a1"
+            },
+            "id": "fx-r4-user-approval-20261107"
+          }
         },
         {
           "id": "ultimate",
           "label": "雷霆六连",
           "category": "必杀",
           "revision": "fx-r4-20261107",
-          "status": "draft",
+          "status": "approved",
           "frames": [
             {
               "image": "frames/zenitsu/ultimate/01.webp",
@@ -3670,7 +4151,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 1799
+              "alphaPixels": 1799,
+              "status": "approved"
             },
             {
               "image": "frames/zenitsu/ultimate/02.webp",
@@ -3694,7 +4176,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 5727
+              "alphaPixels": 5727,
+              "status": "approved"
             },
             {
               "image": "frames/zenitsu/ultimate/03.webp",
@@ -3718,7 +4201,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 12418
+              "alphaPixels": 12418,
+              "status": "approved"
             },
             {
               "image": "frames/zenitsu/ultimate/04.webp",
@@ -3742,7 +4226,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 20741
+              "alphaPixels": 20741,
+              "status": "approved"
             },
             {
               "image": "frames/zenitsu/ultimate/05.webp",
@@ -3766,7 +4251,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 42545
+              "alphaPixels": 42545,
+              "status": "approved"
             },
             {
               "image": "frames/zenitsu/ultimate/06.webp",
@@ -3790,7 +4276,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 19996
+              "alphaPixels": 19996,
+              "status": "approved"
             },
             {
               "image": "frames/zenitsu/ultimate/07.webp",
@@ -3814,7 +4301,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 5416
+              "alphaPixels": 5416,
+              "status": "approved"
             },
             {
               "image": "frames/zenitsu/ultimate/08.webp",
@@ -3838,7 +4326,8 @@
                 ]
               },
               "notes": [],
-              "alphaPixels": 1422
+              "alphaPixels": 1422,
+              "status": "approved"
             }
           ],
           "contentBounds": [
@@ -3848,12 +4337,39 @@
             410.41
           ],
           "notes": [
-            "Terra生成的8张独立透明特效关键帧，等待用户审核。",
+            "Terra生成的8张独立透明特效关键帧，已由用户审核通过，无补充意见。",
             "原点在整组序列内固定；不以单张居中掩盖位置漂移。"
           ],
-          "atlas": "atlases/zenitsu-ultimate-r4.png"
+          "atlas": "atlases/zenitsu-ultimate-r4.png",
+          "approval": {
+            "status": "approved",
+            "date": "2026-11-07",
+            "notes": "无补充意见",
+            "revision": "fx-r4-20261107",
+            "frameHashes": {
+              "frames/zenitsu/ultimate/01.webp": "46b88ffdccf2d5e24b1721225c243f7b1b32b9225cbc50b2d09ab4e5af617ee2",
+              "frames/zenitsu/ultimate/02.webp": "639c3bf8eab06bce41ae375902c8e85931cbc20178202c3da7a57842e8e0aa71",
+              "frames/zenitsu/ultimate/03.webp": "9c1ed6ceefa139a9ed2488e8dbc27a60e9611eb678dffbf777d9c198b979f7e3",
+              "frames/zenitsu/ultimate/04.webp": "3b9a0a123e7e0b32551c1c3a19dfd4bda5826ca5502e82c61f7d76abc53a3e57",
+              "frames/zenitsu/ultimate/05.webp": "c0387c71a1c4d1d491bda05f9c8883ce44e544ee7554a83cf72ddb5f7b3fe1b6",
+              "frames/zenitsu/ultimate/06.webp": "0e6027d0c259ecac60935d8734359b07f28e8586b16ffcdf796509d3330d6730",
+              "frames/zenitsu/ultimate/07.webp": "eadccc9c84b9daf594a8b4bee19b312865203dc979dedf105e1a3af5f97df118",
+              "frames/zenitsu/ultimate/08.webp": "b5da425b2b2ea31c3407b401cd45a666a2c47c7abf7cceaf7c34966b1fab2912"
+            },
+            "atlasHashes": {
+              "atlases/zenitsu-ultimate-r4.png": "11159b7b97073591e144c67e189c4618c50e470fca930efc398d183071d2a699"
+            },
+            "id": "fx-r4-user-approval-20261107"
+          }
         }
-      ]
+      ],
+      "status": "approved"
     }
-  ]
+  ],
+  "approvalSummary": {
+    "date": "2026-11-07",
+    "approvedClips": 18,
+    "pendingClips": 0,
+    "approvedFrames": 144
+  }
 }
