@@ -1,0 +1,637 @@
+{
+  "schemaVersion": 1,
+  "images": {
+    "bg_forest": {
+      "src": "assets/bg_forest.png",
+      "sha256": "69da9e98c6d2d7ca072542d19898e6d8206dc4effa8ca32ef67ae24a1031cc82"
+    },
+    "bg_overhead": {
+      "src": "assets/bg_overhead.png",
+      "sha256": "ef0637bb189b3dc3daeb1bb54665d3d3fa01e4f74204a1c290cbac0a7f350abd"
+    },
+    "bg_moon": {
+      "src": "assets/bg_moon.png",
+      "sha256": "25c5a5251640f66d7c55ade17f3e906cbff096defccf160b1fcc002e853bcd6e"
+    },
+    "crouch_01": {
+      "src": "assets/crouch_01.png",
+      "sha256": "4908bc319b8fa8fc24c86e327137758df84a4e271170f141431c07dd9a0527e7"
+    },
+    "crouch_02": {
+      "src": "assets/crouch_02.png",
+      "sha256": "0c647606c5356262fcf0cdd4ec344730afcd7abe2d6bf88e8bbc07b9476a5b8f"
+    },
+    "crouch_03": {
+      "src": "assets/crouch_03.png",
+      "sha256": "39b15e72beaf2999361d0535eca0969d2cf4824d112f20ef1ad5a56119bec1d2"
+    },
+    "charge_01": {
+      "src": "assets/charge_01.png",
+      "sha256": "d55090f377a27590b0cdfeebd479d47fb32aa3112fc5238f6524ca2ddd03a734"
+    },
+    "charge_02": {
+      "src": "assets/charge_02.png",
+      "sha256": "5f2178bc747a1660ce72c196a836b8099ca64e808f6ea7b7593f878c7c86bb0a"
+    },
+    "charge_03": {
+      "src": "assets/charge_03.png",
+      "sha256": "37fc4e41bb504c73d154e1c043eb3a9dec04b7ac42dd601219271d2e315705f4"
+    },
+    "dash_01": {
+      "src": "assets/dash_01.png",
+      "sha256": "4691ea2fd32181475f0a33a853ca57cdd9cc6a2c4c37c8feef0e11133834bce2"
+    },
+    "dash_02": {
+      "src": "assets/dash_02.png",
+      "sha256": "86b69dd9f08e89935117f1a1568ea6ef7694e575e63dd8b1cfc16a415b4e0d6d"
+    },
+    "dash_03": {
+      "src": "assets/dash_03.png",
+      "sha256": "7dabdaabf867eacf9bb11777db21c83db68a99ab8b1cb56d5fbf381ee868af2b"
+    },
+    "launch_01": {
+      "src": "assets/launch_01.png",
+      "sha256": "682246061aca42c4b523413b25bad25874e78d842ac65fc2e1140d271c2b7088"
+    },
+    "launch_02": {
+      "src": "assets/launch_02.png",
+      "sha256": "0427bee6f4f3959b5bd9ad3d606f305ba40b23824b27ce34f3fe0b938a005eb4"
+    },
+    "launch_03": {
+      "src": "assets/launch_03.png",
+      "sha256": "d39476bf1bf477f4a4be984c9ae4063a69c6f7f985866c4f54bbc150cfcdf588"
+    },
+    "moonpose_01": {
+      "src": "assets/moonpose_01.png",
+      "sha256": "457636634abebb2ec6bb9ac8d6350b35e547b8ed887bf6691c701928e964e6e3"
+    },
+    "moonpose_02": {
+      "src": "assets/moonpose_02.png",
+      "sha256": "9513ff776858a1d4d08b3cd2d76952024b883f22e7fe2a9428f5459d47236574"
+    },
+    "moonpose_03": {
+      "src": "assets/moonpose_03.png",
+      "sha256": "9b07f6f5db8e2e3099ced7fb8515895164c29464fdd1855752b19ac3a994f3f8"
+    },
+    "ending_01": {
+      "src": "assets/ending_01.png",
+      "sha256": "f2ba2b63b1f75ce880628933cc03ef3b9436d0727c34544c58dcc8ea7470fd21"
+    },
+    "ending_02": {
+      "src": "assets/ending_02.png",
+      "sha256": "f0a0aaef4282706f087a65f49ccf7641f81f1a7df5657d169bcf34139ccf5d79"
+    },
+    "ending_03": {
+      "src": "assets/ending_03.png",
+      "sha256": "eb555461b4d4d1ef9791a81990e0fdfad6c7e08ecf119eb1aea86182acc4babe"
+    },
+    "eye_closed": {
+      "src": "assets/eye_closed.png",
+      "sha256": "dc90cae4bb003c218264f6a936fd29f9098d32e836cb896098b2f879b6801081"
+    },
+    "eye_awake": {
+      "src": "assets/eye_awake.png",
+      "sha256": "5b935f7508d9f5448ba8f2b329d82d1d73a4d6c10fa79a0b074acb77160fc402"
+    },
+    "eye_extreme": {
+      "src": "assets/eye_extreme.png",
+      "sha256": "0da523c6c6d8933fc0f999a13ebfda40f06cc5f208929c0b1a23d502e9e1e202"
+    },
+    "eye_half": {
+      "src": "assets/eye_half.png",
+      "sha256": "8b6c8372079982d063b732e97f77f1e13cbfc73bdf2117af598bae0d654558bb"
+    },
+    "side_awake": {
+      "src": "assets/side_awake.png",
+      "sha256": "9261e49651dabe9961d4fac6b815c4315ba4402659e1ef2aa2e9a46853d247bf"
+    },
+    "side_extreme": {
+      "src": "assets/side_extreme.png",
+      "sha256": "b9c2be85086f09d4726dc7d5d2100d582227a273f69285c3fbede77d3aa0be27"
+    },
+    "inflight_wide": {
+      "src": "assets/inflight_wide.png",
+      "sha256": "451af60fce96bced1b4767de48b951da708998f09784df8a09e8784cada5c5fd"
+    },
+    "inflight_medium": {
+      "src": "assets/inflight_medium.png",
+      "sha256": "a26e204f2e43ceebf8a420f1dff3c7e8c697ee6eb3cd4fda6752314d4675aa67"
+    },
+    "inflight_close": {
+      "src": "assets/inflight_close.png",
+      "sha256": "8b7a9374860ffca248dcdba39c18148341f2d3d4782fb366202a9623878a6938"
+    },
+    "lightning_01": {
+      "src": "assets/lightning_01.png",
+      "sha256": "3264b9ccaea7a742c5f9a1aaf30154b52f381b2226d0db40f69746dfd74b8b06"
+    },
+    "lightning_02": {
+      "src": "assets/lightning_02.png",
+      "sha256": "b4f2c5739e9742be9d451b9ebec9ae9580e2b3871d0cfd39c55a3c5259120808"
+    },
+    "lightning_03": {
+      "src": "assets/lightning_03.png",
+      "sha256": "df6264b3a13c52392668d1ee43973c8024aca3691bb08552fb52b70a018f5642"
+    },
+    "lightning_04": {
+      "src": "assets/lightning_04.png",
+      "sha256": "22983d19b31f2c1f642a4d9e6ae543961231a289cccb301dd0a379e48cc853c5"
+    },
+    "debris_01": {
+      "src": "assets/debris_01.png",
+      "sha256": "c9c96bf189d31f23bb05b7642dad2f0a022a7a5b62bbe1e985da42df93cf0625"
+    },
+    "debris_02": {
+      "src": "assets/debris_02.png",
+      "sha256": "53becf416ec0173ca90eb0c3ce336f1c7aefb9ced1ec0f745e711555ee46ad96"
+    },
+    "debris_03": {
+      "src": "assets/debris_03.png",
+      "sha256": "5008cfa221329f3808a3f90a68d8e31a59f7838a83b19c21a0d32f0e0583fd80"
+    },
+    "trail_01": {
+      "src": "assets/trail_01.png",
+      "sha256": "a12a46e4202719e72f83e6ce2789db8ed652fd517d5e88c2e921ab6b070ac6f5"
+    },
+    "trail_02": {
+      "src": "assets/trail_02.png",
+      "sha256": "db84e0ac429d421d2c91f94ee14cbbc9fc1aa9d632fa65687d8634854000476f"
+    },
+    "trail_03": {
+      "src": "assets/trail_03.png",
+      "sha256": "51c5430750cd3def6af4792d9141094e02d58c3cb9c5366fe9efd30480b2e096"
+    },
+    "burst_01": {
+      "src": "assets/burst_01.png",
+      "sha256": "e3db3487845fc7ba90e755b0c75dd0d6c28bdcea28272b9226e056e7ac69733b"
+    },
+    "burst_02": {
+      "src": "assets/burst_02.png",
+      "sha256": "bb55b00afacae46773931f0bc8b754b87dd2a21809a5dc3b82cee450f2dc85f9"
+    },
+    "burst_03": {
+      "src": "assets/burst_03.png",
+      "sha256": "f03df01d079e79bf02d909df3ff75b2324c1e773200bb040387c30017f3bcc3e"
+    },
+    "roof_01": {
+      "src": "assets/roof_01.png",
+      "sha256": "4bc353e7a0c22c0dff452eacbdd1da5c875b3557e336ba25b8e87c63f0594e42"
+    },
+    "roof_02": {
+      "src": "assets/roof_02.png",
+      "sha256": "d1943fdd72aa51b486350ab0cde82d6a5daf7ba06652fa503f9453b24b6b38f0"
+    },
+    "roof_03": {
+      "src": "assets/roof_03.png",
+      "sha256": "546c05d78b7b1c56b441ea998186735587c3563be318858882c1e9e229195553"
+    },
+    "roof_04": {
+      "src": "assets/roof_04.png",
+      "sha256": "a5dfb4c9391ee006f3dc98f78bdf8d3004baa730be8ee529266056ae95d1cce9"
+    }
+  },
+  "backgrounds": {
+    "forest": "bg_forest",
+    "overhead": "bg_overhead",
+    "moon": "bg_moon"
+  },
+  "clips": {
+    "crouch": {
+      "frames": [
+        {
+          "image": "crouch_01",
+          "durationMs": 80
+        },
+        {
+          "image": "crouch_02",
+          "durationMs": 80
+        },
+        {
+          "image": "crouch_03",
+          "durationMs": 80
+        }
+      ],
+      "anchor": [
+        0.5,
+        1
+      ],
+      "worldHeight": 180
+    },
+    "charge": {
+      "frames": [
+        {
+          "image": "charge_01",
+          "durationMs": 80
+        },
+        {
+          "image": "charge_02",
+          "durationMs": 80
+        },
+        {
+          "image": "charge_03",
+          "durationMs": 80
+        }
+      ],
+      "anchor": [
+        0.5,
+        1
+      ],
+      "worldHeight": 180
+    },
+    "dash": {
+      "frames": [
+        {
+          "image": "dash_01",
+          "durationMs": 80
+        },
+        {
+          "image": "dash_02",
+          "durationMs": 80
+        },
+        {
+          "image": "dash_03",
+          "durationMs": 80
+        }
+      ],
+      "anchor": [
+        0.5,
+        1
+      ],
+      "worldHeight": 180
+    },
+    "launch": {
+      "frames": [
+        {
+          "image": "launch_01",
+          "durationMs": 80
+        },
+        {
+          "image": "launch_02",
+          "durationMs": 80
+        },
+        {
+          "image": "launch_03",
+          "durationMs": 80
+        }
+      ],
+      "anchor": [
+        0.5,
+        1
+      ],
+      "worldHeight": 180
+    },
+    "air": {
+      "frames": [
+        {
+          "image": "launch_01",
+          "durationMs": 80
+        },
+        {
+          "image": "launch_02",
+          "durationMs": 80
+        },
+        {
+          "image": "launch_03",
+          "durationMs": 80
+        }
+      ],
+      "anchor": [
+        0.5,
+        1
+      ],
+      "worldHeight": 180
+    },
+    "finish": {
+      "frames": [
+        {
+          "image": "launch_01",
+          "durationMs": 80
+        },
+        {
+          "image": "launch_02",
+          "durationMs": 80
+        },
+        {
+          "image": "launch_03",
+          "durationMs": 80
+        }
+      ],
+      "anchor": [
+        0.5,
+        1
+      ],
+      "worldHeight": 180
+    },
+    "moon": {
+      "frames": [
+        {
+          "image": "moonpose_01",
+          "durationMs": 80
+        },
+        {
+          "image": "moonpose_02",
+          "durationMs": 80
+        },
+        {
+          "image": "moonpose_03",
+          "durationMs": 80
+        }
+      ],
+      "anchor": [
+        0.5,
+        1
+      ],
+      "worldHeight": 180
+    },
+    "ending": {
+      "frames": [
+        {
+          "image": "ending_01",
+          "durationMs": 80
+        },
+        {
+          "image": "ending_02",
+          "durationMs": 80
+        },
+        {
+          "image": "ending_03",
+          "durationMs": 80
+        }
+      ],
+      "anchor": [
+        0.5,
+        1
+      ],
+      "worldHeight": 180
+    },
+    "overheadReady": {
+      "frames": [
+        {
+          "image": "ending_01",
+          "durationMs": 80
+        },
+        {
+          "image": "ending_02",
+          "durationMs": 80
+        },
+        {
+          "image": "ending_03",
+          "durationMs": 80
+        }
+      ],
+      "anchor": [
+        0.5,
+        1
+      ],
+      "worldHeight": 180
+    },
+    "face": {
+      "frames": [
+        {
+          "image": "eye_closed",
+          "durationMs": 80
+        }
+      ],
+      "anchor": [
+        0.5,
+        1
+      ],
+      "worldHeight": 180
+    },
+    "eye": {
+      "frames": [
+        {
+          "image": "eye_closed",
+          "durationMs": 80
+        },
+        {
+          "image": "eye_awake",
+          "durationMs": 80
+        },
+        {
+          "image": "eye_extreme",
+          "durationMs": 80
+        }
+      ],
+      "anchor": [
+        0.5,
+        1
+      ],
+      "worldHeight": 180
+    },
+    "eyeCut": {
+      "frames": [
+        {
+          "image": "eye_extreme",
+          "durationMs": 80
+        }
+      ],
+      "anchor": [
+        0.5,
+        1
+      ],
+      "worldHeight": 180
+    },
+    "sideFace": {
+      "frames": [
+        {
+          "image": "side_awake",
+          "durationMs": 80
+        },
+        {
+          "image": "side_extreme",
+          "durationMs": 80
+        }
+      ],
+      "anchor": [
+        0.5,
+        1
+      ],
+      "worldHeight": 180
+    },
+    "facePullback": {
+      "frames": [
+        {
+          "image": "eye_extreme",
+          "durationMs": 80
+        },
+        {
+          "image": "eye_half",
+          "durationMs": 80
+        }
+      ],
+      "anchor": [
+        0.5,
+        1
+      ],
+      "worldHeight": 180
+    },
+    "inflightFace": {
+      "frames": [
+        {
+          "image": "inflight_wide",
+          "durationMs": 80
+        },
+        {
+          "image": "inflight_medium",
+          "durationMs": 80
+        },
+        {
+          "image": "inflight_close",
+          "durationMs": 80
+        }
+      ],
+      "anchor": [
+        0.5,
+        1
+      ],
+      "worldHeight": 180
+    },
+    "lightning": {
+      "frames": [
+        {
+          "image": "lightning_01",
+          "durationMs": 80
+        },
+        {
+          "image": "lightning_02",
+          "durationMs": 80
+        },
+        {
+          "image": "lightning_03",
+          "durationMs": 80
+        },
+        {
+          "image": "lightning_04",
+          "durationMs": 80
+        }
+      ],
+      "anchor": [
+        0.5,
+        1
+      ],
+      "worldHeight": 360
+    },
+    "debris": {
+      "frames": [
+        {
+          "image": "debris_01",
+          "durationMs": 80
+        },
+        {
+          "image": "debris_02",
+          "durationMs": 80
+        },
+        {
+          "image": "debris_03",
+          "durationMs": 80
+        }
+      ],
+      "anchor": [
+        0.5,
+        1
+      ],
+      "worldHeight": 250
+    },
+    "trail": {
+      "frames": [
+        {
+          "image": "trail_01",
+          "durationMs": 80
+        },
+        {
+          "image": "trail_02",
+          "durationMs": 80
+        },
+        {
+          "image": "trail_03",
+          "durationMs": 80
+        }
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "worldHeight": 180
+    },
+    "trailCurrent": {
+      "frames": [
+        {
+          "image": "trail_01",
+          "durationMs": 80
+        },
+        {
+          "image": "trail_02",
+          "durationMs": 80
+        }
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "worldHeight": 180
+    },
+    "trailResidual": {
+      "frames": [
+        {
+          "image": "trail_03",
+          "durationMs": 80
+        }
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "worldHeight": 180
+    },
+    "burst": {
+      "frames": [
+        {
+          "image": "burst_01",
+          "durationMs": 80
+        },
+        {
+          "image": "burst_02",
+          "durationMs": 80
+        },
+        {
+          "image": "burst_03",
+          "durationMs": 80
+        }
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "worldHeight": 180
+    },
+    "roof": {
+      "frames": [
+        {
+          "image": "roof_01",
+          "durationMs": 80
+        },
+        {
+          "image": "roof_02",
+          "durationMs": 80
+        },
+        {
+          "image": "roof_03",
+          "durationMs": 80
+        },
+        {
+          "image": "roof_04",
+          "durationMs": 80
+        }
+      ],
+      "anchor": [
+        0.5,
+        1
+      ],
+      "worldHeight": 360
+    }
+  },
+  "revision": "zenitsu-sixfold-review-1",
+  "userApproval": "pending",
+  "scope": "善逸像素无刀鞘六连演出样稿，独立审核，未接入实战判定"
+}

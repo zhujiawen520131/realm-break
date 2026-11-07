@@ -1,0 +1,228 @@
+{
+  "scope": "pixel sixfold cinematic art and director, not R4 ordinary slash or formal damage engine",
+  "status": "ready-for-user-review",
+  "userApproval": "pending",
+  "adaptationsAuthorized": [
+    "pixel style",
+    "zero scabbards",
+    "drawn blade choreography"
+  ],
+  "referenceEvidenceViewed": [
+    "overview-00.jpg",
+    "overview-20.jpg",
+    "zigzag-detail.jpg",
+    "pose-low-ready.png",
+    "pose-charge.png",
+    "face-awaken.png",
+    "pose-fast-draw.png",
+    "pose-feet-push.png",
+    "pose-moon-recovery.png",
+    "pose-overhead-ending.png"
+  ],
+  "screenSegments": [
+    "right-to-left",
+    "left-to-upper-right",
+    "upper-right-to-upper-left",
+    "upper-left-to-upper-right",
+    "upper-right-to-upper-left",
+    "vertical-up"
+  ],
+  "requiredCinematicCues": [
+    "changing eye close-up",
+    "blue-white vertical lightning and levitating rocks",
+    "yellow-white active wedge",
+    "cyan-white persistent prior traces",
+    "corner starbursts",
+    "camera pullback",
+    "vertical finish",
+    "airborne moonlit crouched recovery"
+  ],
+  "limits": [
+    "six screen segments do not prove six damage events",
+    "recorded player pauses are not move pauses",
+    "new assets remain user-pending"
+  ],
+  "findings": [
+    {
+      "id": "ground-grip",
+      "severity": "blocking",
+      "status": "verified-fixed-in-final-assets-and-browser",
+      "evidence": "clip-charge.png",
+      "detail": "Original first six ground poses placed gold guard between hands so support hand grasped blade. Corrected ground-final places both hands behind guard."
+    },
+    {
+      "id": "charge-eyes",
+      "severity": "blocking",
+      "status": "verified-fixed-in-final-assets-and-browser",
+      "detail": "Charge poses initially closed eyes after white-eye ignition. ground-final middle row now has three white-eye stages."
+    },
+    {
+      "id": "inflight-grip",
+      "severity": "blocking",
+      "status": "verified-fixed-in-final-assets-and-browser",
+      "detail": "side-face lower-left halfbody repeated guard-between-hands problem. Author will entirely exclude hands and weapon by face/upper-chest crop. Actual manifest must exclude flawed body."
+    },
+    {
+      "id": "portrait-state",
+      "severity": "blocking",
+      "status": "verified-fixed-in-final-assets-and-browser",
+      "detail": "sideFace must not replay closed-eye pose after white-eye ignition; eye closeup should not prematurely insert halfbody. Check actual clip mapping."
+    },
+    {
+      "id": "roof-tail",
+      "severity": "blocking",
+      "status": "verified-fixed-in-final-assets-and-browser",
+      "detail": "Initial impact stopped34.494; corrected exclusive end35.00619 preserves last0.51219s of actual roof burst."
+    },
+    {
+      "id": "active-wedge-gap",
+      "severity": "blocking",
+      "status": "verified-fixed-in-final-assets-and-browser",
+      "evidence": "director-leg-2.png",
+      "detail": "At actual leg2 screenshot, luminous wedge tip is visibly separated from the fast actor by >100 display pixels; transparent PNG margins scaled along path likely cause detachment. Place actor within wedge tip using visible alpha bounds/explicit authored tip.",
+      "resolution": "Actual white-core tips in two authored PNGs anchored to path endpoints, actor body centers aligned; independently rechecked each leg25%/72%, overhead and launch in final53 screenshots."
+    }
+  ],
+  "directorPrecheckNotes": [
+    {
+      "id": "camera-pullback",
+      "status": "verified-fixed-in-final-browser",
+      "observed": "Current initial renderer uses fixed scene zoom and trajectory coordinates; actual pullback not implemented yet."
+    },
+    {
+      "id": "forest-three-passes",
+      "status": "verified-fixed-in-final-browser",
+      "observed": "Initial forest phase draws one continuous actor crossing; reference has three bright passes with dark gaps, separate from final six legs."
+    },
+    {
+      "id": "dash-orientation",
+      "status": "verified-fixed-in-final-browser",
+      "observed": "Raw atan2 rotation for leftward paths may flip full-body art upside down; check actual silhouette and prefer directional mirror if needed."
+    }
+  ],
+  "requiredPrincipalSequence": [
+    {
+      "source": [
+        8.98778,
+        11.91507
+      ],
+      "cue": "front lowered face and closed/dark eyes"
+    },
+    {
+      "source": [
+        11.91507,
+        13.61769
+      ],
+      "cue": "white-eye ignition with brief star/impact"
+    },
+    {
+      "source": [
+        13.61769,
+        15.04925
+      ],
+      "cue": "actual side-face composition pushes toward eye"
+    },
+    {
+      "source": [
+        15.04925,
+        15.28241
+      ],
+      "cue": "short eye impact cut"
+    },
+    {
+      "source": [
+        15.28241,
+        18.41877
+      ],
+      "cue": "extreme eyes pull back to half-body/low pose"
+    },
+    {
+      "source": [
+        18.41877,
+        21.85279
+      ],
+      "cue": "two-stage vertical lightning and floating-rock charge"
+    },
+    {
+      "source": [
+        23.55068,
+        25.44628
+      ],
+      "cue": "overhead ready and speed departure"
+    },
+    {
+      "source": [
+        25.44628,
+        27.45416
+      ],
+      "cue": "three forest passes with dark gaps"
+    },
+    {
+      "source": [
+        27.45416,
+        29.1568
+      ],
+      "cue": "airborne drawn-blade and feet drive / upward leave"
+    },
+    {
+      "source": [
+        29.1568,
+        30.60064
+      ],
+      "cue": "inflight side-face push-in"
+    },
+    {
+      "source": [
+        32.52577,
+        33.6159
+      ],
+      "cue": "six real-time unequal screen legs"
+    },
+    {
+      "source": [
+        33.6159,
+        35.00619
+      ],
+      "cue": "black transition, vertical finisher, impact and roof burst"
+    },
+    {
+      "source": [
+        37.99793,
+        38.63102
+      ],
+      "cue": "actual final overhead airborne recovery motion, not static substituted hold"
+    }
+  ],
+  "supersededPreview": "Initial11.96-second simplification is not the acceptance target",
+  "unresolvedScopeQuestions": [],
+  "referenceTimingClarification": {
+    "chargeEnd": 21.85279,
+    "basis": "Video analyst confirms677 PTS21.81974 is last retained frame;678 PTS21.85279 is exclusive endpoint."
+  },
+  "assetInspection": {
+    "images": 47,
+    "clips": 22,
+    "cropBounds": "all valid",
+    "edgeClipping": "Only intended portrait full-bleed edges; no actor/fx/roof edge alpha>16",
+    "actualBrowserSamples": 53,
+    "browserErrors": 0
+  },
+  "blockingOpen": 0,
+  "remainingAdaptations": [
+    "pixel style",
+    "zero scabbards and redrawn grips",
+    "three-pose body clips plus camera/position changes, not1194frame redraw",
+    "enemy/insect context omitted",
+    "enemy purple threads omitted explicitly",
+    "synthetic adapted audio not copied source audio",
+    "cinematic preview, not formal damage/cancel/invulnerability implementation"
+  ],
+  "directorFinal": {
+    "rendererSHA256": "bdf0ac0c729680938ba8e39273a4c311f80c639f0ebbfd432758b87247331ac1",
+    "durationMs": 24278.57,
+    "sixfoldMs": 1090.13,
+    "phases": 17,
+    "samples": 53,
+    "browserErrors": 0
+  }
+}

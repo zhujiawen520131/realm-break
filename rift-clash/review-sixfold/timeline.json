@@ -1,0 +1,376 @@
+{
+  "schemaVersion": 1,
+  "title": "霹雳一闪 · 六连",
+  "sourceDescription": "参考为用户上传的38.631秒动画网页录屏，不是游戏录像。本页为约24.28秒有意剪辑的像素演出：保留主角独有镜头与选中段原片节奏，剔除确定播放器停留、对手反应及虫群上下文。",
+  "notes": [
+    "保留完整8.988–21.853低头、亮眼、侧脸推进、眼部冲击、双眼拉回半身与蓄势链；另保留23.551–25.446俯视准备横移、29.157–30.601空中侧脸推进。",
+    "省略3.619–8.988的敌人/虫群上下文、21.853–23.551对手反应、31.101–32.526敌方近景与极短空地过渡；未让空背景等长占位。",
+    "起手与月下画面含播放器停留，分别改为350/400毫秒姿态展示；结尾37.998–38.631保留真实0.63309秒空中收势。",
+    "最终六折32.52577–33.61590秒保留1.09013秒；六段时长不等，只有屏幕投影方向可核验，不对应六次伤害。",
+    "像素无鞘人物、重构场地坐标、镜头裁切和弱化闪白均是明确改编；不是全原片逐像素复刻。",
+    "声音为可关闭的改编合成音效，仅提示蓄能、六段破空与终结；没有复制原声音轨，不声称逐声复刻。"
+  ],
+  "phases": [
+    {
+      "id": "crouch",
+      "label": "低身持刀",
+      "scene": "forest",
+      "pose": "crouch",
+      "durationMs": 350,
+      "sourceStart": 0,
+      "sourceEnd": 0,
+      "adaptation": "取起手姿态展示350毫秒；剔除网页播放器约3.6秒停留。无鞘持刀为用户指定改编。"
+    },
+    {
+      "id": "face",
+      "label": "低头闭眼 · 呼吸",
+      "scene": "forest",
+      "pose": "face",
+      "sourceStart": 8.98778,
+      "sourceEnd": 11.91507,
+      "durationMs": 2927.29,
+      "adaptation": "保留低头闭眼的独立正面像素肖像与原片节奏。",
+      "view": {
+        "mode": "portrait",
+        "startZoom": 1,
+        "endZoom": 1.05,
+        "center": [
+          0.5,
+          0.42
+        ]
+      }
+    },
+    {
+      "id": "eye",
+      "label": "白眼近景",
+      "scene": "forest",
+      "pose": "eye",
+      "sourceStart": 11.91507,
+      "sourceEnd": 13.61769,
+      "adaptation": "眼光亮起使用闭眼、白眼和双眼特近像素帧，按本段进度分配；保留原片时长。",
+      "durationMs": 1702.62,
+      "view": {
+        "mode": "portrait",
+        "startZoom": 1,
+        "endZoom": 1.05,
+        "center": [
+          0.5,
+          0.44
+        ]
+      }
+    },
+    {
+      "id": "sideEye",
+      "label": "侧脸推进",
+      "scene": "forest",
+      "pose": "sideFace",
+      "sourceStart": 13.61769,
+      "sourceEnd": 15.04925,
+      "durationMs": 1431.56,
+      "adaptation": "独立侧脸素材推进至眼部，不用正脸翻转冒充。",
+      "view": {
+        "mode": "portrait",
+        "startZoom": 1,
+        "endZoom": 1.8,
+        "center": [
+          0.5,
+          0.42
+        ]
+      }
+    },
+    {
+      "id": "eyeCut",
+      "label": "眼部短冲击",
+      "scene": "forest",
+      "pose": "eye",
+      "sourceStart": 15.04925,
+      "sourceEnd": 15.28241,
+      "durationMs": 233.16,
+      "adaptation": "保留短冲击位置；使用已绘眼部帧，强闪白改为低强度辅助闪光。",
+      "view": {
+        "mode": "portrait",
+        "startZoom": 1.7,
+        "endZoom": 1.7,
+        "center": [
+          0.5,
+          0.42
+        ]
+      }
+    },
+    {
+      "id": "facePullback",
+      "label": "双眼拉回半身",
+      "scene": "forest",
+      "pose": "facePullback",
+      "sourceStart": 15.28241,
+      "sourceEnd": 18.41877,
+      "durationMs": 3136.36,
+      "adaptation": "固定同一白眼半身素材，从双眼位置连续拉回半身，不中途更换人物图；保留原片时长。",
+      "view": {
+        "mode": "portrait",
+        "startZoom": 4,
+        "endZoom": 1,
+        "center": [
+          0.5,
+          0.42
+        ],
+        "startCenter": [
+          0.52,
+          0.32
+        ],
+        "endCenter": [
+          0.5,
+          0.5
+        ],
+        "frameProgress": 1
+      }
+    },
+    {
+      "id": "charge",
+      "label": "纵雷蓄势 · 浮石",
+      "scene": "forest",
+      "pose": "charge",
+      "sourceStart": 18.41877,
+      "sourceEnd": 21.85279,
+      "adaptation": "保留此段有效时长，蓝白电柱与浮石使用像素帧图；弱化原片强烈黑白冲击。",
+      "durationMs": 3434.02
+    },
+    {
+      "id": "overheadReady",
+      "label": "俯视蓄势",
+      "scene": "overhead",
+      "pose": "overheadReady",
+      "sourceStart": 23.55068,
+      "sourceEnd": 24.29311,
+      "durationMs": 742.43,
+      "adaptation": "保留俯视准备镜头；省略对手紫色丝束，像素场地重新绘制。"
+    },
+    {
+      "id": "overhead",
+      "label": "俯视横移",
+      "scene": "overhead",
+      "pose": "overheadReady",
+      "sourceStart": 24.29311,
+      "sourceEnd": 25.44628,
+      "durationMs": 1153.17,
+      "adaptation": "保留俯视横移时长；不把这一镜头另算为六折之一。"
+    },
+    {
+      "id": "forest",
+      "label": "林间高速穿行",
+      "scene": "forest",
+      "pose": "dash",
+      "sourceStart": 25.44628,
+      "sourceEnd": 27.45416,
+      "adaptation": "原片三次分开的林间通行，不计入后面的六折；像素空间位置为重构。",
+      "durationMs": 2007.88
+    },
+    {
+      "id": "launch",
+      "label": "空中持刀 · 蹬发",
+      "scene": "moon",
+      "pose": "launch",
+      "sourceStart": 27.45416,
+      "sourceEnd": 29.1568,
+      "adaptation": "空中持刀与脚底蹬发使用独立像素起飞帧，维持本段原片时长。",
+      "durationMs": 1702.64
+    },
+    {
+      "id": "inflightFace",
+      "label": "空中侧脸推进",
+      "scene": "moon",
+      "pose": "inflightFace",
+      "sourceStart": 29.1568,
+      "sourceEnd": 30.60064,
+      "durationMs": 1443.84,
+      "adaptation": "独立空中侧脸视角及推进镜头，不复用地面正脸。",
+      "view": {
+        "mode": "portrait",
+        "startZoom": 1,
+        "endZoom": 1.55,
+        "center": [
+          0.5,
+          0.42
+        ]
+      }
+    },
+    {
+      "id": "roof",
+      "label": "屋顶建立 · 推进",
+      "scene": "moon",
+      "pose": "roof",
+      "durationMs": 500.09,
+      "sourceStart": 30.60064,
+      "sourceEnd": 31.10073,
+      "adaptation": "独立像素屋顶完整姿态与推进，保留原片0.50009秒。"
+    },
+    {
+      "id": "sixfold",
+      "label": "六折 · 高速突进",
+      "scene": "overhead",
+      "pose": "dash",
+      "sourceStart": 32.52577,
+      "sourceEnd": 33.6159,
+      "adaptation": "保持六段实测时长及屏幕投影方向；像素场地坐标与拉远构图是改编，不是已知世界坐标。",
+      "durationMs": 1090.13
+    },
+    {
+      "id": "impact",
+      "label": "竖直终结",
+      "scene": "forest",
+      "pose": "finish",
+      "sourceStart": 33.6159,
+      "sourceEnd": 35.00619,
+      "adaptation": "独立像素屋顶从完整到裂开、穿出、木片烟尘爆散；角色沿竖直轨迹上冲。",
+      "durationMs": 1390.29
+    },
+    {
+      "id": "air",
+      "label": "月下屈膝悬空",
+      "scene": "moon",
+      "pose": "moon",
+      "durationMs": 400,
+      "sourceStart": 35.00619,
+      "sourceEnd": 35.00619,
+      "adaptation": "取月下姿态展示400毫秒，剔除播放器约3秒停留；不是地面收刀。"
+    },
+    {
+      "id": "ending",
+      "label": "空中收势 · 结束",
+      "scene": "overhead",
+      "pose": "ending",
+      "durationMs": 633.09,
+      "sourceStart": 37.99793,
+      "sourceEnd": 38.63102,
+      "adaptation": "保留真实0.63309秒俯视空中收势；片源没有完整落地恢复，样稿停在空中。"
+    }
+  ],
+  "legs": [
+    {
+      "sourceStart": 32.52577,
+      "sourceEnd": 32.72585,
+      "to": [
+        110,
+        365
+      ],
+      "description": "right_to_left",
+      "verifiedDamageHit": false,
+      "from": [
+        900,
+        415
+      ]
+    },
+    {
+      "sourceStart": 32.72585,
+      "sourceEnd": 32.90034,
+      "to": [
+        800,
+        300
+      ],
+      "description": "left_to_upper_right",
+      "verifiedDamageHit": false,
+      "from": [
+        110,
+        365
+      ]
+    },
+    {
+      "sourceStart": 32.90034,
+      "sourceEnd": 33.03288,
+      "to": [
+        220,
+        245
+      ],
+      "description": "upper_right_to_upper_left",
+      "verifiedDamageHit": false,
+      "from": [
+        800,
+        300
+      ]
+    },
+    {
+      "sourceStart": 33.03288,
+      "sourceEnd": 33.26216,
+      "to": [
+        750,
+        180
+      ],
+      "description": "upper_left_to_upper_right",
+      "verifiedDamageHit": false,
+      "from": [
+        220,
+        245
+      ]
+    },
+    {
+      "sourceStart": 33.26216,
+      "sourceEnd": 33.44997,
+      "to": [
+        330,
+        125
+      ],
+      "description": "upper_right_to_upper_left",
+      "verifiedDamageHit": false,
+      "from": [
+        750,
+        180
+      ]
+    },
+    {
+      "sourceStart": 33.44997,
+      "sourceEnd": 33.6159,
+      "to": [
+        330,
+        30
+      ],
+      "description": "vertical_up",
+      "verifiedDamageHit": false,
+      "from": [
+        330,
+        125
+      ]
+    }
+  ],
+  "auxiliaryFlashes": [
+    {
+      "sourceStart": 15.04925,
+      "sourceEnd": 15.08332,
+      "kind": "black"
+    },
+    {
+      "sourceStart": 15.21544,
+      "sourceEnd": 15.24969,
+      "kind": "white"
+    },
+    {
+      "sourceStart": 18.45179,
+      "sourceEnd": 18.52621,
+      "kind": "black"
+    },
+    {
+      "sourceStart": 18.54691,
+      "sourceEnd": 18.58471,
+      "kind": "white"
+    },
+    {
+      "sourceStart": 20.35224,
+      "sourceEnd": 20.4191,
+      "kind": "black"
+    },
+    {
+      "sourceStart": 24.75496,
+      "sourceEnd": 24.82832,
+      "kind": "black"
+    },
+    {
+      "sourceStart": 33.6159,
+      "sourceEnd": 33.69353,
+      "kind": "black"
+    },
+    {
+      "sourceStart": 33.90079,
+      "sourceEnd": 33.95947,
+      "kind": "monochrome_impact"
+    }
+  ]
+}
