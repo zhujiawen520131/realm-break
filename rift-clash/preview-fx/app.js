@@ -4,8 +4,8 @@ const $=id=>document.getElementById(id),fx=new RiftFeedback.Feedback();let start
 if(window.RiftMotionData?.fullRoster&&Rift.HEROES[window.RiftMotionData.initialHero])world.reset('training',window.RiftMotionData.initialHero);
 if(typeof URLSearchParams!=='undefined'&&typeof location!=='undefined'&&new URLSearchParams(location.search).get('hero')==='zenitsu')world.reset('training','zenitsu','cloud');
 if(window.RiftMotionData?.fullRoster){world.settings.cinematicTicks=90;world.settings.platforms=true;}
-if(window.RiftArena)world.configureArena({width:RiftArena.WORLD_RIGHT,platforms:RiftArena.platforms,spawnPoints:[500,900]});
-const actions={KeyJ:'attack',KeyK:'jump',KeyL:'dash',KeyU:'skill',KeyI:'sub',KeyO:'ultimate'};
+if(window.RiftArena)world.configureArena({width:RiftArena.WORLD_RIGHT,platforms:RiftArena.getPlatforms?.('temple')||RiftArena.platforms,spawnPoints:RiftArena.spawnPoints||[600,920]});
+const actions={KeyJ:'attack',KeyK:'jump',KeyN:'drop',KeyL:'dash',KeyU:'skill',KeyI:'sub',KeyO:'ultimate'};
 let sceneId='temple',environmentMotion=true;const reducedMotion=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches||false;environmentMotion=!reducedMotion;if(reducedMotion){world.settings.shake=false;world.settings.cinematics=false;}let impactFlash=!reducedMotion;
 
 function rosterLoading(){return !!window.RiftMotionData?.fullRoster&&typeof window.RiftMotionPreview?.ensureHero==='function';}
@@ -34,7 +34,7 @@ function ensureCurrentRoster(resume){
   if(ticket!==rosterTicket)return;
   if(ok.includes(false)){rosterLoadFailed('角色或场景资源加载失败，请点击重试加载。');return;}
   finishResourceLoad();api?.retainHeroes?.(ids);
-  $('artStatus').textContent='动漫像素角色 · 当前双方动作与连续大场景已就绪';
+  $('artStatus').textContent='动漫像素角色 · 当前动作与立体建筑战场已就绪';
   if(artBootReady)paintPreviews();if(resume)resume();
  }).catch(()=>{if(ticket===rosterTicket)rosterLoadFailed('角色资源加载失败，请点击重试加载。');});
  return false;
@@ -48,7 +48,7 @@ function mode(m){world.reset(m);fx.reset();endReveal=0;$('training').classList.t
 $('start').onclick=start;$('reset').onclick=reset;$('pause').onclick=pause;$('training').onclick=()=>mode('training');$('duel').onclick=()=>mode('duel');
 $('sound').onclick=()=>{soundOn=!soundOn;initAudio();$('sound').textContent='声音：'+(soundOn?'开':'关');$('sound').setAttribute('aria-pressed',soundOn);if(soundOn)fx.play({type:'swing',weapon:world.p1.info.weapon});};
 for(const key of ['hitstop','shake','debug','cinematics'])$(key).onchange=e=>{world.settings[key]=e.target.checked;if(key==='shake'&&!e.target.checked)world.shake=0;};
-function keyDown(code){if(code==='Escape'){pause();return;}if(code==='KeyR'){reset();return;}if(!started||paused||world.result||assetLoading)return;held.add(code);if(actions[code])world.action(world.p1,actions[code],(held.has('KeyD')?1:0)-(held.has('KeyA')?1:0));}
+function keyDown(code){if(code==='Escape'){pause();return;}if(code==='KeyR'){reset();return;}if(!started||paused||world.result||assetLoading)return;held.add(code);if(actions[code])world.action(world.p1,actions[code],(held.has('KeyD')?1:0)-(held.has('KeyA')?1:0),{down:held.has('KeyS'),up:held.has('KeyW')});}
 window.addEventListener('keydown',e=>{if(['INPUT','SELECT','TEXTAREA'].includes(e.target?.tagName))return;if(actions[e.code]||['KeyA','KeyD','KeyS','KeyR','Escape'].includes(e.code)){e.preventDefault();if(!e.repeat)keyDown(e.code);}});window.addEventListener('keyup',e=>held.delete(e.code));window.addEventListener('blur',()=>{backgroundPause=true;held.clear();if(started&&!paused&&!world.result)pause();});document.addEventListener('visibilitychange',()=>{if(document.hidden){backgroundPause=true;held.clear();if(started&&!paused&&!world.result)pause();}});
 for(const btn of document.querySelectorAll('[data-key]')){btn.addEventListener('pointerdown',e=>{e.preventDefault();btn.setPointerCapture(e.pointerId);keyDown(btn.dataset.key);});for(const ev of ['pointerup','pointercancel','lostpointercapture'])btn.addEventListener(ev,()=>held.delete(btn.dataset.key));}
 function rect(x,y,w,h,color){ctx.fillStyle=color;ctx.fillRect(x,y,w,h);}function line(points,color,width=1){ctx.beginPath();ctx.moveTo(...points[0]);points.slice(1).forEach(p=>ctx.lineTo(...p));ctx.strokeStyle=color;ctx.lineWidth=width;ctx.stroke();}function poly(points,color){ctx.beginPath();ctx.moveTo(...points[0]);points.slice(1).forEach(p=>ctx.lineTo(...p));ctx.closePath();ctx.fillStyle=color;ctx.fill();}function text(t,x,y,size,color,align='left',weight=500){ctx.fillStyle=color;ctx.font=`${weight} ${size}px "Noto Sans SC",system-ui,sans-serif`;ctx.textAlign=align;ctx.fillText(t,x,y);}function ellipse(x,y,rx,ry,c){ctx.fillStyle=c;ctx.beginPath();ctx.ellipse(x,y,rx,ry,0,0,Math.PI*2);ctx.fill();}
@@ -119,7 +119,7 @@ function refreshSelection(){
  $('opponent').value=world.p2.hero;
 }
 function chooseHero(id){if(!Rift.HEROES[id])return;world.reset(world.mode,id,world.p2.hero);fx.reset();endReveal=0;held.clear();paused=false;$('pause').innerHTML='暂停 <kbd>Esc</kbd>';if(started)$('overlay').classList.add('hidden');refreshSelection();ensureCurrentRoster();canvas.focus();}
-function chooseScene(id){if(!RiftScenes.DATA[id])return;sceneId=id;const d=RiftScenes.DATA[id];$('sceneName').textContent=d.name;$('sceneDescription').textContent=d.desc;for(const b of document.querySelectorAll('[data-scene]')){const selected=b.dataset.scene===id;b.classList.toggle('selected',selected);b.setAttribute('aria-pressed',selected);}ensureCurrentRoster();}
+function chooseScene(id){if(!RiftScenes.DATA[id])return;sceneId=id;if(window.RiftArena?.getPlatforms)world.setArenaGeometry({width:RiftArena.WORLD_RIGHT,platforms:RiftArena.getPlatforms(id),spawnPoints:RiftArena.spawnPoints||[600,920]});const d=RiftScenes.DATA[id];$('sceneName').textContent=d.name;$('sceneDescription').textContent=d.desc;for(const b of document.querySelectorAll('[data-scene]')){const selected=b.dataset.scene===id;b.classList.toggle('selected',selected);b.setAttribute('aria-pressed',selected);}ensureCurrentRoster();}
 function paintPreviews(){
  if(!artBootReady)return;
  for(const b of document.querySelectorAll('[data-hero]')){const pic=b.querySelector('canvas'),pc=pic.getContext('2d'),h=Rift.HEROES[b.dataset.hero];pc.clearRect(0,0,160,120);pc.save();pc.translate(80,113);pc.scale(.68,.68);RiftFighters.draw(pc,{x:0,y:0,dir:1,hero:b.dataset.hero,info:h,color:h.color,hp:100,animState:'idle',animTime:0},0,true);pc.restore();}
@@ -130,7 +130,7 @@ for(const b of document.querySelectorAll('[data-scene]'))b.onclick=()=>chooseSce
 paintPreviews();
 window.RiftScenes.previewsReady?.then(()=>paintPreviews());
 window.RiftArena?.previewsReady?.then(()=>paintPreviews());
-Promise.all([window.RiftZenitsuCombat?.ready||Promise.resolve(true),RiftFighters.ready,RiftScenes.ready,window.RiftArena?.ready||Promise.resolve(true),RiftPosters.ready,window.RiftMotionPreview?.ready||Promise.resolve(true),window.RiftFXSprites?.ready||Promise.resolve(true)]).then(loaded=>{artBootReady=true;paintPreviews();if(rosterLoading()){ensureCurrentRoster();if(!assetLoading)$('artStatus').textContent=loaded.includes(false)?'部分资源未能载入，请刷新重试':'动漫像素角色 · 当前双方动作与连续大场景已就绪';}else $('artStatus').textContent=loaded.includes(false)?'部分美术未能载入，正在使用备用绘制':'方向操控已更新 · 六名角色必杀特写海报已就绪 · A / D + I 定向瞬移';}).catch(()=>{$('artStatus').textContent='部分美术载入失败，请重新打开文件';});
+Promise.all([window.RiftZenitsuCombat?.ready||Promise.resolve(true),RiftFighters.ready,RiftScenes.ready,window.RiftArena?.ready||Promise.resolve(true),RiftPosters.ready,window.RiftMotionPreview?.ready||Promise.resolve(true),window.RiftFXSprites?.ready||Promise.resolve(true)]).then(loaded=>{artBootReady=true;paintPreviews();if(rosterLoading()){ensureCurrentRoster();if(!assetLoading)$('artStatus').textContent=loaded.includes(false)?'部分资源未能载入，请刷新重试':'动漫像素角色 · 当前动作与立体建筑战场已就绪';}else $('artStatus').textContent=loaded.includes(false)?'部分美术未能载入，正在使用备用绘制':'方向操控已更新 · 六名角色必杀特写海报已就绪 · A / D + I 定向瞬移';}).catch(()=>{$('artStatus').textContent='部分美术载入失败，请重新打开文件';});
 $('opponent').onchange=e=>{world.reset(world.mode,world.p1.hero,e.target.value);fx.reset();endReveal=0;held.clear();paused=false;$('pause').innerHTML='暂停 <kbd>Esc</kbd>';if(started)$('overlay').classList.add('hidden');refreshSelection();ensureCurrentRoster();canvas.focus();};
 $('environmentMotion').checked=environmentMotion;$('environmentMotion').onchange=e=>{environmentMotion=e.target.checked;};$('shake').checked=world.settings.shake;refreshSelection();chooseScene(sceneId);
 
