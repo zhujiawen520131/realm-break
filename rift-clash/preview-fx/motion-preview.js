@@ -143,7 +143,7 @@ function draw(context,f,t=0,ghost=false){
   if(!img)return true;
  }
  if(!pose||!img)return false;
- context.save();context.translate(f.x||0,f.y||0);context.scale(f.dir||1,1);
+ context.save();if(pack?.revision?.startsWith('pixel-'))context.imageSmoothingEnabled=false;context.translate(f.x||0,f.y||0);context.scale(f.dir||1,1);
  if(f.flash>0&&!ghost&&'filter' in context)context.filter='brightness(1.8) saturate(.65)';
  context.drawImage(img,pose.x,pose.y,pose.frame.width*pose.scale,pose.frame.height*pose.scale);context.restore();return true;
 }
