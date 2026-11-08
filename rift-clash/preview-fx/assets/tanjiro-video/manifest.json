@@ -1,0 +1,57 @@
+{
+  "source": {
+    "url": "https://www.bilibili.com/video/BV1oq4y1d7PP/",
+    "title": "【10割即死连段】 灶门炭治郎 全攻击招式+连段演示(鬼灭之刃 火之神血风谭)",
+    "uploader": "咲霏霏",
+    "durationSec": 247.43161,
+    "videoDurationSec": 247.366,
+    "decodedFrames": 7421,
+    "resolution": [
+      640,
+      360
+    ],
+    "fps": 30,
+    "file": "reference.mp4",
+    "bytes": 13204715,
+    "sha256": "3e6862c5c38de5bc2373bfa6308b3f2a397a8ffb16032459c0e39b308d83894f",
+    "access": "Public page+public playurl, anonymous quality16, official backup CDN. No login/captcha/paywall bypass."
+  },
+  "clips": [
+    {
+      "id": "surge_cinematic",
+      "file": "clips/tanjiro-full-awakening.mp4",
+      "sourceFrameStart": 1111,
+      "sourceFrameEndExclusive": 1232,
+      "sourcePtsStartSec": 37.033,
+      "sourcePtsEndExclusiveSec": 41.067,
+      "outputFrames": 121,
+      "outputDurationSec": 4.033333333333333,
+      "entry": "first mouth close-up",
+      "exit": "before first normal gameplay view",
+      "sha256": "c767711dce12c65506d5b69d4dce2705d653316b52c15488381aedb34b484ded",
+      "bytes": 749076,
+      "watermarkPreserved": true,
+      "video": "H264 640x360 30fps yuv420p",
+      "audio": "AAC original audio retained, reencoded",
+      "timing": "Source PTS are millisecond-rounded. Output frames normalized to exactly 30fps."
+    },
+    {
+      "id": "ultimate_hit_confirmed_cinematic",
+      "file": "clips/tanjiro-water-dragon-ultimate.mp4",
+      "sourceFrameStart": 4181,
+      "sourceFrameEndExclusive": 4505,
+      "sourcePtsStartSec": 139.367,
+      "sourcePtsEndExclusiveSec": 150.167,
+      "outputFrames": 324,
+      "outputDurationSec": 10.8,
+      "entry": "first cinematic camera after initial contact flash",
+      "exit": "before return to normal distant gameplay composition",
+      "sha256": "86dd9e2de4b6ac1effc3274e49ec6596c087fcf7f0dd8f35e4fa098857bba4b7",
+      "bytes": 4192461,
+      "watermarkPreserved": true,
+      "video": "H264 640x360 30fps yuv420p",
+      "audio": "AAC original audio retained, reencoded",
+      "timing": "Source PTS are millisecond-rounded. Output frames normalized to exactly 30fps."
+    }
+  ]
+}

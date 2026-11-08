@@ -69,7 +69,7 @@ function stateOf(f,ghost){
  if((f.knockdown||f.downTime)&&pack?.heroes?.[f.hero]?.clips?.knockdown)return 'knockdown';
  if(f.guardStun>0&&f.block)return 'guard';
  if(f.stun>0)return 'hurt';
- if(f.dash||f.blinkTime||ghost&&f.animState==='dash')return 'dash';
+ if(f.dash||f.blinkTime||f.attack?.name==='dashstrike'||ghost&&f.animState==='dash')return 'dash';
  if(f.attack)return 'attack';
  if(!ghost&&Number.isFinite(f.y)&&f.y<(Number.isFinite(f.groundY)?f.groundY:(root.Rift?.FLOOR??510)))return 'jump';
  if(f.block)return 'guard';

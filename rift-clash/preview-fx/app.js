@@ -2,10 +2,10 @@
 const canvas=document.getElementById('game'),ctx=canvas.getContext('2d'),world=new Rift.World();
 const $=id=>document.getElementById(id),fx=new RiftFeedback.Feedback();let started=false,paused=false,soundOn=false,endReveal=0;const held=new Set();let clock=0,acc=0,last=0;let viewCamera={x:0,y:0,zoom:1};let assetLoading=false,retryLoadOnly=false,backgroundPause=false,pauseRevision=0,rosterTicket=0,artBootReady=!window.RiftMotionData?.fullRoster;
 if(window.RiftMotionData?.fullRoster&&Rift.HEROES[window.RiftMotionData.initialHero])world.reset('training',window.RiftMotionData.initialHero);
-if(typeof URLSearchParams!=='undefined'&&typeof location!=='undefined'&&new URLSearchParams(location.search).get('hero')==='zenitsu')world.reset('training','zenitsu','cloud');
+if(typeof URLSearchParams!=='undefined'&&typeof location!=='undefined'){const requestedHero=new URLSearchParams(location.search).get('hero');if(Rift.HEROES[requestedHero])world.reset('training',requestedHero,'cloud');}
 if(window.RiftMotionData?.fullRoster){world.settings.cinematicTicks=90;world.settings.platforms=true;}
 if(window.RiftArena)world.configureArena({width:RiftArena.WORLD_RIGHT,platforms:RiftArena.getPlatforms?.('temple')||RiftArena.platforms,spawnPoints:RiftArena.spawnPoints||[600,920]});
-const actions={KeyJ:'attack',KeyK:'jump',KeyN:'drop',KeyL:'dash',KeyU:'skill',KeyI:'sub',KeyO:'ultimate'};
+const actions={KeyJ:'attack',KeyK:'jump',KeyN:'drop',KeyL:'dash',KeyU:'skill',KeyI:'sub',KeyO:'ultimate',KeyH:'awaken',KeyP:'heavy',KeyV:'throw'};
 let sceneId='temple',environmentMotion=true;const reducedMotion=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches||false;environmentMotion=!reducedMotion;if(reducedMotion){world.settings.shake=false;world.settings.cinematics=false;}let impactFlash=!reducedMotion;
 
 function rosterLoading(){return !!window.RiftMotionData?.fullRoster&&typeof window.RiftMotionPreview?.ensureHero==='function';}
@@ -24,13 +24,13 @@ function finishResourceLoad(){
  retryLoadOnly=false;
 }
 function ensureCurrentRoster(resume){
- const sceneApi=typeof RiftScenes.ensureScene==='function',arenaApi=typeof window.RiftArena?.ensureScene==='function',zenitsuApi=[world.p1.hero,world.p2.hero].includes('zenitsu')&&typeof window.RiftZenitsuCombat?.ensureReady==='function';
- if(!rosterLoading()&&!sceneApi&&!arenaApi&&!zenitsuApi)return true;
+ const sceneApi=typeof RiftScenes.ensureScene==='function',arenaApi=typeof window.RiftArena?.ensureScene==='function',zenitsuApi=[world.p1.hero,world.p2.hero].includes('zenitsu')&&typeof window.RiftZenitsuCombat?.ensureReady==='function',tanjiroApi=[world.p1.hero,world.p2.hero].includes('tanjiro')&&typeof window.RiftTanjiroVisual?.ensureReady==='function';
+ if(!rosterLoading()&&!sceneApi&&!arenaApi&&!zenitsuApi&&!tanjiroApi)return true;
  const api=rosterLoading()?window.RiftMotionPreview:null,ids=[world.p1.hero,world.p2.hero],requestedScene=sceneId,ticket=++rosterTicket;
- if((!api||ids.every(id=>api.isHeroReady(id)))&&(!sceneApi||RiftScenes.isSceneReady(requestedScene))&&(!arenaApi||RiftArena.isSceneReady(requestedScene))&&(!zenitsuApi||RiftZenitsuCombat.isReady())){finishResourceLoad();api?.retainHeroes?.(ids);return true;}
+ if((!api||ids.every(id=>api.isHeroReady(id)))&&(!sceneApi||RiftScenes.isSceneReady(requestedScene))&&(!arenaApi||RiftArena.isSceneReady(requestedScene))&&(!zenitsuApi||RiftZenitsuCombat.isReady())&&(!tanjiroApi||RiftTanjiroVisual.isReady())){finishResourceLoad();api?.retainHeroes?.(ids);return true;}
  assetLoading=true;held.clear();$('start').disabled=true;
  $('artStatus').textContent='正在载入 '+ids.map(id=>Rift.HEROES[id].name).join(' / ')+' 的像素动作与场景…';
- Promise.all([...(api?ids.map(id=>api.ensureHero(id)):[]),...(sceneApi?[RiftScenes.ensureScene(requestedScene)]:[]),...(arenaApi?[RiftArena.ensureScene(requestedScene)]:[]),...(zenitsuApi?[RiftZenitsuCombat.ensureReady()]:[])]).then(ok=>{
+ Promise.all([...(api?ids.map(id=>api.ensureHero(id)):[]),...(sceneApi?[RiftScenes.ensureScene(requestedScene)]:[]),...(arenaApi?[RiftArena.ensureScene(requestedScene)]:[]),...(zenitsuApi?[RiftZenitsuCombat.ensureReady()]:[]),...(tanjiroApi?[RiftTanjiroVisual.ensureReady()]:[])]).then(ok=>{
   if(ticket!==rosterTicket)return;
   if(ok.includes(false)){rosterLoadFailed('角色或场景资源加载失败，请点击重试加载。');return;}
   finishResourceLoad();api?.retainHeroes?.(ids);
@@ -49,22 +49,25 @@ $('start').onclick=start;$('reset').onclick=reset;$('pause').onclick=pause;$('tr
 $('sound').onclick=()=>{soundOn=!soundOn;initAudio();$('sound').textContent='声音：'+(soundOn?'开':'关');$('sound').setAttribute('aria-pressed',soundOn);if(soundOn)fx.play({type:'swing',weapon:world.p1.info.weapon});};
 for(const key of ['hitstop','shake','debug','cinematics'])$(key).onchange=e=>{world.settings[key]=e.target.checked;if(key==='shake'&&!e.target.checked)world.shake=0;};
 function keyDown(code){if(code==='Escape'){pause();return;}if(code==='KeyR'){reset();return;}if(!started||paused||world.result||assetLoading)return;held.add(code);if(actions[code])world.action(world.p1,actions[code],(held.has('KeyD')?1:0)-(held.has('KeyA')?1:0),{down:held.has('KeyS'),up:held.has('KeyW')});}
-window.addEventListener('keydown',e=>{if(['INPUT','SELECT','TEXTAREA'].includes(e.target?.tagName))return;if(actions[e.code]||['KeyA','KeyD','KeyS','KeyR','Escape'].includes(e.code)){e.preventDefault();if(!e.repeat)keyDown(e.code);}});window.addEventListener('keyup',e=>held.delete(e.code));window.addEventListener('blur',()=>{backgroundPause=true;held.clear();if(started&&!paused&&!world.result)pause();});document.addEventListener('visibilitychange',()=>{if(document.hidden){backgroundPause=true;held.clear();if(started&&!paused&&!world.result)pause();}});
+window.addEventListener('keydown',e=>{if(['INPUT','SELECT','TEXTAREA'].includes(e.target?.tagName))return;if(actions[e.code]||['KeyA','KeyD','KeyS','KeyW','KeyR','Escape'].includes(e.code)){e.preventDefault();if(!e.repeat)keyDown(e.code);}});window.addEventListener('keyup',e=>held.delete(e.code));window.addEventListener('blur',()=>{backgroundPause=true;held.clear();if(started&&!paused&&!world.result)pause();});document.addEventListener('visibilitychange',()=>{if(document.hidden){backgroundPause=true;held.clear();if(started&&!paused&&!world.result)pause();}});
 for(const btn of document.querySelectorAll('[data-key]')){btn.addEventListener('pointerdown',e=>{e.preventDefault();btn.setPointerCapture(e.pointerId);keyDown(btn.dataset.key);});for(const ev of ['pointerup','pointercancel','lostpointercapture'])btn.addEventListener(ev,()=>held.delete(btn.dataset.key));}
 function rect(x,y,w,h,color){ctx.fillStyle=color;ctx.fillRect(x,y,w,h);}function line(points,color,width=1){ctx.beginPath();ctx.moveTo(...points[0]);points.slice(1).forEach(p=>ctx.lineTo(...p));ctx.strokeStyle=color;ctx.lineWidth=width;ctx.stroke();}function poly(points,color){ctx.beginPath();ctx.moveTo(...points[0]);points.slice(1).forEach(p=>ctx.lineTo(...p));ctx.closePath();ctx.fillStyle=color;ctx.fill();}function text(t,x,y,size,color,align='left',weight=500){ctx.fillStyle=color;ctx.font=`${weight} ${size}px "Noto Sans SC",system-ui,sans-serif`;ctx.textAlign=align;ctx.fillText(t,x,y);}function ellipse(x,y,rx,ry,c){ctx.fillStyle=c;ctx.beginPath();ctx.ellipse(x,y,rx,ry,0,0,Math.PI*2);ctx.fill();}
 function fighter(f,ghost=false){
+ if(!ghost)window.RiftTanjiroVisual?.drawAura(ctx,f,{reducedMotion,tick:world.frame});
  if((f.knockdown||f.downTime)&&window.RiftMotionData?.heroes?.[f.hero]?.clips?.knockdown){RiftFighters.draw(ctx,f,world.frame,ghost);return;}
  if(!ghost&&(f.knockdown||f.downTime)){
   ctx.save();const down=f.downTime>0,angle=down?-f.dir*Math.PI/2:f.dir*(.4+Math.sin((f.fallTime||0)*.12)*.45);
   ctx.translate(f.x,down?f.y-12:f.y-70);ctx.rotate(angle);ctx.translate(-f.x,down?-f.y:70-f.y);
   RiftFighters.draw(ctx,{...f,stun:Math.max(1,f.stun),animState:'hurt'},world.frame,false);ctx.restore();return;
  }
+ if(window.RiftTanjiroVisual?.drawFighter(ctx,f))return;
  if(window.RiftZenitsuCombat?.drawFighter(ctx,f))return;RiftFighters.draw(ctx,f,world.frame,ghost);
 }
 function hud(){const p=world.p1,q=world.p2,stageY=window.RiftStage?.cameraY(world)||0;const bar=(f,x,flip)=>{text(f.info.name+' / '+f.info.en,flip?x+420:x,41,16,'#e6eee2',flip?'right':'left',700);text(f===p?'01 · YOU':world.mode==='training'?'02 · TRAINING':'02 · CPU',flip?x:x+420,40,10,f.color,flip?'left':'right');rect(x,54,420,14,'#101e25cc');const trailHP=fx.health(f);rect(flip?x+420*(1-trailHP/100):x,54,420*trailHP/100,14,'#d99671');rect(flip?x+420*(1-f.hp/100):x,54,420*f.hp/100,14,f.color);rect(x,54,420,2,'#efffe13b');rect(x,76,260,4,'#101e25');rect(flip?x+260*(1-f.energy/100):x,76,260*f.energy/100,4,f.color);text(Math.ceil(f.energy)+' / 100 气',flip?x+420:x,100,10,'#b2c0b6',flip?'right':'left');};bar(p,45,false);bar(q,735,true);text(world.mode==='training'?'∞':String(world.time).padStart(2,'0'),600,68,43,'#dce6d6','center',700);text(world.mode==='training'?'FREE PRACTICE':'ROUND 01',600,94,9,'#8aa39d','center');
 if(p.combo>1){text(String(p.combo).padStart(2,'0'),62,216,65,p.color,'left',800);text('HIT COMBO',65,240,12,p.color);text(p.comboDamage+' DAMAGE',65,262,10,'#b0c6b6');}if(q.combo>1){text(q.combo+' HIT',1135,216,34,q.color,'right',800);}
 if(world.banner>0&&!world.cutin&&!window.RiftPresentation?.inspect(world)){rect(350,112,500,36,'#071319bb');text(world.bannerText,600,137,18,'#e6f6d6','center',800);}
 const enemyScreenX=600+viewCamera.x+(q.x-600)*viewCamera.zoom;if(enemyScreenX<30||enemyScreenX>1170){const right=enemyScreenX>1170;text((right?'':'◀ ')+q.info.name+(right?' ▶':''),right?1165:35,320,14,q.color,right?'right':'left',700);}
+if(p.hero==='tanjiro'&&p.awakenLevel)text((p.awakenLevel===2?'全觉醒 · 技能免气力':'觉醒 · 五连解锁')+' '+Math.ceil(p.awakenTime/60)+'s',45,121,12,'#9cefff');
 const tagX=600+viewCamera.x+(p.x-600)*viewCamera.zoom,tagY=340+viewCamera.y+(p.y-178-340)*viewCamera.zoom;text(p.info.name,tagX,Math.max(124,tagY),10,p.color,'center');poly([[tagX-4,Math.max(133,tagY+9)],[tagX+4,Math.max(133,tagY+9)],[tagX,Math.max(138,tagY+14)]],p.color);
 }
 function drawBreathEffect(e){
@@ -87,6 +90,7 @@ function drawBreathEffect(e){
 }
 
 function draw(){ctx.clearRect(0,0,1200,640);const sky=RiftScenes.DATA[sceneId].sky,skyFill=ctx.createLinearGradient(0,0,0,640);skyFill.addColorStop(0,sky[0]);skyFill.addColorStop(1,sky[1]);rect(0,0,1200,640,skyFill);if(window.RiftArena)RiftScenes.drawBackdrop?.(ctx,sceneId,world,clock,environmentMotion);ctx.save();const camera=fx.camera(world);const stageOffset=window.RiftStage?.cameraY(world)||0;camera.zoom*=window.RiftStage?.cameraZoom?.(world)||1;camera.y+=stageOffset*camera.zoom;camera.x+=window.RiftStage?.cameraX?.(world,camera.zoom)||0;viewCamera=camera;ctx.translate(600+camera.x,340+camera.y);ctx.scale(camera.zoom,camera.zoom);ctx.translate(-600,-340);if(window.RiftArena)RiftArena.draw(ctx,sceneId,clock,environmentMotion);else{RiftScenes.draw(ctx,sceneId,clock,(world.p1.x+world.p2.x)/2,environmentMotion);window.RiftStage?.draw(ctx,world);}window.RiftPresentation?.drawStage(ctx,world,{reducedMotion});
+for(const e of world.effects)if(e.kind==='tanjiroFx')window.RiftTanjiroVisual?.drawEffect(ctx,e,{reducedMotion});
 for(const f of [world.p1,world.p2]){ellipse(f.x,(f.groundY??Rift.FLOOR)+5,38-Math.min(20,((f.groundY??Rift.FLOOR)-f.y)*.06),7,'#07171b70');for(const t of f.trail){ctx.save();ctx.globalAlpha=t.life/30;fighter({...f,...t},true);ctx.restore();}ctx.save();if(f.inv>0&&Math.floor(clock/3)%2===0)ctx.globalAlpha=.45;fighter(f);ctx.restore();if(!(f.hero==='zenitsu'&&f.attack?.name==='ultimate'))window.RiftFXSprites?.drawStartup(ctx,f,{reducedMotion,flash:impactFlash});}
 for(const b of world.projectiles){if(window.RiftFXSprites?.drawProjectile(ctx,b,{reducedMotion,flash:impactFlash}))continue;ctx.save();ctx.translate(b.x,b.y);ctx.scale(b.vx===0?(b.direction||1):Math.sign(b.vx),1);ctx.shadowColor=b.owner.color;ctx.shadowBlur=18;if(b.kind==='bullet')ctx.rotate(Math.atan2(b.vy||0,Math.abs(b.vx||1)));
  if(['arrow','bullet','wave'].includes(b.kind)){for(let i=1;i<=5;i++){ctx.save();ctx.globalAlpha=.35*(1-i/6);line([[-i*19,0],[-i*19-35,0]],b.owner.color,Math.max(1,9-i));ctx.restore();}}
@@ -94,7 +98,7 @@ for(const b of world.projectiles){if(window.RiftFXSprites?.drawProjectile(ctx,b,
  else if(b.kind==='bullet'){line([[-17,0],[16,0]],'#ffe8ad',4);ellipse(17,0,4,3,'#ffffff');}
  else if(b.kind==='grenade'){ctx.rotate(clock*.25);ellipse(0,0,9,11,'#9fa474');rect(-3,-14,6,6,'#c9c2a0');line([[-6,-2],[6,-2]],'#4c6245',2);}
  else{ctx.save();ctx.globalAlpha=.38;ctx.strokeStyle=b.owner.color;ctx.lineWidth=16;ctx.beginPath();ctx.ellipse(0,0,b.w*.7,b.h*.8,0,-1.5,1.5);ctx.stroke();ctx.restore();for(let i=0;i<3;i++){ctx.beginPath();ctx.strokeStyle=i%2?'#eeffff':b.owner.color;ctx.lineWidth=i?2:6;ctx.ellipse(4+i*5,0,b.w*.45,b.h*.6+i*5,0,-1.4,1.4);ctx.stroke();}poly([[-b.w*.7,-b.h*.48],[b.w*.45,-b.h*.32],[b.w*.7,0],[b.w*.45,b.h*.32],[-b.w*.7,b.h*.48],[-b.w*.15,0]],b.owner.color);poly([[0,-b.h*.38],[b.w*.6,0],[0,b.h*.38],[b.w*.2,0]],'#f5ffe8');}ctx.restore();}
-for(const e of world.effects){if(window.RiftZenitsuCombat?.drawEffect(ctx,e,{reducedMotion}))continue;if(window.RiftFXSprites?.drawEffect(ctx,e,{reducedMotion,flash:impactFlash})||e.kind==='fxBasic')continue;ctx.save();ctx.globalAlpha=e.life/e.max;
+for(const e of world.effects){if(e.kind==='tanjiroFx')continue;if(window.RiftZenitsuCombat?.drawEffect(ctx,e,{reducedMotion}))continue;if(window.RiftFXSprites?.drawEffect(ctx,e,{reducedMotion,flash:impactFlash})||e.kind==='fxBasic')continue;ctx.save();ctx.globalAlpha=e.life/e.max;
  // R3 water wheel follows its caster, never the target; the ellipse remains
  // authored procedural FX rather than a bone- or blade-attached simulation.
  const wheel=e.kind==='waterWheel'&&e.owner&&window.RiftMotionData,pose=wheel?window.RiftMotionPreview?.resolve(e.owner):null;
@@ -108,15 +112,15 @@ for(const e of world.effects){if(window.RiftZenitsuCombat?.drawEffect(ctx,e,{red
 for(const p of world.particles){ctx.globalAlpha=Math.min(1,p.life/12);line([[p.x,p.y],[p.x-p.vx*1.7,p.y-p.vy*1.7]],p.color,p.size);}ctx.globalAlpha=1;
 if(world.settings.debug)for(const f of [world.p1,world.p2]){ctx.strokeStyle='#4ad8ef';ctx.lineWidth=1;ctx.strokeRect(f.x-23,f.y-Rift.HURT_HEIGHT,46,Rift.HURT_HEIGHT);const b=world.hitbox(f);if(b){ctx.fillStyle='#ff526344';ctx.fillRect(b.x,b.y,b.w,b.h);ctx.strokeStyle='#ff5263';ctx.strokeRect(b.x,b.y,b.w,b.h);}}
 fx.draw(ctx,{reducedMotion,flash:impactFlash});ctx.restore();fx.flash(ctx,impactFlash);window.RiftPresentation?.drawOverlay(ctx,world,{reducedMotion,flash:impactFlash});hud();if(!started){text(RiftScenes.DATA[sceneId].en,600,593,11,'#8ca69c','center');}else{text(world.mode==='training'?'TRAINING  ·  对手自动恢复':'VERSUS  ·  击倒对手取得胜利',600,595,10,'#718c84','center');}if(world.cutin)RiftPosters.draw(ctx,world.cutin,{reducedMotion});}
-function loop(t){let dt=Math.min(80,t-(last||t));last=t;acc+=dt;while(acc>=1000/60){
- if(started&&!paused&&!assetLoading){const beforeFrame=world.frame;if(!world.result)world.step({left:held.has('KeyA'),right:held.has('KeyD'),down:held.has('KeyS')});if(!world.cutin&&(!window.RiftFXData||world.frame!==beforeFrame)){clock++;fx.tick(world);}if(endReveal>0&&--endReveal===0)overlay(world.result,`本局结束 · 你的生命 ${Math.ceil(world.p1.hp)} / 对手生命 ${Math.ceil(world.p2.hp)}`,'再战一局');}
+function loop(t){window.RiftTanjiroVisual?.sync(world,{paused:paused||assetLoading,soundOn,reducedMotion});let dt=Math.min(80,t-(last||t));last=t;acc+=dt;while(acc>=1000/60){
+ if(started&&!paused&&!assetLoading){const beforeFrame=world.frame;if(!world.result)world.step({left:held.has('KeyA'),right:held.has('KeyD'),down:held.has('KeyS'),up:held.has('KeyW')});if(!world.cutin&&(!window.RiftFXData||world.frame!==beforeFrame)){clock++;fx.tick(world);}if(endReveal>0&&--endReveal===0)overlay(world.result,`本局结束 · 你的生命 ${Math.ceil(world.p1.hp)} / 对手生命 ${Math.ceil(world.p2.hp)}`,'再战一局');}
  else if(!started)clock++;acc-=1000/60;
 }while(world.events.length){const e=world.events.shift();fx.add(e);if(e.type==='end'){held.clear();endReveal=30;}}$('feedback').textContent=paused?'已暂停 / Esc 继续':started?world.lastFeedback:'准备就绪 / 点击进入训练场';draw();requestAnimationFrame(loop);}requestAnimationFrame(loop);
 
 function refreshSelection(){
- const h=world.p1.info;$('skillName').textContent=h.skill;$('ultimateName').textContent=h.ultimate;$('skillHint').textContent=h.skillHint;$('ultimateHint').textContent=h.ultimateHint;$('heroDescription').textContent=h.desc;
+ const h=world.p1.hero==='tanjiro'&&window.RiftTanjiroRules?{...world.p1.info,skill:'水车 → 瀧壺 → 扭转漩涡',skillHint:'连续 U 接三种水呼吸；W + U / S + U 直接选招',ultimateHint:'命中触发水龙动画，21 段终结击飞；消耗 100 气',desc:'四段连斩 · 水呼吸连技 · 两阶段觉醒'}:world.p1.info;$('skillName').textContent=h.skill;$('ultimateName').textContent=h.ultimate;$('skillHint').textContent=h.skillHint;$('ultimateHint').textContent=h.ultimateHint;$('heroDescription').textContent=h.desc;
  for(const b of document.querySelectorAll('[data-hero]')){const active=b.dataset.hero===world.p1.hero;b.classList.toggle('selected',active);b.setAttribute('aria-pressed',active);}
- $('opponent').value=world.p2.hero;
+ $('opponent').value=world.p2.hero;const kit=$('tanjiroKit');if(kit)kit.hidden=world.p1.hero!=='tanjiro';
 }
 function chooseHero(id){if(!Rift.HEROES[id])return;world.reset(world.mode,id,world.p2.hero);fx.reset();endReveal=0;held.clear();paused=false;$('pause').innerHTML='暂停 <kbd>Esc</kbd>';if(started)$('overlay').classList.add('hidden');refreshSelection();ensureCurrentRoster();canvas.focus();}
 function chooseScene(id){if(!RiftScenes.DATA[id])return;sceneId=id;if(window.RiftArena?.getPlatforms)world.setArenaGeometry({width:RiftArena.WORLD_RIGHT,platforms:RiftArena.getPlatforms(id),spawnPoints:RiftArena.spawnPoints||[600,920]});const d=RiftScenes.DATA[id];$('sceneName').textContent=d.name;$('sceneDescription').textContent=d.desc;for(const b of document.querySelectorAll('[data-scene]')){const selected=b.dataset.scene===id;b.classList.toggle('selected',selected);b.setAttribute('aria-pressed',selected);}ensureCurrentRoster();}
@@ -142,4 +146,11 @@ if(rosterLoading())ensureCurrentRoster();
 
 if(window.RiftMotionData?.fullRoster){$('platforms').checked=true;$('platforms').onchange=e=>{world.settings.platforms=e.target.checked;};}
 
+if(world.p1.hero==='tanjiro'&&!started)overlay('水之呼吸 · 连式','连续 J 四段斩击；U 接水车、瀧壺、扭转漩涡。H 觉醒，O 命中触发水龙奥义。完整招式表在战场下方。','进入训练场');
 if(world.p1.hero==='zenitsu'&&!started)overlay('霹雳一闪 · 六连','A / D 选择方向，按 O 横向冲刺。命中后自动挑空，接向上 Z 字雷闪与垂直终结，弹飞敌人坠地；按 I 可替身脱离。','进入训练场');
+
+for(const b of document.querySelectorAll('[data-tanjiro-action]'))b.onclick=()=>{
+ if(!started||paused||assetLoading||world.result||world.p1.hero!=='tanjiro')return;
+ const value=b.dataset.tanjiroAction,skill=['waterwheel','waterfall','whirlpool'].includes(value);
+ world.action(world.p1,skill?'skill':value,world.p1.inputDir,{variant:skill?value:undefined});canvas.focus();
+};

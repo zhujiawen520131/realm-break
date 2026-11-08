@@ -36,7 +36,7 @@ const LARA_SHOTS={
  launcher:{startup:10,active:1,end:36,damage:8,stun:34,push:2,lift:-11,stop:6,pistol:true,reach:0,lunge:0,range:240,shotSpeed:19,shotY:-4},
  air:{startup:6,active:1,end:29,damage:7,stun:24,push:4,lift:-3,stop:4,pistol:true,reach:0,lunge:0,range:360,shotSpeed:23,shotY:12}
 };
-class Fighter{constructor(x,dir,hero){this.hero=HEROES[hero]?hero:'cloud';this.info=HEROES[this.hero];const color=this.info.color;Object.assign(this,{x,y:FLOOR,vx:0,vy:0,groundY:FLOOR,grounded:true,dropThroughY:null,dropThroughTicks:0,dir,color,hp:100,energy:100,queuedSub:0,inputDir:dir,blinkTime:0,state:'idle',animState:'idle',animTime:0,hurtTime:0,landTime:0,knockdown:false,returning:false,downTime:0,downAge:0,fallTime:0,thunderDriftTicks:0,attackSerial:0,attack:null,stun:0,guardStun:0,guardReleaseTime:0,inv:0,dash:0,jumps:0,combo:0,comboDamage:0,comboTimer:0,flash:0,lastHit:0,subCD:0,airCount:0,block:false,buffer:null,trail:[]});}}
+class Fighter{constructor(x,dir,hero){this.hero=HEROES[hero]?hero:'cloud';this.info=HEROES[this.hero];const color=this.info.color;Object.assign(this,{x,y:FLOOR,vx:0,vy:0,groundY:FLOOR,grounded:true,dropThroughY:null,dropThroughTicks:0,awakenLevel:0,awakenTime:0,dir,color,hp:100,energy:100,queuedSub:0,inputDir:dir,blinkTime:0,state:'idle',animState:'idle',animTime:0,hurtTime:0,landTime:0,knockdown:false,returning:false,downTime:0,downAge:0,fallTime:0,thunderDriftTicks:0,attackSerial:0,attack:null,stun:0,guardStun:0,guardReleaseTime:0,inv:0,dash:0,jumps:0,combo:0,comboDamage:0,comboTimer:0,flash:0,lastHit:0,subCD:0,airCount:0,block:false,buffer:null,trail:[]});}}
 class World{
  constructor(){this.settings={hitstop:true,shake:true,debug:false,cinematics:true,platforms:false};this.width=1200;this.floorSupport=FLOOR_SUPPORT;this.spawnPoints=[360,840];this.platforms=PLATFORMS;this.reset('training');}
  setArenaGeometry({width=this.width,platforms=this.platforms,spawnPoints=this.spawnPoints}={}){
@@ -46,7 +46,7 @@ class World{
  }
  configureArena(options={}){this.setArenaGeometry({width:3600,platforms:[],spawnPoints:[500,900],...options});this.settings.platforms=true;this.reset();}
 
- reset(mode=this.mode,hero=this.p1?.hero||'cloud',opponent=this.p2?.hero||'wukong'){this.mode=mode;this.p1=new Fighter(this.spawnPoints[0],1,hero);this.p2=new Fighter(this.spawnPoints[1],-1,opponent);this.frame=0;this.freeze=0;this.shake=0;this.particles=[];this.projectiles=[];this.events=[];this.time=99;this.result=null;this.aiClock=0;this.banner=0;this.bannerText='';this.cutin=null;this.effects=[];this.scheduled=[];this.hitQueue=null;this.lastFeedback=hero==='lara'?'按 J 三段点射 / S + J 上挑射击 / 空中 J 向前下方开火':'靠近对手，连续按 J 打出三段连击';}
+ reset(mode=this.mode,hero=this.p1?.hero||'cloud',opponent=this.p2?.hero||'wukong'){this.mode=mode;this.p1=new Fighter(this.spawnPoints[0],1,hero);this.p2=new Fighter(this.spawnPoints[1],-1,opponent);this.frame=0;this.freeze=0;this.shake=0;this.particles=[];this.projectiles=[];this.events=[];this.time=99;this.result=null;this.aiClock=0;this.banner=0;this.bannerText='';this.cutin=null;this.tanjiroCinematic=null;this.cinematicSerial=(this.cinematicSerial||0)+1;this.effects=[];this.scheduled=[];this.hitQueue=null;this.lastFeedback=hero==='lara'?'按 J 三段点射 / S + J 上挑射击 / 空中 J 向前下方开火':'靠近对手，连续按 J 打出三段连击';}
  // Query geometry, never cached flags: manual y/vy changes in training/tests
  // cannot accidentally grant grounded attacks, a guard or a fresh jump.
  supportAt(f){if(!f||f.vy!==0)return null;if(f.y===FLOOR)return this.floorSupport;if(!this.settings.platforms)return null;return this.platforms.find(p=>!(f.dropThroughTicks>0&&p.y===f.dropThroughY)&&f.y===p.y&&f.x>=p.x&&f.x<=p.x+p.w)||null;}
@@ -57,21 +57,24 @@ class World{
   return surfaces.filter(p=>!(f.dropThroughTicks>0&&p.id!=='floor'&&p.y===f.dropThroughY)&&previousY<=p.y&&f.y>=p.y&&f.x>=p.x&&f.x<=p.x+p.w).sort((a,b)=>a.y-b.y).find(p=>{const progress=f.y===previousY?1:(p.y-previousY)/(f.y-previousY),x=previousX+(f.x-previousX)*progress;return x>=p.x&&x<=p.x+p.w;})||null;
  }
  event(type,data={}){this.events.push({type,frame:this.frame,...data});if(this.events.length>50)this.events.shift();}
- action(f,key,inputDirection=0,modifiers={}){if(this.result)return;const direction=Math.sign(inputDirection)||f.inputDir||f.dir;if(key==='sub'){
+ action(f,key,inputDirection=0,modifiers={}){if(this.result||this.tanjiroCinematic)return;const direction=Math.sign(inputDirection)||f.inputDir||f.dir;if(key==='sub'){
  if(this.freeze>0||this.cutin){if(!f.queuedSub)f.queuedSub=direction;return;}
  if(f.energy<40||f.subCD>0)return;const fromX=f.x,fromY=f.y;this.burst(fromX,fromY-45,f.color,24);f.x=clamp(f.x+direction*240,42,this.width-42);f.vx=0;f.vy=0;f.stun=0;f.guardStun=0;f.guardReleaseTime=0;f.knockdown=false;f.returning=false;f.dropThroughY=null;f.dropThroughTicks=0;f.downTime=0;f.downAge=0;f.fallTime=0;f.thunderDriftTicks=0;f.attack=null;f.dash=0;f.blinkTime=8;f.inv=22;f.energy-=40;f.subCD=80;f.dir=direction;f.inputDir=direction;f.buffer=null;f.animTime=0;f.animState='dash';f.block=false;this.refreshSupport(f);this.event('sub',{x:f.x,y:f.y-55,fromX,fromY:fromY-55,dir:direction,color:f.color,hero:f.hero});this.lastFeedback='定向瞬移 / '+(direction>0?'向右':'向左')+' / 消耗 40 气力';return;}
- f.buffer={key,ttl:12,dir:direction,...modifiers};}
- execute(f,keys){const b=f.buffer;if(!b)return;keys={...keys,...(b.down!==undefined?{down:b.down}:{}),...(b.up!==undefined?{up:b.up}:{})};const key=b.key,ground=!!this.supportAt(f);const a=f.attack;const canCancel=a&&a.hit&&a.t>=a.move.startup+2&&a.name!=='ultimate';const canShotChain=f.hero==='lara'&&a?.move.pistol&&['slash1','slash2'].includes(a.name)&&a.spawned&&a.t>=a.move.startup+8;
+ f.buffer={key,ttl:f.hero==='tanjiro'&&root.RiftTanjiroRules&&key==='skill'?24:12,dir:direction,...modifiers};}
+ execute(f,keys){const b=f.buffer;if(!b)return;keys={...keys,...(b.down!==undefined?{down:b.down}:{}),...(b.up!==undefined?{up:b.up}:{})};const key=b.key,ground=!!this.supportAt(f);const a=f.attack;const canCancel=a&&a.hit&&a.t>=a.move.startup+2&&a.name!=='ultimate'&&(!a.move.kit||!a.move.hits||a.move.hits===1||a.kitSlots?.size>=a.move.hits);const canShotChain=f.hero==='lara'&&a?.move.pistol&&['slash1','slash2'].includes(a.name)&&a.spawned&&a.t>=a.move.startup+8;
  if(f.stun||f.dash)return;
+ const kit=f.hero==='tanjiro'&&root.RiftTanjiroRules;
+ if(kit&&['awaken','heavy','throw'].includes(key)&&(!a||canCancel)){if(key==='awaken'){kit.awaken(this,f);f.buffer=null;}else{f.dir=b.dir;f.inputDir=b.dir;this.begin(f,key==='heavy'&&!ground?'airheavy':key);}return;}
  if((key==='drop'||key==='jump'&&keys.down)&&ground&&this.supportAt(f).id!=='floor'&&(!a||canCancel)){this.dropThrough(f);return;}
  if(key==='jump'&&f.jumps<2&&(!a||canCancel)){f.returning=false;f.vy=ground?-13.8:-11;f.jumps++;this.refreshSupport(f);f.attack=null;f.buffer=null;this.burst(f.x,f.y,'#b3c8c2',7);this.event('jump',{x:f.x,y:f.y,color:f.color,hero:f.hero});return;}
+ if(kit&&key==='dash'&&(!a||canCancel||['slash4','slash5'].includes(a.name)&&a.t<a.move.startup)){f.dir=b.dir;f.inputDir=b.dir;this.begin(f,'dashstrike');return;}
  if(key==='dash'&&(!a||canCancel)){f.returning=false;f.dir=b.dir;f.inputDir=b.dir;f.dash=13;f.inv=7;f.attack=null;f.buffer=null;f.animTime=0;this.event('dash',{x:f.x,y:f.y-50,dir:f.dir,color:f.color,hero:f.hero});return;}
  if(key==='attack'&&(!a||canCancel||canShotChain)){
- if(a&&ground&&((!keys.down&&['slash3','launcher'].includes(a.name))||(keys.down&&a.name==='launcher')))return;
- let name=ground?(keys.down?'launcher':a?.name==='slash1'?'slash2':a?.name==='slash2'?'slash3':'slash1'):'air';
+ if(!kit&&a&&ground&&((!keys.down&&['slash3','launcher'].includes(a.name))||(keys.down&&a.name==='launcher')))return;
+ let name=kit?kit.basic(f,a,keys,ground):ground?(keys.down?'launcher':a?.name==='slash1'?'slash2':a?.name==='slash2'?'slash3':'slash1'):'air';if(!name)return;
  if(!ground&&f.airCount>=3){f.buffer=null;return;}if(!ground)f.airCount++;
  f.dir=b.dir;f.inputDir=b.dir;this.begin(f,name);return;}
- if(key==='skill'&&(!a||canCancel)){if(f.energy+0.001<25){f.buffer=null;if(f===this.p1)this.lastFeedback='气力不足 / 角色技需要 25 气';return;}f.energy=Math.max(0,f.energy-25);f.dir=b.dir;f.inputDir=b.dir;this.begin(f,key);return;}
+ if(key==='skill'&&(!a||canCancel)){const cost=kit&&f.awakenLevel===2?0:25;if(f.energy+0.001<cost){f.buffer=null;if(f===this.p1)this.lastFeedback='气力不足 / 角色技需要 25 气';return;}f.energy=Math.max(0,f.energy-cost);f.dir=b.dir;f.inputDir=b.dir;this.begin(f,key,kit?kit.variant({...keys,variant:b.variant},a):undefined);return;}
 
  }
  dropThrough(f){
@@ -79,13 +82,14 @@ class World{
   f.dropThroughY=surface.y;f.dropThroughTicks=16;f.y+=2;f.vy=2;f.block=false;f.guardReleaseTime=0;f.landTime=0;f.returning=false;f.attack=null;f.buffer=null;this.refreshSupport(f);
   if(f===this.p1)this.lastFeedback='穿过脚下平台 / 空中可继续攻击或跳跃';return true;
  }
- prepareUltimate(f){const b=f.buffer,a=f.attack;if(b?.key!=='ultimate'||f.stun||f.dash||a&&!(a.hit&&a.t>=a.move.startup+2&&a.name!=='ultimate'))return;
+ prepareUltimate(f){const b=f.buffer,a=f.attack;if(b?.key!=='ultimate'||f.stun||f.dash||a&&!(a.hit&&a.t>=a.move.startup+2&&a.name!=='ultimate'&&(!a.move.kit||!a.move.hits||a.move.hits===1||a.kitSlots?.size>=a.move.hits)))return;
  if(f.energy+0.001<100){f.buffer=null;if(f===this.p1)this.lastFeedback='气力不足 / 奥义需要 100 气';return;}
  f.energy=0;f.dir=b.dir;f.inputDir=b.dir;this.begin(f,'ultimate');f.inv=28;this.banner=45;this.bannerText=f.info.name+' / '+f.info.ultimate;
- if(f.hero!=='zenitsu'&&this.settings.cinematics&&!this.cutin){const total=Number.isFinite(this.settings.cinematicTicks)?clamp(Math.round(this.settings.cinematicTicks),36,120):36;this.cutin={hero:f.hero,name:f.info.name,move:f.info.ultimate,color:f.color,dir:f.dir,remaining:total,total};}
+ if(f.hero!=='zenitsu'&&!(f.hero==='tanjiro'&&root.RiftTanjiroRules)&&this.settings.cinematics&&!this.cutin){const total=Number.isFinite(this.settings.cinematicTicks)?clamp(Math.round(this.settings.cinematicTicks),36,120):36;this.cutin={hero:f.hero,name:f.info.name,move:f.info.ultimate,color:f.color,dir:f.dir,remaining:total,total};}
  this.event('ultimate',{x:f.x,y:f.y-86,dir:f.dir,color:f.color,hero:f.hero,weapon:f.info.weapon});
  }
- begin(f,name){f.returning=false;const move={...MOVES[name],...(BREATH_MOVES[f.hero]?.[name]||{}),...(f.hero==='lara'?LARA_SHOTS[name]||{}:{})};if(move.reach)move.reach*=f.info.reach;f.attack={name,move,t:0,hit:false};f.attackSerial++;f.animTime=0;if(this.supportAt(f)&&move.lunge)f.vx=f.dir*move.lunge;f.buffer=null;f.block=false;}
+ begin(f,name,variant){f.returning=false;const move={...MOVES[name],...(BREATH_MOVES[f.hero]?.[name]||{}),...(f.hero==='lara'?LARA_SHOTS[name]||{}:{}),...(f.hero==='tanjiro'?root.RiftTanjiroRules?.move(f,name,variant)||{}:{})};if(move.reach)move.reach*=f.info.reach;f.attack={name,move,t:0,hit:false};f.attackSerial++;f.animTime=0;if(this.supportAt(f)&&move.lunge)f.vx=f.dir*move.lunge;f.buffer=null;f.block=false;if(f.hero==='tanjiro')root.RiftTanjiroRules?.begin(this,f,name,variant);}
+ finishTanjiroCinematic(){return root.RiftTanjiroRules?.finish(this)||false;}
  ai(){const f=this.p2,p=this.p1,k={};if(this.mode!=='duel')return k;const dist=Math.abs(p.x-f.x),intent=p.x>=f.x?1:-1;k.aim=intent;this.aiClock++;
  if(f.stun&&f.energy>=40&&f.hp<70&&this.aiClock%39===0)this.action(f,'sub',intent);
  if(f.stun)return k;
@@ -127,7 +131,7 @@ class World{
  if(dist>260&&this.aiClock%100===0)this.action(f,'dash',intent);
  if((this.settings.platforms?p.y<f.y-75:p.y<FLOOR-75)&&dist<170&&this.aiClock%45===0)this.action(f,'jump',intent);return k;}
  step(keys={}){
- if(this.result)return;
+ if(this.result||this.tanjiroCinematic)return;
  if(this.cutin){if(this.settings.cinematics){if(--this.cutin.remaining<=0)this.cutin=null;return;}this.cutin=null;}
  if(this.freeze>0){this.freeze--;return;}
  for(const f of [this.p1,this.p2])if(f.queuedSub){const direction=f.queuedSub;f.queuedSub=0;this.action(f,'sub',direction);}
@@ -144,7 +148,7 @@ class World{
   else if(Math.abs(p.x-q.x)<46){const mid=(p.x+q.x)/2,left=clamp(mid-23,42,this.width-88);if(order>0){p.x=left;q.x=left+46;}else{q.x=left;p.x=left+46;}}
  }
  for(const f of [p,q]){this.refreshSupport(f);if(!f.grounded&&['idle','run','guard','land'].includes(f.state)){f.state=f.animState='jump';f.animTime=0;}}
- this.hitQueue=[];this.resolveAttack(p,q);this.resolveAttack(q,p);const simultaneousHits=this.hitQueue;this.hitQueue=null;for(const args of simultaneousHits)this.applyHit(...args);
+ this.hitQueue=[];this.resolveAttack(p,q);this.resolveAttack(q,p);const simultaneousHits=this.hitQueue;this.hitQueue=null;for(const args of simultaneousHits)this.applyHit(...args);if(this.tanjiroCinematic){if(this.tanjiroCinematic.actor.stun)this.tanjiroCinematic=null;else return;}
  for(const s of this.scheduled){s.wait--;if(s.wait<=0){if(s.owner.hp>0&&!s.owner.stun)this.spawnProjectile(s.owner,s.spec);s.done=true;}}this.scheduled=this.scheduled.filter(s=>!s.done);
  for(const b of this.projectiles){
   b.life--;b.age=(b.age||0)+1;if(b.delay>0){b.delay--;continue;}
@@ -184,6 +188,7 @@ class World{
  else if(f.stun)f.vx*=.94;
  else if(f.attack){f.vx*=.65;f.attack.t++;const a=f.attack,m=a.move;if(m.style&&!a.sixfold&&a.t>=m.startup&&a.t<m.startup+m.active){f.vx=f.dir*m.travel;if(this.frame%2===0)f.trail.push({x:f.x,y:f.y,dir:f.dir,life:10,animTime:f.animTime,animState:'skill',attack:{...a,move:{...m}}});}if(a.t>=m.end)f.attack=null;}
  else{f.vx=f.block?0:((k.right?1:0)-(k.left?1:0))*f.info.speed;}
+ if(f.hero==='tanjiro')root.RiftTanjiroRules?.update(this,f);
  if(f.thunderDriftTicks>0){if(--f.thunderDriftTicks===0)f.vx=0;}
  const controlled=!!f.attack?.sixfold;
  if(!controlled){f.x=clamp(f.x+f.vx,42,this.width-42);if(!this.supportAt(f)){f.vy+=f.knockdown?1:f.returning?1.2:.62;f.y+=f.vy;}
@@ -205,6 +210,7 @@ class World{
  }
  hitbox(f){const a=f.attack;if(!a||!a.move.reach)return null;return {x:f.x+(f.dir>0?12:-a.move.reach-12),y:f.y-a.move.height,w:a.move.reach,h:a.move.height};}
  resolveAttack(f,t){const a=f.attack;if(!a)return;const m=a.move;if(a.t<m.startup||a.t>=m.startup+m.active)return;
+ if(m.kit&&root.RiftTanjiroRules?.resolve(this,f,t,a))return;
  if(m.style==='thunderSix'){this.resolveSixfold(f,t,a);return;}
  if(m.style){this.resolveBreath(f,t,a);return;}
  if(m.pistol){if(!a.spawned){a.spawned=true;this.spawnProjectile(f,{kind:'bullet',name:a.name,vx:f.dir*m.shotSpeed,vy:m.shotY,w:24,h:16,maxTravel:m.range,traveled:0,life:Math.ceil(m.range/m.shotSpeed)+2,move:{damage:m.damage,stun:m.stun,push:m.push,lift:m.lift,stop:m.stop,knockdown:!!m.knockdown}});this.lastFeedback='劳拉 / '+({slash1:'点射一段',slash2:'点射二段',slash3:'终结点射',launcher:'上挑射击',air:'空中射击'}[a.name]);}return;}
@@ -304,14 +310,14 @@ class World{
  }
  hit(f,t,m,name,x,impact={}){
  if(t.downTime>0)return;
- const dir=impact.dir||f.dir,guarded=t.block&&t.dir===-dir;const contact={dir,guarded,counter:!guarded&&!!t.attack&&t.attack.t<t.attack.move.startup};if(this.hitQueue){this.hitQueue.push([f,t,m,name,x,contact]);return;}this.applyHit(f,t,m,name,x,contact);
+ const dir=impact.dir||f.dir,guarded=!m.unblockable&&t.block&&t.dir===-dir;const contact={dir,guarded,counter:!guarded&&!!t.attack&&t.attack.t<t.attack.move.startup};if(this.hitQueue){this.hitQueue.push([f,t,m,name,x,contact]);return;}this.applyHit(f,t,m,name,x,contact);
  }
  applyHit(f,t,m,name,x,contact){
  if(t.downTime>0)return;
  const {guarded,counter,dir}=contact;const heavy=(name==='ultimate'&&m.finisher!==false)||name==='slash3';if(!t.stun){f.combo=0;f.comboDamage=0;}const scale=Math.max(.5,1-f.combo*.06);let damage=guarded?Math.max(1,Math.floor(m.damage*.12)):Math.round(m.damage*scale*(counter?1.12:1));
  if(guarded){t.stun=Math.max(t.stun,8);t.guardStun=8;t.vx=dir*3;t.energy=Math.min(100,t.energy+3);this.event('block',{x:t.x,y:t.y-88,dir,color:f.color,hero:f.hero,weapon:f.info.weapon,move:name,damage});this.burst(t.x,t.y-88,'#dcecff',12);this.lastFeedback='防御 / 绕到背后寻找机会';}
  else{t.returning=false;t.knockdown=t.knockdown||!!m.knockdown;if(m.knockdown)t.knockdownStyle=m.style==='thunderSix'?'thunder':'impact';t.downTime=0;t.downAge=0;t.fallTime=0;t.thunderDriftTicks=m.thunderDriftTicks||0;t.guardStun=0;const stunReduction=Math.max(0,f.combo-4)*3;t.stun=Math.max(12,m.stun-stunReduction)+(counter?4:0);t.vx=dir*m.push;t.vy=m.lift;t.attack=null;t.dash=0;t.block=false;t.buffer=null;t.flash=6;t.hurtTime=t.stun;t.animState='hurt';t.animTime=0;f.combo++;f.comboDamage+=damage;f.comboTimer=m.stun+24;f.energy=Math.min(100,f.energy+7);t.energy=Math.min(100,t.energy+5);this.shake=this.settings.shake?(heavy?(name==='ultimate'?11:8):4):0;this.burst(x,t.y-88,f.color,name==='ultimate'?42:22);this.event('hit',{x:t.x,y:t.y-88,dir,color:f.color,hero:f.hero,weapon:f.info.weapon,move:name,damage,heavy,counter,combo:f.combo});this.lastFeedback=f===this.p1?`${counter?'COUNTER / ':''}${f.combo} HIT / ${f.comboDamage} 伤害${name==='launcher'?' / 挑空！按 K 追击':''}`:'受到攻击 / I 替身脱身';}
- this.refreshSupport(t);t.hp=Math.max(0,t.hp-damage);t.lastHit=this.frame;
+ this.refreshSupport(t);t.hp=Math.max(0,t.hp-damage);t.lastHit=this.frame;if(m.kitUltimate)root.RiftTanjiroRules?.afterHit(this,f,t,m,contact);
  if(m.sixfoldOpen&&f.attack===m.sixfoldOpen){if(!guarded&&t.hp>0&&!f.stun)this.startSixfold(f,t,m.sixfoldOpen);else{f.attack.t=f.attack.move.startup+f.attack.move.active;f.vx=0;}}if(this.settings.hitstop)this.freeze=Math.max(this.freeze,guarded?3:m.stop+(counter?2:0));
  }
  burst(x,y,color,n){for(let i=0;i<n;i++){const angle=Math.random()*Math.PI*2,speed=2+Math.random()*9;this.particles.push({x,y,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,color,life:12+Math.random()*13,max:25,size:1+Math.random()*3});}if(root.RiftFXData&&this.particles.length>240)this.particles.splice(0,this.particles.length-240);}
