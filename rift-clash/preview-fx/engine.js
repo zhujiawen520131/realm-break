@@ -165,7 +165,7 @@ class World{
   }
   if(b.x<-180||b.x>this.width+180)b.dead=true;
  }
- for(const e of this.effects)e.life--;this.effects=this.effects.filter(e=>e.life>0);if(root.RiftFXData&&this.effects.length>64)this.effects.splice(0,this.effects.length-64);
+ root.RiftTanjiroRules?.updateDragonEffects(this);for(const e of this.effects)e.life--;this.effects=this.effects.filter(e=>e.life>0);if(root.RiftFXData&&this.effects.length>64)this.effects.splice(0,this.effects.length-64);
  this.projectiles=this.projectiles.filter(b=>!b.dead&&b.life>0);
  for(const pt of this.particles){pt.x+=pt.vx;pt.y+=pt.vy;pt.vy+=.16;pt.life--;}
  this.particles=this.particles.filter(pt=>pt.life>0);

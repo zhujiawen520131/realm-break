@@ -77,8 +77,8 @@ const ULTIMATE_PHASES=[
  {name:'转体水涡',clipId:'whirlpool',duration:28,hits:[6,12,18,24],fx:'whirlpool'},
  {name:'回旋水车',baseClip:'skill',duration:28,hits:[6,12,18,24],fx:'waterWheel'},
  {name:'瀧壺下劈',clipId:'waterfall',duration:28,hits:[6,12,18,24],fx:'waterfall'},
- {name:'水龙追斩',baseClip:'ultimate',duration:32,hits:[10,18,26],fx:'waterDragon'},
- {name:'生生流转 · 终结',baseClip:'ultimate',duration:20,hits:[12],fx:'waterDragon'}
+ {name:'水龙卷升',baseClip:'ultimate',duration:44,hits:[12,24,36],fx:'waterDragonRide'},
+ {name:'水龙横贯 · 终结',baseClip:'ultimate',duration:30,hits:[16],fx:'waterDragonRide'}
 ];
 const ULTIMATE_TICKS=ULTIMATE_PHASES.reduce((n,p)=>n+p.duration,0);
 function phaseAt(a){
@@ -94,6 +94,7 @@ function liveSequence(f){const a=f?.attack,s=a?.waterSequence;return s&&!s.finis
 function controlled(world,f){return [world.p1,world.p2].some(actor=>{const s=liveSequence(actor);return !!s&&(actor===f||s.target===f);});}
 function stopSequence(world,f,a){
  if(!a.waterSequence||a.waterSequence.finished)return;
+ if(a.waterSequence.dragon)a.waterSequence.dragon.life=0;
  a.waterSequence.finished=true;a.t=a.move.startup+a.move.active;a.move.end=a.t+12;f.vx=f.vy=0;
  world.lastFeedback='水龙连式中断 / 可用 I 定向替身脱离';
 }
@@ -102,18 +103,32 @@ function advance(world){
   const a=f.attack,s=a?.waterSequence;if(!s||s.finished)continue;
   if(!liveSequence(f)||s.target!==(f===world.p1?world.p2:world.p1)){stopSequence(world,f,a);continue;}
   const t=s.target,p=phaseAt(a),age=Math.max(0,a.t-s.startT),progress=clamp(age/ULTIMATE_TICKS,0,1),q=p.t/p.duration;
-  const lift=p.index===1?Math.sin(q*Math.PI)*18:p.index===2?q*100:p.index===3?(1-q)*100:p.index===4?Math.sin(q*Math.PI)*45:0;
+  const lift=p.index===1?Math.sin(q*Math.PI)*18:p.index===2?q*100:p.index===3?(1-q)*100:0;
+  const rise=clamp(p.t/44,0,1),turn=clamp(p.t/16,0,1),ease=n=>n*n*(3-2*n);
+  const enemyLift=p.index===4?320*ease(rise):p.index===5?320:lift*.85;
+  const ram=p.index===5?160*ease(turn):0;
   const blend=clamp(age/16,0,1),desired=s.tx+s.dir*progress*125;
-  const targetX=clamp(desired,126,world.width-126),actorX=targetX-s.dir*78;
+  const actorX=clamp(desired,126,world.width-126)-s.dir*78,targetX=clamp(desired+s.dir*ram,42,world.width-42);
   f.x=clamp(s.fx+(actorX-s.fx)*blend,42,world.width-42);t.x=clamp(s.tx+(targetX-s.tx)*blend,42,world.width-42);
-  f.y=s.fy+(s.ty-s.fy)*blend-lift;t.y=s.ty-lift*.85;f.dir=s.dir;
+  f.y=s.fy+(s.ty-s.fy)*blend-lift;t.y=s.ty-enemyLift;f.dir=s.dir;
   f.vx=f.vy=t.vx=t.vy=0;t.stun=Math.max(t.stun,18);t.block=false;world.refreshSupport(f);world.refreshSupport(t);
+  if(p.index===4&&!s.dragon){
+   s.dragon={kind:'waterDragonRide',arenaUltimate:true,owner:f,target:t,originY:s.ty,x:t.x,y:t.y-65,dir:s.dir,angle:-Math.PI/2,life:100,max:100};world.effects.push(s.dragon);
+  }
+  if(s.dragon){s.dragon.x=t.x;s.dragon.y=t.y-65;s.dragon.angle=p.index===4?-Math.PI/2:-(1-ease(turn))*Math.PI/2;}
   if(p.t===p.hits[0]){
    if(['waterfall','whirlpool'].includes(p.fx))effect(world,f,p.fx,p.duration+6);
-   else world.effects.push({kind:p.fx==='basic'?'fxBasic':p.fx,arenaUltimate:true,hero:f.hero,owner:f,x:f.x+s.dir*45,y:f.y-85,dir:s.dir,color:f.color,life:p.duration,max:p.duration});
+   else if(p.fx!=='waterDragonRide')world.effects.push({kind:p.fx==='basic'?'fxBasic':p.fx,arenaUltimate:true,hero:f.hero,owner:f,x:f.x+s.dir*45,y:f.y-85,dir:s.dir,color:f.color,life:p.duration,max:p.duration});
    world.event('swing',{x:f.x,y:f.y-86,color:f.color,hero:f.hero,weapon:f.info.weapon,move:'ultimate'});
   }
   world.lastFeedback=p.name+' / '+f.combo+' HIT';
+ }
+}
+function updateDragonEffects(world){
+ for(const e of world.effects){if(e.kind!=='waterDragonRide'||e.life<=0)continue;e.age=(e.age||0)+1;
+  const t=e.target;if(!t||t.inv||t.hp<=0){e.life=0;continue;}
+  if(e.released){if(!t.knockdown){e.life=0;continue;}e.x=t.x;e.y=t.y-65;e.angle=Math.atan2(t.vy,Math.abs(t.vx)||1)*.4;}
+  else if(e.owner.stun||e.owner.attack?.waterSequence?.dragon!==e||e.owner.attack.waterSequence.finished)e.life=0;
  }
 }
 function resolveSequence(world,f,t,a){
@@ -122,7 +137,7 @@ function resolveSequence(world,f,t,a){
  const p=phaseAt(a),contact=p.hits.indexOf(p.t),key=p.index+':'+contact;
  if(contact<0||s.struck.has(key))return true;s.struck.add(key);
  const last=p.index===ULTIMATE_PHASES.length-1,damage=3*s.boost;
- world.hit(f,t,{damage,stun:30,push:last?13:0,lift:last?-10:0,stop:last?8:2,knockdown:last,finisher:last,waterSequenceHit:true},'ultimate',t.x,{dir:s.dir,guarded:false,counter:false});
+ world.hit(f,t,{damage,stun:30,push:last?32:0,lift:last?-5:0,stop:last?8:2,knockdown:last,finisher:last,waterSequenceHit:true},'ultimate',t.x,{dir:s.dir,guarded:false,counter:false});
  return true;
 }
 function afterHit(world,f,t,m,contact){
@@ -131,7 +146,8 @@ function afterHit(world,f,t,m,contact){
   const s=f.attack.waterSequence;if(!s||s.finished)return;
   if(m.finisher||t.hp<=0){
    s.finished=true;f.vx=f.vy=0;
-   if(m.finisher)world.effects.push({kind:'waterDragon',arenaUltimate:true,hero:f.hero,owner:f,x:t.x,y:t.y-90,dir:s.dir,color:f.color,life:28,max:28});
+   if(s.dragon){s.dragon.released=!!m.finisher;s.dragon.life=26;s.dragon.max=26;s.dragon.angle=0;s.dragon.releaseX=t.x;s.dragon.releaseY=t.y-65;}
+   if(m.finisher)world.event('dragonLaunch',{x:t.x,y:t.y-65,dir:s.dir,hero:f.hero});
    if(m.finisher&&world.settings.cinematics)world.cutin={hero:f.hero,name:f.info.name,move:'拾之型 · 生生流转',color:f.color,dir:s.dir,remaining:48,total:48,finisher:true};
    world.lastFeedback='生生流转 / '+f.combo+' 段终结';
   }
@@ -146,5 +162,5 @@ function finish(world){
  // queues invisible damage behind a playback callback.
  if(!world.tanjiroCinematic)return false;world.tanjiroCinematic=null;return true;
 }
-root.RiftTanjiroRules={CATALOG,enabled,variant,basic,move,begin,update,resolve,awaken,afterHit,finish,advance,controlled,ultimatePose,ULTIMATE_PHASES};if(typeof module!=='undefined')module.exports=root.RiftTanjiroRules;
+root.RiftTanjiroRules={CATALOG,enabled,variant,basic,move,begin,update,resolve,awaken,afterHit,finish,advance,controlled,ultimatePose,updateDragonEffects,ULTIMATE_PHASES};if(typeof module!=='undefined')module.exports=root.RiftTanjiroRules;
 })(typeof window!=='undefined'?window:globalThis);
