@@ -1,6 +1,6 @@
 (function(root){
 'use strict';
-// Approved character motion for every combat state and selection card.
+// Character motion for every combat state and selection card.
 // Animation follows simulation ticks, so hitstop freezes both body and muzzle.
 // Full-roster pages stream only the active heroes and retain six idle card poses.
 const pack=root.RiftMotionData,images={},loadedClips={},frameJobs={},heroJobs={},epochs={};
@@ -66,6 +66,7 @@ function choose(elapsed,span,indices,weights){
 const range=(first,last)=>Array.from({length:Math.max(0,last-first+1)},(_,i)=>first+i);
 const sequence=(value,fallback,count)=>Array.isArray(value)&&value.length&&value.every(i=>Number.isInteger(i)&&i>=0&&i<count)?value:fallback;
 function stateOf(f,ghost){
+ if((f.knockdown||f.downTime)&&pack?.heroes?.[f.hero]?.clips?.knockdown)return 'knockdown';
  if(f.guardStun>0&&f.block)return 'guard';
  if(f.stun>0)return 'hurt';
  if(f.dash||f.blinkTime||ghost&&f.animState==='dash')return 'dash';
@@ -92,12 +93,25 @@ function resolve(f,t=0,ghost=false){
   if(f.guardReleaseTime>0&&state==='idle')id='guard';
   const clip=hero.clips?.[id],frames=clip?.frames;if(!Array.isArray(frames)||![4,8].includes(frames.length))return null;
   const last=frames.length-1;
+  if(pack.eightFrameMode&&frames.length===8){
+   if(state==='knockdown'){
+    if(f.downTime>0)index=f.downTime<=6?(f.downTime>3?6:7):(f.downAge||0)<4?4:5;
+    else index=(f.fallTime||0)<3?0:(f.fallTime||0)<7?1:f.vy<=0?2:3;
+   }else if(state==='jump')index=f.vy<-12?0:f.vy<-10?1:f.vy<-2?2:f.vy<=2?3:f.vy<=8?4:5;
+   else if(state==='land')index=f.landTime>3?6:7;
+   else if(f.guardReleaseTime>0&&state==='idle')index=f.guardReleaseTime>3?6:7;
+   else if(state==='guard')index=f.guardStun>0?(f.guardStun>4?4:5):tick<2?0:tick<4?1:2+Math.floor((tick-4)/6)%2;
+   else if(state==='hurt')index=f.stun<=6?Math.min(7,5+Math.floor((6-f.stun)/2)):Math.min(4,tick);
+   else if(state==='dash')index=f.dash>0?choose(12-f.dash,11,range(0,7)):f.blinkTime>0?choose(7-f.blinkTime,6,range(0,7)):Math.min(7,Math.floor(tick*8/12));
+   else{const durations=frames.map(frame=>Math.max(1,Number(frame.durationMs)||100)),span=durations.reduce((a,b)=>a+b,0);index=choose(tick*1000/60%span,span,range(0,last),durations);}
+  }else{
   if(state==='jump')index=f.vy<0?(tick<4?0:1):2;
   else if(state==='land'||f.guardReleaseTime>0&&state==='idle')index=last;
   else if(state==='guard')index=f.guardStun>0?2:tick<4?0:1;
   else if(state==='hurt')index=Math.min(last,Math.floor(tick/5));
   else if(state==='dash')index=Math.min(last,Math.floor(tick/4));
   else{const durations=frames.map(frame=>Math.max(1,Number(frame.durationMs)||100)),span=durations.reduce((a,b)=>a+b,0);index=choose(tick*1000/60%span,span,range(0,last),durations);}
+  }
   return poseFor(f,id,index,{state,phase:state,borrowed:false});
  }
  const a=f.attack,dedicated=hero.clips?.[a.name],borrowed=f.hero==='lara'&&['launcher','air'].includes(a.name)&&!dedicated;

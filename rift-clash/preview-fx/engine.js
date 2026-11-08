@@ -7,7 +7,7 @@ const FLOOR_SUPPORT=Object.freeze({id:'floor',x:0,w:1200,y:FLOOR});
 const MOVES={
  slash1:{startup:5,active:5,end:23,damage:7,reach:98,height:88,stun:24,push:3,lift:0,stop:6,lunge:2.5},
  slash2:{startup:4,active:6,end:24,damage:9,reach:111,height:94,stun:26,push:4,lift:0,stop:8,lunge:3.2},
- slash3:{startup:7,active:6,end:32,damage:14,reach:126,height:100,stun:30,push:9,lift:-4,stop:11,lunge:4.2},
+ slash3:{knockdown:true,startup:7,active:6,end:32,damage:14,reach:126,height:100,stun:30,push:9,lift:-4,stop:11,lunge:4.2},
  launcher:{startup:7,active:6,end:29,damage:10,reach:102,height:135,stun:37,push:2,lift:-13,stop:8,lunge:1.8},
  air:{startup:4,active:7,end:20,damage:8,reach:110,height:120,stun:26,push:3,lift:-5,stop:5},
  skill:{startup:12,active:1,end:32,damage:15,stop:8},
@@ -32,27 +32,28 @@ const BREATH_MOVES={
 const LARA_SHOTS={
  slash1:{startup:7,active:1,end:32,damage:6,stun:23,push:1.5,lift:0,stop:4,pistol:true,reach:0,lunge:0,range:420,shotSpeed:24,shotY:0},
  slash2:{startup:7,active:1,end:34,damage:8,stun:25,push:2,lift:0,stop:5,pistol:true,reach:0,lunge:0,range:420,shotSpeed:24,shotY:0},
- slash3:{startup:10,active:1,end:44,damage:12,stun:30,push:8,lift:-4,stop:7,pistol:true,reach:0,lunge:0,range:440,shotSpeed:26,shotY:0},
+ slash3:{knockdown:true,startup:10,active:1,end:44,damage:12,stun:30,push:8,lift:-4,stop:7,pistol:true,reach:0,lunge:0,range:440,shotSpeed:26,shotY:0},
  launcher:{startup:10,active:1,end:36,damage:8,stun:34,push:2,lift:-11,stop:6,pistol:true,reach:0,lunge:0,range:240,shotSpeed:19,shotY:-4},
  air:{startup:6,active:1,end:29,damage:7,stun:24,push:4,lift:-3,stop:4,pistol:true,reach:0,lunge:0,range:360,shotSpeed:23,shotY:12}
 };
-class Fighter{constructor(x,dir,hero){this.hero=HEROES[hero]?hero:'cloud';this.info=HEROES[this.hero];const color=this.info.color;Object.assign(this,{x,y:FLOOR,vx:0,vy:0,groundY:FLOOR,grounded:true,dir,color,hp:100,energy:100,queuedSub:0,inputDir:dir,blinkTime:0,state:'idle',animState:'idle',animTime:0,hurtTime:0,landTime:0,knockdown:false,returning:false,downTime:0,fallTime:0,thunderDriftTicks:0,attackSerial:0,attack:null,stun:0,guardStun:0,guardReleaseTime:0,inv:0,dash:0,jumps:0,combo:0,comboDamage:0,comboTimer:0,flash:0,lastHit:0,subCD:0,airCount:0,block:false,buffer:null,trail:[]});}}
+class Fighter{constructor(x,dir,hero){this.hero=HEROES[hero]?hero:'cloud';this.info=HEROES[this.hero];const color=this.info.color;Object.assign(this,{x,y:FLOOR,vx:0,vy:0,groundY:FLOOR,grounded:true,dir,color,hp:100,energy:100,queuedSub:0,inputDir:dir,blinkTime:0,state:'idle',animState:'idle',animTime:0,hurtTime:0,landTime:0,knockdown:false,returning:false,downTime:0,downAge:0,fallTime:0,thunderDriftTicks:0,attackSerial:0,attack:null,stun:0,guardStun:0,guardReleaseTime:0,inv:0,dash:0,jumps:0,combo:0,comboDamage:0,comboTimer:0,flash:0,lastHit:0,subCD:0,airCount:0,block:false,buffer:null,trail:[]});}}
 class World{
- constructor(){this.settings={hitstop:true,shake:true,debug:false,cinematics:true,platforms:false};this.platforms=PLATFORMS;this.reset('training');}
- reset(mode=this.mode,hero=this.p1?.hero||'cloud',opponent=this.p2?.hero||'wukong'){this.mode=mode;this.p1=new Fighter(360,1,hero);this.p2=new Fighter(840,-1,opponent);this.frame=0;this.freeze=0;this.shake=0;this.particles=[];this.projectiles=[];this.events=[];this.time=99;this.result=null;this.aiClock=0;this.banner=0;this.bannerText='';this.cutin=null;this.effects=[];this.scheduled=[];this.hitQueue=null;this.lastFeedback=hero==='lara'?'按 J 三段点射 / S + J 上挑射击 / 空中 J 向前下方开火':'靠近对手，连续按 J 打出三段连击';}
+ constructor(){this.settings={hitstop:true,shake:true,debug:false,cinematics:true,platforms:false};this.width=1200;this.floorSupport=FLOOR_SUPPORT;this.spawnPoints=[360,840];this.platforms=PLATFORMS;this.reset('training');}
+ configureArena({width=3600,platforms=[],spawnPoints=[500,900]}={}){this.width=Math.max(1200,width);this.floorSupport={id:'floor',x:0,w:this.width,y:FLOOR};this.platforms=platforms.map((p,i)=>({...p,id:p.id||'roof-'+i}));this.spawnPoints=spawnPoints.map(x=>clamp(x,42,this.width-42));this.settings.platforms=true;this.reset();}
+ reset(mode=this.mode,hero=this.p1?.hero||'cloud',opponent=this.p2?.hero||'wukong'){this.mode=mode;this.p1=new Fighter(this.spawnPoints[0],1,hero);this.p2=new Fighter(this.spawnPoints[1],-1,opponent);this.frame=0;this.freeze=0;this.shake=0;this.particles=[];this.projectiles=[];this.events=[];this.time=99;this.result=null;this.aiClock=0;this.banner=0;this.bannerText='';this.cutin=null;this.effects=[];this.scheduled=[];this.hitQueue=null;this.lastFeedback=hero==='lara'?'按 J 三段点射 / S + J 上挑射击 / 空中 J 向前下方开火':'靠近对手，连续按 J 打出三段连击';}
  // Query geometry, never cached flags: manual y/vy changes in training/tests
  // cannot accidentally grant grounded attacks, a guard or a fresh jump.
- supportAt(f){if(!f||f.vy!==0)return null;if(f.y===FLOOR)return FLOOR_SUPPORT;if(!this.settings.platforms)return null;return this.platforms.find(p=>f.y===p.y&&f.x>=p.x&&f.x<=p.x+p.w)||null;}
+ supportAt(f){if(!f||f.vy!==0)return null;if(f.y===FLOOR)return this.floorSupport;if(!this.settings.platforms)return null;return this.platforms.find(p=>f.y===p.y&&f.x>=p.x&&f.x<=p.x+p.w)||null;}
  refreshSupport(f){const support=this.supportAt(f);f.grounded=!!support;f.groundY=support?support.y:null;if(!support)f.block=false;return support;}
  landingAt(f,previousX,previousY){
   if(f.vy<0||f.y<previousY)return null;
-  const surfaces=this.settings.platforms?[...this.platforms,FLOOR_SUPPORT]:[FLOOR_SUPPORT];
+  const surfaces=this.settings.platforms?[...this.platforms,this.floorSupport]:[this.floorSupport];
   return surfaces.filter(p=>previousY<=p.y&&f.y>=p.y&&f.x>=p.x&&f.x<=p.x+p.w).sort((a,b)=>a.y-b.y).find(p=>{const progress=f.y===previousY?1:(p.y-previousY)/(f.y-previousY),x=previousX+(f.x-previousX)*progress;return x>=p.x&&x<=p.x+p.w;})||null;
  }
  event(type,data={}){this.events.push({type,frame:this.frame,...data});if(this.events.length>50)this.events.shift();}
  action(f,key,inputDirection=0){if(this.result)return;const direction=Math.sign(inputDirection)||f.inputDir||f.dir;if(key==='sub'){
  if(this.freeze>0||this.cutin){if(!f.queuedSub)f.queuedSub=direction;return;}
- if(f.energy<40||f.subCD>0)return;const fromX=f.x,fromY=f.y;this.burst(fromX,fromY-45,f.color,24);f.x=clamp(f.x+direction*240,42,1158);f.vx=0;f.vy=0;f.stun=0;f.guardStun=0;f.guardReleaseTime=0;f.knockdown=false;f.returning=false;f.downTime=0;f.thunderDriftTicks=0;f.attack=null;f.dash=0;f.blinkTime=8;f.inv=22;f.energy-=40;f.subCD=80;f.dir=direction;f.inputDir=direction;f.buffer=null;f.animTime=0;f.animState='dash';f.block=false;this.refreshSupport(f);this.event('sub',{x:f.x,y:f.y-55,fromX,fromY:fromY-55,dir:direction,color:f.color,hero:f.hero});this.lastFeedback='定向瞬移 / '+(direction>0?'向右':'向左')+' / 消耗 40 气力';return;}
+ if(f.energy<40||f.subCD>0)return;const fromX=f.x,fromY=f.y;this.burst(fromX,fromY-45,f.color,24);f.x=clamp(f.x+direction*240,42,this.width-42);f.vx=0;f.vy=0;f.stun=0;f.guardStun=0;f.guardReleaseTime=0;f.knockdown=false;f.returning=false;f.downTime=0;f.downAge=0;f.fallTime=0;f.thunderDriftTicks=0;f.attack=null;f.dash=0;f.blinkTime=8;f.inv=22;f.energy-=40;f.subCD=80;f.dir=direction;f.inputDir=direction;f.buffer=null;f.animTime=0;f.animState='dash';f.block=false;this.refreshSupport(f);this.event('sub',{x:f.x,y:f.y-55,fromX,fromY:fromY-55,dir:direction,color:f.color,hero:f.hero});this.lastFeedback='定向瞬移 / '+(direction>0?'向右':'向左')+' / 消耗 40 气力';return;}
  f.buffer={key,ttl:12,dir:direction};}
  execute(f,keys){const b=f.buffer;if(!b)return;const key=b.key,ground=!!this.supportAt(f);const a=f.attack;const canCancel=a&&a.hit&&a.t>=a.move.startup+2&&a.name!=='ultimate';const canShotChain=f.hero==='lara'&&a?.move.pistol&&['slash1','slash2'].includes(a.name)&&a.spawned&&a.t>=a.move.startup+8;
  if(f.stun||f.dash)return;
@@ -79,11 +80,29 @@ class World{
  // A grounded opponent above us needs an approach/jump, not endless
  // ground attacks at the old horizontal stopping distance (especially Lara).
  const targetSupport=this.settings.platforms?this.supportAt(p):null;
- if(targetSupport&&targetSupport.id!=='floor'&&p.y<f.y-65&&!f.attack&&!f.dash){
-  const aimX=clamp(p.x,targetSupport.x+32,targetSupport.x+targetSupport.w-32);
-  k.left=f.x>aimX+8;k.right=f.x<aimX-8;
-  if(this.supportAt(f)&&f.x>=targetSupport.x+24&&f.x<=targetSupport.x+targetSupport.w-24)this.action(f,'jump',intent);
-  return k;
+ if(targetSupport&&targetSupport.id!=='floor'&&!f.attack&&!f.dash){
+  const support=this.supportAt(f);
+  let next=this.platforms.find(q=>q.id===f.routePlatform);
+  if(support&&support.id!==targetSupport.id){
+   // Find a route through reachable neighbouring roofs. Equal-height distant
+   // roofs may have taller buildings between them; aiming straight at them
+   // would walk the CPU off the first roof and loop forever.
+   const surfaces=[support,...this.platforms.filter(q=>q.id!==support.id)],queue=[[support]],seen=new Set([support.id]);let route=null;
+   while(queue.length&&!route){const path=queue.shift(),from=path[path.length-1];for(const to of surfaces){
+    if(seen.has(to.id)||to.id==='floor'||from.y-to.y>147)continue;
+    const gap=Math.max(0,to.x-(from.x+from.w),from.x-(to.x+to.w));
+    if(from.id!=='floor'&&gap>150)continue;
+    const candidate=[...path,to];seen.add(to.id);if(to.id===targetSupport.id){route=candidate;break;}queue.push(candidate);
+   }}
+   next=route?.[1];f.routePlatform=next?.id;
+  }else if(support?.id===targetSupport.id){next=null;f.routePlatform=null;}
+  if(next){
+   const aimX=clamp(p.x,next.x+40,next.x+next.w-40);
+   k.left=f.x>aimX+8;k.right=f.x<aimX-8;
+   const gap=f.x<next.x?next.x-f.x:f.x>next.x+next.w?f.x-next.x-next.w:0;
+   if(support&&gap<100&&f.y-next.y<=147)this.action(f,'jump',aimX>=f.x?1:-1);
+   return k;
+  }
  }
  if(dist>(f.hero==='lara'?290:105)){k.left=f.x>p.x;k.right=f.x<p.x;}if(p.attack&&dist<160&&this.aiClock%100<32)k.down=true;
  if(dist<(f.hero==='lara'?430:125)&&this.aiClock%23===0)this.action(f,'attack',intent);
@@ -106,7 +125,7 @@ class World{
  if(!p.attack?.sixfold&&!q.attack?.sixfold&&Math.abs(p.y-q.y)<75&&!p.dash&&!q.dash&&!p.blinkTime&&!q.blinkTime){
   const order=previousX[0]<=previousX[1]?1:-1,oldGap=(previousX[1]-previousX[0])*order,newGap=(q.x-p.x)*order;
   if(oldGap>=46&&newGap<46){const fraction=clamp((oldGap-46)/(oldGap-newGap),0,1);p.x=previousX[0]+(p.x-previousX[0])*fraction;q.x=previousX[1]+(q.x-previousX[1])*fraction;}
-  else if(Math.abs(p.x-q.x)<46){const mid=(p.x+q.x)/2,left=clamp(mid-23,42,1112);if(order>0){p.x=left;q.x=left+46;}else{q.x=left;p.x=left+46;}}
+  else if(Math.abs(p.x-q.x)<46){const mid=(p.x+q.x)/2,left=clamp(mid-23,42,this.width-88);if(order>0){p.x=left;q.x=left+46;}else{q.x=left;p.x=left+46;}}
  }
  for(const f of [p,q]){this.refreshSupport(f);if(!f.grounded&&['idle','run','guard','land'].includes(f.state)){f.state=f.animState='jump';f.animTime=0;}}
  this.hitQueue=[];this.resolveAttack(p,q);this.resolveAttack(q,p);const simultaneousHits=this.hitQueue;this.hitQueue=null;for(const args of simultaneousHits)this.applyHit(...args);
@@ -120,25 +139,25 @@ class World{
   const touches=t.x+23>Math.min(startX,b.x)-b.w/2&&t.x-23<Math.max(startX,b.x)+b.w/2&&Math.abs(b.y-(t.y-targetHeight/2))<b.h/2+targetHeight/2;
   if(b.kind==='grenade'&&(b.y>=FLOOR-6||touches||b.life<=0)){
    this.effects.push({kind:'explosion',hero:b.owner.hero,owner:b.owner,dir:b.direction||Math.sign(b.vx)||1,x:b.x,y:Math.min(FLOOR-40,b.y),color:'#ffc578',life:24,max:24});this.burst(b.x,b.y,'#ffc578',32);
-   if(Math.abs(b.x-t.x)<125&&Math.abs(b.y-(t.y-45))<125&&!t.inv){this.confirmProjectile(b);this.hit(b.owner,t,b.move,b.name,b.x,{dir:t.x>=b.x?1:-1});}b.dead=true;
-  }else if(!b.dead&&touches&&!t.inv&&!b.hitTargets.has(t)){
+   if(Math.abs(b.x-t.x)<125&&Math.abs(b.y-(t.y-45))<125&&!t.inv&&!t.downTime){this.confirmProjectile(b);this.hit(b.owner,t,b.move,b.name,b.x,{dir:t.x>=b.x?1:-1});}b.dead=true;
+  }else if(!b.dead&&touches&&!t.inv&&!t.downTime&&!b.hitTargets.has(t)){
    this.confirmProjectile(b);this.hit(b.owner,t,b.move,b.name,b.x,{dir:b.vx===0?b.direction:Math.sign(b.vx)});b.hitTargets.add(t);b.dead=true;
   }
-  if(b.x<-180||b.x>1380)b.dead=true;
+  if(b.x<-180||b.x>this.width+180)b.dead=true;
  }
  for(const e of this.effects)e.life--;this.effects=this.effects.filter(e=>e.life>0);if(root.RiftFXData&&this.effects.length>64)this.effects.splice(0,this.effects.length-64);
  this.projectiles=this.projectiles.filter(b=>!b.dead&&b.life>0);
  for(const pt of this.particles){pt.x+=pt.vx;pt.y+=pt.vy;pt.vy+=.16;pt.life--;}
  this.particles=this.particles.filter(pt=>pt.life>0);
  if(this.mode==='training'&&this.frame-q.lastHit>180&&!q.stun){q.hp=Math.min(100,q.hp+1);}
- if(p.hp<=0||q.hp<=0){if(this.mode==='duel')this.finish();else{q.hp=100;q.stun=0;q.y=FLOOR;q.vx=0;q.vy=0;q.jumps=0;q.airCount=0;q.landTime=0;q.knockdown=false;q.returning=false;q.downTime=0;q.thunderDriftTicks=0;q.guardStun=0;q.guardReleaseTime=0;q.block=false;q.attack=null;q.buffer=null;q.dash=0;q.animState=q.state='idle';q.animTime=0;this.refreshSupport(q);this.lastFeedback='击倒！训练对手已恢复';}}
+ if(p.hp<=0||q.hp<=0){if(this.mode==='duel')this.finish();else{q.hp=100;q.stun=0;q.y=FLOOR;q.vx=0;q.vy=0;q.jumps=0;q.airCount=0;q.landTime=0;q.knockdown=false;q.returning=false;q.downTime=0;q.downAge=0;q.fallTime=0;q.thunderDriftTicks=0;q.guardStun=0;q.guardReleaseTime=0;q.block=false;q.attack=null;q.buffer=null;q.dash=0;q.animState=q.state='idle';q.animTime=0;this.refreshSupport(q);this.lastFeedback='击倒！训练对手已恢复';}}
  }
  finish(){this.result=this.p1.hp===this.p2.hp?'平局':this.p1.hp>this.p2.hp?'你赢了。':'再来一局。';this.event('end');}
  updateFighter(f,o,k){
  const previousX=f.x,previousY=f.y,previousVy=f.vy,wasBlocking=f.block;
  for(const prop of ['stun','guardStun','guardReleaseTime','blinkTime','inv','flash','subCD','comboTimer','hurtTime','landTime','downTime'])if(f[prop]>0)f[prop]--;
  if(f.knockdown&&f.inv){f.knockdown=false;f.downTime=0;}
- if(f.knockdown){f.stun=Math.max(f.stun,2);f.fallTime++;}if(f.downTime){f.stun=Math.max(f.stun,f.downTime);f.vx=0;}
+ if(f.knockdown){f.stun=Math.max(f.stun,2);f.fallTime++;}if(f.downTime){f.downAge++;f.stun=Math.max(f.stun,f.downTime);f.vx=0;}
  if(!f.comboTimer){f.combo=0;f.comboDamage=0;}f.energy=Math.min(100,f.energy+(this.mode==='training'?.19:.045));
  const input=Math.sign((k.right?1:0)-(k.left?1:0))||Math.sign(k.aim||0);if(input)f.inputDir=input;
  if(input&&!f.stun&&!f.attack&&!f.dash)f.dir=input;
@@ -151,28 +170,36 @@ class World{
  else{f.vx=f.block?0:((k.right?1:0)-(k.left?1:0))*f.info.speed;}
  if(f.thunderDriftTicks>0){if(--f.thunderDriftTicks===0)f.vx=0;}
  const controlled=!!f.attack?.sixfold;
- if(!controlled){f.x=clamp(f.x+f.vx,42,1158);if(!this.supportAt(f)){f.vy+=f.knockdown?1:f.returning?1.2:.62;f.y+=f.vy;}
+ if(!controlled){f.x=clamp(f.x+f.vx,42,this.width-42);if(!this.supportAt(f)){f.vy+=f.knockdown?1:f.returning?1.2:.62;f.y+=f.vy;}
  }
  const landing=controlled?null:this.landingAt(f,previousX,previousY);
- if(landing||f.y>=FLOOR){const groundY=landing?landing.y:FLOOR;f.y=groundY;f.vy=0;f.returning=false;f.jumps=0;f.airCount=0;if(previousY<groundY&&previousVy>2){f.landTime=7;this.event('land',{x:f.x,y:groundY,heavy:previousVy>11,color:f.color});if(f.knockdown){f.knockdown=false;f.downTime=f.stun=36;f.vx=0;this.effects.push({kind:'thunderSlam',x:f.x,y:groundY,life:28,max:28});this.event('knockdown',{x:f.x,y:groundY,hero:f.hero});this.shake=this.settings.shake?12:0;this.burst(f.x,groundY-10,'#ffe9ad',32);}}}
+ if(landing||f.y>=FLOOR){const groundY=landing?landing.y:FLOOR;f.y=groundY;f.vy=0;f.returning=false;f.jumps=0;f.airCount=0;
+ if(previousY<groundY&&previousVy>2){f.landTime=7;this.event('land',{x:f.x,y:groundY,heavy:previousVy>11,color:f.color});}
+ if(f.knockdown)this.landKnockdown(f,groundY);
+ }else if(f.knockdown&&this.supportAt(f))this.landKnockdown(f,f.y);
  this.refreshSupport(f);
  const state=f.guardStun>0&&f.block?'guard':f.stun?'hurt':f.dash||f.blinkTime?'dash':f.attack?(f.attack.name==='skill'||f.attack.name==='ultimate'?'skill':'attack'):!f.grounded?'jump':f.block?'guard':Math.abs(f.vx)>1?'run':f.landTime?'land':'idle';if(state===f.animState)f.animTime++;else{f.animState=state;f.animTime=0;}f.state=state;
  f.trail.forEach(t=>t.life--);f.trail=f.trail.filter(t=>t.life>0);
+ }
+ landKnockdown(f,groundY){
+  f.knockdown=false;f.downAge=0;f.fallTime=0;f.downTime=f.stun=Math.max(36,f.stun);f.vx=f.vy=0;f.attack=null;f.buffer=null;f.block=false;
+  const thunder=f.knockdownStyle==='thunder';this.effects.push({kind:thunder?'thunderSlam':'groundSlam',x:f.x,y:groundY,life:28,max:28,color:f.color});
+  this.event('knockdown',{x:f.x,y:groundY,hero:f.hero});this.shake=this.settings.shake?8:0;this.burst(f.x,groundY-10,thunder?'#ffe9ad':'#c8bd9b',24);
  }
  hitbox(f){const a=f.attack;if(!a||!a.move.reach)return null;return {x:f.x+(f.dir>0?12:-a.move.reach-12),y:f.y-a.move.height,w:a.move.reach,h:a.move.height};}
  resolveAttack(f,t){const a=f.attack;if(!a)return;const m=a.move;if(a.t<m.startup||a.t>=m.startup+m.active)return;
  if(m.style==='thunderSix'){this.resolveSixfold(f,t,a);return;}
  if(m.style){this.resolveBreath(f,t,a);return;}
- if(m.pistol){if(!a.spawned){a.spawned=true;this.spawnProjectile(f,{kind:'bullet',name:a.name,vx:f.dir*m.shotSpeed,vy:m.shotY,w:24,h:16,maxTravel:m.range,traveled:0,life:Math.ceil(m.range/m.shotSpeed)+2,move:{damage:m.damage,stun:m.stun,push:m.push,lift:m.lift,stop:m.stop}});this.lastFeedback='劳拉 / '+({slash1:'点射一段',slash2:'点射二段',slash3:'终结点射',launcher:'上挑射击',air:'空中射击'}[a.name]);}return;}
+ if(m.pistol){if(!a.spawned){a.spawned=true;this.spawnProjectile(f,{kind:'bullet',name:a.name,vx:f.dir*m.shotSpeed,vy:m.shotY,w:24,h:16,maxTravel:m.range,traveled:0,life:Math.ceil(m.range/m.shotSpeed)+2,move:{damage:m.damage,stun:m.stun,push:m.push,lift:m.lift,stop:m.stop,knockdown:!!m.knockdown}});this.lastFeedback='劳拉 / '+({slash1:'点射一段',slash2:'点射二段',slash3:'终结点射',launcher:'上挑射击',air:'空中射击'}[a.name]);}return;}
  if(a.name==='skill'||a.name==='ultimate'){if(a.spawned)return;a.spawned=true;this.special(f,t,a.name);this.event('swing',{x:f.x,y:f.y-86,color:f.color,hero:f.hero,weapon:f.info.weapon,move:a.name});return;}
- if(a.t===m.startup){this.event('swing',{x:f.x,y:f.y-86,color:f.color,hero:f.hero,weapon:f.info.weapon,move:a.name});if(root.RiftFXData&&f.hero!=='drake')this.effects.push({kind:'fxBasic',hero:f.hero,owner:f,x:f.x+f.dir*48,y:f.y-88,dir:f.dir,angle:a.name==='launcher'?-.55:a.name==='slash2'?.28:0,color:f.color,life:12,max:12});}if(a.hit||t.inv)return;
+ if(a.t===m.startup){this.event('swing',{x:f.x,y:f.y-86,color:f.color,hero:f.hero,weapon:f.info.weapon,move:a.name});if(root.RiftFXData&&f.hero!=='drake')this.effects.push({kind:'fxBasic',hero:f.hero,owner:f,x:f.x+f.dir*48,y:f.y-88,dir:f.dir,angle:a.name==='launcher'?-.55:a.name==='slash2'?.28:0,color:f.color,life:12,max:12});}if(a.hit||t.inv||t.downTime)return;
  const b=this.hitbox(f);if(b.x<t.x+23&&b.x+b.w>t.x-23&&b.y<t.y&&b.y+b.h>t.y-HURT_HEIGHT){a.hit=true;this.hit(f,t,m,a.name,t.x);}
  }
  resolveBreath(f,t,a){
  const m=a.move,index=Math.floor((a.t-m.startup)/m.interval),last=index===Math.ceil(m.active/m.interval)-1;
  if(a.effectStrike!==index){a.effectStrike=index;this.effects.push({kind:m.style,owner:f,x:f.x+f.dir*m.reach*.45,y:f.y-80,dir:f.dir,color:f.color,life:15,max:15,range:m.reach,index});this.event('breath',{x:f.x,y:f.y-70,dir:f.dir,color:f.color,hero:f.hero,weapon:f.info.weapon,heavy:last&&a.name==='ultimate'});this.lastFeedback=f.info.name+' / '+(a.name==='ultimate'?f.info.ultimate:f.info.skill);}
- a.struck=a.struck||new Set();if(a.struck.has(index)||t.inv)return;const b=this.hitbox(f);
- if(b.x<t.x+23&&b.x+b.w>t.x-23&&b.y<t.y&&b.y+b.h>t.y-HURT_HEIGHT){a.struck.add(index);a.hit=true;const finisher=last&&a.name==='ultimate';this.hit(f,t,{...m,damage:finisher?m.damage+5:m.damage,push:finisher?14:m.push,lift:finisher?-8:m.lift,stop:finisher?11:m.stop,finisher},a.name,t.x);}
+ a.struck=a.struck||new Set();if(a.struck.has(index)||t.inv||t.downTime)return;const b=this.hitbox(f);
+ if(b.x<t.x+23&&b.x+b.w>t.x-23&&b.y<t.y&&b.y+b.h>t.y-HURT_HEIGHT){a.struck.add(index);a.hit=true;const finisher=last&&a.name==='ultimate';this.hit(f,t,{...m,damage:finisher?m.damage+5:m.damage,push:finisher?14:m.push,lift:finisher?-8:m.lift,stop:finisher?11:m.stop,finisher,knockdown:last},a.name,t.x);}
  }
  // Sixfold owns positions only after an unguarded opening hit. Its path is
  // captured once; escape/invulnerability interrupts it rather than re-locking.
@@ -200,10 +227,10 @@ class World{
  resolveSixfold(f,t,a){
  const m=a.move,z=a.sixfold;
  if(z){
-  if(z.leg<0||z.struck.has(z.leg)||t.inv)return;
+  if(z.leg<0||z.struck.has(z.leg)||t.inv||t.downTime)return;
   if(z.leg===5){
    if(Math.round(z.progress*8)===4){
-    if(Math.abs(f.x-t.x)<50&&Math.abs(f.y-t.y)<100){z.struck.add(5);const push=f.x>1020?-24:f.x<180?24:z.dir*24;this.hit(f,t,{...m,damage:12,stun:35,push:Math.abs(push),lift:24,stop:6,finisher:true,knockdown:true},'ultimate',t.x,{dir:Math.sign(push)});this.effects.push({kind:'thunderTurn',x:t.x,y:t.y-75,life:24,max:24});}
+    if(Math.abs(f.x-t.x)<50&&Math.abs(f.y-t.y)<100){z.struck.add(5);const push=f.x>this.width-180?-24:f.x<180?24:z.dir*24;this.hit(f,t,{...m,damage:12,stun:35,push:Math.abs(push),lift:24,stop:6,finisher:true,knockdown:true},'ultimate',t.x,{dir:Math.sign(push)});this.effects.push({kind:'thunderTurn',x:t.x,y:t.y-75,life:24,max:24});}
     else{if(z.path)z.path.active=false;delete a.sixfold;a.t=m.startup+m.active;f.vx=f.vy=0;}
    }
    return;
@@ -218,7 +245,7 @@ class World{
    // Solve ordinary ballistic velocity to meet the next real diagonal crossing.
    const remaining=6-slot,flight=last?remaining+4:gap,nextY=last?z.launchY-z.span*5-200:z.launchY-z.span*(z.leg+1+nextSlot/6),lift=(nextY-t.y-.62*flight*(flight+1)/2)/flight;
    const travel=last?Math.abs(toX-t.x):0,frictionSum=Array.from({length:remaining},(_,i)=>.94**(i+1)).reduce((a,b)=>a+b,0),push=last&&remaining?travel/frictionSum:0;
-   z.struck.add(z.leg);this.hit(f,t,{...m,damage:7,stun:30,push,lift,stop:1,finisher:false,thunderDriftTicks:last?remaining+1:0},'ultimate',t.x);
+   z.struck.add(z.leg);this.hit(f,t,{...m,damage:7,stun:30,push,lift,stop:1,finisher:false,knockdown:false,thunderDriftTicks:last?remaining+1:0},'ultimate',t.x);
   }else if(tick===slot){
    if(z.path)z.path.active=false;delete a.sixfold;a.t=m.startup+m.active;f.vx=f.vy=0;
   }
@@ -227,11 +254,11 @@ class World{
  if(a.openingAttempted)return;
  if(!a.rushPath){a.rushPath={kind:'thunderPath',hero:f.hero,fromX:f.x-f.dir*40,fromY:f.y-70,x:f.x,y:f.y-70,life:18,max:18,leg:-1,dir:f.dir,active:true};this.effects.push(a.rushPath);}
  a.rushPath.x=f.x;a.rushPath.y=f.y-70;a.rushPath.life=18;a.rushPath.tick=(a.rushPath.tick||0)+1;
- if(t.inv)return;const b=this.hitbox(f);
- if(b.x<t.x+23&&b.x+b.w>t.x-23&&b.y<t.y&&b.y+b.h>t.y-HURT_HEIGHT){a.openingAttempted=true;this.hit(f,t,{...m,lift:-(Math.min(1158,t.x+160)-Math.max(42,t.x-160))/6-2.17,finisher:false,sixfoldOpen:a},'ultimate',t.x);}
+ if(t.inv||t.downTime)return;const b=this.hitbox(f);
+ if(b.x<t.x+23&&b.x+b.w>t.x-23&&b.y<t.y&&b.y+b.h>t.y-HURT_HEIGHT){a.openingAttempted=true;this.hit(f,t,{...m,lift:-(Math.min(this.width-42,t.x+160)-Math.max(42,t.x-160))/6-2.17,finisher:false,knockdown:false,sixfoldOpen:a},'ultimate',t.x);}
  }
  startSixfold(f,t,a){
- const z={start:a.t,dir:f.dir,actorX:f.x,actorY:f.y,targetX:t.x,left:Math.max(42,t.x-160),right:Math.min(1158,t.x+160),leg:-1,struck:new Set()};
+ const z={start:a.t,dir:f.dir,actorX:f.x,actorY:f.y,targetX:t.x,left:Math.max(42,t.x-160),right:Math.min(this.width-42,t.x+160),leg:-1,struck:new Set()};
  z.span=z.right-z.left;z.launchY=f.y;if(a.rushPath)a.rushPath.active=false;a.sixfold=z;a.hit=true;a.move={...a.move,active:a.t-a.move.startup+43,end:a.t+55};f.vx=f.vy=0;
  this.lastFeedback='霹雳一闪 / 挑空 → Z 字雷电追击';
  }
@@ -245,26 +272,28 @@ class World{
   if(spec.kind==='bullet')this.event('shot',{x:origin?x:f.x+f.dir*50,y,color:f.color,hero:f.hero,weapon:'pistol',move:spec.name,dir:Math.sign(spec.vx)||f.dir,angle:Math.atan2(spec.vy||0,Math.abs(spec.vx||0))});
   this.projectiles.push({x,y,vx:f.dir*13,vy:0,w:60,h:86,owner:f,direction:f.dir,move:{damage:15,stun:30,push:8,lift:-3,stop:8},name:big?'ultimate':'skill',castSerial:f.attackSerial,kind:'wave',life:100,dead:false,hitTargets:new Set(),age:0,...spec,...(origin?.targetHeight===160?{targetHeight:160,muzzlePathStartX:f.x+f.dir*23}:{} )});
  }
- special(f,t,name){const big=name==='ultimate',dir=f.dir;const move={damage:big?39:15,stun:big?47:30,push:big?13:7,lift:big?-7:-3,stop:big?12:6};
+ special(f,t,name){const big=name==='ultimate',dir=f.dir;const move={knockdown:true,damage:big?39:15,stun:big?47:30,push:big?13:7,lift:big?-7:-3,stop:big?12:6};
   this.lastFeedback=f.info.name+' / '+(big?f.info.ultimate:f.info.skill);
-  const direct=(range,m,kind)=>{const connected=(t.x-f.x)*dir>=-12&&(t.x-f.x)*dir<=range&&Math.abs(t.y-f.y)<125&&!t.inv;this.effects.push({kind,hero:f.hero,owner:f,connected,blocked:t.block&&t.dir===-dir,hitX:t.x,hitY:t.y-85,x:f.x+dir*range*.5,y:f.y-86,dir,color:f.color,life:22,max:22,range});if(connected){this.hit(f,t,m,name,t.x);if(f.attack)f.attack.hit=true;}};
+  const direct=(range,m,kind)=>{const connected=(t.x-f.x)*dir>=-12&&(t.x-f.x)*dir<=range&&Math.abs(t.y-f.y)<125&&!t.inv&&!t.downTime;this.effects.push({kind,hero:f.hero,owner:f,connected,blocked:t.block&&t.dir===-dir,hitX:t.x,hitY:t.y-85,x:f.x+dir*range*.5,y:f.y-86,dir,color:f.color,life:22,max:22,range});if(connected){this.hit(f,t,m,name,t.x);if(f.attack)f.attack.hit=true;}};
   if(f.hero==='cloud'){
    if(big)direct(230,move,'cross');else this.spawnProjectile(f,{kind:'wave',name,move,vx:dir*14});
   }else if(f.hero==='wukong'){
    direct(big?460:285,big?{...move,push:18}:{...move,damage:5,stun:80,push:0,lift:0},big?'staff':'seal');
   }else if(f.hero==='lara'){
-   if(big){for(let i=0;i<6;i++)this.scheduled.push({owner:f,wait:1+i*6,spec:{kind:'bullet',name,move:{...move,damage:9,stun:20,push:2,lift:0,stop:2},vx:dir*23,w:36,h:14}});}else this.spawnProjectile(f,{kind:'arrow',name,move:{...move,damage:18},vx:dir*21,w:70,h:18});
+   if(big){for(let i=0;i<6;i++)this.scheduled.push({owner:f,wait:1+i*6,spec:{kind:'bullet',name,move:{...move,damage:9,stun:20,push:2,lift:0,stop:2,knockdown:i===5,finisher:i===5},vx:dir*23,w:36,h:14}});}else this.spawnProjectile(f,{kind:'arrow',name,move:{...move,damage:18},vx:dir*21,w:70,h:18});
   }else if(f.hero==='drake'){
-   if(big){for(let i=0;i<5;i++)this.scheduled.push({owner:f,wait:1+i*7,spec:{kind:'bullet',name,move:{...move,damage:11,stun:21,push:3,lift:0,stop:3},vx:dir*21,w:40,h:14}});}else this.spawnProjectile(f,{kind:'grenade',name,move:{...move,damage:22,stun:40,push:10,lift:-8},vx:dir*7.2,vy:-7.8,gravity:.42,w:18,h:18,life:65});
+   if(big){for(let i=0;i<5;i++)this.scheduled.push({owner:f,wait:1+i*7,spec:{kind:'bullet',name,move:{...move,damage:11,stun:21,push:3,lift:0,stop:3,knockdown:i===4,finisher:i===4},vx:dir*21,w:40,h:14}});}else this.spawnProjectile(f,{kind:'grenade',name,move:{...move,damage:22,stun:40,push:10,lift:-8},vx:dir*7.2,vy:-7.8,gravity:.42,w:18,h:18,life:65});
   }
  }
  hit(f,t,m,name,x,impact={}){
+ if(t.downTime>0)return;
  const dir=impact.dir||f.dir,guarded=t.block&&t.dir===-dir;const contact={dir,guarded,counter:!guarded&&!!t.attack&&t.attack.t<t.attack.move.startup};if(this.hitQueue){this.hitQueue.push([f,t,m,name,x,contact]);return;}this.applyHit(f,t,m,name,x,contact);
  }
  applyHit(f,t,m,name,x,contact){
+ if(t.downTime>0)return;
  const {guarded,counter,dir}=contact;const heavy=(name==='ultimate'&&m.finisher!==false)||name==='slash3';if(!t.stun){f.combo=0;f.comboDamage=0;}const scale=Math.max(.5,1-f.combo*.06);let damage=guarded?Math.max(1,Math.floor(m.damage*.12)):Math.round(m.damage*scale*(counter?1.12:1));
  if(guarded){t.stun=Math.max(t.stun,8);t.guardStun=8;t.vx=dir*3;t.energy=Math.min(100,t.energy+3);this.event('block',{x:t.x,y:t.y-88,dir,color:f.color,hero:f.hero,weapon:f.info.weapon,move:name,damage});this.burst(t.x,t.y-88,'#dcecff',12);this.lastFeedback='防御 / 绕到背后寻找机会';}
- else{t.returning=false;t.knockdown=!!m.knockdown;t.downTime=0;t.fallTime=0;t.thunderDriftTicks=m.thunderDriftTicks||0;t.guardStun=0;const stunReduction=Math.max(0,f.combo-4)*3;t.stun=Math.max(12,m.stun-stunReduction)+(counter?4:0);t.vx=dir*m.push;t.vy=m.lift;t.attack=null;t.dash=0;t.block=false;t.buffer=null;t.flash=6;t.hurtTime=t.stun;t.animState='hurt';t.animTime=0;f.combo++;f.comboDamage+=damage;f.comboTimer=m.stun+24;f.energy=Math.min(100,f.energy+7);t.energy=Math.min(100,t.energy+5);this.shake=this.settings.shake?(heavy?(name==='ultimate'?11:8):4):0;this.burst(x,t.y-88,f.color,name==='ultimate'?42:22);this.event('hit',{x:t.x,y:t.y-88,dir,color:f.color,hero:f.hero,weapon:f.info.weapon,move:name,damage,heavy,counter,combo:f.combo});this.lastFeedback=f===this.p1?`${counter?'COUNTER / ':''}${f.combo} HIT / ${f.comboDamage} 伤害${name==='launcher'?' / 挑空！按 K 追击':''}`:'受到攻击 / I 替身脱身';}
+ else{t.returning=false;t.knockdown=t.knockdown||!!m.knockdown;if(m.knockdown)t.knockdownStyle=m.style==='thunderSix'?'thunder':'impact';t.downTime=0;t.downAge=0;t.fallTime=0;t.thunderDriftTicks=m.thunderDriftTicks||0;t.guardStun=0;const stunReduction=Math.max(0,f.combo-4)*3;t.stun=Math.max(12,m.stun-stunReduction)+(counter?4:0);t.vx=dir*m.push;t.vy=m.lift;t.attack=null;t.dash=0;t.block=false;t.buffer=null;t.flash=6;t.hurtTime=t.stun;t.animState='hurt';t.animTime=0;f.combo++;f.comboDamage+=damage;f.comboTimer=m.stun+24;f.energy=Math.min(100,f.energy+7);t.energy=Math.min(100,t.energy+5);this.shake=this.settings.shake?(heavy?(name==='ultimate'?11:8):4):0;this.burst(x,t.y-88,f.color,name==='ultimate'?42:22);this.event('hit',{x:t.x,y:t.y-88,dir,color:f.color,hero:f.hero,weapon:f.info.weapon,move:name,damage,heavy,counter,combo:f.combo});this.lastFeedback=f===this.p1?`${counter?'COUNTER / ':''}${f.combo} HIT / ${f.comboDamage} 伤害${name==='launcher'?' / 挑空！按 K 追击':''}`:'受到攻击 / I 替身脱身';}
  this.refreshSupport(t);t.hp=Math.max(0,t.hp-damage);t.lastHit=this.frame;
  if(m.sixfoldOpen&&f.attack===m.sixfoldOpen){if(!guarded&&t.hp>0&&!f.stun)this.startSixfold(f,t,m.sixfoldOpen);else{f.attack.t=f.attack.move.startup+f.attack.move.active;f.vx=0;}}if(this.settings.hitstop)this.freeze=Math.max(this.freeze,guarded?3:m.stop+(counter?2:0));
  }

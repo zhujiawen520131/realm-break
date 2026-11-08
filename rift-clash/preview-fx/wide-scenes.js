@@ -24,6 +24,18 @@ function drawWorld(ctx,id,time=0,focus=600,motion=true){
  }
  ctx.restore();return true;
 }
+function drawBackdrop(ctx,id,world,time=0,motion=true){
+ const im=images[id];if(!im)return false;
+ const rise=Math.max(0,510-Math.min(world.p1.y,world.p2.y)),up=Math.min(1,rise/1800),ease=up*up*(3-2*up);
+ // A distant layer stays near native resolution; the detailed buildings below
+ // belong to the actual world camera, rather than being enlarged sixfold.
+ const w=1500-240*ease,h=w*im.height/im.width,focus=world.p1.x/Math.max(1,world.width||1200)-.5;
+ const x=(1200-w)/2-focus*(w-1200)*.55,y=(640-h)*(1-ease);
+ ctx.save();ctx.imageSmoothingEnabled=false;ctx.drawImage(im,x,y,w,h);
+ const tint=ctx.createLinearGradient(0,0,0,640);tint.addColorStop(0,'#0c1a3020');tint.addColorStop(1,'#0c1a3010');ctx.fillStyle=tint;ctx.fillRect(0,0,1200,640);
+ if(motion)for(let i=0;i<12;i++){ctx.fillStyle=base.DATA[id].light+'75';ctx.fillRect((i*173+time*.2)%1200,(i*91+time*.15)%600,2,2);}
+ ctx.restore();return true;
+}
 function draw(ctx,id,time=0,focus=600,motion=true){return drawWorld(ctx,id,time,focus,motion);}
 function drawPreview(ctx,id){
  const im=images[id];if(!im)return false;
@@ -31,5 +43,5 @@ function drawPreview(ctx,id){
  ctx.save();ctx.imageSmoothingEnabled=false;ctx.drawImage(im,0,im.height*.52,im.width,im.height*.48,0,0,1200,640);ctx.restore();return true;
 }
 const ready=ensureScene('temple'),previewsReady=Promise.all(Object.keys(base.DATA).map(ensureScene));
-root.RiftScenes={...base,draw,drawWorld,drawPreview,drawSky:undefined,ready,previewsReady,ensureScene,isSceneReady:id=>!!images[id],WORLD_RECT,revision:REVISION};
+root.RiftScenes={...base,draw,drawWorld,drawPreview,drawBackdrop,drawSky:undefined,ready,previewsReady,ensureScene,isSceneReady:id=>!!images[id],WORLD_RECT,revision:REVISION};
 })(typeof window!=='undefined'?window:globalThis);
