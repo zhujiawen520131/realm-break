@@ -90,7 +90,7 @@ function drawBreathEffect(e){
 }
 
 function draw(){ctx.clearRect(0,0,1200,640);const sky=RiftScenes.DATA[sceneId].sky,skyFill=ctx.createLinearGradient(0,0,0,640);skyFill.addColorStop(0,sky[0]);skyFill.addColorStop(1,sky[1]);rect(0,0,1200,640,skyFill);if(window.RiftArena)RiftScenes.drawBackdrop?.(ctx,sceneId,world,clock,environmentMotion);ctx.save();const camera=fx.camera(world);const stageOffset=window.RiftStage?.cameraY(world)||0;camera.zoom*=window.RiftStage?.cameraZoom?.(world)||1;camera.y+=stageOffset*camera.zoom;camera.x+=window.RiftStage?.cameraX?.(world,camera.zoom)||0;viewCamera=camera;ctx.translate(600+camera.x,340+camera.y);ctx.scale(camera.zoom,camera.zoom);ctx.translate(-600,-340);if(window.RiftArena)RiftArena.draw(ctx,sceneId,clock,environmentMotion);else{RiftScenes.draw(ctx,sceneId,clock,(world.p1.x+world.p2.x)/2,environmentMotion);window.RiftStage?.draw(ctx,world);}window.RiftPresentation?.drawStage(ctx,world,{reducedMotion});
-for(const e of world.effects)if(e.kind==='tanjiroFx')window.RiftTanjiroVisual?.drawEffect(ctx,e,{reducedMotion});
+for(const e of world.effects){if(e.kind==='tanjiroFx')window.RiftTanjiroVisual?.drawEffect(ctx,e,{reducedMotion});else if(e.arenaUltimate)window.RiftFXSprites?.drawEffect(ctx,e,{reducedMotion,flash:impactFlash});}
 for(const f of [world.p1,world.p2]){ellipse(f.x,(f.groundY??Rift.FLOOR)+5,38-Math.min(20,((f.groundY??Rift.FLOOR)-f.y)*.06),7,'#07171b70');for(const t of f.trail){ctx.save();ctx.globalAlpha=t.life/30;fighter({...f,...t},true);ctx.restore();}ctx.save();if(f.inv>0&&Math.floor(clock/3)%2===0)ctx.globalAlpha=.45;fighter(f);ctx.restore();if(!(f.hero==='zenitsu'&&f.attack?.name==='ultimate'))window.RiftFXSprites?.drawStartup(ctx,f,{reducedMotion,flash:impactFlash});}
 for(const b of world.projectiles){if(window.RiftFXSprites?.drawProjectile(ctx,b,{reducedMotion,flash:impactFlash}))continue;ctx.save();ctx.translate(b.x,b.y);ctx.scale(b.vx===0?(b.direction||1):Math.sign(b.vx),1);ctx.shadowColor=b.owner.color;ctx.shadowBlur=18;if(b.kind==='bullet')ctx.rotate(Math.atan2(b.vy||0,Math.abs(b.vx||1)));
  if(['arrow','bullet','wave'].includes(b.kind)){for(let i=1;i<=5;i++){ctx.save();ctx.globalAlpha=.35*(1-i/6);line([[-i*19,0],[-i*19-35,0]],b.owner.color,Math.max(1,9-i));ctx.restore();}}
@@ -98,7 +98,7 @@ for(const b of world.projectiles){if(window.RiftFXSprites?.drawProjectile(ctx,b,
  else if(b.kind==='bullet'){line([[-17,0],[16,0]],'#ffe8ad',4);ellipse(17,0,4,3,'#ffffff');}
  else if(b.kind==='grenade'){ctx.rotate(clock*.25);ellipse(0,0,9,11,'#9fa474');rect(-3,-14,6,6,'#c9c2a0');line([[-6,-2],[6,-2]],'#4c6245',2);}
  else{ctx.save();ctx.globalAlpha=.38;ctx.strokeStyle=b.owner.color;ctx.lineWidth=16;ctx.beginPath();ctx.ellipse(0,0,b.w*.7,b.h*.8,0,-1.5,1.5);ctx.stroke();ctx.restore();for(let i=0;i<3;i++){ctx.beginPath();ctx.strokeStyle=i%2?'#eeffff':b.owner.color;ctx.lineWidth=i?2:6;ctx.ellipse(4+i*5,0,b.w*.45,b.h*.6+i*5,0,-1.4,1.4);ctx.stroke();}poly([[-b.w*.7,-b.h*.48],[b.w*.45,-b.h*.32],[b.w*.7,0],[b.w*.45,b.h*.32],[-b.w*.7,b.h*.48],[-b.w*.15,0]],b.owner.color);poly([[0,-b.h*.38],[b.w*.6,0],[0,b.h*.38],[b.w*.2,0]],'#f5ffe8');}ctx.restore();}
-for(const e of world.effects){if(e.kind==='tanjiroFx')continue;if(window.RiftZenitsuCombat?.drawEffect(ctx,e,{reducedMotion}))continue;if(window.RiftFXSprites?.drawEffect(ctx,e,{reducedMotion,flash:impactFlash})||e.kind==='fxBasic')continue;ctx.save();ctx.globalAlpha=e.life/e.max;
+for(const e of world.effects){if(e.kind==='tanjiroFx'||e.arenaUltimate)continue;if(window.RiftZenitsuCombat?.drawEffect(ctx,e,{reducedMotion}))continue;if(window.RiftFXSprites?.drawEffect(ctx,e,{reducedMotion,flash:impactFlash})||e.kind==='fxBasic')continue;ctx.save();ctx.globalAlpha=e.life/e.max;
  // R3 water wheel follows its caster, never the target; the ellipse remains
  // authored procedural FX rather than a bone- or blade-attached simulation.
  const wheel=e.kind==='waterWheel'&&e.owner&&window.RiftMotionData,pose=wheel?window.RiftMotionPreview?.resolve(e.owner):null;
@@ -118,7 +118,7 @@ function loop(t){window.RiftTanjiroVisual?.sync(world,{paused:paused||assetLoadi
 }while(world.events.length){const e=world.events.shift();fx.add(e);if(e.type==='end'){held.clear();endReveal=30;}}$('feedback').textContent=paused?'已暂停 / Esc 继续':started?world.lastFeedback:'准备就绪 / 点击进入训练场';draw();requestAnimationFrame(loop);}requestAnimationFrame(loop);
 
 function refreshSelection(){
- const h=world.p1.hero==='tanjiro'&&window.RiftTanjiroRules?{...world.p1.info,skill:'水车 → 瀧壺 → 扭转漩涡',skillHint:'连续 U 接三种水呼吸；W + U / S + U 直接选招',ultimateHint:'命中触发水龙动画，21 段终结击飞；消耗 100 气',desc:'四段连斩 · 水呼吸连技 · 两阶段觉醒'}:world.p1.info;$('skillName').textContent=h.skill;$('ultimateName').textContent=h.ultimate;$('skillHint').textContent=h.skillHint;$('ultimateHint').textContent=h.ultimateHint;$('heroDescription').textContent=h.desc;
+ const h=world.p1.hero==='tanjiro'&&window.RiftTanjiroRules?{...world.p1.info,skill:'水车 → 瀧壺 → 扭转漩涡',skillHint:'连续 U 接三种水呼吸；W + U / S + U 直接选招',ultimateHint:'场内水呼吸连式，21 段攻击；最后一击显示终结奥义图',desc:'四段连斩 · 水呼吸连技 · 两阶段觉醒'}:world.p1.info;$('skillName').textContent=h.skill;$('ultimateName').textContent=h.ultimate;$('skillHint').textContent=h.skillHint;$('ultimateHint').textContent=h.ultimateHint;$('heroDescription').textContent=h.desc;
  for(const b of document.querySelectorAll('[data-hero]')){const active=b.dataset.hero===world.p1.hero;b.classList.toggle('selected',active);b.setAttribute('aria-pressed',active);}
  $('opponent').value=world.p2.hero;const kit=$('tanjiroKit');if(kit)kit.hidden=world.p1.hero!=='tanjiro';
 }
@@ -146,7 +146,7 @@ if(rosterLoading())ensureCurrentRoster();
 
 if(window.RiftMotionData?.fullRoster){$('platforms').checked=true;$('platforms').onchange=e=>{world.settings.platforms=e.target.checked;};}
 
-if(world.p1.hero==='tanjiro'&&!started)overlay('水之呼吸 · 连式','连续 J 四段斩击；U 接水车、瀧壺、扭转漩涡。H 觉醒，O 命中触发水龙奥义。完整招式表在战场下方。','进入训练场');
+if(world.p1.hero==='tanjiro'&&!started)overlay('水之呼吸 · 连式','连续 J 四段斩击；U 接水车、瀧壺、扭转漩涡。H 觉醒，O 命中展开场内连斩，最后显示终结奥义图。完整招式表在战场下方。','进入训练场');
 if(world.p1.hero==='zenitsu'&&!started)overlay('霹雳一闪 · 六连','A / D 选择方向，按 O 横向冲刺。命中后自动挑空，接向上 Z 字雷闪与垂直终结，弹飞敌人坠地；按 I 可替身脱离。','进入训练场');
 
 for(const b of document.querySelectorAll('[data-tanjiro-action]'))b.onclick=()=>{

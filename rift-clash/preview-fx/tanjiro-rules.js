@@ -53,14 +53,14 @@ function canContact(world,f,t,a){const m=a.move;if(t.inv||t.downTime||t.hp<=0)re
  return (m.radial?Math.abs(dx)<=m.reach+23:dx>=-20&&dx<=m.reach+23)&&Math.abs((t.y-65)-(f.y-65))<(m.height||140);
 }
 function resolve(world,f,t,a){
- const m=a.move;if(!m.kit)return false;
+ const m=a.move;if(!m.kit)return false;if(a.waterSequence)return resolveSequence(world,f,t,a);
  if(a.name==='throw'&&a.capture){if(t.inv||f.stun||a.capture!==t){a.t=m.startup+m.active;return true;}t.x=clamp(f.x+f.dir*48,42,world.width-42);t.y=f.y;t.vx=t.vy=0;}
  const total=m.hits||1,slot=total===1?0:Math.floor((a.t-m.startup)/(m.interval||m.active));
  if(slot>=total||a.kitSlots?.has(slot))return true;
  if(!a.kitFx){a.kitFx=true;if(m.fxClip)effect(world,f,m.fxClip,m.active+14);else if(a.name==='skill')world.effects.push({kind:'waterWheel',hero:f.hero,owner:f,x:f.x,y:f.y-80,dir:f.dir,color:f.color,range:170,life:m.active+10,max:m.active+10});}
  if(!canContact(world,f,t,a))return true;
  a.kitSlots??=new Set();a.kitSlots.add(slot);const last=slot===total-1,blocked=!m.unblockable&&t.block&&t.dir===-f.dir;
- const hit={...m,knockdown:m.kitUltimate?false:(last&&(m.knockdown||a.name==='throw')),finisher:last,lift:last&&a.name==='skill'?-10:last&&a.name==='throw'?-9:last&&a.name==='heavy'?-3:m.lift,push:last&&a.name==='throw'?12:m.push};
+ const hit={...m,knockdown:m.kitUltimate?false:(last&&(m.knockdown||a.name==='throw')),finisher:m.kitUltimate?false:last,lift:last&&a.name==='skill'?-10:last&&a.name==='throw'?-9:last&&a.name==='heavy'?-3:m.lift,push:last&&a.name==='throw'?12:m.push};
  if(a.name==='throw'&&!blocked){a.capture=t;hit.stun=32;}
  world.hit(f,t,hit,a.name==='ultimate'?'ultimate':a.name==='skill'?'skill':a.name,t.x,{dir:m.radial?(t.x>=f.x?1:-1):f.dir});a.hit=true;
  return true;
@@ -70,20 +70,81 @@ function awaken(world,f){
  world.lastFeedback=f.awakenLevel===2?'全觉醒 / 技能免气力 · 普攻第五段解锁':'觉醒 / 普攻第五段解锁 · 再按 H 全觉醒';
  if(f.awakenLevel===2&&world.settings.cinematics)world.tanjiroCinematic={id:++world.cinematicSerial,kind:'awakening',actor:f};return true;
 }
-function afterHit(world,f,t,m,contact){
- if(!m.kitUltimate||contact.guarded||f.stun||!f.attack||f.attack.cinematicStarted)return;
- f.attack.cinematicStarted=true;const state={id:++world.cinematicSerial,kind:'ultimate',actor:f,target:t,attack:f.attack};world.tanjiroCinematic=state;t.vx=t.vy=0;f.vx=f.vy=0;
- if(!world.settings.cinematics)finish(world);
+// Real arena choreography: one opening contact followed by twenty timed contacts.
+// The captured opponent stays interruptible through directional substitution.
+const ULTIMATE_PHASES=[
+ {name:'流水连斩',clipId:'attack4',duration:24,hits:[6,12,18,22],fx:'basic'},
+ {name:'转体水涡',clipId:'whirlpool',duration:28,hits:[6,12,18,24],fx:'whirlpool'},
+ {name:'回旋水车',baseClip:'skill',duration:28,hits:[6,12,18,24],fx:'waterWheel'},
+ {name:'瀧壺下劈',clipId:'waterfall',duration:28,hits:[6,12,18,24],fx:'waterfall'},
+ {name:'水龙追斩',baseClip:'ultimate',duration:32,hits:[10,18,26],fx:'waterDragon'},
+ {name:'生生流转 · 终结',baseClip:'ultimate',duration:20,hits:[12],fx:'waterDragon'}
+];
+const ULTIMATE_TICKS=ULTIMATE_PHASES.reduce((n,p)=>n+p.duration,0);
+function phaseAt(a){
+ const s=a?.waterSequence;if(!s)return null;
+ let tick=Math.max(0,a.t-s.startT),start=0;
+ for(let i=0;i<ULTIMATE_PHASES.length;i++){const p=ULTIMATE_PHASES[i];if(tick<p.duration||i===ULTIMATE_PHASES.length-1)return {...p,index:i,t:Math.min(tick,p.duration-1),start};tick-=p.duration;start+=p.duration;}
 }
-function finish(world){
- const c=world.tanjiroCinematic;if(!c)return false;world.tanjiroCinematic=null;
- if(c.kind==='ultimate'&&c.actor.attack===c.attack){
-  const f=c.actor,t=c.target;for(let i=0;i<20;i++)world.applyHit(f,t,{damage:3*(f.awakenLevel===2?1.2:f.awakenLevel?1.1:1),stun:28,push:i===19?13:0,lift:i===19?-10:0,stop:0,knockdown:i===19,finisher:i===19},'ultimate',t.x,{dir:f.dir,guarded:false,counter:false});
-  f.attack.t=f.attack.move.startup+f.attack.move.active;f.vx=f.vy=0;
-  world.effects.push({kind:'waterDragon',hero:f.hero,owner:f,x:t.x,y:t.y-90,dir:f.dir,color:f.color,range:220,index:3,life:28,max:28});world.freeze=world.settings.hitstop?6:0;
-  world.lastFeedback='拾之型 · 生生流转 / 21 段终结';
+function ultimatePose(a){
+ const p=phaseAt(a);if(!p)return a;
+ return {...a,name:p.baseClip||'ultimate',clipId:p.clipId||null,t:p.t,move:{startup:p.hits[0],active:p.hits.at(-1)-p.hits[0]+1,end:p.duration},waterSequence:null};
+}
+function liveSequence(f){const a=f?.attack,s=a?.waterSequence;return s&&!s.finished&&!f.stun&&f.hp>0&&s.target.hp>0&&!s.target.inv?s:null;}
+function controlled(world,f){return [world.p1,world.p2].some(actor=>{const s=liveSequence(actor);return !!s&&(actor===f||s.target===f);});}
+function stopSequence(world,f,a){
+ if(!a.waterSequence||a.waterSequence.finished)return;
+ a.waterSequence.finished=true;a.t=a.move.startup+a.move.active;a.move.end=a.t+12;f.vx=f.vy=0;
+ world.lastFeedback='水龙连式中断 / 可用 I 定向替身脱离';
+}
+function advance(world){
+ for(const f of [world.p1,world.p2]){
+  const a=f.attack,s=a?.waterSequence;if(!s||s.finished)continue;
+  if(!liveSequence(f)||s.target!==(f===world.p1?world.p2:world.p1)){stopSequence(world,f,a);continue;}
+  const t=s.target,p=phaseAt(a),age=Math.max(0,a.t-s.startT),progress=clamp(age/ULTIMATE_TICKS,0,1),q=p.t/p.duration;
+  const lift=p.index===1?Math.sin(q*Math.PI)*18:p.index===2?q*100:p.index===3?(1-q)*100:p.index===4?Math.sin(q*Math.PI)*45:0;
+  const blend=clamp(age/16,0,1),desired=s.tx+s.dir*progress*125;
+  const targetX=clamp(desired,126,world.width-126),actorX=targetX-s.dir*78;
+  f.x=clamp(s.fx+(actorX-s.fx)*blend,42,world.width-42);t.x=clamp(s.tx+(targetX-s.tx)*blend,42,world.width-42);
+  f.y=s.fy+(s.ty-s.fy)*blend-lift;t.y=s.ty-lift*.85;f.dir=s.dir;
+  f.vx=f.vy=t.vx=t.vy=0;t.stun=Math.max(t.stun,18);t.block=false;world.refreshSupport(f);world.refreshSupport(t);
+  if(p.t===p.hits[0]){
+   if(['waterfall','whirlpool'].includes(p.fx))effect(world,f,p.fx,p.duration+6);
+   else world.effects.push({kind:p.fx==='basic'?'fxBasic':p.fx,arenaUltimate:true,hero:f.hero,owner:f,x:f.x+s.dir*45,y:f.y-85,dir:s.dir,color:f.color,life:p.duration,max:p.duration});
+   world.event('swing',{x:f.x,y:f.y-86,color:f.color,hero:f.hero,weapon:f.info.weapon,move:'ultimate'});
+  }
+  world.lastFeedback=p.name+' / '+f.combo+' HIT';
  }
+}
+function resolveSequence(world,f,t,a){
+ const s=a.waterSequence;if(s.finished)return true;
+ if(!liveSequence(f)){stopSequence(world,f,a);return true;}
+ const p=phaseAt(a),contact=p.hits.indexOf(p.t),key=p.index+':'+contact;
+ if(contact<0||s.struck.has(key))return true;s.struck.add(key);
+ const last=p.index===ULTIMATE_PHASES.length-1,damage=3*s.boost;
+ world.hit(f,t,{damage,stun:30,push:last?13:0,lift:last?-10:0,stop:last?8:2,knockdown:last,finisher:last,waterSequenceHit:true},'ultimate',t.x,{dir:s.dir,guarded:false,counter:false});
  return true;
 }
-root.RiftTanjiroRules={CATALOG,enabled,variant,basic,move,begin,update,resolve,awaken,afterHit,finish};if(typeof module!=='undefined')module.exports=root.RiftTanjiroRules;
+function afterHit(world,f,t,m,contact){
+ if(contact.guarded||f.stun||!f.attack)return;
+ if(m.waterSequenceHit){
+  const s=f.attack.waterSequence;if(!s||s.finished)return;
+  if(m.finisher||t.hp<=0){
+   s.finished=true;f.vx=f.vy=0;
+   if(m.finisher)world.effects.push({kind:'waterDragon',arenaUltimate:true,hero:f.hero,owner:f,x:t.x,y:t.y-90,dir:s.dir,color:f.color,life:28,max:28});
+   if(m.finisher&&world.settings.cinematics)world.cutin={hero:f.hero,name:f.info.name,move:'拾之型 · 生生流转',color:f.color,dir:s.dir,remaining:48,total:48,finisher:true};
+   world.lastFeedback='生生流转 / '+f.combo+' 段终结';
+  }
+  return;
+ }
+ if(!m.kitUltimate||f.attack.waterSequence||t.hp<=0)return;
+ const a=f.attack;a.waterSequence={target:t,startT:a.t,fx:f.x,fy:f.y,tx:t.x,ty:t.y,dir:f.dir,struck:new Set(),finished:false,boost:f.awakenLevel===2?1.2:f.awakenLevel?1.1:1};
+ a.move={...a.move,active:ULTIMATE_TICKS+12,end:a.t+ULTIMATE_TICKS+18};f.vx=f.vy=t.vx=t.vy=0;
+}
+function finish(world){
+ // Only H's full-awakening clip owns this state; O never uses a video or
+ // queues invisible damage behind a playback callback.
+ if(!world.tanjiroCinematic)return false;world.tanjiroCinematic=null;return true;
+}
+root.RiftTanjiroRules={CATALOG,enabled,variant,basic,move,begin,update,resolve,awaken,afterHit,finish,advance,controlled,ultimatePose,ULTIMATE_PHASES};if(typeof module!=='undefined')module.exports=root.RiftTanjiroRules;
 })(typeof window!=='undefined'?window:globalThis);

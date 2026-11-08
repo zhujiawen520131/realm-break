@@ -140,7 +140,7 @@ class World{
  if(this.mode==='duel'){this.time=Math.max(0,99-Math.floor(this.frame/60));if(!this.time){this.finish();return;}}
  const previousX=[this.p1.x,this.p2.x],ai=this.ai();this.updateFighter(this.p1,this.p2,keys);this.updateFighter(this.p2,this.p1,ai);
  const p=this.p1,q=this.p2;
- this.advanceSixfold(p,q);this.advanceSixfold(q,p);
+ this.advanceSixfold(p,q);this.advanceSixfold(q,p);root.RiftTanjiroRules?.advance(this);
  // Solid-body collision uses swept positions; target range never drives attack speed.
  if(!p.attack?.sixfold&&!q.attack?.sixfold&&Math.abs(p.y-q.y)<75&&!p.dash&&!q.dash&&!p.blinkTime&&!q.blinkTime){
   const order=previousX[0]<=previousX[1]?1:-1,oldGap=(previousX[1]-previousX[0])*order,newGap=(q.x-p.x)*order;
@@ -148,7 +148,7 @@ class World{
   else if(Math.abs(p.x-q.x)<46){const mid=(p.x+q.x)/2,left=clamp(mid-23,42,this.width-88);if(order>0){p.x=left;q.x=left+46;}else{q.x=left;p.x=left+46;}}
  }
  for(const f of [p,q]){this.refreshSupport(f);if(!f.grounded&&['idle','run','guard','land'].includes(f.state)){f.state=f.animState='jump';f.animTime=0;}}
- this.hitQueue=[];this.resolveAttack(p,q);this.resolveAttack(q,p);const simultaneousHits=this.hitQueue;this.hitQueue=null;for(const args of simultaneousHits)this.applyHit(...args);if(this.tanjiroCinematic){if(this.tanjiroCinematic.actor.stun)this.tanjiroCinematic=null;else return;}
+ this.hitQueue=[];this.resolveAttack(p,q);this.resolveAttack(q,p);const simultaneousHits=this.hitQueue;this.hitQueue=null;for(const args of simultaneousHits)this.applyHit(...args);if(this.tanjiroCinematic){if(this.tanjiroCinematic.actor.stun)this.tanjiroCinematic=null;else return;}if(this.cutin)return;
  for(const s of this.scheduled){s.wait--;if(s.wait<=0){if(s.owner.hp>0&&!s.owner.stun)this.spawnProjectile(s.owner,s.spec);s.done=true;}}this.scheduled=this.scheduled.filter(s=>!s.done);
  for(const b of this.projectiles){
   b.life--;b.age=(b.age||0)+1;if(b.delay>0){b.delay--;continue;}
@@ -190,15 +190,15 @@ class World{
  else{f.vx=f.block?0:((k.right?1:0)-(k.left?1:0))*f.info.speed;}
  if(f.hero==='tanjiro')root.RiftTanjiroRules?.update(this,f);
  if(f.thunderDriftTicks>0){if(--f.thunderDriftTicks===0)f.vx=0;}
- const controlled=!!f.attack?.sixfold;
+ const controlled=!!f.attack?.sixfold||!!root.RiftTanjiroRules?.controlled(this,f);
  if(!controlled){f.x=clamp(f.x+f.vx,42,this.width-42);if(!this.supportAt(f)){f.vy+=f.knockdown?1:f.returning?1.2:.62;f.y+=f.vy;}
  }
  if(f.dropThroughY!==null&&(!f.dropThroughTicks||f.y>f.dropThroughY+8)){f.dropThroughY=null;f.dropThroughTicks=0;}
  const landing=controlled?null:this.landingAt(f,previousX,previousY);
- if(landing||f.y>=FLOOR){const groundY=landing?landing.y:FLOOR;f.y=groundY;f.vy=0;f.returning=false;f.jumps=0;f.airCount=0;
+ if(!controlled&&(landing||f.y>=FLOOR)){const groundY=landing?landing.y:FLOOR;f.y=groundY;f.vy=0;f.returning=false;f.jumps=0;f.airCount=0;
  if(previousY<groundY&&previousVy>2){f.landTime=7;this.event('land',{x:f.x,y:groundY,heavy:previousVy>11,color:f.color});}
  if(f.knockdown)this.landKnockdown(f,groundY);
- }else if(f.knockdown&&this.supportAt(f))this.landKnockdown(f,f.y);
+ }else if(!controlled&&f.knockdown&&this.supportAt(f))this.landKnockdown(f,f.y);
  this.refreshSupport(f);
  const state=f.guardStun>0&&f.block?'guard':f.stun?'hurt':f.dash||f.blinkTime?'dash':f.attack?(f.attack.name==='skill'||f.attack.name==='ultimate'?'skill':'attack'):!f.grounded?'jump':f.block?'guard':Math.abs(f.vx)>1?'run':f.landTime?'land':'idle';if(state===f.animState)f.animTime++;else{f.animState=state;f.animTime=0;}f.state=state;
  f.trail.forEach(t=>t.life--);f.trail=f.trail.filter(t=>t.life>0);
@@ -317,7 +317,7 @@ class World{
  const {guarded,counter,dir}=contact;const heavy=(name==='ultimate'&&m.finisher!==false)||name==='slash3';if(!t.stun){f.combo=0;f.comboDamage=0;}const scale=Math.max(.5,1-f.combo*.06);let damage=guarded?Math.max(1,Math.floor(m.damage*.12)):Math.round(m.damage*scale*(counter?1.12:1));
  if(guarded){t.stun=Math.max(t.stun,8);t.guardStun=8;t.vx=dir*3;t.energy=Math.min(100,t.energy+3);this.event('block',{x:t.x,y:t.y-88,dir,color:f.color,hero:f.hero,weapon:f.info.weapon,move:name,damage});this.burst(t.x,t.y-88,'#dcecff',12);this.lastFeedback='防御 / 绕到背后寻找机会';}
  else{t.returning=false;t.knockdown=t.knockdown||!!m.knockdown;if(m.knockdown)t.knockdownStyle=m.style==='thunderSix'?'thunder':'impact';t.downTime=0;t.downAge=0;t.fallTime=0;t.thunderDriftTicks=m.thunderDriftTicks||0;t.guardStun=0;const stunReduction=Math.max(0,f.combo-4)*3;t.stun=Math.max(12,m.stun-stunReduction)+(counter?4:0);t.vx=dir*m.push;t.vy=m.lift;t.attack=null;t.dash=0;t.block=false;t.buffer=null;t.flash=6;t.hurtTime=t.stun;t.animState='hurt';t.animTime=0;f.combo++;f.comboDamage+=damage;f.comboTimer=m.stun+24;f.energy=Math.min(100,f.energy+7);t.energy=Math.min(100,t.energy+5);this.shake=this.settings.shake?(heavy?(name==='ultimate'?11:8):4):0;this.burst(x,t.y-88,f.color,name==='ultimate'?42:22);this.event('hit',{x:t.x,y:t.y-88,dir,color:f.color,hero:f.hero,weapon:f.info.weapon,move:name,damage,heavy,counter,combo:f.combo});this.lastFeedback=f===this.p1?`${counter?'COUNTER / ':''}${f.combo} HIT / ${f.comboDamage} 伤害${name==='launcher'?' / 挑空！按 K 追击':''}`:'受到攻击 / I 替身脱身';}
- this.refreshSupport(t);t.hp=Math.max(0,t.hp-damage);t.lastHit=this.frame;if(m.kitUltimate)root.RiftTanjiroRules?.afterHit(this,f,t,m,contact);
+ this.refreshSupport(t);t.hp=Math.max(0,t.hp-damage);t.lastHit=this.frame;if(m.kitUltimate||m.waterSequenceHit)root.RiftTanjiroRules?.afterHit(this,f,t,m,contact);
  if(m.sixfoldOpen&&f.attack===m.sixfoldOpen){if(!guarded&&t.hp>0&&!f.stun)this.startSixfold(f,t,m.sixfoldOpen);else{f.attack.t=f.attack.move.startup+f.attack.move.active;f.vx=0;}}if(this.settings.hitstop)this.freeze=Math.max(this.freeze,guarded?3:m.stop+(counter?2:0));
  }
  burst(x,y,color,n){for(let i=0;i<n;i++){const angle=Math.random()*Math.PI*2,speed=2+Math.random()*9;this.particles.push({x,y,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,color,life:12+Math.random()*13,max:25,size:1+Math.random()*3});}if(root.RiftFXData&&this.particles.length>240)this.particles.splice(0,this.particles.length-240);}

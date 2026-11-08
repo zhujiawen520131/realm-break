@@ -114,7 +114,7 @@ function resolve(f,t=0,ghost=false){
   }
   return poseFor(f,id,index,{state,phase:state,borrowed:false});
  }
- const a=f.attack,dedicated=hero.clips?.[a.name],borrowed=f.hero==='lara'&&['launcher','air'].includes(a.name)&&!dedicated;
+ const a=f.attack.waterSequence&&root.RiftTanjiroRules?root.RiftTanjiroRules.ultimatePose(f.attack):f.attack,dedicated=hero.clips?.[a.name],borrowed=f.hero==='lara'&&['launcher','air'].includes(a.name)&&!dedicated;
  const id=ATTACK_CLIPS[a.name]||(dedicated?a.name:borrowed?'attack1':null),clip=hero.clips?.[id];
  if(!Array.isArray(clip?.frames)||![4,8].includes(clip.frames.length))return null;
  const count=clip.frames.length,lastFrame=count-1,lastActive=count-2,seq=(value,fallback)=>sequence(value,fallback,count);

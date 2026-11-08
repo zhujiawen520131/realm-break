@@ -64,7 +64,7 @@ function paintFrame(ctx,frame,x,y,dir,scale,alpha=1,flash=false){
  ctx.restore();return true;
 }
 function drawFighter(ctx,f){
- const a=f?.attack;if(f?.hero!=='tanjiro'||!a?.clipId)return false;
+ const attack=f?.attack,a=attack?.waterSequence&&root.RiftTanjiroRules?root.RiftTanjiroRules.ultimatePose(attack):attack;if(f?.hero!=='tanjiro'||!a?.clipId)return false;
  const clip=root.RiftTanjiroArt?.body?.[a.clipId];if(!clip?.frames||clip.frames.length!==8)return false;
  return paintFrame(ctx,clip.frames[phaseFrame(a,clip)],f.x||0,f.y||0,f.dir||1,BODY_SCALE,1,!!f.flash);
 }
@@ -92,7 +92,6 @@ function drawAura(ctx,f,options={}){
  return paintFrame(ctx,frame,f.x||0,(f.y||0)-groundOffset,f.dir||1,scale,(level>=2?.66:.46)*(options.reducedMotion?.7:1));
 }
 const VIDEO={
- ultimate:{src:'assets/tanjiro-video/tanjiro-water-dragon-ultimate.mp4',budget:18800},
  awakening:{src:'assets/tanjiro-video/tanjiro-full-awakening.mp4',budget:12033}
 };
 const finished=new WeakMap();let current=null,blurred=false;
