@@ -61,7 +61,15 @@ const ready=new Promise(resolve=>{
  img.src=STAGE_ART;
 });
 const SCENE_CELLS={tomb:[0,0],crystal:[1,0],temple:[0,1],jungle:[1,1],city:[0,2],space:[1,2]};
-function drawStage(context,id,time=0,focus=600,motion=true){
+function drawSky(context,id){
+ if(!stageLoaded||!SCENE_CELLS[id])return;
+ const cell=SCENE_CELLS[id],w=stageImage.width/2,h=stageImage.height/3;
+ context.save();context.globalAlpha=.7;
+ // Reuse the painted distant sky/mountain region as a parallax panorama.
+ context.drawImage(stageImage,(cell[0]+.55)*w,cell[1]*h,w*.4,h*.32,0,0,1200,640);
+ const haze=context.createLinearGradient(0,0,0,640);haze.addColorStop(0,DATA[id].sky[0]+'44');haze.addColorStop(1,DATA[id].sky[1]+'aa');context.fillStyle=haze;context.fillRect(0,0,1200,640);context.restore();
+}
+function drawStage(context,id,time=0,focus=600,motion=true,softTop=false){
  if(!DATA[id])id='temple';
  if(!stageLoaded){draw(context,id,time,focus,motion);return;}
  const d=DATA[id],cell=SCENE_CELLS[id],w=stageImage.width/2,h=stageImage.height/3;
@@ -69,9 +77,9 @@ function drawStage(context,id,time=0,focus=600,motion=true){
  context.save();
  // Crop the near edge of the floor so its horizon meets the fixed play plane.
  const sourceH=h*.924,sourceW=sourceH*1200/640;
- context.drawImage(stageImage,cell[0]*w+(w-sourceW)/2+shift*3,cell[1]*h,sourceW,sourceH,0,0,1200,640);
+ if(softTop){for(let band=0;band<20;band++){context.globalAlpha=Math.min(1,(band+.5)/5);context.drawImage(stageImage,cell[0]*w+(w-sourceW)/2+shift*3,cell[1]*h+sourceH*band/20,sourceW,sourceH/20,0,band*32,1200,32);}context.globalAlpha=1;}else context.drawImage(stageImage,cell[0]*w+(w-sourceW)/2+shift*3,cell[1]*h,sourceW,sourceH,0,0,1200,640);
  const shade=context.createLinearGradient(0,0,0,640);
- shade.addColorStop(0,'#09162688');shade.addColorStop(.22,'#09162622');
+ shade.addColorStop(0,softTop?'#09162600':'#09162688');shade.addColorStop(.22,'#09162622');
  shade.addColorStop(.72,'#0a1a2010');shade.addColorStop(1,'#0913196b');
  context.fillStyle=shade;context.fillRect(0,0,1200,640);
  const t=motion?time:0;
@@ -91,6 +99,6 @@ function drawStage(context,id,time=0,focus=600,motion=true){
  }
  context.restore();
 }
-root.RiftScenes={DATA,draw:drawStage,build,ready,SCENE_CELLS};
+root.RiftScenes={DATA,drawSky,draw:drawStage,build,ready,SCENE_CELLS};
 
 })(typeof window!=='undefined'?window:globalThis);

@@ -1,16 +1,14 @@
 (function(root){'use strict';
 // Visible prototype geometry matches engine.platforms exactly. The reference
 // proves elevated landing; one-way collision is this prototype's chosen rule.
-// Fit both bodies through pursuit, substitution and the separate falling arcs.
-// Position-derived blending avoids a camera reset when an attack is cancelled.
+// Keep the arena floor as a stable framing anchor while widening the world view.
+// Characters visibly climb on screen; the camera no longer pins their feet.
 function cameraView(world){
- const highest=Math.min(world.p1.y,world.p2.y),lowest=Math.max(world.p1.y,world.p2.y);
- const top=highest-165,bottom=lowest+10,height=bottom-top;
- const blend=Math.max(0,Math.min(1,(360-highest)/160)),weight=blend*blend*(3-2*blend);
- const fit=Math.min(.82,430/Math.max(1,height)),zoom=1+(fit-1)*weight;
- const center=Math.max(270,135+height*zoom/2),mid=(top+bottom)/2;
- const target=(center-340)/zoom-(mid-340),base=world.settings.platforms?Math.max(0,Math.min(170,310-highest)):0;
- return {y:base+(target-base)*weight,zoom};
+ const highest=Math.min(world.p1.y,world.p2.y),rise=Math.max(0,510-highest);
+ const blend=Math.max(0,Math.min(1,(rise-80)/240)),weight=blend*blend*(3-2*blend);
+ const fit=Math.min(1,430/(rise+180)),zoom=1+(fit-1)*weight;
+ const anchored=230/zoom-170;
+ return {y:anchored*weight,zoom};
 }
 function cameraY(world){return cameraView(world).y;}
 function cameraZoom(world){return cameraView(world).zoom;}

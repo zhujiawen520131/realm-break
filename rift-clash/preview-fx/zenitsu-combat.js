@@ -1,21 +1,22 @@
 (function(root){
 'use strict';
 // Authored pixel PNGs used directly in live combat, with no cinematic cutaway.
-const images={},names=['charge_01','charge_02','charge_03','dash_01','dash_02','dash_03','trail_01','trail_02','trail_03','burst_01','burst_02','burst_03','lightning_01','lightning_02','lightning_03','lightning_04'];
-const ready=typeof root.Image==='function'?Promise.all(names.map(name=>new Promise(resolve=>{const im=new root.Image();im.onload=()=>{images[name]=im;resolve(true);};im.onerror=()=>resolve(false);im.src='assets/zenitsu-combat/'+name+'.png?v=z-combat-2';}))).then(r=>r.every(Boolean)):Promise.resolve(false);
+const images={},names=['charge_01','charge_02','charge_03','dash_01','dash_02','dash_03','trail_01','trail_02','trail_03','burst_01','burst_02','burst_03','lightning_01','lightning_02','lightning_03','lightning_04','launch_01','launch_02','launch_03','moonpose_01','moonpose_02','moonpose_03','debris_01','debris_02','debris_03'];
+const ready=typeof root.Image==='function'?Promise.all(names.map(name=>new Promise(resolve=>{const im=new root.Image();im.onload=()=>{images[name]=im;resolve(true);};im.onerror=()=>resolve(false);im.src='assets/zenitsu-combat/'+name+'.png?v=z-combat-3';}))).then(r=>r.every(Boolean)):Promise.resolve(false);
 function drawFighter(ctx,f){
  if(f.hero!=='zenitsu'||f.attack?.name!=='ultimate')return false;
- const a=f.attack,charge=a.t<a.move.startup,id=charge?'charge_0'+(1+Math.min(2,Math.floor(a.t/4))):'dash_0'+(1+Math.floor((a.sixfold?.progress||a.t/10)*3)%3),im=images[id];if(!im)return false;
+ const a=f.attack,charge=a.t<a.move.startup,vertical=a.sixfold?.leg===5,recovery=!a.sixfold&&a.hit&&a.t>=a.move.startup+a.move.active;const id=charge?'charge_0'+(1+Math.min(2,Math.floor(a.t/2))):vertical?'launch_0'+(1+Math.min(2,Math.floor(a.sixfold.progress*3))):recovery?'moonpose_0'+(1+Math.floor(a.t/4)%3):'dash_0'+(1+Math.floor((a.sixfold?.progress||a.t/10)*3)%3),im=images[id];if(!im)return false;
  ctx.save();ctx.imageSmoothingEnabled=false;ctx.translate(f.x,f.y);ctx.scale(f.dir||1,1);if(f.flash)ctx.filter='brightness(1.5)';
  if(charge){const bolt=images['lightning_0'+(1+Math.floor(a.t/2)%4)];if(bolt){ctx.save();ctx.globalAlpha=.65;ctx.drawImage(bolt,-110,-330,220,350);ctx.restore();}}
- if(a.sixfold?.leg>=0){ctx.translate(0,-75);ctx.rotate(-Math.PI/4);ctx.translate(0,75);}
+ if(a.sixfold?.leg>=0&&!vertical){ctx.translate(0,-75);ctx.rotate(-Math.PI/4);ctx.translate(0,75);}
  // Source sprites are padded to 512px with their ground-contact at y490.
  const size=charge?240:260;ctx.drawImage(im,-size/2,-size*490/512,size,size);ctx.restore();return true;
 }
 function drawEffect(ctx,e,{reducedMotion=false}={}){
- if(!['thunderPath','thunderTurn'].includes(e.kind))return false;
+ if(!['thunderPath','thunderTurn','thunderSlam'].includes(e.kind))return false;
  ctx.save();ctx.imageSmoothingEnabled=false;ctx.globalAlpha=Math.min(1,e.life/12)*(reducedMotion?.6:1);
- if(e.kind==='thunderTurn'){const im=images['burst_0'+(1+Math.min(2,Math.floor((e.max-e.life)/4)))];if(im)ctx.drawImage(im,e.x-140,e.y-92,280,184);}
+ if(e.kind==='thunderSlam'){const i=1+Math.min(2,Math.floor((e.max-e.life)/8)),debris=images['debris_0'+i],burst=images['burst_0'+i];if(debris)ctx.drawImage(debris,e.x-200,e.y-180,400,230);if(burst)ctx.drawImage(burst,e.x-190,e.y-85,380,150);}
+ else if(e.kind==='thunderTurn'){const im=images['burst_0'+(1+Math.min(2,Math.floor((e.max-e.life)/4)))];if(im)ctx.drawImage(im,e.x-140,e.y-92,280,184);}
  else{
   const dx=e.x-e.fromX,dy=e.y-e.fromY,len=Math.hypot(dx,dy),active=e.active&&e.life>=e.max-2;
   const id=active?(Math.floor((e.tick||0)/3)%2?'trail_01':'trail_02'):'trail_03',im=images[id];
