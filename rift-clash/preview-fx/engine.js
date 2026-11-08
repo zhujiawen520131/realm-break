@@ -19,13 +19,13 @@ const HEROES={
  wukong:{name:'天命人',en:'DESTINED ONE',source:'黑神话：悟空',color:'#e7bb61',cloth:'#76523a',hair:'#544334',skin:'#b68b60',weapon:'staff',speed:5.4,reach:1.18,scene:'temple',skill:'定身术',ultimate:'重棍破阵',desc:'长棍控距 · 短距定身 · 延伸重棍',skillHint:'定住前方 285 范围内的对手',ultimateHint:'长距离重棍击退'},
  drake:{name:'内森·德雷克',en:'NATHAN DRAKE',source:'神秘海域',color:'#e4b395',cloth:'#a69f86',hair:'#47382f',skin:'#d3a17f',weapon:'pistol',speed:5.6,reach:.9,scene:'jungle',skill:'抛掷手雷',ultimate:'火力压制',desc:'近身搏击 · 抛物线爆炸 · 步枪齐射',skillHint:'中远距离抛物线投掷，落地爆炸',ultimateHint:'连续射出五发步枪弹'},
  tanjiro:{name:'灶门炭治郎',en:'TANJIRO',source:'鬼灭之刃',color:'#74dafa',cloth:'#277c62',hair:'#442833',skin:'#e7bda5',weapon:'water-katana',speed:5.6,reach:1.04,scene:'jungle',skill:'水之呼吸 · 水车',ultimate:'水之呼吸 · 生生流转',desc:'日轮刀连斩 · 回旋水车 · 水龙追击',skillHint:'前移回旋斩，命中后可跳跃或冲刺衔接',ultimateHint:'四段水流追击，末段击飞；消耗 100 气'},
- zenitsu:{name:'我妻善逸',en:'ZENITSU',source:'鬼灭之刃',color:'#ffe28c',cloth:'#eba437',hair:'#f3c24f',skin:'#eac6ab',weapon:'thunder-katana',speed:6.2,reach:.98,scene:'temple',skill:'雷之呼吸 · 霹雳一闪',ultimate:'霹雳一闪 · 六连',desc:'拔刀蓄势 · 雷电突进 · 六段连闪',skillHint:'短暂蓄势后直线突进拔刀，落空有收招',ultimateHint:'横冲命中挑空 → 向上 Z 字五连闪；可替身脱离'}
+ zenitsu:{name:'我妻善逸',en:'ZENITSU',source:'鬼灭之刃',color:'#ffe28c',cloth:'#eba437',hair:'#f3c24f',skin:'#eac6ab',weapon:'thunder-katana',speed:6.2,reach:.98,scene:'temple',skill:'雷之呼吸 · 霹雳一闪',ultimate:'霹雳一闪 · 六连',desc:'拔刀蓄势 · 雷电突进 · 六段连闪',skillHint:'短暂蓄势后直线突进拔刀，落空有收招',ultimateHint:'高速横冲挑空 → 45° 大幅 Z 字五连闪；可替身脱离'}
 };
 
 // Per-character timings are prototype balance values, not source-game frame data.
 const BREATH_MOVES={
  tanjiro:{skill:{startup:10,active:10,end:34,reach:172,height:138,damage:18,stun:31,push:6,lift:-4,stop:8,travel:7,interval:10,style:'waterWheel'},ultimate:{startup:18,active:28,end:62,reach:180,height:140,damage:10,stun:29,push:3,lift:-2,stop:5,travel:8,interval:7,style:'waterDragon'}},
- zenitsu:{skill:{startup:14,active:8,end:38,reach:108,height:105,damage:20,stun:29,push:9,lift:-3,stop:9,travel:30,interval:8,style:'thunderDash'},ultimate:{startup:12,active:16,end:44,reach:95,height:115,damage:7,stun:24,push:0,lift:-9,stop:4,travel:28,interval:10,style:'thunderSix'}}
+ zenitsu:{skill:{startup:14,active:8,end:38,reach:108,height:105,damage:20,stun:29,push:9,lift:-3,stop:9,travel:30,interval:8,style:'thunderDash'},ultimate:{startup:6,active:12,end:32,reach:95,height:115,damage:7,stun:30,push:0,lift:-9,stop:2,travel:40,interval:6,style:'thunderSix'}}
 };
 // Lara's free attacks are finite, directional bullets. IDs remain compatible
 // with the three-stage input graph, but never create a melee hitbox.
@@ -177,35 +177,47 @@ class World{
  const a=f.attack,z=a?.sixfold;if(!z)return;
  if(f.stun||t.inv||!t.stun||t.hp<=0||f.hp<=0){if(z.path)z.path.active=false;delete a.sixfold;a.t=a.move.startup+a.move.active;f.vx=0;f.vy=0;return;}
  const elapsed=a.t-z.start,previous={x:f.x,y:f.y};
- if(elapsed<=6){const p=clamp(elapsed/6,0,1);f.x=z.actorX+((z.dir>0?z.left:z.right)-z.actorX)*p;f.y=z.actorY+(t.y-z.actorY)*p;z.leg=-1;}
+ if(elapsed>33){if(z.path)z.path.active=false;delete a.sixfold;f.vy=-3;this.refreshSupport(f);return;}
+ if(elapsed<=3){const p=clamp(elapsed/3,0,1);f.x=z.actorX+((z.dir>0?z.left:z.right)-z.actorX)*p;f.y=z.actorY+(t.y-z.actorY)*p;z.leg=-1;z.launchY=f.y;}
  else{
- const phase=Math.min(49,elapsed-7),leg=Math.floor(phase/10),p=(phase%10+1)/10,dir=z.dir*(leg%2?-1:1);
+ const phase=Math.min(29,elapsed-4),leg=Math.floor(phase/6),p=(phase%6+1)/6,dir=z.dir*(leg%2?-1:1);
  const fromX=dir>0?z.left:z.right,toX=dir>0?z.right:z.left;
- f.x=fromX+(toX-fromX)*p;f.y=t.y;f.dir=dir;z.leg=leg;z.progress=p;
- if(!z.path||z.path.leg!==leg){if(z.path)z.path.active=false;z.path={kind:'thunderPath',hero:f.hero,fromX:previous.x,fromY:previous.y-70,x:f.x,y:f.y-70,life:36,max:36,leg,dir,active:true};this.effects.push(z.path);}
- z.path.x=f.x;z.path.y=f.y-70;z.path.life=36;z.path.tick=(z.path.tick||0)+1;
- if(phase%10===0){this.event('breath',{x:f.x,y:f.y-70,dir,color:f.color,hero:f.hero,weapon:f.info.weapon});this.effects.push({kind:'thunderTurn',x:previous.x,y:previous.y-70,life:12,max:12});}
+ f.x=fromX+(toX-fromX)*p;f.y=z.launchY-z.span*(leg+p);f.dir=dir;z.leg=leg;z.progress=p;z.previous=previous;
+ if(!z.path||z.path.leg!==leg){if(z.path)z.path.active=false;z.path={kind:'thunderPath',hero:f.hero,fromX:previous.x,fromY:previous.y-70,x:f.x,y:f.y-70,life:74,max:74,leg,dir,active:true};this.effects.push(z.path);}
+ z.path.x=f.x;z.path.y=f.y-70;z.path.life=74;z.path.tick=(z.path.tick||0)+1;
+ if(phase%6===0){this.event('breath',{x:f.x,y:f.y-70,dir,color:f.color,hero:f.hero,weapon:f.info.weapon});this.effects.push({kind:'thunderTurn',x:previous.x,y:previous.y-70,life:16,max:16});}
  }
  f.vx=f.vy=0;f.grounded=false;f.groundY=null;
- if(elapsed>=56){if(z.path)z.path.active=false;delete a.sixfold;f.vy=-3;this.refreshSupport(f);}
+
  }
  resolveSixfold(f,t,a){
  const m=a.move,z=a.sixfold;
  if(z){
   if(z.leg<0||z.struck.has(z.leg)||t.inv)return;
   // Every rising stroke physically crosses the victim; one contact per leg.
-  if(Math.abs(f.x-t.x)<=42&&Math.abs(f.y-t.y)<100){const last=z.leg===4;z.struck.add(z.leg);this.hit(f,t,{...m,damage:last?12:7,stun:30,push:last?12:0,lift:-Math.min(last?9:8,Math.sqrt(Math.max(0,t.y-160)*1.24)),stop:last?8:3,finisher:last},'ultimate',t.x);}
+  const dir=z.dir*(z.leg%2?-1:1),fromX=dir>0?z.left:z.right,toX=dir>0?z.right:z.left;
+  // Strike at the nearest sampled crossing, rather than a wide proximity aura.
+  const slot=clamp(Math.round((z.targetX-fromX)/(toX-fromX)*6),1,6),tick=Math.round(z.progress*6);
+  if(tick===slot&&Math.abs(f.x-t.x)<=z.span/12+24&&Math.abs(f.y-t.y)<100){
+   const last=z.leg===4,nextDir=-dir,nextFrom=nextDir>0?z.left:z.right,nextTo=nextDir>0?z.right:z.left;
+   const nextSlot=clamp(Math.round((z.targetX-nextFrom)/(nextTo-nextFrom)*6),1,6),gap=6+nextSlot-slot;
+   // Solve ordinary ballistic velocity to meet the next real diagonal crossing.
+   const nextY=z.launchY-z.span*(z.leg+1+nextSlot/6),lift=last?-12:(nextY-t.y-.62*gap*(gap+1)/2)/gap;
+   z.struck.add(z.leg);this.hit(f,t,{...m,damage:last?12:7,stun:30,push:last?12:0,lift,stop:last?4:1,finisher:last},'ultimate',t.x);
+  }else if(tick===slot){
+   if(z.path)z.path.active=false;delete a.sixfold;a.t=m.startup+m.active;f.vx=f.vy=0;
+  }
   return;
  }
  if(a.openingAttempted)return;
- if(!a.rushPath){a.rushPath={kind:'thunderPath',hero:f.hero,fromX:f.x-f.dir*28,fromY:f.y-70,x:f.x,y:f.y-70,life:18,max:18,leg:-1,dir:f.dir,active:true};this.effects.push(a.rushPath);}
+ if(!a.rushPath){a.rushPath={kind:'thunderPath',hero:f.hero,fromX:f.x-f.dir*40,fromY:f.y-70,x:f.x,y:f.y-70,life:18,max:18,leg:-1,dir:f.dir,active:true};this.effects.push(a.rushPath);}
  a.rushPath.x=f.x;a.rushPath.y=f.y-70;a.rushPath.life=18;a.rushPath.tick=(a.rushPath.tick||0)+1;
  if(t.inv)return;const b=this.hitbox(f);
- if(b.x<t.x+23&&b.x+b.w>t.x-23&&b.y<t.y&&b.y+b.h>t.y-HURT_HEIGHT){a.openingAttempted=true;this.hit(f,t,{...m,lift:-Math.min(9,Math.sqrt(Math.max(0,t.y-160)*1.24)),finisher:false,sixfoldOpen:a},'ultimate',t.x);}
+ if(b.x<t.x+23&&b.x+b.w>t.x-23&&b.y<t.y&&b.y+b.h>t.y-HURT_HEIGHT){a.openingAttempted=true;this.hit(f,t,{...m,lift:-(Math.min(1158,t.x+160)-Math.max(42,t.x-160))/6-2.17,finisher:false,sixfoldOpen:a},'ultimate',t.x);}
  }
  startSixfold(f,t,a){
- const z={start:a.t,dir:f.dir,actorX:f.x,actorY:f.y,targetX:t.x,left:Math.max(42,t.x-90),right:Math.min(1158,t.x+90),leg:-1,struck:new Set()};
- if(a.rushPath)a.rushPath.active=false;a.sixfold=z;a.hit=true;a.move={...a.move,active:a.t-a.move.startup+57,end:a.t+70};f.vx=f.vy=0;
+ const z={start:a.t,dir:f.dir,actorX:f.x,actorY:f.y,targetX:t.x,left:Math.max(42,t.x-160),right:Math.min(1158,t.x+160),leg:-1,struck:new Set()};
+ z.span=z.right-z.left;z.launchY=f.y;if(a.rushPath)a.rushPath.active=false;a.sixfold=z;a.hit=true;a.move={...a.move,active:a.t-a.move.startup+35,end:a.t+45};f.vx=f.vy=0;
  this.lastFeedback='霹雳一闪 / 挑空 → Z 字雷电追击';
  }
  confirmProjectile(b){if(b.name!=='ultimate'&&b.owner.attack&&b.owner.attack.name===b.name&&b.owner.attackSerial===b.castSerial)b.owner.attack.hit=true;}
