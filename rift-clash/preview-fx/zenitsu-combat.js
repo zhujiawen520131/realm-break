@@ -11,7 +11,7 @@ function ensureReady(){
  if(loadJob)return loadJob;
  const job=Promise.all(names.filter(name=>!images[name]).map(name=>new Promise(resolve=>{
   const im=new root.Image();im.onload=()=>{images[name]=im;resolve(true);};im.onerror=()=>resolve(false);
-  const body=bodyGroups.some(g=>name.startsWith(g+'_'));im.src=(eight&&body?'assets/zenitsu-eight/':'assets/zenitsu-combat/')+name+'.png?v=pixel-eight-r1';
+  const body=bodyGroups.some(g=>name.startsWith(g+'_'));const source=(eight&&body?'assets/zenitsu-eight/':'assets/zenitsu-combat/')+name+'.png?v=pixel-eight-r1';if(root.RiftImageQueue)root.RiftImageQueue.load(im,source);else im.src=source;
  }))).then(r=>r.every(Boolean));loadJob=job;job.then(()=>{if(loadJob===job)loadJob=null;});return job;
 }
 const ready=ensureReady();

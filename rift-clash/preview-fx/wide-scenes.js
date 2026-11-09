@@ -9,7 +9,7 @@ function ensureScene(id){
  if(!base.DATA[id]||typeof root.Image!=='function')return Promise.resolve(false);
  if(images[id])return Promise.resolve(true);
  if(jobs[id])return jobs[id];
- const task=new Promise(resolve=>{const im=new root.Image();im.onload=()=>{images[id]=im;resolve(true);};im.onerror=()=>resolve(false);im.src='assets/panoramas/'+id+'.png?v='+REVISION;});
+ const task=new Promise(resolve=>{const im=new root.Image();im.onload=()=>{images[id]=im;resolve(true);};im.onerror=()=>resolve(false);if(root.RiftImageQueue)root.RiftImageQueue.load(im,'assets/panoramas/'+id+'.png?v='+REVISION);else im.src='assets/panoramas/'+id+'.png?v='+REVISION;});
  jobs[id]=task;task.then(()=>{delete jobs[id];});return task;
 }
 function drawWorld(ctx,id,time=0,focus=600,motion=true){

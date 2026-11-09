@@ -1,6 +1,6 @@
 (function(root){'use strict';
 const images={},data=root.RiftPosterData||{};
-const ready=Promise.all(Object.entries(data).map(([id,item])=>new Promise(resolve=>{if(typeof root.Image!=='function'){resolve(false);return;}const im=new root.Image();im.onload=()=>{images[id]=im;resolve(true);};im.onerror=()=>resolve(false);im.src=item.src;}))).then(values=>values.length===6&&values.every(Boolean));
+const ready=Promise.all(Object.entries(data).map(([id,item])=>new Promise(resolve=>{if(typeof root.Image!=='function'){resolve(false);return;}const im=new root.Image();im.onload=()=>{images[id]=im;resolve(true);};im.onerror=()=>resolve(false);if(root.RiftImageQueue)root.RiftImageQueue.load(im,item.src);else im.src=item.src;}))).then(values=>values.length===6&&values.every(Boolean));
 function draw(ctx,cutin,options={}){if(!cutin)return;if(root.RiftMotionData?.fullRoster&&!cutin.finisher)return drawStrip(ctx,cutin,options);const elapsed=cutin.total-cutin.remaining,p=elapsed/cutin.total,alpha=Math.min(1,(elapsed+1)/4,cutin.remaining/5),col=cutin.color||'#c6eece';ctx.save();ctx.globalAlpha=alpha;ctx.fillStyle='#030a11';ctx.fillRect(0,0,1200,640);
  const im=images[cutin.hero];if(im){const scale=Math.max(1200/im.width,640/im.height)*(1.015+p*.035),w=im.width*scale,h=im.height*scale;ctx.drawImage(im,(1200-w)/2+(1-Math.min(1,p*6))*60,(640-h)/2,w,h);}
  const g=ctx.createLinearGradient(0,0,850,0);g.addColorStop(0,'#020911f2');g.addColorStop(.42,'#07122488');g.addColorStop(1,'#07122400');ctx.fillStyle=g;ctx.fillRect(0,0,1200,640);

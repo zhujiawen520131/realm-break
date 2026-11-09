@@ -94,7 +94,7 @@ const paintedReady=new Promise(resolve=>{
  const img=new root.Image();
  img.onload=()=>{fighterImage=img;fighterLoaded=true;resolve(true);};
  img.onerror=()=>resolve(false);
- img.src=FIGHTER_ART;
+ if(root.RiftImageQueue)root.RiftImageQueue.load(img,FIGHTER_ART);else img.src=FIGHTER_ART;
 });
 function resolveAnimation(f,t=0,ghost=false){
  let state='idle';const a=f.attack;
@@ -116,7 +116,7 @@ const cloudPack=root.RiftCloudFrames,cloudImages={};let cloudLoaded=false;
 const cloudReady=(async()=>{
  if(root.RiftMotionData?.fullRoster||!cloudPack||typeof root.Image!=='function')return false;
  const jobs=[];
- for(const [id,clip] of Object.entries(cloudPack.clips)){cloudImages[id]=[];clip.frames.forEach((f,index)=>jobs.push(new Promise(resolve=>{const img=new root.Image();img.onload=()=>{cloudImages[id][index]=img;resolve(true);};img.onerror=()=>resolve(false);img.src=f.src;})));}
+ for(const [id,clip] of Object.entries(cloudPack.clips)){cloudImages[id]=[];clip.frames.forEach((f,index)=>jobs.push(new Promise(resolve=>{const img=new root.Image();img.onload=()=>{cloudImages[id][index]=img;resolve(true);};img.onerror=()=>resolve(false);if(root.RiftImageQueue)root.RiftImageQueue.load(img,f.src);else img.src=f.src;})));}
  const results=await Promise.all(jobs);cloudLoaded=results.every(Boolean);return cloudLoaded;
 })();
 function resolveCloudAnimation(f,t=0,ghost=false){

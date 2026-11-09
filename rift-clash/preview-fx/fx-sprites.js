@@ -56,7 +56,7 @@ const ready=(async()=>{
    if(clip.frames.length!==8){tasks.push(Promise.resolve(false));continue;}
    tasks.push(Promise.all(clip.frames.map((f,i)=>new Promise(resolve=>{
     if(!f.image||!Array.isArray(f.anchor)||f.anchor.length!==2||!f.anchor.every(Number.isFinite)||!(f.width>0&&f.height>0)){resolve(false);return;}
-    const im=new root.Image();im.onload=()=>{images[hero][id][i]=im;resolve(true);};im.onerror=()=>resolve(false);im.src=f.image;
+    const im=new root.Image();im.onload=()=>{images[hero][id][i]=im;resolve(true);};im.onerror=()=>resolve(false);if(root.RiftImageQueue)root.RiftImageQueue.load(im,f.image);else im.src=f.image;
    }))).then(ok=>loaded[hero][id]=ok.every(Boolean)));
   }
  }

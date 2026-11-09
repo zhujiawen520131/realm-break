@@ -13,7 +13,7 @@ function getPlatforms(id){return platformsByScene[id]||platformsByScene.temple;}
 const platforms=getPlatforms('temple');
 const REVISION='arena-compact-r1',images={},jobs={},patternCache=new WeakMap();
 function loadImage(path){return new Promise(resolve=>{
- const im=new root.Image();im.onload=()=>resolve(im);im.onerror=()=>resolve(null);im.src=path+'?v='+REVISION;
+ const im=new root.Image();im.onload=()=>resolve(im);im.onerror=()=>resolve(null);if(root.RiftImageQueue)root.RiftImageQueue.load(im,path+'?v='+REVISION);else im.src=path+'?v='+REVISION;
 });}
 function ensureScene(id){
  if(!platformsByScene[id]||typeof root.Image!=='function')return Promise.resolve(false);

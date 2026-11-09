@@ -20,7 +20,7 @@ function isReady(){const frames=frameList();return !!frames&&frames.every(frame=
 function loadFrame(frame){
  const source=frame.image;if(images[source])return Promise.resolve(true);if(frameJobs[source])return frameJobs[source];
  if(typeof root.Image!=='function')return Promise.resolve(false);
- const job=new Promise(resolve=>{try{const im=new root.Image();im.onload=()=>{images[source]=im;resolve(true);};im.onerror=()=>resolve(false);im.src=source;}catch(_){resolve(false);}});
+ const job=new Promise(resolve=>{try{const im=new root.Image();im.onload=()=>{images[source]=im;resolve(true);};im.onerror=()=>resolve(false);if(root.RiftImageQueue)root.RiftImageQueue.load(im,source);else im.src=source;}catch(_){resolve(false);}});
  frameJobs[source]=job;job.then(()=>{if(frameJobs[source]===job)delete frameJobs[source];});return job;
 }
 function ensureReady(){

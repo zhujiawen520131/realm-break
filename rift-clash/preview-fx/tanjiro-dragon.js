@@ -6,7 +6,7 @@ const frames=()=>root.RiftTanjiroDragonArt?.frames;
 function isReady(){const f=frames();return f?.length===8&&f.every(p=>images.has(p.image));}
 function ensureReady(){
  if(isReady())return Promise.resolve(true);if(pending)return pending;const f=frames();if(f?.length!==8||typeof root.Image!=='function')return Promise.resolve(false);
- const job=Promise.all(f.map(p=>images.has(p.image)?true:new Promise(resolve=>{const im=new root.Image();im.onload=()=>{images.set(p.image,im);resolve(true);};im.onerror=()=>resolve(false);im.src=p.image;}))).then(ok=>ok.every(Boolean)&&isReady());
+ const job=Promise.all(f.map(p=>images.has(p.image)?true:new Promise(resolve=>{const im=new root.Image();im.onload=()=>{images.set(p.image,im);resolve(true);};im.onerror=()=>resolve(false);if(root.RiftImageQueue)root.RiftImageQueue.load(im,p.image);else im.src=p.image;}))).then(ok=>ok.every(Boolean)&&isReady());
  pending=job;job.finally(()=>{if(pending===job)pending=null;});return job;
 }
 function drawEffect(ctx,e,options={}){

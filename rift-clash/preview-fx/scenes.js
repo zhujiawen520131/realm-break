@@ -58,7 +58,7 @@ const ready=new Promise(resolve=>{
  const img=new root.Image();
  img.onload=()=>{stageImage=img;stageLoaded=true;resolve(true);};
  img.onerror=()=>resolve(false);
- img.src=STAGE_ART;
+ if(root.RiftImageQueue)root.RiftImageQueue.load(img,STAGE_ART);else img.src=STAGE_ART;
 });
 const SCENE_CELLS={tomb:[0,0],crystal:[1,0],temple:[0,1],jungle:[1,1],city:[0,2],space:[1,2]};
 function drawSky(context,id){

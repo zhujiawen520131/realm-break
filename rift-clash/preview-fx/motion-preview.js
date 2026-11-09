@@ -18,7 +18,7 @@ function loadFrame(hero,id,index){
  const job=new Promise(resolve=>{
   const img=new root.Image();
   img.onload=()=>{if(epoch!==epochs[hero]){resolve(false);return;}images[hero][id][index]=img;resolve(true);};
-  img.onerror=()=>resolve(false);img.src=source;
+  img.onerror=()=>resolve(false);if(root.RiftImageQueue)root.RiftImageQueue.load(img,source);else img.src=source;
  });
  frameJobs[hero][id][index]=job;
  job.then(ok=>{if(!ok&&epochs[hero]===epoch)delete frameJobs[hero][id][index];});
