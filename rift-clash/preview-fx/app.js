@@ -14,7 +14,7 @@ function rosterLoadFailed(message){
  overlay('资源尚未载入',message,'重试加载');
 }
 function finishResourceLoad(){
- assetLoading=false;$('start').disabled=false;
+ assetLoading=false;$('start').disabled=false;$('artStatus').textContent='动漫像素角色 · 当前动作与立体建筑战场已就绪';
  if(retryLoadOnly&&world.result)overlay(world.result,`本局结束 · 你的生命 ${Math.ceil(world.p1.hp)} / 对手生命 ${Math.ceil(world.p2.hp)}`,'再战一局');
  else if(retryLoadOnly&&!started)overlay(world.mode==='training'?'距离，是第一招。':'准备好，正面交锋。','角色与场景已就绪，点击开始。',world.mode==='training'?'进入训练场':'开始对战');
  else if(started&&!world.result){
@@ -23,20 +23,21 @@ function finishResourceLoad(){
  }
  retryLoadOnly=false;
 }
-function ensureCurrentRoster(resume){
+function ensureCurrentRoster(resume,attempt=0){
  const sceneApi=typeof RiftScenes.ensureScene==='function',arenaApi=typeof window.RiftArena?.ensureScene==='function',zenitsuApi=[world.p1.hero,world.p2.hero].includes('zenitsu')&&typeof window.RiftZenitsuCombat?.ensureReady==='function',tanjiroApi=[world.p1.hero,world.p2.hero].includes('tanjiro')&&typeof window.RiftTanjiroVisual?.ensureReady==='function';
  if(!rosterLoading()&&!sceneApi&&!arenaApi&&!zenitsuApi&&!tanjiroApi)return true;
  const api=rosterLoading()?window.RiftMotionPreview:null,ids=[world.p1.hero,world.p2.hero],requestedScene=sceneId,ticket=++rosterTicket;
+ const fail=message=>{if(ticket!==rosterTicket)return;if(attempt===0&&typeof window.setTimeout==='function'){$('artStatus').textContent='部分图片暂未载入，正在自动重试…';window.setTimeout(()=>{if(ticket===rosterTicket&&ensureCurrentRoster(resume,1)&&resume)resume();},350);}else rosterLoadFailed(message);};
  if((!api||ids.every(id=>api.isHeroReady(id)))&&(!sceneApi||RiftScenes.isSceneReady(requestedScene))&&(!arenaApi||RiftArena.isSceneReady(requestedScene))&&(!window.RiftRosterVisual||ids.every(id=>RiftRosterVisual.isHeroReady(id)))&&(!zenitsuApi||RiftZenitsuCombat.isReady()&&(!window.RiftZenitsuKitVisual||RiftZenitsuKitVisual.isReady()))&&(!tanjiroApi||RiftTanjiroVisual.isReady()&&(!window.RiftTanjiroDragon||RiftTanjiroDragon.isReady())&&(!window.RiftTanjiroFireVisual||RiftTanjiroFireVisual.isReady()))){finishResourceLoad();api?.retainHeroes?.(ids);return true;}
  assetLoading=true;held.clear();$('start').disabled=true;
  $('artStatus').textContent='正在载入 '+ids.map(id=>Rift.HEROES[id].name).join(' / ')+' 的像素动作与场景…';
  Promise.all([...(window.RiftRosterVisual?ids.map(id=>RiftRosterVisual.ensureHero(id)):[]),...(api?ids.map(id=>api.ensureHero(id)):[]),...(sceneApi?[RiftScenes.ensureScene(requestedScene)]:[]),...(arenaApi?[RiftArena.ensureScene(requestedScene)]:[]),...(zenitsuApi?[RiftZenitsuCombat.ensureReady(),...(window.RiftZenitsuKitVisual?[RiftZenitsuKitVisual.ensureReady()]:[])]:[]),...(tanjiroApi?[RiftTanjiroVisual.ensureReady(),...(window.RiftTanjiroDragon?[RiftTanjiroDragon.ensureReady()]:[]),...(window.RiftTanjiroFireVisual?[RiftTanjiroFireVisual.ensureReady()]:[])]:[])]).then(ok=>{
   if(ticket!==rosterTicket)return;
-  if(ok.includes(false)){rosterLoadFailed('角色或场景资源加载失败，请点击重试加载。');return;}
+  if(ok.includes(false)){fail('角色或场景资源加载失败，请点击重试加载。');return;}
   finishResourceLoad();api?.retainHeroes?.(ids);
   $('artStatus').textContent='动漫像素角色 · 当前动作与立体建筑战场已就绪';
   if(artBootReady)paintPreviews();if(resume)resume();
- }).catch(()=>{if(ticket===rosterTicket)rosterLoadFailed('角色资源加载失败，请点击重试加载。');});
+ }).catch(()=>fail('角色资源加载失败，请点击重试加载。'));
  return false;
 }
 function initAudio(){fx.sound(soundOn);}
