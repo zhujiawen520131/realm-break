@@ -27,7 +27,7 @@ function move(f,name,id){
  if(name==='skill'){
   if(id==='waterfall')m={...base,clipId:'waterfall',fxClip:'waterfall',startup:12,active:20,end:41,hits:5,interval:4,damage:4,reach:195,height:260,lift:0,knockdown:true};
   else if(id==='whirlpool')m={...base,clipId:'whirlpool',fxClip:'whirlpool',startup:8,active:20,end:37,hits:5,interval:4,damage:4,reach:170,lift:0,knockdown:true,radial:true};
-  else m={...base,clipId:null,fxClip:null,startup:9,active:18,end:36,hits:3,interval:6,damage:6,reach:170,height:180,lift:-7,knockdown:true,travel:3.5};
+  else m={...base,clipId:null,fxClip:null,startup:9,active:18,end:48,hits:3,interval:6,damage:6,reach:170,height:180,lift:-7,knockdown:true,travel:3.5};
  }
  if(name==='ultimate')m={...base,clipId:null,startup:18,active:8,end:42,damage:2,reach:215,height:190,lift:0,kitUltimate:true};
  if(m&&f.awakenLevel&&name!=='awaken')m.damage=Math.round(m.damage*(f.awakenLevel===2?1.2:1.1)*10)/10;
@@ -36,20 +36,22 @@ function move(f,name,id){
 function begin(world,f,name,id){
  if(f.attack?.move.fire){root.RiftTanjiroFireRules.begin(world,f,name,id);return;}
  const a=f.attack;if(!a?.move.kit)return;a.variant=id||null;a.clipId=a.move.clipId;
- if(name==='skill'&&id==='waterfall'){f.vy=-8;world.refreshSupport(f);}
+ if(name==='skill'&&id==='waterfall'&&world.supportAt(f)){f.vy=-13.4;world.refreshSupport(f);}
  if(name==='dashstrike')f.inv=5;
  if(name==='awaken')effect(world,f,f.awakenLevel===2?'surge':'awaken',34);
 }
+function bodyPose(a){if(a?.name==='skill'&&a.variant==='waterwheel'&&!a.move.fire)return {...a,bodyFrame:Math.min(7,[0,3,8,14,21,28,36,43].filter(t=>a.t>=t).length-1)};return a;}
 function effect(world,f,id,life=24){world.effects.push({kind:'tanjiroFx',clipId:id,hero:'tanjiro',owner:f,x:f.x+f.dir*35,y:f.y-85,dir:f.dir,life,max:life});}
 function update(world,f){
  if(!enabled(f))return;
  if(f.awakenTime>0&&--f.awakenTime===0)f.awakenLevel=0;
  f.color=root.RiftTanjiroFireRules&&(root.RiftTanjiroFireRules.active(f)||f.attack?.move.fire)?'#ff773d':f.info.color;
  const a=f.attack;if(a?.move.fire){root.RiftTanjiroFireRules.update(world,f);return;}if(!a?.move.kit)return;const m=a.move,active=a.t>=m.startup&&a.t<m.startup+m.active;
+ if(a.name==='skill'&&a.variant==='waterwheel'&&a.t===3){f.vy=-13.2;world.refreshSupport(f);}
  if(m.kitUltimate&&a.t<m.startup)f.vx=f.dir*7;
  else if(active&&m.travel)f.vx=f.dir*m.travel;
  if(a.name==='airheavy'&&active)f.vy=Math.max(f.vy,10);
- if(a.name==='skill'&&a.variant==='waterfall'&&active&&a.t===m.startup)f.vy=7;
+ if(a.name==='skill'&&a.variant==='waterfall'&&active&&a.t===m.startup)f.vy=9;
 }
 function canContact(world,f,t,a){const m=a.move;if(t.inv||t.downTime||t.hp<=0)return false;
  if(m.throw&&(!world.supportAt(f)||!world.supportAt(t)||Math.abs(f.y-t.y)>20))return false;
@@ -62,7 +64,7 @@ function resolve(world,f,t,a){
  if(a.name==='throw'&&a.capture){if(t.inv||f.stun||a.capture!==t){a.t=m.startup+m.active;return true;}t.x=clamp(f.x+f.dir*48,42,world.width-42);t.y=f.y;t.vx=t.vy=0;}
  const total=m.hits||1,slot=total===1?0:Math.floor((a.t-m.startup)/(m.interval||m.active));
  if(slot>=total||a.kitSlots?.has(slot))return true;
- if(!a.kitFx){a.kitFx=true;if(m.fxClip)effect(world,f,m.fxClip,m.active+14);else if(a.name==='skill')world.effects.push({kind:'waterWheel',hero:f.hero,owner:f,x:f.x,y:f.y-80,dir:f.dir,color:f.color,range:170,life:m.active+10,max:m.active+10});}
+ if(!a.kitFx){a.kitFx=true;if(m.fxClip)effect(world,f,m.fxClip,m.active+14);else if(a.name==='skill')world.effects.push({kind:'waterWheel',hero:f.hero,owner:f,x:f.x,y:f.y-80,dir:f.dir,color:f.color,range:170,follow:a,life:m.active+16,max:m.active+16});}
  if(!canContact(world,f,t,a))return true;
  a.kitSlots??=new Set();a.kitSlots.add(slot);const last=slot===total-1,blocked=!m.unblockable&&t.block&&t.dir===-f.dir;
  const hit={...m,knockdown:m.kitUltimate?false:(last&&(m.knockdown||a.name==='throw')),finisher:m.kitUltimate?false:last,lift:last&&a.name==='skill'?-10:last&&a.name==='throw'?-9:last&&a.name==='heavy'?-3:m.lift,push:last&&a.name==='throw'?12:m.push};
@@ -94,7 +96,7 @@ function phaseAt(a){
 }
 function ultimatePose(a){
  const p=phaseAt(a);if(!p)return a;
- return {...a,name:p.baseClip||'ultimate',clipId:p.clipId||null,t:p.t,move:{startup:p.hits[0],active:p.hits.at(-1)-p.hits[0]+1,end:p.duration},waterSequence:null};
+ return {...a,name:p.baseClip||'ultimate',clipId:p.clipId||null,bodyFrame:p.index===2?Math.min(7,Math.floor(p.t/p.duration*8)):undefined,t:p.t,move:{startup:p.hits[0],active:p.hits.at(-1)-p.hits[0]+1,end:p.duration},waterSequence:null};
 }
 function liveSequence(f){const a=f?.attack,s=a?.waterSequence;return s&&!s.finished&&!f.stun&&f.hp>0&&s.target.hp>0&&!s.target.inv?s:null;}
 function controlled(world,f){if(root.RiftTanjiroFireRules?.controlled(world,f))return true;return [world.p1,world.p2].some(actor=>{const s=liveSequence(actor);return !!s&&(actor===f||s.target===f);});}
@@ -106,11 +108,12 @@ function stopSequence(world,f,a){
 }
 function advance(world){
  root.RiftTanjiroFireRules?.advance(world);
+ for(const e of world.effects)if(e.kind==='waterWheel'&&e.owner?.attack===e.follow){e.x=e.owner.x;e.y=e.owner.y-80;}
  for(const f of [world.p1,world.p2]){
   const a=f.attack,s=a?.waterSequence;if(!s||s.finished)continue;
   if(!liveSequence(f)||s.target!==(f===world.p1?world.p2:world.p1)){stopSequence(world,f,a);continue;}
   const t=s.target,p=phaseAt(a),age=Math.max(0,a.t-s.startT),progress=clamp(age/ULTIMATE_TICKS,0,1),q=p.t/p.duration;
-  const lift=p.index===1?Math.sin(q*Math.PI)*18:p.index===2?q*100:p.index===3?(1-q)*100:0;
+  const lift=p.index===1?Math.sin(q*Math.PI)*28:p.index===2?4*q*(1-q)*165:p.index===3?4*q*(1-q)*115:0;
   const rise=clamp(p.t/44,0,1),turn=clamp(p.t/16,0,1),ease=n=>n*n*(3-2*n);
   const enemyLift=p.index===4?320*ease(rise):p.index===5?320:lift*.85;
   const ram=p.index===5?160*ease(turn):0;
@@ -170,5 +173,5 @@ function finish(world){
  // queues invisible damage behind a playback callback.
  if(!world.tanjiroCinematic)return false;world.tanjiroCinematic=null;return true;
 }
-root.RiftTanjiroRules={CATALOG,enabled,variant,basic,move,begin,update,resolve,awaken,afterHit,finish,advance,controlled,ultimatePose,updateDragonEffects,ULTIMATE_PHASES};if(typeof module!=='undefined')module.exports=root.RiftTanjiroRules;
+root.RiftTanjiroRules={CATALOG,enabled,variant,basic,move,begin,update,resolve,awaken,afterHit,finish,advance,controlled,ultimatePose,bodyPose,updateDragonEffects,ULTIMATE_PHASES};if(typeof module!=='undefined')module.exports=root.RiftTanjiroRules;
 })(typeof window!=='undefined'?window:globalThis);

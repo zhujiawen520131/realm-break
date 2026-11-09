@@ -63,11 +63,11 @@ class World{
  f.buffer={key,ttl:f.hero==='tanjiro'&&root.RiftTanjiroRules&&key==='skill'?24:12,dir:direction,...modifiers};}
  execute(f,keys){const b=f.buffer;if(!b)return;keys={...keys,...(b.down!==undefined?{down:b.down}:{}),...(b.up!==undefined?{up:b.up}:{})};const key=b.key,ground=!!this.supportAt(f);const a=f.attack;const canCancel=a&&a.hit&&a.t>=a.move.startup+2&&a.name!=='ultimate'&&(!a.move.kit||!a.move.hits||a.move.hits===1||a.kitSlots?.size>=a.move.hits);const canShotChain=f.hero==='lara'&&a?.move.pistol&&['slash1','slash2'].includes(a.name)&&a.spawned&&a.t>=a.move.startup+8;
  if(f.stun||f.dash)return;
- const kit=f.hero==='tanjiro'&&root.RiftTanjiroRules;
- if(kit&&['awaken','heavy','throw'].includes(key)&&(!a||canCancel)){if(key==='awaken'){kit.awaken(this,f);f.buffer=null;}else{f.dir=b.dir;f.inputDir=b.dir;this.begin(f,key==='heavy'&&!ground?'airheavy':key);}return;}
+ const kit=f.hero==='tanjiro'?root.RiftTanjiroRules:f.hero==='zenitsu'?root.RiftZenitsuRules:null;
+ if(kit&&(['heavy','throw'].includes(key)||(key==='awaken'&&kit.awaken))&&(!a||canCancel)){if(key==='awaken'){kit.awaken(this,f);f.buffer=null;}else{f.dir=b.dir;f.inputDir=b.dir;this.begin(f,key==='heavy'&&!ground?'airheavy':key);}return;}
  if((key==='drop'||key==='jump'&&keys.down)&&ground&&this.supportAt(f).id!=='floor'&&(!a||canCancel)){this.dropThrough(f);return;}
  if(key==='jump'&&f.jumps<2&&(!a||canCancel)){f.returning=false;f.vy=ground?-13.8:-11;f.jumps++;this.refreshSupport(f);f.attack=null;f.buffer=null;this.burst(f.x,f.y,'#b3c8c2',7);this.event('jump',{x:f.x,y:f.y,color:f.color,hero:f.hero});return;}
- if(kit&&key==='dash'&&(!a||canCancel||['slash4','slash5'].includes(a.name)&&a.t<a.move.startup)){f.dir=b.dir;f.inputDir=b.dir;this.begin(f,'dashstrike');return;}
+ if(f.hero==='tanjiro'&&kit&&key==='dash'&&(!a||canCancel||['slash4','slash5'].includes(a.name)&&a.t<a.move.startup)){f.dir=b.dir;f.inputDir=b.dir;this.begin(f,'dashstrike');return;}
  if(key==='dash'&&(!a||canCancel)){f.returning=false;f.dir=b.dir;f.inputDir=b.dir;f.dash=13;f.inv=7;f.attack=null;f.buffer=null;f.animTime=0;this.event('dash',{x:f.x,y:f.y-50,dir:f.dir,color:f.color,hero:f.hero});return;}
  if(key==='attack'&&(!a||canCancel||canShotChain)){
  if(!kit&&a&&ground&&((!keys.down&&['slash3','launcher'].includes(a.name))||(keys.down&&a.name==='launcher')))return;
@@ -88,7 +88,7 @@ class World{
  if(f.hero!=='zenitsu'&&!(f.hero==='tanjiro'&&root.RiftTanjiroRules)&&this.settings.cinematics&&!this.cutin){const total=Number.isFinite(this.settings.cinematicTicks)?clamp(Math.round(this.settings.cinematicTicks),36,120):36;this.cutin={hero:f.hero,name:f.info.name,move:f.info.ultimate,color:f.color,dir:f.dir,remaining:total,total};}
  this.event('ultimate',{x:f.x,y:f.y-86,dir:f.dir,color:f.color,hero:f.hero,weapon:f.info.weapon});
  }
- begin(f,name,variant){f.returning=false;const move={...MOVES[name],...(BREATH_MOVES[f.hero]?.[name]||{}),...(f.hero==='lara'?LARA_SHOTS[name]||{}:{}),...(f.hero==='tanjiro'?root.RiftTanjiroRules?.move(f,name,variant)||{}:{})};if(move.reach)move.reach*=f.info.reach;f.attack={name,move,t:0,hit:false};f.attackSerial++;f.animTime=0;if(this.supportAt(f)&&move.lunge)f.vx=f.dir*move.lunge;f.buffer=null;f.block=false;if(f.hero==='tanjiro')root.RiftTanjiroRules?.begin(this,f,name,variant);}
+ begin(f,name,variant){f.returning=false;const move={...MOVES[name],...(BREATH_MOVES[f.hero]?.[name]||{}),...(f.hero==='lara'?LARA_SHOTS[name]||{}:{}),...(f.hero==='tanjiro'?root.RiftTanjiroRules?.move(f,name,variant)||{}:f.hero==='zenitsu'?root.RiftZenitsuRules?.move(f,name,variant)||{}:{})};if(move.reach)move.reach*=f.info.reach;f.attack={name,move,t:0,hit:false};f.attackSerial++;f.animTime=0;if(this.supportAt(f)&&move.lunge)f.vx=f.dir*move.lunge;f.buffer=null;f.block=false;if(f.hero==='tanjiro')root.RiftTanjiroRules?.begin(this,f,name,variant);if(f.hero==='zenitsu')root.RiftZenitsuRules?.begin(this,f,name,variant);}
  finishTanjiroCinematic(){return root.RiftTanjiroRules?.finish(this)||false;}
  ai(){const f=this.p2,p=this.p1,k={};if(this.mode!=='duel')return k;const dist=Math.abs(p.x-f.x),intent=p.x>=f.x?1:-1;k.aim=intent;this.aiClock++;
  if(f.stun&&f.energy>=40&&f.hp<70&&this.aiClock%39===0)this.action(f,'sub',intent);
@@ -140,7 +140,7 @@ class World{
  if(this.mode==='duel'){this.time=Math.max(0,99-Math.floor(this.frame/60));if(!this.time){this.finish();return;}}
  const previousX=[this.p1.x,this.p2.x],ai=this.ai();this.updateFighter(this.p1,this.p2,keys);this.updateFighter(this.p2,this.p1,ai);
  const p=this.p1,q=this.p2;
- this.advanceSixfold(p,q);this.advanceSixfold(q,p);root.RiftTanjiroRules?.advance(this);
+ this.advanceSixfold(p,q);this.advanceSixfold(q,p);root.RiftTanjiroRules?.advance(this);root.RiftZenitsuRules?.advance(this);
  // Solid-body collision uses swept positions; target range never drives attack speed.
  if(!p.attack?.sixfold&&!q.attack?.sixfold&&Math.abs(p.y-q.y)<75&&!p.dash&&!q.dash&&!p.blinkTime&&!q.blinkTime){
   const order=previousX[0]<=previousX[1]?1:-1,oldGap=(previousX[1]-previousX[0])*order,newGap=(q.x-p.x)*order;
@@ -188,7 +188,7 @@ class World{
  else if(f.stun)f.vx*=.94;
  else if(f.attack){f.vx*=.65;f.attack.t++;const a=f.attack,m=a.move;if(m.style&&!a.sixfold&&a.t>=m.startup&&a.t<m.startup+m.active){f.vx=f.dir*m.travel;if(this.frame%2===0)f.trail.push({x:f.x,y:f.y,dir:f.dir,life:10,animTime:f.animTime,animState:'skill',attack:{...a,move:{...m}}});}if(a.t>=m.end)f.attack=null;}
  else{f.vx=f.block?0:((k.right?1:0)-(k.left?1:0))*f.info.speed;}
- if(f.hero==='tanjiro')root.RiftTanjiroRules?.update(this,f);
+ if(f.hero==='tanjiro')root.RiftTanjiroRules?.update(this,f);if(f.hero==='zenitsu')root.RiftZenitsuRules?.update(this,f);
  if(f.thunderDriftTicks>0){if(--f.thunderDriftTicks===0)f.vx=0;}
  const controlled=!!f.attack?.sixfold||!!root.RiftTanjiroRules?.controlled(this,f);
  if(!controlled){f.x=clamp(f.x+f.vx,42,this.width-42);if(!this.supportAt(f)){f.vy+=f.knockdown?1:f.returning?1.2:.62;f.y+=f.vy;}
@@ -210,7 +210,8 @@ class World{
  }
  hitbox(f){const a=f.attack;if(!a||!a.move.reach)return null;return {x:f.x+(f.dir>0?12:-a.move.reach-12),y:f.y-a.move.height,w:a.move.reach,h:a.move.height};}
  resolveAttack(f,t){const a=f.attack;if(!a)return;const m=a.move;if(a.t<m.startup||a.t>=m.startup+m.active)return;
- if(m.kit&&root.RiftTanjiroRules?.resolve(this,f,t,a))return;
+ if(m.zenitsuKit&&root.RiftZenitsuRules?.resolve(this,f,t,a))return;
+ if(m.kit&&!m.zenitsuKit&&root.RiftTanjiroRules?.resolve(this,f,t,a))return;
  if(m.style==='thunderSix'){this.resolveSixfold(f,t,a);return;}
  if(m.style){this.resolveBreath(f,t,a);return;}
  if(m.pistol){if(!a.spawned){a.spawned=true;this.spawnProjectile(f,{kind:'bullet',name:a.name,vx:f.dir*m.shotSpeed,vy:m.shotY,w:24,h:16,maxTravel:m.range,traveled:0,life:Math.ceil(m.range/m.shotSpeed)+2,move:{damage:m.damage,stun:m.stun,push:m.push,lift:m.lift,stop:m.stop,knockdown:!!m.knockdown}});this.lastFeedback='劳拉 / '+({slash1:'点射一段',slash2:'点射二段',slash3:'终结点射',launcher:'上挑射击',air:'空中射击'}[a.name]);}return;}

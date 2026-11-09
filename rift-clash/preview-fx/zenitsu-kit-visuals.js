@@ -1,0 +1,17 @@
+(function(root){'use strict';
+const IDS=['airspin','attack4','heavy','airheavy','throw'],images=new Map(),jobs=new Map();let pending=null;
+function files(){const b=root.RiftZenitsuKitArt?.body,fx=root.RiftZenitsuKitFX?.clips?.airspin;if(!b||fx?.frames.length!==8)return null;const out=[...fx.frames];for(const id of IDS){if(b[id]?.frames.length!==8)return null;out.push(...b[id].frames);}return out;}
+function isReady(){const f=files();return !!f&&f.every(p=>images.has(p.image));}
+function ensureReady(){if(isReady())return Promise.resolve(true);if(pending)return pending;const f=files();if(!f||!root.Image)return Promise.resolve(false);pending=Promise.all(f.map(p=>{if(images.has(p.image))return true;if(jobs.has(p.image))return jobs.get(p.image);const j=new Promise(resolve=>{const im=new root.Image();im.onload=()=>{images.set(p.image,im);resolve(true)};im.onerror=()=>resolve(false);im.src=p.image});jobs.set(p.image,j);j.then(()=>jobs.delete(p.image));return j})).then(ok=>{pending=null;return ok.every(Boolean)&&isReady()});return pending;}
+function paint(ctx,p,x,y,dir,scale,alpha=1){const im=p&&images.get(p.image);if(!im)return false;ctx.save();ctx.imageSmoothingEnabled=false;ctx.globalAlpha*=alpha;ctx.translate(x,y);ctx.scale(dir<0?-1:1,1);ctx.drawImage(im,-p.anchor[0]*scale,-p.anchor[1]*scale,p.width*scale,p.height*scale);ctx.restore();return true;}
+function frame(a,clip){if(a.variant==='airspin')return Math.max(0,[0,4,8,14,20,28,37,44].filter(t=>a.t>=t).length-1);const m=a.move,first=clip.events?.grab??clip.events?.firstStrike??clip.events?.strike??clip.events?.impact??4;if(a.t<m.startup)return Math.min(first-1,Math.floor(a.t/Math.max(1,m.startup)*first));if(a.t<m.startup+m.active){if(m.throw){const elapsed=a.t-m.startup,slot=Math.min(9,Math.floor(elapsed/m.interval));return slot===0&&elapsed>=2?2:[1,3,4,5,3,4,5,3,5,6][slot];}return first+Math.min(6-first,Math.floor((a.t-m.startup)/m.active*(7-first)));}return 7;}
+function drawFighter(ctx,f){const a=f.attack;if(f.hero!=='zenitsu'||!a?.move.zenitsuKit)return false;if(a.name==='awaken')return root.RiftZenitsuCombat?.drawFighter(ctx,{...f,attack:{...a,name:'ultimate',t:Math.min(33,a.t),move:{...a.move,startup:34,active:1,end:35}}})||false;if(a.name==='air2')return root.RiftMotionPreview?.draw(ctx,{...f,attack:{...a,name:'air'}})||false;
+ const id=a.variant==='airspin'?'airspin':a.clipId,clip=root.RiftZenitsuKitArt?.body[id];if(!clip)return false;return paint(ctx,clip.frames[frame(a,clip)],f.x,f.y,f.dir,.4);}
+function drawEffect(ctx,e,options={}){if(e.kind!=='zenitsuKitFx')return false;const a=e.owner.attack,live=a===e.attack,age=e.max-e.life;
+ if(e.clipId==='airspin'){const clip=root.RiftZenitsuKitFX?.clips.airspin;if(!clip)return true;const i=options.reducedMotion?4:Math.min(7,3+Math.floor(age/Math.max(1,e.max)*5));paint(ctx,clip.frames[i],e.x,e.y,e.dir,.7,Math.min(1,e.life/6));}
+ else root.RiftZenitsuCombat?.drawEffect(ctx,{kind:'thunderPath',fromX:e.fromX,fromY:e.fromY,x:e.x+e.dir*115,y:e.y,active:live&&a.t<a.move.startup+a.move.active,tick:age,life:e.life,max:e.max},options);
+ return true;}
+function drawStartup(ctx,f,options={}){const a=f.attack;if(!a?.move.zenitsuKit||a.name!=='skill'||a.t>=a.move.startup)return false;if(a.variant==='airspin'){const clip=root.RiftZenitsuKitFX?.clips.airspin;if(clip)paint(ctx,clip.frames[Math.min(2,Math.floor(a.t/a.move.startup*3))],f.x,f.y-65,f.dir,.6,.6);return true;}
+ return false;}
+root.RiftZenitsuKitVisual={ensureReady,isReady,drawFighter,drawEffect,drawStartup};
+})(typeof window!=='undefined'?window:globalThis);

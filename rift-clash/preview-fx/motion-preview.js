@@ -73,6 +73,9 @@ function stateOf(f,ghost){
  if(f.attack)return 'attack';
  if(!ghost&&Number.isFinite(f.y)&&f.y<(Number.isFinite(f.groundY)?f.groundY:(root.Rift?.FLOOR??510)))return 'jump';
  if(f.block)return 'guard';
+ // Show the impact crouch even when horizontal input is already held. Once
+ // the initial contact has settled, running may take over without a slide.
+ if(f.landTime>4)return 'land';
  if(Math.abs(f.vx||0)>1)return 'run';
  if(f.landTime)return 'land';
  return 'idle';
@@ -101,7 +104,9 @@ function resolve(f,t=0,ghost=false){
    else if(state==='land')index=f.landTime>3?6:7;
    else if(f.guardReleaseTime>0&&state==='idle')index=f.guardReleaseTime>3?6:7;
    else if(state==='guard')index=f.guardStun>0?(f.guardStun>4?4:5):tick<2?0:tick<4?1:2+Math.floor((tick-4)/6)%2;
-   else if(state==='hurt')index=f.stun<=6?Math.min(7,5+Math.floor((6-f.stun)/2)):Math.min(4,tick);
+   // Move from the initial recoil into the authored folded-over pose once;
+   // long stuns no longer pin the first recoil frame for the whole duration.
+   else if(state==='hurt')index=f.stun<=6?Math.min(7,5+Math.floor((6-f.stun)/2)):tick<5?tick:tick<9?4:5;
    else if(state==='dash')index=f.dash>0?choose(12-f.dash,11,range(0,7)):f.blinkTime>0?choose(7-f.blinkTime,6,range(0,7)):Math.min(7,Math.floor(tick*8/12));
    else{const durations=frames.map(frame=>Math.max(1,Number(frame.durationMs)||100)),span=durations.reduce((a,b)=>a+b,0);index=choose(tick*1000/60%span,span,range(0,last),durations);}
   }else{
@@ -114,23 +119,38 @@ function resolve(f,t=0,ghost=false){
   }
   return poseFor(f,id,index,{state,phase:state,borrowed:false});
  }
- const a=f.attack.waterSequence&&root.RiftTanjiroRules?root.RiftTanjiroRules.ultimatePose(f.attack):f.attack,dedicated=hero.clips?.[a.name],borrowed=f.hero==='lara'&&['launcher','air'].includes(a.name)&&!dedicated;
+ // Rules may prescribe a particular authored pose while the body follows a
+ // real trajectory, for example the rise, inversion and descent of waterwheel.
+ const original=f.attack,rules=f.hero==='tanjiro'?root.RiftTanjiroRules:null;
+ const a=(original.waterSequence?rules?.ultimatePose?.(original):rules?.bodyPose?.(original))||original,dedicated=hero.clips?.[a.name],borrowed=f.hero==='lara'&&['launcher','air'].includes(a.name)&&!dedicated;
  const id=ATTACK_CLIPS[a.name]||(dedicated?a.name:borrowed?'attack1':null),clip=hero.clips?.[id];
  if(!Array.isArray(clip?.frames)||![4,8].includes(clip.frames.length))return null;
  const count=clip.frames.length,lastFrame=count-1,lastActive=count-2,seq=(value,fallback)=>sequence(value,fallback,count);
  const m=a.move||{},at=Math.max(0,Number(a.t)||0),startup=Math.max(1,Number(m.startup)||1),end=Math.max(startup+2,Number(m.end)||startup+2),active=Math.max(1,Number(m.active)||1);
  const contact=clamp(Number.isInteger(clip.eventFrame)?clip.eventFrame:Math.floor(count/2),1,lastActive);let index,phase;
- if(at<startup){index=choose(at,startup,seq(clip.startupSequence,range(0,contact-1)),clip.startupWeights);phase='anticipation';}
+ const pixelEight=pack.eightFrameMode&&pack.revision?.startsWith('pixel-eight')&&count===8;
+ // Lara ultimate frame 2 has a painted muzzle flash. Frame 4 is the actual
+ // release pose; neither the wind-up nor the space between shots may show 2.
+ const laraVolley=pixelEight&&f.hero==='lara'&&a.name==='ultimate';
+ const bodyFrame=Number.isInteger(a.bodyFrame)&&a.bodyFrame>=0&&a.bodyFrame<count?a.bodyFrame:null;
+ if(bodyFrame!==null){index=bodyFrame;phase=at<startup?'anticipation':at<startup+active?'release':'recovery';}
+ else if(at<startup){index=choose(at,startup,laraVolley?[0,1,3]:seq(clip.startupSequence,range(0,contact-1)),laraVolley?undefined:clip.startupWeights);phase='anticipation';}
  else{
   // The original skill's active=1 describes emission, not the entire scheduled
   // gun volley. Recoil is keyed to the actual scheduled release intervals.
   const volley=a.name==='ultimate'&&(f.hero==='lara'||f.hero==='drake');
   const period=volley?(f.hero==='lara'?6:7):Math.max(1,Number(m.interval)||active);
   const count=volley?(f.hero==='lara'?6:5):Math.ceil(active/period);
-  const multi=volley||!!m.style;
+  const zenitsuMulti=!!m.zenitsuKit&&Number(m.hits)>1;
+  const multi=volley||!!m.style||zenitsuMulti;
   if(multi){
    const activeEnd=volley?Math.min(end-1,startup+(count-1)*period+3):Math.min(end-1,startup+active);
-   if(at<activeEnd){const strike=Math.floor((at-startup)/period),alternates=clip.hitSequences,selected=Array.isArray(alternates)&&alternates.length?alternates[strike%alternates.length]:clip.activeSequence,poses=seq(selected,range(contact,Math.min(lastActive,contact+2)));index=choose((at-startup)%period,period,poses,clip.activeWeights||(poses.length===3?[1,2,Math.max(1,period-3)]:undefined));phase='release';}
+   if(at<activeEnd){const strike=Math.floor((at-startup)/period),alternates=clip.hitSequences,selected=Array.isArray(alternates)&&alternates.length?alternates[strike%alternates.length]:zenitsuMulti&&pixelEight?[contact,Math.min(lastActive,contact+1),Math.max(0,contact-2),contact-1]:clip.activeSequence;
+    // Each real volley begins on frame 4 at the firing tick. Follow it with
+    // the separately drawn recoil and ready poses, rather than alternating
+    // muzzle flashes or jittering between two forward-aim frames.
+    const recoil=laraVolley?[4,5,3,1,3,1]:pixelEight&&f.hero==='drake'&&volley?[4,5,3,2,1,0,1]:null;
+    const poses=recoil||seq(selected,range(contact,Math.min(lastActive,contact+2)));index=choose((at-startup)%period,period,poses,recoil?undefined:clip.activeWeights||(poses.length===3?[1,2,Math.max(1,period-3)]:undefined));phase='release';}
    else{index=choose(at-activeEnd,end-activeEnd,seq(clip.recoverySequence,range(Math.min(lastFrame,contact+3),lastFrame)),clip.recoveryWeights);phase='recovery';}
   }else{
    const activeEnd=Math.min(end-1,startup+active),last=active>1?clamp(Number.isInteger(clip.activeEndFrame)?clip.activeEndFrame:contact+1,contact,lastActive):contact;
