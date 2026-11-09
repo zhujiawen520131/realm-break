@@ -18,7 +18,7 @@ function describe(f,side){
  const start=phase==='startup'?0:phase==='release'?startup:releaseEnd;
  const stop=phase==='startup'?startup:phase==='release'?releaseEnd:end;
  const phaseProgress=clamp((a.t-start)/Math.max(1,stop-start));
- return {hero:f.hero,side,name:f.info?.name||f.hero,move:f.info?.ultimate||'奥义',color:f.color||f.info?.color||'#d5ecdf',
+ return {hero:f.hero,side,name:f.info?.name||f.hero,move:m.displayName||f.info?.ultimate||'奥义',color:f.color||f.info?.color||'#d5ecdf',
   phase,progress:clamp(a.t/end),phaseProgress,t:a.t,startup,active,end,releaseEnd,
   finisher:phase==='release'&&a.t>=startup+(strikes-1)*interval};
 }

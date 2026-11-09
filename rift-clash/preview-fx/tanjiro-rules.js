@@ -4,13 +4,15 @@
 const CATALOG=[['waterwheel','贰之型 · 水车','U / 连续 U','3 段纵向翻滚水斩'],['waterfall','捌之型 · 瀧壺','W + U','5 段竖直下劈水柱'],['whirlpool','陆之型 · 扭转漩涡','S + U','5 段近身旋转水涡']];
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 function enabled(f){return f?.hero==='tanjiro';}
-function variant(keys,a){if(keys.variant)return keys.variant;if(keys.up)return 'waterfall';if(keys.down)return 'whirlpool';return a?.name==='skill'&&a.hit?({waterwheel:'waterfall',waterfall:'whirlpool',whirlpool:'waterwheel'}[a.variant]||'waterwheel'):'waterwheel';}
+function variant(keys,a,f){if(root.RiftTanjiroFireRules?.active(f))return root.RiftTanjiroFireRules.variant(keys,a);if(keys.variant)return ({skill1:'waterwheel',skill2:'waterfall',skill3:'whirlpool'}[keys.variant]||keys.variant);if(keys.up)return 'waterfall';if(keys.down)return 'whirlpool';return a?.name==='skill'&&a.hit?({waterwheel:'waterfall',waterfall:'whirlpool',whirlpool:'waterwheel'}[a.variant]||'waterwheel'):'waterwheel';}
 function basic(f,a,keys,ground){
+ if(root.RiftTanjiroFireRules?.active(f))return root.RiftTanjiroFireRules.basic(f,a,keys,ground);
  if(!ground)return 'air';if(keys.up)return 'launcher';if(keys.down)return 'downstrike';
  if(a?.name==='slash4')return f.awakenLevel?'slash5':null;if(a?.name==='slash5'||a?.name==='downstrike'||a?.name==='launcher')return null;
  return ({slash1:'slash2',slash2:'slash3',slash3:'slash4'}[a?.name])||'slash1';
 }
 function move(f,name,id){
+ if(root.RiftTanjiroFireRules?.active(f))return root.RiftTanjiroFireRules.move(f,name,id);
  const base={kit:true,style:null,stun:30,push:2,lift:-7,stop:3,damage:5,height:140,reach:150,startup:8,active:12,end:32,travel:0,hits:1,interval:4,knockdown:false};let m;
  if(name==='slash3')return {knockdown:false};
  if(name==='slash4')m={...base,clipId:'attack4',damage:12,startup:7,active:7,end:27,reach:150,lift:-9,knockdown:!f.awakenLevel};
@@ -32,6 +34,7 @@ function move(f,name,id){
  return m||null;
 }
 function begin(world,f,name,id){
+ if(f.attack?.move.fire){root.RiftTanjiroFireRules.begin(world,f,name,id);return;}
  const a=f.attack;if(!a?.move.kit)return;a.variant=id||null;a.clipId=a.move.clipId;
  if(name==='skill'&&id==='waterfall'){f.vy=-8;world.refreshSupport(f);}
  if(name==='dashstrike')f.inv=5;
@@ -41,7 +44,8 @@ function effect(world,f,id,life=24){world.effects.push({kind:'tanjiroFx',clipId:
 function update(world,f){
  if(!enabled(f))return;
  if(f.awakenTime>0&&--f.awakenTime===0)f.awakenLevel=0;
- const a=f.attack;if(!a?.move.kit)return;const m=a.move,active=a.t>=m.startup&&a.t<m.startup+m.active;
+ f.color=root.RiftTanjiroFireRules&&(root.RiftTanjiroFireRules.active(f)||f.attack?.move.fire)?'#ff773d':f.info.color;
+ const a=f.attack;if(a?.move.fire){root.RiftTanjiroFireRules.update(world,f);return;}if(!a?.move.kit)return;const m=a.move,active=a.t>=m.startup&&a.t<m.startup+m.active;
  if(m.kitUltimate&&a.t<m.startup)f.vx=f.dir*7;
  else if(active&&m.travel)f.vx=f.dir*m.travel;
  if(a.name==='airheavy'&&active)f.vy=Math.max(f.vy,10);
@@ -53,6 +57,7 @@ function canContact(world,f,t,a){const m=a.move;if(t.inv||t.downTime||t.hp<=0)re
  return (m.radial?Math.abs(dx)<=m.reach+23:dx>=-20&&dx<=m.reach+23)&&Math.abs((t.y-65)-(f.y-65))<(m.height||140);
 }
 function resolve(world,f,t,a){
+ if(a.move.fire)return root.RiftTanjiroFireRules.resolve(world,f,t,a);
  const m=a.move;if(!m.kit)return false;if(a.waterSequence)return resolveSequence(world,f,t,a);
  if(a.name==='throw'&&a.capture){if(t.inv||f.stun||a.capture!==t){a.t=m.startup+m.active;return true;}t.x=clamp(f.x+f.dir*48,42,world.width-42);t.y=f.y;t.vx=t.vy=0;}
  const total=m.hits||1,slot=total===1?0:Math.floor((a.t-m.startup)/(m.interval||m.active));
@@ -66,9 +71,10 @@ function resolve(world,f,t,a){
  return true;
 }
 function awaken(world,f){
- if(f.awakenLevel>=2||f.energy<50)return false;f.energy-=50;f.awakenLevel=(f.awakenLevel||0)+1;f.awakenTime=f.awakenLevel===2?600:900;world.begin(f,'awaken');f.inv=16;
+ if(f.awakenLevel>=2||f.energy<50)return false;f.energy-=50;f.awakenLevel=(f.awakenLevel||0)+1;f.awakenTime=f.awakenLevel===2?600:900;if(f.awakenLevel===2&&root.RiftTanjiroFireRules){world.effects=world.effects.filter(e=>!(e.owner===f&&['tanjiroFx','waterWheel','waterDragon','waterDragonRide','breathSlash','fxBasic'].includes(e.kind)));f.trail=[];}world.begin(f,'awaken');f.inv=16;
  world.lastFeedback=f.awakenLevel===2?'全觉醒 / 技能免气力 · 普攻第五段解锁':'觉醒 / 普攻第五段解锁 · 再按 H 全觉醒';
- if(f.awakenLevel===2&&world.settings.cinematics)world.tanjiroCinematic={id:++world.cinematicSerial,kind:'awakening',actor:f};return true;
+ if(f.awakenLevel===2&&root.RiftTanjiroFireRules)world.lastFeedback='火之神神乐 / 10 秒限时强化 · 全招式切换';
+ if(f.awakenLevel===2&&!root.RiftTanjiroFireRules&&world.settings.cinematics)world.tanjiroCinematic={id:++world.cinematicSerial,kind:'awakening',actor:f};return true;
 }
 // Real arena choreography: one opening contact followed by twenty timed contacts.
 // The captured opponent stays interruptible through directional substitution.
@@ -91,7 +97,7 @@ function ultimatePose(a){
  return {...a,name:p.baseClip||'ultimate',clipId:p.clipId||null,t:p.t,move:{startup:p.hits[0],active:p.hits.at(-1)-p.hits[0]+1,end:p.duration},waterSequence:null};
 }
 function liveSequence(f){const a=f?.attack,s=a?.waterSequence;return s&&!s.finished&&!f.stun&&f.hp>0&&s.target.hp>0&&!s.target.inv?s:null;}
-function controlled(world,f){return [world.p1,world.p2].some(actor=>{const s=liveSequence(actor);return !!s&&(actor===f||s.target===f);});}
+function controlled(world,f){if(root.RiftTanjiroFireRules?.controlled(world,f))return true;return [world.p1,world.p2].some(actor=>{const s=liveSequence(actor);return !!s&&(actor===f||s.target===f);});}
 function stopSequence(world,f,a){
  if(!a.waterSequence||a.waterSequence.finished)return;
  if(a.waterSequence.dragon)a.waterSequence.dragon.life=0;
@@ -99,6 +105,7 @@ function stopSequence(world,f,a){
  world.lastFeedback='水龙连式中断 / 可用 I 定向替身脱离';
 }
 function advance(world){
+ root.RiftTanjiroFireRules?.advance(world);
  for(const f of [world.p1,world.p2]){
   const a=f.attack,s=a?.waterSequence;if(!s||s.finished)continue;
   if(!liveSequence(f)||s.target!==(f===world.p1?world.p2:world.p1)){stopSequence(world,f,a);continue;}
@@ -141,6 +148,7 @@ function resolveSequence(world,f,t,a){
  return true;
 }
 function afterHit(world,f,t,m,contact){
+ if(m.fire||m.fireSequenceHit){root.RiftTanjiroFireRules?.afterHit(world,f,t,m,contact);return;}
  if(contact.guarded||f.stun||!f.attack)return;
  if(m.waterSequenceHit){
   const s=f.attack.waterSequence;if(!s||s.finished)return;

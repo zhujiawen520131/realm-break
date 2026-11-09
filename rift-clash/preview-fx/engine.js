@@ -74,7 +74,7 @@ class World{
  let name=kit?kit.basic(f,a,keys,ground):ground?(keys.down?'launcher':a?.name==='slash1'?'slash2':a?.name==='slash2'?'slash3':'slash1'):'air';if(!name)return;
  if(!ground&&f.airCount>=3){f.buffer=null;return;}if(!ground)f.airCount++;
  f.dir=b.dir;f.inputDir=b.dir;this.begin(f,name);return;}
- if(key==='skill'&&(!a||canCancel)){const cost=kit&&f.awakenLevel===2?0:25;if(f.energy+0.001<cost){f.buffer=null;if(f===this.p1)this.lastFeedback='气力不足 / 角色技需要 25 气';return;}f.energy=Math.max(0,f.energy-cost);f.dir=b.dir;f.inputDir=b.dir;this.begin(f,key,kit?kit.variant({...keys,variant:b.variant},a):undefined);return;}
+ if(key==='skill'&&(!a||canCancel)){const cost=kit&&f.awakenLevel===2?0:25;if(f.energy+0.001<cost){f.buffer=null;if(f===this.p1)this.lastFeedback='气力不足 / 角色技需要 25 气';return;}f.energy=Math.max(0,f.energy-cost);f.dir=b.dir;f.inputDir=b.dir;this.begin(f,key,kit?kit.variant({...keys,variant:b.variant},a,f):undefined);return;}
 
  }
  dropThrough(f){
@@ -84,7 +84,7 @@ class World{
  }
  prepareUltimate(f){const b=f.buffer,a=f.attack;if(b?.key!=='ultimate'||f.stun||f.dash||a&&!(a.hit&&a.t>=a.move.startup+2&&a.name!=='ultimate'&&(!a.move.kit||!a.move.hits||a.move.hits===1||a.kitSlots?.size>=a.move.hits)))return;
  if(f.energy+0.001<100){f.buffer=null;if(f===this.p1)this.lastFeedback='气力不足 / 奥义需要 100 气';return;}
- f.energy=0;f.dir=b.dir;f.inputDir=b.dir;this.begin(f,'ultimate');f.inv=28;this.banner=45;this.bannerText=f.info.name+' / '+f.info.ultimate;
+ f.energy=0;f.dir=b.dir;f.inputDir=b.dir;this.begin(f,'ultimate');f.inv=28;this.banner=45;this.bannerText=f.info.name+' / '+(f.attack?.move.displayName||f.info.ultimate);
  if(f.hero!=='zenitsu'&&!(f.hero==='tanjiro'&&root.RiftTanjiroRules)&&this.settings.cinematics&&!this.cutin){const total=Number.isFinite(this.settings.cinematicTicks)?clamp(Math.round(this.settings.cinematicTicks),36,120):36;this.cutin={hero:f.hero,name:f.info.name,move:f.info.ultimate,color:f.color,dir:f.dir,remaining:total,total};}
  this.event('ultimate',{x:f.x,y:f.y-86,dir:f.dir,color:f.color,hero:f.hero,weapon:f.info.weapon});
  }
@@ -317,7 +317,7 @@ class World{
  const {guarded,counter,dir}=contact;const heavy=(name==='ultimate'&&m.finisher!==false)||name==='slash3';if(!t.stun){f.combo=0;f.comboDamage=0;}const scale=Math.max(.5,1-f.combo*.06);let damage=guarded?Math.max(1,Math.floor(m.damage*.12)):Math.round(m.damage*scale*(counter?1.12:1));
  if(guarded){t.stun=Math.max(t.stun,8);t.guardStun=8;t.vx=dir*3;t.energy=Math.min(100,t.energy+3);this.event('block',{x:t.x,y:t.y-88,dir,color:f.color,hero:f.hero,weapon:f.info.weapon,move:name,damage});this.burst(t.x,t.y-88,'#dcecff',12);this.lastFeedback='防御 / 绕到背后寻找机会';}
  else{t.returning=false;t.knockdown=t.knockdown||!!m.knockdown;if(m.knockdown)t.knockdownStyle=m.style==='thunderSix'?'thunder':'impact';t.downTime=0;t.downAge=0;t.fallTime=0;t.thunderDriftTicks=m.thunderDriftTicks||0;t.guardStun=0;const stunReduction=Math.max(0,f.combo-4)*3;t.stun=Math.max(12,m.stun-stunReduction)+(counter?4:0);t.vx=dir*m.push;t.vy=m.lift;t.attack=null;t.dash=0;t.block=false;t.buffer=null;t.flash=6;t.hurtTime=t.stun;t.animState='hurt';t.animTime=0;f.combo++;f.comboDamage+=damage;f.comboTimer=m.stun+24;f.energy=Math.min(100,f.energy+7);t.energy=Math.min(100,t.energy+5);this.shake=this.settings.shake?(heavy?(name==='ultimate'?11:8):4):0;this.burst(x,t.y-88,f.color,name==='ultimate'?42:22);this.event('hit',{x:t.x,y:t.y-88,dir,color:f.color,hero:f.hero,weapon:f.info.weapon,move:name,damage,heavy,counter,combo:f.combo});this.lastFeedback=f===this.p1?`${counter?'COUNTER / ':''}${f.combo} HIT / ${f.comboDamage} 伤害${name==='launcher'?' / 挑空！按 K 追击':''}`:'受到攻击 / I 替身脱身';}
- this.refreshSupport(t);t.hp=Math.max(0,t.hp-damage);t.lastHit=this.frame;if(m.kitUltimate||m.waterSequenceHit)root.RiftTanjiroRules?.afterHit(this,f,t,m,contact);
+ this.refreshSupport(t);t.hp=Math.max(0,t.hp-damage);t.lastHit=this.frame;if(m.kitUltimate||m.waterSequenceHit||m.fireSequenceHit)root.RiftTanjiroRules?.afterHit(this,f,t,m,contact);
  if(m.sixfoldOpen&&f.attack===m.sixfoldOpen){if(!guarded&&t.hp>0&&!f.stun)this.startSixfold(f,t,m.sixfoldOpen);else{f.attack.t=f.attack.move.startup+f.attack.move.active;f.vx=0;}}if(this.settings.hitstop)this.freeze=Math.max(this.freeze,guarded?3:m.stop+(counter?2:0));
  }
  burst(x,y,color,n){for(let i=0;i<n;i++){const angle=Math.random()*Math.PI*2,speed=2+Math.random()*9;this.particles.push({x,y,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,color,life:12+Math.random()*13,max:25,size:1+Math.random()*3});}if(root.RiftFXData&&this.particles.length>240)this.particles.splice(0,this.particles.length-240);}
