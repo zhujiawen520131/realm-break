@@ -6,3 +6,5 @@
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}.hero-card:hover,.scene-card:hover{transform:none}}
 
 .tanjiro-kit{margin:20px 0;padding:22px;border:1px solid #37535c;border-radius:12px;background:#13242b}.tanjiro-kit[hidden]{display:none}.tanjiro-kit p{font-size:13px;line-height:1.8;color:#a7c5cf}.tanjiro-kit a{color:#baf18c}.tanjiro-buttons{display:flex;gap:8px;flex-wrap:wrap}.tanjiro-buttons button{padding:11px 14px;border:1px solid #48707c;border-radius:8px;background:#213c47;color:#dceff2;cursor:pointer}.tanjiro-buttons button:hover{background:#31535e}
+
+@media(min-width:1000px){.hero-grid{grid-template-columns:repeat(7,minmax(0,1fr))}.hero-card{padding-left:9px}.hero-card strong{font-size:14px;left:9px}.hero-card small{left:9px}}
