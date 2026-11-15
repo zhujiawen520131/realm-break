@@ -8,3 +8,12 @@
 .tanjiro-kit{margin:20px 0;padding:22px;border:1px solid #37535c;border-radius:12px;background:#13242b}.tanjiro-kit[hidden]{display:none}.tanjiro-kit p{font-size:13px;line-height:1.8;color:#a7c5cf}.tanjiro-kit a{color:#baf18c}.tanjiro-buttons{display:flex;gap:8px;flex-wrap:wrap}.tanjiro-buttons button{padding:11px 14px;border:1px solid #48707c;border-radius:8px;background:#213c47;color:#dceff2;cursor:pointer}.tanjiro-buttons button:hover{background:#31535e}
 
 @media(min-width:1000px){.hero-grid{grid-template-columns:repeat(7,minmax(0,1fr))}.hero-card{padding-left:9px}.hero-card strong{font-size:14px;left:9px}.hero-card small{left:9px}}
+
+/* Ten-character roster: large portraits in two rows, touch targets retained. */
+@media(min-width:761px){.hero-grid{grid-template-columns:repeat(5,minmax(0,1fr))}.hero-card{height:142px}.hero-card canvas{right:0}.hero-card strong{font-size:15px;left:12px}.hero-card small{left:12px}}
+@media(max-width:760px){.hero-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-card{height:112px}.hero-card canvas{right:0}.skill-strip{align-items:flex-start;flex-wrap:wrap}.skill-strip>div{min-width:42%}}
+@media(pointer:coarse){.touch-controls>div:first-child{display:grid;grid-template-columns:repeat(2,38px);gap:5px}.touch-controls>div:last-child{display:grid;grid-template-columns:repeat(5,38px);gap:5px}.touch-controls .attack{width:38px;height:38px}.touch-controls button[data-key="KeyH"]{border-color:#eed982;color:#ffe3a1;background:#423826e6}}
+@media(pointer:coarse) and (max-width:760px){.touch-controls>div:first-child{grid-template-columns:repeat(2,29px);gap:4px}.touch-controls>div:last-child{grid-template-columns:repeat(5,29px);gap:4px}.touch-controls .attack{width:29px;height:29px}}
+
+/* Keep the browser scaling step as crisp as the pixel sprite draw pass. */
+#game{image-rendering:pixelated}

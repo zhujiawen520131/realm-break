@@ -1,7 +1,7 @@
 (function(root){
 'use strict';
 // Ma Nan: physical terrain construction. These are original gameplay values.
-const CATALOG={modes:['实时构筑','世界重构'],skills:[{id:'skill1',name:'山脊推浪',hint:'U · 岩脊沿操控方向推进'},{id:'skill2',name:'抬升构景',hint:'W + U · 石柱挑空，留下可站立石台'},{id:'skill3',name:'根脉绽裂',hint:'S + U · 藤根破土，扇形扫击倒地'}]};
+const CATALOG={modes:['实时构筑','世界重构'],skills:[{id:'skill1',name:'山脊推浪',hint:'U · 岩脊沿操控方向推进'},{id:'skill2',name:'抬升构景',hint:'W + U · 石柱挑空，留下可站立石台'},{id:'skill3',name:'根脉绽裂',hint:'S + U · 敌人脚下生根，缠绕后向上击飞'}]};
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 const applies=f=>f?.hero==='manan';
 const cost=(f,name='skill')=>name==='awaken'?50:name==='skill'?(f.awakenLevel===2?0:25):0;
@@ -24,14 +24,32 @@ function move(f,name,id){
   const key=['skill2','skill3'].includes(id)?id:'skill1';m={...m,variant:key,clipId:key==='skill1'?'skill':key,displayName:CATALOG.skills.find(s=>s.id===key).name,knockdown:true,finalPush:10,finalLift:-7};
   if(key==='skill1')m={...m,fxClip:'ridge',startup:13,hits:mode+1,interval:8,damage:mode?9:19,reach:0,projectile:'mananRidge',speed:full?14:11,range:full?660:mode?520:420,projectileWidth:full?120:90,projectileHeight:full?185:145};
   if(key==='skill2')m={...m,fxClip:'pillar',startup:8,hits:mode+2,interval:6,damage:7,reach:full?190:145,height:290,jump:-13.6,finalLift:-13,finalPush:6};
-  if(key==='skill3')m={...m,fxClip:'roots',startup:11,hits:mode+1,interval:7,damage:mode?9:20,reach:full?280:mode?225:180,height:195,radial:true};
+  if(key==='skill3')m={...m,fxClip:'roots',rootEruption:true,startup:11,hits:mode+1,interval:7,damage:mode?9:20,reach:full?280:mode?225:180,height:full?245:mode?220:195,rootRadius:70+mode*10,push:0,lift:0,finalPush:3,finalLift:-16-mode*2,radial:true};
   m.active=m.hits===1?7:(m.hits-1)*m.interval+1;m.end=m.startup+m.active+20;
  }else return null;
  m.damage=Math.round(m.damage*boost*10)/10;return m;
 }
 function effect(world,f,clipId,life=24,extra={}){const e={kind:'mananFx',hero:'manan',clipId,x:f.x,y:f.y,dir:f.dir,mode:f.attack?.move.mananMode??f.awakenLevel,life,max:life,owner:f,...extra};world.effects.push(e);return e;}
+function rootSurfaces(world){return [...(world.settings.platforms?world.platforms:[]),...(world.temporaryPlatforms||[]),world.floorSupport];}
+function rootHeight(world,cast,max){
+ const ceiling=rootSurfaces(world).filter(p=>p!==cast.surface&&p.y<cast.y&&cast.x>=p.x&&cast.x<=p.x+p.w).sort((a,b)=>b.y-a.y)[0];
+ return Math.min(max,ceiling?cast.y-ceiling.y:max);
+}
+function lockRoots(world,f,m){
+ const target=f===world.p1?world.p2:world.p1,x=clamp(target.x,Math.max(42,f.x-m.reach),Math.min(world.width-42,f.x+m.reach));
+ const surface=rootSurfaces(world).filter(p=>p.y>=target.y-1&&x>=p.x&&x<=p.x+p.w).sort((a,b)=>a.y-b.y)[0]||world.floorSupport;
+ return {x,y:surface.y,surface,cancelled:false};
+}
+function rootTouches(world,t,a){
+ const m=a.move,r=a.rootCast;if(!r||r.cancelled||t.inv||t.downTime||t.knockdown||t.hp<=0)return false;
+ const height=rootHeight(world,r,m.height);
+ // The root grows from the locked physical surface. A roof above it blocks
+ // both the visible vine and its hit column, even if the enemy changes floors.
+ return Math.abs(t.x-r.x)<=m.rootRadius+23&&t.y<=r.y+8&&t.y>r.y-height;
+}
 function begin(world,f,name,id){
  const a=f.attack;if(!a?.move.mananKit)return;a.variant=a.move.variant||id;a.clipId=a.move.clipId;a.direction=f.dir;a.originX=f.x;a.originY=f.y;a.onGround=!!world.supportAt(f);
+ if(a.move.rootEruption)a.rootCast=lockRoots(world,f,a.move);
  if(name==='awaken')effect(world,f,'aura',34);if(a.move.displayName)world.lastFeedback='马楠 / '+a.move.displayName;
 }
 function makePlatform(world,f,a){
@@ -46,6 +64,12 @@ function makePlatform(world,f,a){
 function update(world,f){
  if(!applies(f))return;if(f.awakenTime>0&&--f.awakenTime===0)f.awakenLevel=0;
  const a=f.attack,m=a?.move;if(!m?.mananKit)return;f.dir=a.direction;
+ if(m.rootEruption){
+  const r=a.rootCast;if(!r)return;
+  if(!rootSurfaces(world).includes(r.surface)||r.surface.life<=0){r.cancelled=true;if(r.effect)r.effect.life=Math.min(r.effect.life,5);}
+  if(!r.cancelled&&a.t===4){const growthTicks=m.startup+(m.hits-1)*m.interval-4;r.effect=effect(world,f,'roots',growthTicks+18,{x:r.x,y:r.y,rootEruption:true,growthTicks,rootCast:r,rootAttack:a,clipHeight:rootHeight(world,r,m.height)});}
+  if(r.effect)r.effect.clipHeight=rootHeight(world,r,m.height);
+ }
  if(m.jump&&a.t===4&&a.onGround){makePlatform(world,f,a);f.vy=m.jump;world.refreshSupport(f);effect(world,f,'pillar',34,{x:a.originX,y:a.originY});}
  if(a.name==='airheavy'&&a.t===m.startup)f.vy=Math.max(f.vy,12);
 }
@@ -58,6 +82,13 @@ function hitMove(m,last){return {...m,projectile:null,finisher:last,knockdown:la
 function resolve(world,f,t,a){
  const m=a.move;if(!m.mananKit)return false;if(a.mananSequence)return resolveSequence(world,f,t,a);
  const slot=m.hits===1?0:Math.floor((a.t-m.startup)/m.interval);if(slot<0||slot>=m.hits||a.kitSlots?.has(slot))return true;const last=slot===m.hits-1;
+ if(m.rootEruption){
+  // One eruption with timed contacts, not a sequence of effects retargeting
+  // the opponent. Walking or blinking out of the telegraphed column evades it.
+  if(a.t!==m.startup+slot*m.interval)return true;
+  a.kitSlots??=new Set();a.kitSlots.add(slot);if(!rootTouches(world,t,a))return true;
+  world.hit(f,t,hitMove(m,last),a.name,a.rootCast.x,{dir:t.x>=f.x?1:-1});a.hit=true;return true;
+ }
  if(m.projectile){
   a.kitSlots??=new Set();a.kitSlots.add(slot);world.spawnProjectile(f,{kind:'mananRidge',name:'skill',x:f.x+f.dir*50,y:a.originY-65,vx:f.dir*m.speed,vy:0,w:m.projectileWidth,h:m.projectileHeight,life:Math.ceil(m.range/m.speed)+3,maxTravel:m.range,traveled:0,mananMode:m.mananMode,move:hitMove(m,last)});
   const projectile=world.projectiles.at(-1);effect(world,f,'ridge',projectile.life,{x:projectile.x,y:projectile.y+65,projectile,mode:m.mananMode});return true;

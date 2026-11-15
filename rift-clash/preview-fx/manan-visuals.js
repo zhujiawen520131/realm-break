@@ -79,10 +79,15 @@ function drawAura(ctx,f,options={}){
 }
 function drawEffect(ctx,e,options={}){
  if(e?.kind!=='mananFx')return false;const clip=pack()?.fx?.[e.clipId];if(!clip)return false;
- const life=clamp(e.life||0,0,e.max||1),age=Math.max(0,(e.max||1)-life),index=options.reducedMotion?4:Math.min(7,Math.floor(age/Math.max(1,e.max||1)*8)),mode=e.mode||0;
+ const life=clamp(e.life||0,0,e.max||1),age=Math.max(0,(e.max||1)-life),mode=e.mode||0;
+ const index=e.rootEruption?(age<e.growthTicks?Math.min(2,Math.floor(age/Math.max(1,e.growthTicks)*3)):Math.min(7,3+Math.floor((age-e.growthTicks)/Math.max(1,(e.max||1)-e.growthTicks)*5))):options.reducedMotion?4:Math.min(7,Math.floor(age/Math.max(1,e.max||1)*8));
  let x=e.x||0,y=e.y||0;if(e.projectile){x=e.projectile.x;y=e.projectile.y+65;}
  const scale=(e.scale||clip.scale||.5)*(mode===2?1.25:mode===1?1.1:1),fade=Math.min(1,life/5);
  const stackedRidge=e.clipId==='ridge'&&mode===2?.82:1;
+ if(e.rootEruption&&Number.isFinite(e.clipHeight)){
+  ctx.save();ctx.beginPath();ctx.rect(x-360,y-e.clipHeight,720,e.clipHeight+10);ctx.clip();
+  const drawn=paint(ctx,clip.frames[index],x,y,e.dir||e.owner?.dir||1,scale,fade*(options.reducedMotion?.6:1));ctx.restore();return drawn;
+ }
  return paint(ctx,clip.frames[index],x,y,e.dir||e.owner?.dir||1,scale,fade*stackedRidge*(options.reducedMotion?.6:1));
 }
 function drawPlatforms(ctx,world,options={}){

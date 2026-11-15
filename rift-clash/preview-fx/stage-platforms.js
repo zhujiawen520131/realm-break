@@ -4,11 +4,22 @@
 // Keep the arena floor as a stable framing anchor while widening the world view.
 // Characters visibly climb on screen; the camera no longer pins their feet.
 function cameraView(world){
- const highest=Math.min(world.p1.y,world.p2.y),rise=Math.max(0,510-highest);
+ const highest=Math.min(world.p1.y,world.p2.y),lowest=Math.max(world.p1.y,world.p2.y),rise=Math.max(0,510-highest);
  const blend=Math.max(0,Math.min(1,(rise-80)/240)),weight=blend*blend*(3-2*blend);
- const fit=Math.min(1,430/(rise+180)),zoom=1+(fit-1)*weight;
- const anchored=230/zoom-170;
- return {y:anchored*weight,zoom};
+ const fit=Math.min(1,430/(rise+180)),groundZoom=1+(fit-1)*weight;
+ const groundY=(230/groundZoom-170)*weight;
+ // Keep both fighters readable when they pursue each other high above the
+ // arena. A grounded opponent still causes the ground-anchored zoom; when
+ // both rise, transition continuously to a frame fitted around their bodies.
+ const lowRise=Math.max(0,510-lowest),air=Math.max(0,Math.min(1,(lowRise-220)/380)),airWeight=air*air*(3-2*air);
+ const spread=lowest-highest,airZoom=Math.min(1,460/(spread+165));
+ const feetCenter=350+82.5*airZoom,focus=(highest+lowest)/2;
+ const airY=(feetCenter-340)/airZoom+340-focus;
+ // Mix screen translations, not world offsets, to keep motion continuous as
+ // zoom changes. Both endpoints frame the actors, as does their interpolation.
+ const zoom=groundZoom+(airZoom-groundZoom)*airWeight;
+ const y=(groundY*groundZoom*(1-airWeight)+airY*airZoom*airWeight)/zoom;
+ return {y,zoom};
 }
 function cameraX(world,zoom=1){
  const width=world.width||1200;if(width<=1200)return 0;

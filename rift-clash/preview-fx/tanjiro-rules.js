@@ -165,7 +165,7 @@ function afterHit(world,f,t,m,contact){
   return;
  }
  if(!m.kitUltimate||f.attack.waterSequence||t.hp<=0)return;
- const a=f.attack;a.waterSequence={target:t,startT:a.t,fx:f.x,fy:f.y,tx:t.x,ty:t.y,dir:f.dir,struck:new Set(),finished:false,boost:f.awakenLevel===2?1.2:f.awakenLevel?1.1:1};
+ const a=f.attack;a.waterSequence={target:t,startT:a.t,fx:f.x,fy:f.y,tx:t.x,ty:t.y,dir:f.dir,struck:new Set(),finished:false,boost:a.move.awakenMode===2?1.2:a.move.awakenMode?1.1:1};
  a.move={...a.move,active:ULTIMATE_TICKS+12,end:a.t+ULTIMATE_TICKS+18};f.vx=f.vy=t.vx=t.vy=0;
 }
 function finish(world){

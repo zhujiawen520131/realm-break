@@ -4,6 +4,12 @@
 // Call drawStage after scenery/before actors; drawOverlay in screen space before HUD.
 const WIDTH=1200,HEIGHT=640,clamp=(n,a=0,b=1)=>Math.max(a,Math.min(b,n));
 const smooth=p=>p*p*(3-2*p);
+function awakeningState(f){
+ if(!f)return null;const level=Math.max(0,Math.min(2,Number(f.awakenLevel)||0)),remaining=Math.max(0,Number(f.awakenTime)||0);
+ const modes=f.hero==='tanjiro'?['全集中 · 水之呼吸','火之神神乐']:f.hero==='zenitsu'?['雷之呼吸 · 觉醒','雷霆全觉醒']:f.hero==='manan'?(root.RiftMananRules?.CATALOG?.modes||['实时构筑','世界重构']):(root.RiftAnimeTrioRules?.CATALOG?.[f.hero]?.modes||root.RiftRosterRules?.CATALOG?.[f.hero]?.modes||['觉醒','全觉醒']);
+ const color=f.hero==='tanjiro'&&level===2?'#ffad56':f.hero==='zenitsu'&&level===2?'#b7edff':f.color||f.info?.color||'#b6ece1';
+ return {level,name:level?modes[level-1]:'常态',remaining,seconds:Math.ceil(remaining/60),progress:level?clamp(remaining/(level===2?600:900)):0,color,nextCost:level<2?50:null,canAwaken:level<2&&(f.energy||0)>=50,freeSkills:level===2};
+}
 function describe(f,side){
  const a=f?.attack,m=a?.move;if(f?.hero==='zenitsu')return null;
  if(a?.name!=='ultimate'||!m||![a.t,m.startup,m.active,m.end].every(Number.isFinite)||m.startup<=0||m.active<=0||m.end<=m.startup||a.t<0||a.t>=m.end)return null;
@@ -11,8 +17,8 @@ function describe(f,side){
  // Mirror motion-preview's authored recoil window. active=1 is gun emission,
  // not the end of the six/five scheduled shots; this never extends a hitbox.
  const volley=f.hero==='lara'||f.hero==='drake';
- const interval=volley?(f.hero==='lara'?6:7):Math.max(1,m.interval||active);
- const strikes=volley?(f.hero==='lara'?6:5):Math.ceil(active/interval);
+ const interval=m.rosterUltimate?Math.max(1,m.interval||active):volley?(f.hero==='lara'?6:7):Math.max(1,m.interval||active);
+ const strikes=m.rosterUltimate?Math.max(1,m.hits||1):volley?(f.hero==='lara'?6:5):Math.ceil(active/interval);
  const releaseEnd=Math.min(end-1,startup+(volley?(strikes-1)*interval+3:active));
  const phase=a.t<startup?'startup':a.t<releaseEnd?'release':'recovery';
  const start=phase==='startup'?0:phase==='release'?startup:releaseEnd;
@@ -56,15 +62,15 @@ function drawOverlay(ctx,world,{reducedMotion=false,flash=true}={}){
  ctx.fillStyle='#02060b';ctx.fillRect(0,0,WIDTH,height);ctx.fillRect(0,HEIGHT-height,WIDTH,height);
  // The horizontal portrait already names the move. Avoid duplicate type over it.
  if(p.phase!=='cutin'){
-  ctx.globalAlpha=.6*recovery;ctx.fillStyle='#071219';ctx.fillRect(340,113,520,48);
+  ctx.globalAlpha=.6*recovery;ctx.fillStyle='#071219';ctx.fillRect(340,148,520,42);
   ctx.globalAlpha=.9*recovery;ctx.fillStyle='#e9f2ed';ctx.font='700 19px "Noto Sans SC",system-ui,sans-serif';
-  ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(p.move,600,137,490);
+  ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(p.move,600,169,490);
   // A narrow held accent marks the final authored strike, never a fake hit/KO.
   // No whiteout, strobe, moving rays or replacement for the approved FX sheets.
-  if(p.finisher&&!reducedMotion&&flash){ctx.globalAlpha=.9;ctx.fillStyle=p.color;ctx.fillRect(510,160,180,2);}
+  if(p.finisher&&!reducedMotion&&flash){ctx.globalAlpha=.9;ctx.fillStyle=p.color;ctx.fillRect(510,190,180,2);}
  }
  ctx.restore();
 }
-root.RiftPresentation={inspect,drawStage,drawOverlay};
+root.RiftPresentation={inspect,drawStage,drawOverlay,awakeningState};
 if(typeof module!=='undefined')module.exports=root.RiftPresentation;
 })(typeof window!=='undefined'?window:globalThis);

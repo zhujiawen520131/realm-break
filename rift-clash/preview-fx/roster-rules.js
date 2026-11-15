@@ -16,6 +16,12 @@ function basic(f,a,keys,ground){
  return ({slash1:'slash2',slash2:'slash3'}[a?.name])||'slash1';
 }
 function move(f,name,id){
+ if(applies(f)&&name==='ultimate'){
+  const mode=f.awakenLevel||0,gun=['lara','drake'].includes(f.hero),hits=(gun?(f.hero==='lara'?6:5):1)+mode,interval=mode===2?4:mode===1?5:6,startup=22-mode*2;
+  const damage=gun?(f.hero==='lara'?9:11):mode===2?(f.hero==='cloud'?18:19):mode===1?22:39;
+  const reach=gun?0:(f.hero==='cloud'?[230,270,320]:[460,520,590])[mode];
+  return {kit:true,rosterKit:true,rosterUltimate:true,rosterMode:mode,awakenMode:mode,style:null,clipId:'ultimate',fxClip:'ultimate',displayName:(mode===2?'全觉醒 · ':mode?'觉醒 · ':'')+(f.hero==='cloud'?'十字斩':f.hero==='lara'?'双枪连射':f.hero==='wukong'?'重棍破阵':'火力压制'),startup,active:(hits-1)*interval+1,end:Math.max(58,startup+(hits-1)*interval+20),hits,interval,damage,reach,height:185+mode*20,stun:28,stop:gun?3:6,push:gun?2:1,lift:0,finalPush:gun?13:f.hero==='wukong'?18:14,finalLift:-8,knockdown:true,...(gun?{projectile:'bullet',speed:23+mode*2,range:760+mode*120,projectileWidth:36,projectileHeight:18,muzzleHeight:f.hero==='lara'?110:90}:{} )};
+ }
  if(!applies(f)||!['skill','heavy','airheavy','throw','awaken'].includes(name))return null;
  const mode=f.awakenLevel||0,full=mode===2,boost=mode===1?1.1:full?1.2:1;
  let m={kit:true,rosterKit:true,rosterMode:mode,style:null,variant:null,cost:cost(f,name),clipId:null,fxClip:'basic',startup:8,active:10,end:34,damage:6,reach:150,height:170,stun:32,stop:4,push:1.5,lift:0,hits:2,interval:5,travel:0,knockdown:false};
@@ -45,7 +51,7 @@ function move(f,name,id){
  if(f.hero==='lara'&&['throw','heavy','airheavy'].includes(name)){m={...m,projectile:'bullet',reach:0,speed:24,range:name==='throw'?(full?210:180):(full?420:340),projectileWidth:28,projectileHeight:16,muzzleHeight:name==='airheavy'?65:110,shotY:name==='airheavy'?14:0,finalLift:-5};}
  m.damage=Math.round(m.damage*boost*10)/10;m.active=m.hits===1?6:(m.hits-1)*m.interval+1;m.end=m.startup+m.active+(m.jump?24:16);return m;
 }
-function effect(world,f,a,clipId,life=20){world.effects.push({kind:'rosterFx',hero:f.hero,clipId,mode:a.move.rosterMode,owner:f,attack:a,x:f.x+f.dir*42,y:f.y-80,dir:f.dir,life,max:life,reach:a.move.reach});}
+function effect(world,f,a,clipId,life=20){world.effects.push({kind:a.name==='ultimate'?(f.hero==='cloud'?'cross':f.hero==='wukong'?'staff':'fxBasic'):'rosterFx',...(a.name==='ultimate'?{fxClip:'ultimate'}:{}),hero:f.hero,clipId,mode:a.move.rosterMode,owner:f,attack:a,x:f.x+f.dir*42,y:f.y-80,dir:f.dir,life,max:life,reach:a.move.reach,range:a.move.reach});}
 function begin(world,f){const a=f.attack;if(!a?.move.rosterKit)return;a.variant=a.move.variant;a.clipId=a.move.clipId;a.direction=f.dir;if(a.name==='awaken')effect(world,f,a,'awaken',34);if(a.move.displayName)world.lastFeedback=f.info.name+' / '+a.move.displayName;}
 function update(world,f){
  if(!applies(f))return;if(f.awakenTime>0&&--f.awakenTime===0)f.awakenLevel=0;

@@ -7,7 +7,7 @@ const enabled=w=>w.settings.bvn!==false;
 const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 function init(f){if(!Number.isFinite(f.stamina))f.stamina=RULES.stamina;f.bvnAirDashes??=0;f.bvnAirGhosts??=0;f.bvnStaminaDelay??=0;f.bvnGhostCD??=0;f.bvnGuardRecovery??=0;}
 function spend(f,n){init(f);if(f.stamina+1e-6<n)return false;f.stamina=Math.max(0,f.stamina-n);f.bvnStaminaDelay=RULES.regenDelay;return true;}
-function controlled(w,f){return !!w.cutin||!!w.tanjiroCinematic||[w.p1,w.p2].some(p=>p.attack?.sixfold||p.attack?.mananSequence||p.attack?.waterSequence||p.attack?.fireSequence);}
+function controlled(w,f){return !!w.cutin||!!w.tanjiroCinematic||!!root.RiftAnimeTrioRules?.controlled(w,f)||[w.p1,w.p2].some(p=>p.attack?.sixfold||p.attack?.mananSequence||p.attack?.waterSequence||p.attack?.fireSequence);}
 function canCancel(w,f,key){
  if(!enabled(w))return undefined;const a=f.attack;if(!a?.bvnRole)return undefined;
  if(a.bvnRole==='downward')return false;
@@ -37,7 +37,7 @@ function execute(w,f,keys,b,legacyCancel){
  if(f.stun||f.dash||f.knockdown||controlled(w,f))return false;
  if(b.key==='attack'&&root.RiftBvnHeroRules?.counter?.(w,f,b.dir)){f.buffer=null;return true;}
  if(b.key==='signature'){
-  if(!a||can){root.RiftBvnHeroRules?.activate?.(w,f,b.dir);f.buffer=null;}return true;
+  if(!a||can){if(root.RiftAnimeTrioRules?.applies(f))root.RiftAnimeTrioRules.activateSignature(w,f,b.dir);else root.RiftBvnHeroRules?.activate?.(w,f,b.dir);f.buffer=null;}return true;
  }
  if(b.key==='dash'&&(keys.up||keys.down)){
   if(a&&!can)return true;
@@ -57,6 +57,7 @@ function execute(w,f,keys,b,legacyCancel){
   if(!ground)f.bvnAirDashes++;return false;
  }
  if(b.key==='attack'&&ground&&(keys.up||keys.down)&&(!a||can)){
+  if(root.RiftAnimeTrioRules?.applies(f))return false;
   if(!keys.up&&['tanjiro','zenitsu'].includes(f.hero))return false;
   f.dir=f.inputDir=b.dir;
   const rising=!!keys.up,hasKit=f.hero==='manan'||f.hero==='tanjiro'&&root.RiftTanjiroRules||f.hero==='zenitsu'&&root.RiftZenitsuRules||root.RiftRosterRules?.applies(f);
