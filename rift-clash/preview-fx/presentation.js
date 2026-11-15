@@ -6,7 +6,8 @@ const WIDTH=1200,HEIGHT=640,clamp=(n,a=0,b=1)=>Math.max(a,Math.min(b,n));
 const smooth=p=>p*p*(3-2*p);
 function awakeningState(f){
  if(!f)return null;const level=Math.max(0,Math.min(2,Number(f.awakenLevel)||0)),remaining=Math.max(0,Number(f.awakenTime)||0);
- const modes=f.hero==='tanjiro'?['全集中 · 水之呼吸','火之神神乐']:f.hero==='zenitsu'?['雷之呼吸 · 觉醒','雷霆全觉醒']:f.hero==='manan'?(root.RiftMananRules?.CATALOG?.modes||['实时构筑','世界重构']):(root.RiftAnimeTrioRules?.CATALOG?.[f.hero]?.modes||root.RiftRosterRules?.CATALOG?.[f.hero]?.modes||['觉醒','全觉醒']);
+ const overdriveModes=root.RiftAwakeningOverdriveRules?.CATALOG?.[f.hero]?.modes?.map(m=>m.name);
+ const modes=overdriveModes|| (f.hero==='tanjiro'?['全集中 · 水之呼吸','火之神神乐']:f.hero==='zenitsu'?['雷之呼吸 · 觉醒','雷霆全觉醒']:f.hero==='manan'?(root.RiftMananRules?.CATALOG?.modes||['实时构筑','世界重构']):(root.RiftAnimeTrioRules?.CATALOG?.[f.hero]?.modes||root.RiftRosterRules?.CATALOG?.[f.hero]?.modes||['觉醒','全觉醒']));
  const color=f.hero==='tanjiro'&&level===2?'#ffad56':f.hero==='zenitsu'&&level===2?'#b7edff':f.color||f.info?.color||'#b6ece1';
  return {level,name:level?modes[level-1]:'常态',remaining,seconds:Math.ceil(remaining/60),progress:level?clamp(remaining/(level===2?600:900)):0,color,nextCost:level<2?50:null,canAwaken:level<2&&(f.energy||0)>=50,freeSkills:level===2};
 }

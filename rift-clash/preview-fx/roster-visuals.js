@@ -10,7 +10,8 @@ function bodyPose(f){const a=f.attack,m=a?.move;if(!a)return null;let id=a.clipI
  else if(!m.rosterKit)return null;
  const mode=m?.rosterMode??m?.zenitsuMode??f.awakenLevel,upgraded=a.name==='awaken'&&mode===2?root.RiftAwakeningV2?.heroes?.[f.hero]?.body:null;
  const clip=upgraded||root.RiftRosterArt?.heroes?.[f.hero]?.body?.[id];if(!clip)return null;const count=8,events=clip.events||{},contact=clamp(events.firstStrike??events.strike??events.impact??events.shoot??4,1,6),scale=clip.scale||.4;let index=0;
- if(a.name==='awaken')index=Math.min(7,Math.floor(a.t/Math.max(1,m.end)*8));
+ if(Number.isInteger(a.bodyFrame)&&a.bodyFrame>=0&&a.bodyFrame<8)index=a.bodyFrame;
+ else if(a.name==='awaken')index=Math.min(7,Math.floor(a.t/Math.max(1,m.end)*8));
  else if(a.t<m.startup)index=Math.min(contact-1,Math.floor(a.t/Math.max(1,m.startup)*contact));
  else if(a.t<m.startup+m.active){const interval=m.interval||m.active,elapsed=a.t-m.startup,slot=Math.floor(elapsed/interval),local=elapsed%interval;if(f.hero==='zenitsu'&&id==='surge'&&events.fifthStrike!==undefined){const lastStrike=events.fifthStrike,hitCount=Math.max(1,m.hits||1),current=contact+Math.round(slot/Math.max(1,hitCount-1)*(lastStrike-contact)),next=slot<hitCount-1?contact+Math.round((slot+1)/Math.max(1,hitCount-1)*(lastStrike-contact)):8;index=Math.min(7,current+Math.floor(local/Math.max(1,Math.min(interval,m.active-slot*interval))*(next-current)));}
  else if(['lara','drake'].includes(f.hero)&&events.shoot!==undefined){index=slot<m.hits-1?Math.min(6,contact+Math.floor(local/interval*(7-contact))):Math.min(7,contact+Math.floor(local/Math.max(1,Math.min(interval,m.active-slot*interval))*(8-contact)));}

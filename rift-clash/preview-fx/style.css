@@ -17,3 +17,5 @@
 
 /* Keep the browser scaling step as crisp as the pixel sprite draw pass. */
 #game{image-rendering:pixelated}
+
+.awakening-comparison{display:grid;grid-template-columns:1fr 1fr;gap:14px}.awakening-comparison article{background:#112026;border:1px solid #345059;border-radius:8px;padding:16px}.awakening-comparison h3{margin:0 0 10px;color:#d3edbd;font-size:16px}.awakening-comparison p{line-height:1.85}.awakening-comparison article:last-child{border-color:#887447}.awakening-comparison article:last-child h3{color:#f0d28d}@media(max-width:760px){.awakening-comparison{grid-template-columns:1fr}.awakening-comparison article{padding:12px}}
