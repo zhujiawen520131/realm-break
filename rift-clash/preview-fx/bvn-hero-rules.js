@@ -68,7 +68,7 @@ function resolve(world,f,t,a){
  if(m.projectile){
   a.kitSlots.add(slot);
   // The new BVN visual adapter can supply the authored muzzle for this pose.
-  const pose=visualPose(f),origin=root.RiftMotionPreview?.projectileOrigin?.(pose.actor,'slash3')||{x:f.x+f.dir*50,y:f.y-110};
+  const pose=visualPose(f),origin=root.RiftMotion24Visual?.projectileOrigin?.(f,'signature')||root.RiftMotionPreview?.projectileOrigin?.(pose.actor,'slash3')||{x:f.x+f.dir*50,y:f.y-110};
   world.spawnProjectile(f,{kind:'bullet',name:'signature',x:origin.x,y:origin.y,vx:f.dir*m.speed,vy:0,w:26,h:18,maxTravel:m.range,traveled:0,life:Math.ceil(m.range/m.speed)+3,move:hit,bvnMode:m.bvnMode});effect(world,f,a,m.fxClip,10,{x:origin.x,y:origin.y});return true;
  }
  if(!a.fxSlots.has(slot)){a.fxSlots.add(slot);effect(world,f,a,m.fxClip,18,{angle:m.kind==='fireCross'?(slot===0?-.65:.65):0,slot});world.event('swing',{x:f.x,y:f.y-80,hero:f.hero,dir:f.dir,color:f.color,weapon:f.info.weapon,move:'signature'});}

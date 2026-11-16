@@ -71,7 +71,7 @@ function resolve(world,f,t,a){
   a.kitSlots??=new Set();a.kitSlots.add(slot);
   const spec={kind:m.projectile,name:a.name,move:hitMove(m,last),vx:f.dir*m.speed,vy:m.shotY||0,gravity:m.gravity||0,w:m.projectileWidth,h:m.projectileHeight,maxTravel:m.range,traveled:0,life:m.projectile==='grenade'?65:Math.ceil(m.range/m.speed)+4,rosterMode:m.rosterMode,fxClip:m.fxClip};
   // Fixed muzzle offsets are in actor coordinates; opponent positions never aim a shot.
-  if(m.muzzleHeight!==undefined){const authored=root.RiftRosterVisual?.projectileOrigin?.(f,a.name);if(!authored||!Number.isFinite(authored.x)||!Number.isFinite(authored.y)){spec.x=f.x+f.dir*55;spec.y=f.y-m.muzzleHeight;}}
+  if(m.muzzleHeight!==undefined){const authored=root.RiftMotion24Visual?.projectileOrigin?.(f,a.name)||root.RiftRosterVisual?.projectileOrigin?.(f,a.name);if(!authored||!Number.isFinite(authored.x)||!Number.isFinite(authored.y)){spec.x=f.x+f.dir*55;spec.y=f.y-m.muzzleHeight;}}
   world.spawnProjectile(f,spec);if(!['arrow','grenade'].includes(m.projectile))effect(world,f,a,m.fxClip,12);return true;
  }
  a.fxSlots??=new Set();if(!a.fxSlots.has(slot)){a.fxSlots.add(slot);effect(world,f,a,m.fxClip,12);world.event('swing',{x:f.x,y:f.y-80,dir:f.dir,hero:f.hero,weapon:f.info.weapon,color:f.color,move:a.name});}

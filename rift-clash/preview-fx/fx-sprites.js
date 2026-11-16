@@ -24,12 +24,14 @@ const basicScale={cloud:.74,wukong:.76,tanjiro:.74,zenitsu:.66};
 const basicOpacity={cloud:.7,wukong:.72,tanjiro:.7,zenitsu:.58};
 const effectBindings=new WeakMap();
 function attackPlacement(f,a,dir){
+ const authored=f?.attack===a&&root.RiftMotion24Visual?.weaponPlacement?.(f,{dir});if(authored)return authored;
  const key=a?.name,profile=(root.RiftMotionData?.eightFrameMode&&contactAnchors[f?.hero]?.[key])||[48,-88,key==='launcher'?-.55:key==='slash2'?.28:0];
  return {x:(Number(f?.x)||0)+dir*profile[0],y:(Number(f?.y)||0)+profile[1],angle:profile[2]};
 }
 // Only suppress effects that are already painted into the actual body cel;
 // the rest of the attack and other animation packs still use their FX sprites.
 function bakedSlash(f,a){
+ if(f?.attack===a&&root.RiftMotion24Visual?.resolve?.(f)?.imageReady)return false;
  if(!root.RiftMotionData?.eightFrameMode||a?.name!=='slash3'||!['tanjiro','zenitsu'].includes(f?.hero))return false;
  const pose=root.RiftMotionPreview?.resolve?.(f);
  return pose?.clip==='attack3'&&pose.index>=3&&pose.index<=6;
@@ -114,7 +116,9 @@ function drawEffect(ctx,e,options={}){
  if(follows){
   const b=binding(e),dir=e.dir<0?-1:1;
   if(stillBound(b)){
-   if(e.kind==='waterWheel'){
+   const authored=root.RiftMotion24Visual?.weaponPlacement?.(b.actor,{dir});
+   if(authored)b.last=authored;
+   else if(e.kind==='waterWheel'){
     const p=root.RiftMotionPreview?.resolve?.(b.actor),lift=p?.clip==='skill'?(Number(p.frame.gameOffsetY??p.frame.previewOffsetY)||0)*p.scale:0;
     b.last={x:b.actor.x+dir*24,y:b.actor.y-80+lift,angle};
    }else if(e.kind==='thunderDash')b.last={x:b.actor.x+dir*48,y:b.actor.y-75,angle};
@@ -142,10 +146,13 @@ function drawProjectile(ctx,b,options={}){
  return b.kind==='wave'&&drawn;
 }
 function drawFeedback(ctx,e,options={}){
+ // Consume only the duplicate flash, so Feedback does not fall back to its
+ // geometric muzzle. The shot event still reaches sound and projectile logic.
+ if(e.kind==='muzzle'&&e.bakedMuzzle===true)return true;
  if(e.kind==='impact'){const id=['skill','ultimate'].includes(e.move)?e.move:'basic',clip=clipFor(e.hero,id),impacts=validSequence(clip?.impactFrames,[]);if(impacts.length)return paint(ctx,e.hero,id,e.age,e.max,e.x,e.y,e.dir||1,0,{...options,indices:impacts});}
  if(e.kind==='muzzle')return paint(ctx,e.hero,e.move==='ultimate'?'ultimate':'basic',e.age,e.max,e.x,e.y,e.dir||1,e.angle||0,{...options,release:true,scaleFactor:['lara','drake'].includes(e.hero)?.65:1});
  if(e.kind==='impact'&&e.hero==='drake'&&!['skill','ultimate'].includes(e.move))return paint(ctx,'drake','basic',e.age,e.max,e.x,e.y,e.dir||1,0,{...options,release:true});
  return false;
 }
-root.RiftFXSprites={ready,isReady:(hero,id)=>!!loaded[hero]?.[id],resolve,drawStartup,drawEffect,drawProjectile,drawFeedback};
+root.RiftFXSprites={ready,attackPlacement,bakedSlash,isReady:(hero,id)=>!!loaded[hero]?.[id],resolve,drawStartup,drawEffect,drawProjectile,drawFeedback};
 })(typeof window!=='undefined'?window:globalThis);

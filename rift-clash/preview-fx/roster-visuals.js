@@ -38,11 +38,17 @@ function drawEffect(ctx,e,options={}){let hero=e.hero||e.owner?.hero,id=e.clipId
  else if(e.kind==='explosion'&&e.rosterMode!==undefined){id='skill1';}
  else if(!['rosterFx','rosterImpact'].includes(e.kind))return false;
  id=id==='awaken'?'aura':id==='basic'?'skill2':id;const clip=clipFor(hero,id,mode);if(!clip)return false;
- const age=Math.max(0,e.max-e.life),contact=id==='aura'?0:clip.events?.contact??clip.events?.strike??3,index=options.reducedMotion?4:Math.min(7,contact+Math.floor(age/Math.max(1,e.max)*(8-contact))),aura=id==='aura';let scale=(mode===2?.82:mode===1?.67:.5);if(['lara','drake'].includes(hero)&&id!=='skill1')scale*=.68;
+ const age=Math.max(0,e.max-e.life),contact=id==='aura'?0:clip.events?.contact??clip.events?.strike??3,index=options.reducedMotion?4:Number.isInteger(e.frameIndex)?Math.max(0,Math.min(clip.frames.length-1,e.frameIndex)):Math.min(7,contact+Math.floor(age/Math.max(1,e.max)*(8-contact))),aura=id==='aura';let scale=(mode===2?.82:mode===1?.67:.5);if(['lara','drake'].includes(hero)&&id!=='skill1')scale*=.68;
  // The persistent aura already covers the awakening animation. Avoid a
  // second displaced copy, especially with ground-anchored second-stage art.
  if(aura&&e.owner?.attack?.name==='awaken'&&e.owner.awakenLevel>0)return true;
  let x=e.x,y=e.y,angle=0;if(aura&&e.owner){x=e.owner.x;if(mode===2&&root.RiftAwakeningV2?.heroes?.[hero]?.fx===clip){scale=clip.scale||.5;const bottom=Math.max(...clip.frames.map(q=>q.bounds?q.bounds[1]+q.bounds[3]:q.height));y=e.owner.y-(bottom-clip.frames[index].anchor[1])*scale;}else y=e.owner.y-115;}else if(['lara','drake'].includes(hero)){const origin=e.owner&&e.owner.attack===e.attack?projectileOrigin(e.owner,e.attack?.name):null;if(origin&&id!=='skill1'){x=origin.x;y=origin.y;}const m=e.attack?.move;if(m?.projectile==='bullet')angle=Math.atan2(m.shotY||0,m.speed||1);}
+ // Only weapon trails and muzzle flashes follow authored limbs. Auras,
+ // explosions and immobilization glyphs remain in their simulation space.
+ const weaponTrail=e.kind==='rosterFx'&&!aura&&((['cloud','zenitsu'].includes(hero))||(hero==='wukong'&&id!=='skill1'));
+ const muzzle=e.kind==='rosterFx'&&!aura&&['lara','drake'].includes(hero)&&id!=='skill1';
+ const authored=(weaponTrail||muzzle)&&root.RiftMotion24Visual?.boundWeaponPlacement?.(e,{dir:e.dir||e.owner?.dir||1,...(muzzle?{attachment:'muzzle'}:{})});
+ if(authored){x=authored.x;y=authored.y;if(weaponTrail)angle=authored.angle;}
  return paint(ctx,clip.frames[index],x,y,e.dir||e.owner?.dir||1,scale,Math.min(1,e.life/5)*(mode===2?.92:.72),angle);
 }
 function drawProjectile(ctx,b,options={}){if(!b.rosterMode||b.kind!=='wave')return false;const clip=clipFor(b.owner.hero,b.fxClip||'skill1');if(!clip)return false;const index=options.reducedMotion?4:Math.min(6,Math.floor((b.age||0)/3)),scale=b.kind==='arrow'?.3:b.owner.hero==='wukong'?.35:.62;return paint(ctx,clip.frames[index],b.x,b.y,b.direction||Math.sign(b.vx)||1,scale,.86);}

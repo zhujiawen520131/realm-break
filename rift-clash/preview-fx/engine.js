@@ -28,6 +28,9 @@ const HEROES={
 
 // Per-character timings are prototype balance values, not source-game frame data.
 const BREATH_MOVES={
+ // The authored opening slash reaches x=175 at contact. hitbox() adds a
+ // 12-pixel forward offset; its 163-pixel span now matches that blade sweep.
+ cloud:{slash1:{reach:163}},
  tanjiro:{skill:{startup:10,active:10,end:34,reach:172,height:138,damage:18,stun:31,push:6,lift:-4,stop:8,travel:7,interval:10,style:'waterWheel'},ultimate:{startup:18,active:28,end:62,reach:180,height:140,damage:10,stun:29,push:3,lift:-2,stop:5,travel:8,interval:7,style:'waterDragon'}},
  zenitsu:{skill:{startup:14,active:8,end:38,reach:108,height:105,damage:20,stun:29,push:9,lift:-3,stop:9,travel:30,interval:8,style:'thunderDash'},ultimate:{startup:6,active:12,end:32,reach:95,height:115,damage:7,stun:30,push:0,lift:-9,stop:2,travel:40,interval:6,style:'thunderSix'}}
 };
@@ -305,10 +308,22 @@ class World{
   const big=spec.name==='ultimate',muzzleY={cloud:92,lara:110,wukong:100,drake:90,tanjiro:90,zenitsu:90}[f.hero]||90,basic=!!f.attack&&f.attack.name===spec.name&&f.attack.move.pistol;
   // Preview markers describe a fixed weapon endpoint in the authored pose.
   // Neither aiming nor origin calibration reads the opponent's position.
-  const calibrated=root.RiftRosterVisual?.projectileOrigin?.(f,spec.name)||root.RiftMotionPreview?.projectileOrigin?.(f,spec.name),origin=calibrated&&Number.isFinite(calibrated.x)&&Number.isFinite(calibrated.y)?calibrated:null;
+  const calibrated=root.RiftMotion24Visual?.projectileOrigin?.(f,spec.name)||root.RiftRosterVisual?.projectileOrigin?.(f,spec.name)||root.RiftMotionPreview?.projectileOrigin?.(f,spec.name),origin=calibrated&&Number.isFinite(calibrated.x)&&Number.isFinite(calibrated.y)?calibrated:null;
   const x=spec.x??origin?.x??f.x+f.dir*(basic?50:65),y=spec.y??origin?.y??f.y-muzzleY;
-  if(spec.kind==='bullet')this.event('shot',{x:origin?x:f.x+f.dir*50,y,color:f.color,hero:f.hero,weapon:'pistol',move:spec.name,dir:Math.sign(spec.vx)||f.dir,angle:Math.atan2(spec.vy||0,Math.abs(spec.vx||0))});
-  this.projectiles.push({x,y,vx:f.dir*13,vy:0,w:60,h:86,owner:f,direction:f.dir,move:{damage:15,stun:30,push:8,lift:-3,stop:8},name:big?'ultimate':'skill',castSerial:f.attackSerial,kind:'wave',life:100,dead:false,hitTargets:new Set(),age:0,...spec,...(origin?.targetHeight===160?{targetHeight:160,muzzlePathStartX:f.x+f.dir*23}:{} )});
+  // Cloud releases the wave at the actual tip. Its first collision sweep
+  // includes the visible forward blade, so a close opponent under the blade
+  // is not skipped merely because the emission point is already beyond them.
+  // Subsequent ticks use only the travelling wave; damage is still applied once.
+  let bladeSweep=null;
+  if(f.hero==='cloud'&&(spec.kind==='wave'||spec.overdrive&&spec.kind==='overdriveProjectile'&&f.attack?.move.pattern==='wave')&&spec.name==='skill'&&origin?.originKind==='tip'){
+   const grip=root.RiftMotion24Visual?.getAttachment?.(f,'weapon'),dir=Math.sign(spec.vx)||f.dir;
+   if(grip&&Number.isFinite(grip.x)&&(x-f.x)*dir>0){
+    const from=Math.min((x-f.x)*dir,Math.max((grip.x-f.x)*dir,(spec.w||60)/2+12));
+    bladeSweep={muzzlePathStartX:f.x+dir*from};
+   }
+  }
+  if(spec.kind==='bullet')this.event('shot',{x:origin?x:f.x+f.dir*50,y,color:f.color,hero:f.hero,weapon:'pistol',move:spec.name,bakedMuzzle:!!origin?.bakedMuzzle,dir:Math.sign(spec.vx)||f.dir,angle:Math.atan2(spec.vy||0,Math.abs(spec.vx||0))});
+  this.projectiles.push({x,y,vx:f.dir*13,vy:0,w:60,h:86,owner:f,direction:f.dir,move:{damage:15,stun:30,push:8,lift:-3,stop:8},name:big?'ultimate':'skill',castSerial:f.attackSerial,kind:'wave',life:100,dead:false,hitTargets:new Set(),age:0,...spec,...(origin?.targetHeight===160?{targetHeight:160,muzzlePathStartX:f.x+f.dir*23}:{} ),...bladeSweep});
  }
  special(f,t,name){const big=name==='ultimate',dir=f.dir;const move={knockdown:true,damage:big?39:15,stun:big?47:30,push:big?13:7,lift:big?-7:-3,stop:big?12:6};
   this.lastFeedback=f.info.name+' / '+(big?f.info.ultimate:f.info.skill);
@@ -333,6 +348,12 @@ class World{
  const {guarded,counter,dir}=contact;const armor=!guarded&&t.hero==='zenitsu'&&root.RiftZenitsuRules?.armored(t,m,name),saved=armor?Object.fromEntries(['attack','stun','vx','vy','knockdown','knockdownStyle','downTime','downAge','fallTime','thunderDriftTicks','guardStun','dash','buffer','hurtTime','animState','animTime'].map(k=>[k,t[k]])):null;const heavy=(name==='ultimate'&&m.finisher!==false)||name==='slash3';if(!t.stun){f.combo=0;f.comboDamage=0;}const scale=Math.max(.5,1-f.combo*.06);let damage=guarded?Math.max(1,Math.floor(m.damage*.12)):Math.round(m.damage*scale*(counter?1.12:1));
  if(guarded){t.stun=Math.max(t.stun,8);t.guardStun=8;t.vx=dir*3;t.energy=Math.min(100,t.energy+3);this.event('block',{x:t.x,y:t.y-88,dir,color:f.color,hero:f.hero,weapon:f.info.weapon,move:name,damage});this.burst(t.x,t.y-88,'#dcecff',12);this.lastFeedback='防御 / 绕到背后寻找机会';}
  else{t.returning=false;t.knockdown=t.knockdown||!!m.knockdown;if(m.knockdown)t.knockdownStyle=m.style==='thunderSix'?'thunder':'impact';t.downTime=0;t.downAge=0;t.fallTime=0;t.thunderDriftTicks=m.thunderDriftTicks||0;t.guardStun=0;const stunReduction=Math.max(0,f.combo-4)*3;t.stun=Math.max(12,m.stun-stunReduction)+(counter?4:0);t.vx=dir*m.push;t.vy=m.lift;t.attack=null;t.dash=0;t.block=false;t.buffer=null;t.flash=6;t.hurtTime=t.stun;t.animState='hurt';t.animTime=0;f.combo++;f.comboDamage+=damage;f.comboTimer=m.stun+24;f.energy=Math.min(100,f.energy+7);t.energy=Math.min(100,t.energy+5);this.shake=this.settings.shake?(heavy?(name==='ultimate'?11:8):4):0;this.burst(x,t.y-88,f.color,name==='ultimate'?42:22);this.event('hit',{x:t.x,y:t.y-88,dir,color:f.color,hero:f.hero,weapon:f.info.weapon,move:name,damage,heavy,counter,combo:f.combo});this.lastFeedback=f===this.p1?`${counter?'COUNTER / ':''}${f.combo} HIT / ${f.comboDamage} 伤害${name==='launcher'?' / 挑空！按 K 追击':''}`:'受到攻击 / I 替身脱身';}
+ // A confirmed contact snapshots visual attachment points for this exact cast.
+ // Rendering may run later or be paused; release positions never follow a new attack.
+ if(!guarded&&f.attack?.name===name&&m.sourceAttackSerial===f.attackSerial){
+  const stamp={tick:f.attack.t,worldTick:this.frame,attackSerial:f.attackSerial,x:t.x,y:t.y-88,attachments:root.RiftMotion24Visual?.getAttachments?.(f)||null};
+  f.attack.motion24LastContact=stamp;root.RiftMotion24Visual?.onContact?.(this,f,stamp);
+ }
  root.RiftBvnRules?.afterHit(this,f,t,m,name,contact);root.RiftBvnHeroRules?.afterHit?.(this,f,t,m,name,contact);
  if(saved){Object.assign(t,saved);this.lastFeedback='全觉醒 / 承受伤害继续出招';}this.refreshSupport(t);t.hp=Math.max(0,t.hp-damage);t.lastHit=this.frame;if(name==='ultimate'&&!guarded&&m.finisher!==false){const serial=m.sourceAttackSerial??f.attackSerial,mode=m.awakenMode??m.rosterMode??m.zenitsuMode??m.mananMode??m.animeMode??f.attack?.move.awakenMode??f.awakenLevel??0;if(f.lastFinisherSerial!==serial){f.lastFinisherSerial=serial;this.event('finisher',{hero:f.hero,mode,fire:!!m.fireSequenceHit||!!m.fire,move:m.displayName||f.attack?.move.displayName||f.info.ultimate,dir,x:t.x,y:t.y,attackSerial:serial});if((m.overdrive||f.hero==='zenitsu'||root.RiftRosterRules?.applies(f)||root.RiftAnimeTrioRules?.applies(f))&&this.settings.cinematics)this.cutin={hero:f.hero,mode,name:f.info.name,move:m.displayName||f.attack?.move.displayName||f.info.ultimate,color:f.color,dir,remaining:48,total:48,finisher:true};}}if(m.overdrive)root.RiftAwakeningOverdriveRules?.afterHit(this,f,t,m,contact);if(m.animeTrioKit||m.animeSequenceHit)root.RiftAnimeTrioRules?.afterHit(this,f,t,m,contact);if(m.mananKit)root.RiftMananRules?.afterHit(this,f,t,m,contact);if(m.rosterKit)root.RiftRosterRules?.afterHit?.(this,f,t,m,contact);if(m.kitUltimate||m.waterSequenceHit||m.fireSequenceHit)root.RiftTanjiroRules?.afterHit(this,f,t,m,contact);
  if(m.sixfoldOpen&&f.attack===m.sixfoldOpen){if(!guarded&&t.hp>0&&!f.stun)this.startSixfold(f,t,m.sixfoldOpen);else{f.attack.t=f.attack.move.startup+f.attack.move.active;f.vx=0;}}if(this.settings.hitstop)this.freeze=Math.max(this.freeze,guarded?3:m.stop+(counter?2:0));

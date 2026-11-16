@@ -108,6 +108,7 @@ function transformPoint(point,pose){
  const angle=Number(pose?.bodyAngle)||0,pivot=pose?.pivot;if(!point||!angle||!pivot)return point;const x=point.x-pivot.x,y=point.y-pivot.y,c=Math.cos(angle),s=Math.sin(angle);return {...point,x:pivot.x+x*c-y*s,y:pivot.y+x*s+y*c};
 }
 function projectileOrigin(f){
+ const authored=root.RiftMotion24Visual?.projectileOrigin?.(f);if(authored)return authored;
  if(!['lara','drake'].includes(f?.hero))return null;const pose=visualPose(f);if(!pose?.actor?.attack)return null;
  const renderer=pose.source==='roster'?root.RiftRosterVisual:pose.source==='motion'?root.RiftMotionPreview:null;
  let origin=renderer?.projectileOrigin?.(pose.actor,pose.actor.attack.name)||null;
